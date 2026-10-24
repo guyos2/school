@@ -85,28 +85,50 @@ function highlightLetter(L, word) {
   return `${esc(word.slice(0, i))}<b>${esc(word.slice(i, i + 1))}</b>${esc(word.slice(i + 1))}`;
 }
 
-function moreWordRow(L, w) {
+// Shows the first couple of words, with the rest behind "עוד מילים" so the list can grow freely.
+const SHOWN_AT_FIRST = 2;
+
+function wordList(L, words) {
+  if (!words?.length) return '';
+  const shown = Math.min(SHOWN_AT_FIRST, words.length);
   return `
-    <div class="lt-word en">${w.emoji} ${highlightLetter(L, w.word)} ${speakBtn(w.word)}</div>
-    <p class="viz-caption">${esc(w.he)}</p>`;
+    <div class="more-list">
+      ${words.map((w, i) => `
+        <div class="more-item"${i >= shown ? ' hidden' : ''}>
+          <div class="lt-word en">${w.emoji ?? ''} ${highlightLetter(L, w.word)} ${speakBtn(w.word)}</div>
+          <p class="viz-caption">${esc(w.he)}</p>
+        </div>`).join('')}
+      ${words.length > shown ? `<button class="btn btn-soft more-show-btn">➕ עוד מילים</button>` : ''}
+    </div>`;
+}
+
+function mountMoreLists(box) {
+  box.querySelectorAll('.more-list').forEach((list) => {
+    const btn = list.querySelector('.more-show-btn');
+    btn?.addEventListener('click', () => {
+      list.querySelectorAll('.more-item[hidden]').forEach((el) => el.removeAttribute('hidden'));
+      btn.remove();
+    });
+  });
 }
 
 function moreWords(L, data) {
-  const start = data.more?.find((w) => w.pos === 'start');
-  const mid = data.more?.find((w) => w.pos === 'mid');
+  const start = data.more?.start ?? [];
+  const mid = data.more?.mid ?? [];
   return {
     html: `
       <div class="lt-big en">${L}${L.toLowerCase()}</div>
-      ${start ? moreWordRow(L, start) : ''}
-      ${mid ? `
+      ${wordList(L, start)}
+      ${mid.length ? `
         <button class="btn btn-soft more-toggle">⭐ אפשרות מתקדמת: גם באמצע המילה</button>
-        <div class="more-advanced" hidden>${moreWordRow(L, mid)}</div>` : ''}`,
+        <div class="more-advanced" hidden>${wordList(L, mid)}</div>` : ''}`,
     caption: `האות ${L} מופיעה גם במילים אחרות, לא רק בהתחלה`,
     mount(box) {
-      const btn = box.querySelector('.more-toggle');
-      btn?.addEventListener('click', () => {
+      mountMoreLists(box);
+      const toggle = box.querySelector('.more-toggle');
+      toggle?.addEventListener('click', () => {
         box.querySelector('.more-advanced').hidden = false;
-        btn.hidden = true;
+        toggle.hidden = true;
       });
     },
   };

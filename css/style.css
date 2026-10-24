@@ -183,6 +183,9 @@ button.back { border: 0; background: none; font: inherit; cursor: pointer; }
 .lt-pair { display: flex; align-items: center; gap: 20px; font-size: 110px; font-weight: 800; color: var(--kid); line-height: 1.1; }
 .lt-arrow { font-size: 40px; color: var(--muted); }
 .lt-fonts { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+.more-list { width: 100%; }
+.more-item + .more-item { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+.more-show-btn, .more-toggle { display: block; margin: 14px auto 0; }
 .lt-fonts div { display: flex; flex-direction: column; align-items: center; }
 .lt-fonts span { font-size: 54px; }
 .lt-fonts small { color: var(--muted); }
