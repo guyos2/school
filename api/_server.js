@@ -1,22 +1,22 @@
-// Family sync server (Cloudflare Worker).
+// Family sync server (Vercel functions; files starting with "_" are not routes).
 // Keeps the secrets (GitHub token, later the Claude API key) off the kids' devices
 // and stores each child's progress as progress/<kid>.json on a separate git branch,
 // so progress commits don't redeploy the site.
 //
-// Secrets: USERS (JSON {"hillel":"<code>",...,"parent":"<password>"}), TOKEN_SECRET, GH_TOKEN.
-// Vars: GH_REPO ("owner/repo"), GH_BRANCH (default "progress").
+// Env: USERS (JSON {"hillel":"<code>",...,"parent":"<password>"}), TOKEN_SECRET, GH_TOKEN,
+//      optional GH_REPO (default guyos2/school) and GH_BRANCH.
+// Production writes to the "progress" branch, previews to "progress-preview", so testing
+// a preview never touches the kids' real progress.
 //
-// POST /login {user, password} -> {token, user}. Other calls send "Authorization: Bearer <token>".
+// GET  /api/status -> {configured}
+// POST /api/login {user, password} -> {token, user}. Other calls send "Authorization: Bearer <token>".
 // A kid may only touch their own progress; "parent" may touch everyone's.
 
-const CORS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET,PUT,POST,OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type,Authorization',
-};
-
 const json = (data, status = 200) =>
-  new Response(JSON.stringify(data), { status, headers: { ...CORS, 'Content-Type': 'application/json' } });
+  new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
+
+const repo = (env) => env.GH_REPO || 'guyos2/school';
+const progressBranch = (env) => env.GH_BRANCH || (env.VERCEL_ENV === 'production' ? 'progress' : 'progress-preview');
 
 const b64encode = (s) => {
   let bin = '';
@@ -61,7 +61,7 @@ async function login(env, { user, password }) {
 }
 
 function gh(env, path, init = {}) {
-  return fetch(`https://api.github.com/repos/${env.GH_REPO}/contents/${path}`, {
+  return fetch(`https://api.github.com/repos/${repo(env)}/contents/${path}`, {
     ...init,
     headers: {
       Authorization: `Bearer ${env.GH_TOKEN}`,
@@ -73,7 +73,7 @@ function gh(env, path, init = {}) {
 }
 
 async function getProgress(env, kid) {
-  const branch = env.GH_BRANCH || 'progress';
+  const branch = progressBranch(env);
   const r = await gh(env, `progress/${kid}.json?ref=${branch}`);
   if (r.status === 404) return json({ data: null, sha: null });
   if (!r.ok) return json({ error: `github ${r.status}` }, 502);
@@ -82,7 +82,7 @@ async function getProgress(env, kid) {
 }
 
 async function putProgress(env, kid, { data, sha }) {
-  const branch = env.GH_BRANCH || 'progress';
+  const branch = progressBranch(env);
   const r = await gh(env, `progress/${kid}.json`, {
     method: 'PUT',
     body: JSON.stringify({
@@ -98,21 +98,21 @@ async function putProgress(env, kid, { data, sha }) {
   return json({ ok: true, sha: (await r.json()).content.sha });
 }
 
-export default {
-  async fetch(req, env) {
-    if (req.method === 'OPTIONS') return new Response(null, { headers: CORS });
-    if (!env.TOKEN_SECRET) return json({ error: 'server not configured' }, 500);
-    const path = new URL(req.url).pathname;
-    if (path === '/login' && req.method === 'POST') return login(env, await req.json());
+const configured = (env) => !!(env.TOKEN_SECRET && env.GH_TOKEN && env.USERS);
 
-    const user = await userFromRequest(req, env);
-    if (!user) return json({ error: 'unauthorized' }, 401);
-    const m = path.match(/^\/progress\/([a-z]+)$/);
-    if (m) {
-      if (user !== 'parent' && user !== m[1]) return json({ error: 'forbidden' }, 403);
-      if (req.method === 'GET') return getProgress(env, m[1]);
-      if (req.method === 'PUT') return putProgress(env, m[1], await req.json());
-    }
-    return json({ error: 'not found' }, 404);
-  },
-};
+export async function handle(req, env = process.env) {
+  const path = new URL(req.url).pathname.replace(/\/$/, '');
+  if (path === '/api/status') return json({ configured: configured(env) });
+  if (!configured(env)) return json({ error: 'server not configured' }, 500);
+  if (path === '/api/login' && req.method === 'POST') return login(env, await req.json());
+
+  const user = await userFromRequest(req, env);
+  if (!user) return json({ error: 'unauthorized' }, 401);
+  const m = path.match(/^\/api\/progress\/([a-z]+)$/);
+  if (m) {
+    if (user !== 'parent' && user !== m[1]) return json({ error: 'forbidden' }, 403);
+    if (req.method === 'GET') return getProgress(env, m[1]);
+    if (req.method === 'PUT') return putProgress(env, m[1], await req.json());
+  }
+  return json({ error: 'not found' }, 404);
+}

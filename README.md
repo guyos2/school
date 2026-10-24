@@ -28,44 +28,37 @@
 
 **עיקרון המחשה:** לכל מושג יש לפחות 3 דרכי המחשה שונות, וכפתור "תראו לי בדרך אחרת" שעובר ביניהן.
 
-## הקמה (פעם אחת)
+## אתר ופריסה (Vercel)
+- **אתר הילדים (פרודקשיין)**: https://school-pearl-eight.vercel.app, מתוך הענף `main`.
+- **גרסאות בדיקה**: כל שינוי חדש מגיע בענף נפרד, ו-Vercel בונה ממנו גרסה עם כתובת משלה (רואים אותה ב-Vercel תחת **Deployments**). בודקים שם, ורק אחרי אישור ממזגים ל-`main`.
+- **ההתקדמות נשמרת בנפרד**: האתר האמיתי כותב לענף `progress`, וגרסאות הבדיקה לענף `progress-preview`. תרגול בגרסת בדיקה לא נוגע בהתקדמות האמיתית של הילדים.
 
-### 1. אתר
-ב-GitHub: **Settings → Pages → Deploy from a branch → `main` / root**.
-אחרי דקה האתר זמין בכתובת `https://guyos2.github.io/school/`. בטלפון אפשר לבחור "הוספה למסך הבית" והוא ייראה כמו אפליקציה.
-> אם הריפו פרטי, GitHub Pages דורש מנוי GitHub Pro. אפשרות אחרת היא לפרסם דרך Cloudflare Pages (חינם).
+### הגדרת שמירה בגיט וכניסה עם קוד (פעם אחת)
+1. **טוקן לגיט**: ב-GitHub נכנסים ל-**Settings → Developer settings → Fine-grained tokens → Generate new token**. Repository access: רק `guyos2/school`. Permissions: **Contents: Read and write**.
+2. **ב-Vercel**: בפרויקט נכנסים ל-**Settings → Environment Variables** ומוסיפים את שלושת המשתנים הבאים, מסומנים גם ל-Production וגם ל-Preview:
+   - `GH_TOKEN`: הטוקן מסעיף 1
+   - `TOKEN_SECRET`: מחרוזת אקראית ארוכה (כ-40 תווים)
+   - `USERS`: קוד לכל ילד וסיסמה להורה, למשל:
+     ```json
+     {"hillel":"1234","niri":"5678","itamar":"2468","dani":"1357","parent":"סיסמה-חזקה"}
+     ```
+3. **Deployments → Redeploy**, כדי שההגדרות ייכנסו לתוקף.
 
-### 2. טוקן לגיט
-ב-GitHub: **Settings → Developer settings → Fine-grained tokens → Generate new token**
-- Repository access: רק `guyos2/school`
-- Permissions: **Contents: Read and write**
+עד שמגדירים את המשתנים האפליקציה עובדת בלי כניסה, וההתקדמות נשמרת רק במכשיר.
 
-### 3. שרת סנכרון (Cloudflare Workers, חינם)
-```bash
-cd worker
-npx wrangler login
-npx wrangler secret put GH_TOKEN       # הטוקן מסעיף 2
-npx wrangler secret put TOKEN_SECRET   # מחרוזת אקראית ארוכה, למשל 40 תווים
-npx wrangler secret put USERS          # המשתמשים והקודים, ראו למטה
-npx wrangler deploy
-```
-הערך של `USERS` (קוד לכל ילד וסיסמה להורה):
-```json
-{"hillel":"1234","niri":"5678","itamar":"2468","dani":"1357","parent":"סיסמה-חזקה"}
-```
-הפקודה `deploy` מדפיסה כתובת בסגנון `https://school-sync.<שם>.workers.dev`. את הכתובת שולחים ל-Claude, או רושמים אותה בעצמכם ב-`content/config.json`. מאותו רגע כל מכשיר יבקש כניסה.
-
-### 4. בכל מכשיר
+### בכל מכשיר
 פותחים את האתר, לוחצים על התמונה ומקלידים את הקוד. המכשיר זוכר את הכניסה לשנה.
 - **ילד** רואה רק את עצמו ונכנס ישר לפרופיל שלו.
 - **הורה** רואה את כל הילדים.
 - יציאה מהחשבון: ⚙️ → "יציאה מהחשבון".
 - כדי לנתק את כל המכשירים בבת אחת, מחליפים את `TOKEN_SECRET`.
+- בטלפון בוחרים "הוספה למסך הבית", והאתר ייראה כמו אפליקציה.
 
 ## הוספת חומר
 שולחים ל-Claude צילום של מבחן, דף עבודה או מחברת, או בקשה בטקסט, למשל: "נירי, מבחן בשברים ביום חמישי". Claude מכין יחידת לימוד עם המחשות, תרגול ומבחן דמה, ומעלה אותה לריפו.
 
 ## הרצה מקומית
 ```bash
-python3 -m http.server 8000   # ואז http://localhost:8000
+python3 -m http.server 8000   # ואז http://localhost:8000 (בלי שרת, ההתקדמות נשמרת רק במכשיר)
+npx vercel dev                # כולל השרת
 ```

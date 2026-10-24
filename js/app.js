@@ -25,7 +25,11 @@ async function init() {
     fetch('content/config.json').then((r) => r.json()).catch(() => ({})),
   ]);
   kids = kidsFile.kids;
-  setApiUrl(config.apiUrl);
+  // Use the server only when it is up and configured; otherwise keep working on this device.
+  if (config.apiUrl) {
+    const status = await fetch(`${config.apiUrl}/status`).then((r) => r.json()).catch(() => ({}));
+    if (status.configured) setApiUrl(config.apiUrl);
+  }
   window.addEventListener('hashchange', route);
   window.addEventListener('school:logout', () => { location.hash = '#/'; route(); });
   const statusEl = document.getElementById('sync-status');
