@@ -1,7 +1,7 @@
 import { esc, newView } from './ui.js';
 import { renderTimes } from './modules/times.js';
 import { renderEnglish } from './modules/english.js';
-import { setApiUrl, isOnline, getSession, login, logout, syncKid, onSyncStatus } from './store.js';
+import { setApiUrl, isOnline, needsLogin, getSession, login, logout, syncKid, onSyncStatus } from './store.js';
 
 // Modules without render are shown as "coming soon".
 const MODULES = {
@@ -28,7 +28,7 @@ async function init() {
   // Use the server only when it is up and configured; otherwise keep working on this device.
   if (config.apiUrl) {
     const status = await fetch(`${config.apiUrl}/status`).then((r) => r.json()).catch(() => ({}));
-    if (status.configured) setApiUrl(config.apiUrl);
+    if (status.configured) setApiUrl(config.apiUrl, { codes: status.codes });
   }
   window.addEventListener('hashchange', route);
   window.addEventListener('school:logout', () => { location.hash = '#/'; route(); });
@@ -38,9 +38,9 @@ async function init() {
   route();
 }
 
-// Without a sync server everyone sees everything (single-device mode).
+// Without login codes everyone sees everything.
 function allowedKids() {
-  if (!isOnline()) return kids;
+  if (!needsLogin()) return kids;
   const user = getSession()?.user;
   return user === 'parent' ? kids : kids.filter((k) => k.id === user);
 }
@@ -48,7 +48,7 @@ function allowedKids() {
 function route() {
   newView();
   window.scrollTo(0, 0);
-  if (isOnline() && !getSession()) return loginScreen();
+  if (needsLogin() && !getSession()) return loginScreen();
   const parts = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
   if (parts[0] === 'settings') return account();
   if (parts[0] === 'kid') {
@@ -145,6 +145,17 @@ function account() {
       <div class="panel"><p>שרת הסנכרון עוד לא הוגדר, ולכן ההתקדמות נשמרת רק במכשיר הזה.</p></div>`;
     return;
   }
+  if (!needsLogin()) {
+    app.innerHTML = `
+      <h1 class="page-title">⚙️ חשבון</h1>
+      <div class="panel">
+        <p>ההתקדמות נשמרת בגיט ועוברת בין כל המכשירים. הכניסה כרגע בלי קוד.</p>
+        <div class="row-center"><button class="btn" id="sync">🔄 סנכרון עכשיו</button></div>
+        <p id="msg" class="subtitle"></p>
+      </div>`;
+    app.querySelector('#sync').onclick = () => syncAll(app.querySelector('#msg'));
+    return;
+  }
   const user = getSession().user;
   const who = user === 'parent' ? PARENT : kids.find((k) => k.id === user) ?? { name: user, emoji: '👤' };
   app.innerHTML = `
@@ -158,16 +169,17 @@ function account() {
       <p id="msg" class="subtitle"></p>
     </div>`;
   app.querySelector('#out').onclick = logout;
-  app.querySelector('#sync').onclick = async () => {
-    const msg = app.querySelector('#msg');
-    msg.textContent = 'מסנכרן…';
-    try {
-      for (const k of allowedKids()) await syncKid(k.id);
-      msg.textContent = '✅ הכול מסונכרן';
-    } catch (e) {
-      msg.textContent = `❌ הסנכרון נכשל (${e.message})`;
-    }
-  };
+  app.querySelector('#sync').onclick = () => syncAll(app.querySelector('#msg'));
+}
+
+async function syncAll(msg) {
+  msg.textContent = 'מסנכרן…';
+  try {
+    for (const k of allowedKids()) await syncKid(k.id);
+    msg.textContent = '✅ הכול מסונכרן';
+  } catch (e) {
+    msg.textContent = `❌ הסנכרון נכשל (${e.message})`;
+  }
 }
 
 document.addEventListener('visibilitychange', () => {

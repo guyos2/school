@@ -3,12 +3,13 @@
 // and stores each child's progress as progress/<kid>.json on a separate git branch,
 // so progress commits don't redeploy the site.
 //
-// Env: USERS (JSON {"hillel":"<code>",...,"parent":"<password>"}), TOKEN_SECRET, GH_TOKEN,
-//      optional GH_REPO (default guyos2/school) and GH_BRANCH.
+// Env: GH_TOKEN, optional GH_REPO (default guyos2/school) and GH_BRANCH.
+// Login codes are off unless LOGIN_CODES=on; then USERS (JSON {"hillel":"<code>",...,"parent":"<password>"})
+// and TOKEN_SECRET are required too.
 // Production writes to the "progress" branch, previews to "progress-preview", so testing
 // a preview never touches the kids' real progress.
 //
-// GET  /api/status -> {configured}
+// GET  /api/status -> {configured, codes}
 // POST /api/login {user, password} -> {token, user}. Other calls send "Authorization: Bearer <token>".
 // A kid may only touch their own progress; "parent" may touch everyone's.
 
@@ -98,18 +99,21 @@ async function putProgress(env, kid, { data, sha }) {
   return json({ ok: true, sha: (await r.json()).content.sha });
 }
 
-const configured = (env) => !!(env.TOKEN_SECRET && env.GH_TOKEN && env.USERS);
+const KIDS = ['hillel', 'niri', 'itamar', 'dani'];
+const codesOn = (env) => env.LOGIN_CODES === 'on';
+const configured = (env) => !!(env.GH_TOKEN && (!codesOn(env) || (env.TOKEN_SECRET && env.USERS)));
 
 export async function handle(req, env = process.env) {
   const path = new URL(req.url).pathname.replace(/\/$/, '');
-  if (path === '/api/status') return json({ configured: configured(env) });
+  if (path === '/api/status') return json({ configured: configured(env), codes: codesOn(env) });
   if (!configured(env)) return json({ error: 'server not configured' }, 500);
-  if (path === '/api/login' && req.method === 'POST') return login(env, await req.json());
+  if (codesOn(env) && path === '/api/login' && req.method === 'POST') return login(env, await req.json());
 
-  const user = await userFromRequest(req, env);
+  // Without codes everyone is trusted like a parent.
+  const user = codesOn(env) ? await userFromRequest(req, env) : 'parent';
   if (!user) return json({ error: 'unauthorized' }, 401);
   const m = path.match(/^\/api\/progress\/([a-z]+)$/);
-  if (m) {
+  if (m && KIDS.includes(m[1])) {
     if (user !== 'parent' && user !== m[1]) return json({ error: 'forbidden' }, 403);
     if (req.method === 'GET') return getProgress(env, m[1]);
     if (req.method === 'PUT') return putProgress(env, m[1], await req.json());

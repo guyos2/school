@@ -11,8 +11,8 @@ Family learning web app (Hebrew, RTL) for four kids. See README.md for the roadm
 - `js/quiz.js`: shared multiple-choice engine (`runQuiz`, `finishScreen`). Use it for new practice modes.
 - `js/speech.js`: English TTS (`say`, `speakBtn`). `content/english/`: letters (sound hints, tips, confusable groups) and word lists (`cvc`, `sight`). Add words from class material here.
 - `js/srs.js`: Leitner spaced repetition. `js/store.js`: local progress plus sync.
-- `content/config.json`: `apiUrl` (`/api`). The app enables login and sync only when `GET /api/status` reports `configured`; otherwise it runs in single-device mode.
-- `api/`: Vercel functions. `_server.js` holds all logic: login (per-kid code, parent password → signed token) and progress at `progress/<kid>.json`, on the `progress` branch in production and `progress-preview` in previews. A kid's token can only access that kid's progress. Secrets live in Vercel env vars.
+- `content/config.json`: `apiUrl` (`/api`). The app enables sync only when `GET /api/status` reports `configured`; otherwise it runs in single-device mode. Login codes apply only when status reports `codes` (env `LOGIN_CODES=on`); currently off, so anyone picks a kid.
+- `api/`: Vercel functions. `_server.js` holds all logic: optional login (per-kid code, parent password → signed token) and progress at `progress/<kid>.json`, on the `progress` branch in production and `progress-preview` in previews. Only the kid ids in `KIDS` are accepted; with codes on, a kid's token can only access that kid's progress. Secrets live in Vercel env vars.
 
 ## Workflow
 - Never commit features straight to `main`; it is what the kids use. Work on a feature branch, push it (Vercel builds a preview), and merge only after the parent approves the preview.
