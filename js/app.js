@@ -1,6 +1,7 @@
 import { esc, newView } from './ui.js';
 import { renderTimes } from './modules/times.js';
 import { renderEnglish } from './modules/english.js';
+import { renderGrammar } from './modules/grammar.js';
 import { setApiUrl, isOnline, needsLogin, getSession, login, logout, syncKid, onSyncStatus } from './store.js';
 
 // Modules without render are shown as "coming soon".
@@ -9,6 +10,7 @@ const MODULES = {
   fractions: { title: 'שברים', icon: '🍕' },
   numbers: { title: 'מספרים טבעיים', icon: '🔢' },
   'english-letters': { title: 'אותיות וקריאה באנגלית', icon: '🔤', render: renderEnglish },
+  grammar: { title: 'דקדוק באנגלית', icon: '📘', render: renderGrammar },
   speaking: { title: 'מדברים אנגלית', icon: '🗣️' },
   units: { title: 'חומר מהכיתה', icon: '📸' },
   counting: { title: 'סופרים ומשחקים', icon: '🧸' },

@@ -5,7 +5,7 @@
     { "id": "niri", "name": "נירי", "grade": "כיתה ה׳", "emoji": "🦋", "color": "#8b5cf6",
       "modules": ["times", "fractions", "numbers", "english-letters", "speaking"] },
     { "id": "itamar", "name": "איתמר", "grade": "כיתה ח׳", "emoji": "🚀", "color": "#0ea5e9",
-      "modules": ["speaking", "units"] },
+      "modules": ["grammar", "speaking", "units"] },
     { "id": "dani", "name": "דני", "grade": "גן חובה", "emoji": "🦁", "color": "#f59e0b",
       "modules": ["counting", "speaking"] }
   ]

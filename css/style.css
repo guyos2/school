@@ -220,3 +220,24 @@ button.back { border: 0; background: none; font: inherit; cursor: pointer; }
 .blend-result { text-align: center; }
 .blend-heb { font-size: 20px; margin-top: 6px; }
 .choice-text { font-size: 22px; font-weight: 700; }
+
+/* ---------- Grammar (present simple etc.) ---------- */
+.ps-label { text-align: center; font-size: 14px; color: var(--muted); margin: 10px 0 2px; }
+.ps-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin: 2px 0; }
+.ps-chip { border-radius: 14px; padding: 6px 16px; color: #fff; font-size: 22px; font-weight: 800; }
+.ps-subj { background: #3b82f6; }
+.ps-verb { background: #10b981; }
+.ps-obj { background: #f59e0b; color: var(--ink); }
+.ps-aux { background: #ef4444; }
+.ps-tree-q { text-align: center; font-weight: 700; margin: 0 0 10px; }
+.ps-tree-branches { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.ps-branch { flex: 1; min-width: 200px; max-width: 280px; border: 3px solid var(--line); border-radius: 16px; padding: 12px; background: var(--card); opacity: .5; }
+.ps-branch.active { opacity: 1; border-color: var(--kid); box-shadow: var(--shadow); }
+.ps-branch-title { font-weight: 800; margin-bottom: 6px; text-align: center; }
+.ps-branch-rule { font-size: 15px; color: var(--muted); text-align: center; }
+.ps-compare-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; margin: 8px 0; }
+.ps-compare-label { min-width: 90px; font-weight: 700; color: var(--muted); text-align: center; }
+.ps-hl { background: #fde047; color: #1f1b3a; border-radius: 6px; padding: 0 6px; }
+.ps-shown { font-size: clamp(22px, 5vw, 30px); font-weight: 800; text-align: center; margin: 10px 0; }
+.ps-choice { font-size: 19px; font-weight: 700; line-height: 1.35; }
+.q-sub { text-align: center; font-size: 16px; color: var(--muted); margin: 4px 0 0; }

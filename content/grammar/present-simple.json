@@ -1,0 +1,37 @@
+{
+  "title": "Present Simple – הווה פשוט",
+  "rule": {
+    "do": "אחרי I / You / We / They (או כל נושא ברבים) הפועל נשאר בסיסי, בלי s. בשלילה אומרים don't + פועל בסיס.",
+    "does": "אחרי He / She / It (או כל נושא יחיד בגוף שלישי) מוסיפים לפועל s / es / ies. בשלילה אומרים doesn't + פועל בסיס, בלי ה-s!"
+  },
+  "subjects": [
+    { "en": "I", "he": "אני", "person": "do" },
+    { "en": "You", "he": "אתה / את", "person": "do" },
+    { "en": "We", "he": "אנחנו", "person": "do" },
+    { "en": "They", "he": "הם / הן", "person": "do" },
+    { "en": "My friends", "he": "החברים שלי", "person": "do" },
+    { "en": "He", "he": "הוא", "person": "does" },
+    { "en": "She", "he": "היא", "person": "does" },
+    { "en": "It", "he": "זה", "person": "does" },
+    { "en": "My sister", "he": "אחותי", "person": "does" },
+    { "en": "The teacher", "he": "המורה", "person": "does" }
+  ],
+  "verbs": [
+    { "base": "play", "s": "plays", "he": "משחק/ת",
+      "objects": [{ "en": "football", "he": "כדורגל" }, { "en": "the guitar", "he": "בגיטרה" }] },
+    { "base": "eat", "s": "eats", "he": "אוכל/ת",
+      "objects": [{ "en": "breakfast", "he": "ארוחת בוקר" }, { "en": "vegetables", "he": "ירקות" }] },
+    { "base": "watch", "s": "watches", "he": "צופה",
+      "objects": [{ "en": "TV", "he": "טלוויזיה" }, { "en": "funny videos", "he": "סרטונים מצחיקים" }] },
+    { "base": "fix", "s": "fixes", "he": "מתקן/ת",
+      "objects": [{ "en": "bikes", "he": "אופניים" }, { "en": "computers", "he": "מחשבים" }] },
+    { "base": "go", "s": "goes", "he": "הולך/ת",
+      "objects": [{ "en": "to school", "he": "לבית הספר" }, { "en": "to the gym", "he": "לחדר כושר" }] },
+    { "base": "study", "s": "studies", "he": "לומד/ת",
+      "objects": [{ "en": "English", "he": "אנגלית" }, { "en": "for the test", "he": "למבחן" }] },
+    { "base": "do", "s": "does", "he": "עושה",
+      "objects": [{ "en": "homework", "he": "שיעורי בית" }, { "en": "the dishes", "he": "את הכלים" }] },
+    { "base": "have", "s": "has", "he": "יש ל...",
+      "objects": [{ "en": "a dog", "he": "כלב" }, { "en": "a big family", "he": "משפחה גדולה" }] }
+  ]
+}
