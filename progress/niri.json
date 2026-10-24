@@ -19,36 +19,36 @@
    "updated": 1792834285130
   },
   "mul:2x10": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1792848690251,
-   "updated": 1792834290251
+   "due": 1792920757350,
+   "updated": 1792834357350
   },
   "mul:2x2": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1792848694536,
-   "updated": 1792834294536
+   "due": 1792920754361,
+   "updated": 1792834354361
   },
   "mul:5x10": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1792848697691,
-   "updated": 1792834297691
+   "due": 1792920735668,
+   "updated": 1792834335668
   },
   "mul:10x10": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1792848704432,
-   "updated": 1792834304432
+   "due": 1792920742124,
+   "updated": 1792834342124
   },
   "mul:5x5": {
    "box": 1,
@@ -59,28 +59,28 @@
    "updated": 1792834308166
   },
   "mul:1x5": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1792848710651,
-   "updated": 1792834310651
+   "due": 1792920772272,
+   "updated": 1792834372272
   },
   "mul:1x10": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1792848714167,
-   "updated": 1792834314167
+   "due": 1792920760282,
+   "updated": 1792834360282
   },
   "mul:1x2": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1792848717021,
-   "updated": 1792834317021
+   "due": 1792920763920,
+   "updated": 1792834363920
   },
   "mul:2x5": {
    "box": 1,
@@ -91,12 +91,44 @@
    "updated": 1792834320223
   },
   "mul:1x1": {
+   "box": 2,
+   "seen": 2,
+   "right": 2,
+   "wrong": 0,
+   "due": 1792920749543,
+   "updated": 1792834349543
+  },
+  "mul:3x5": {
    "box": 1,
    "seen": 1,
    "right": 1,
    "wrong": 0,
-   "due": 1792848723193,
-   "updated": 1792834323193
+   "due": 1792848730965,
+   "updated": 1792834330965
+  },
+  "mul:2x3": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848746711,
+   "updated": 1792834346711
+  },
+  "mul:3x3": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848766487,
+   "updated": 1792834366487
+  },
+  "mul:1x4": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848769672,
+   "updated": 1792834369672
   }
  },
  "sessions": [
@@ -106,7 +138,14 @@
    "module": "times",
    "total": 12,
    "correct": 12
+  },
+  {
+   "id": "f2c88b4e-c5d3-48bf-be75-fd210a24d476",
+   "at": 1792834373073,
+   "module": "times",
+   "total": 12,
+   "correct": 12
   }
  ],
- "updated": 1792834323995
+ "updated": 1792834373073
 }
