@@ -1,7 +1,112 @@
 {
  "kid": "hillel",
  "version": 1,
- "items": {},
- "sessions": [],
- "updated": 0
+ "items": {
+  "mul:1x10": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792846274324,
+   "updated": 1792831874324
+  },
+  "mul:3x10": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792846277997,
+   "updated": 1792831877997
+  },
+  "mul:1x3": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792846280923,
+   "updated": 1792831880923
+  },
+  "mul:2x10": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792846284206,
+   "updated": 1792831884206
+  },
+  "mul:5x5": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792846287965,
+   "updated": 1792831887965
+  },
+  "mul:10x10": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792846291964,
+   "updated": 1792831891964
+  },
+  "mul:2x2": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792846294673,
+   "updated": 1792831894673
+  },
+  "mul:1x5": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792846308644,
+   "updated": 1792831908644
+  },
+  "mul:1x1": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792846311702,
+   "updated": 1792831911702
+  },
+  "mul:5x10": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792846333960,
+   "updated": 1792831933960
+  },
+  "mul:1x2": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792846336794,
+   "updated": 1792831936794
+  },
+  "mul:2x5": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792846340152,
+   "updated": 1792831940152
+  }
+ },
+ "sessions": [
+  {
+   "id": "9c567881-3206-4327-83ae-6a7384539847",
+   "at": 1792831940952,
+   "module": "times",
+   "total": 12,
+   "correct": 12
+  }
+ ],
+ "updated": 1792831940952
 }
