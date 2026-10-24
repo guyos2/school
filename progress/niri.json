@@ -1,7 +1,112 @@
 {
  "kid": "niri",
  "version": 1,
- "items": {},
- "sessions": [],
- "updated": 0
+ "items": {
+  "mul:3x10": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848682358,
+   "updated": 1792834282358
+  },
+  "mul:1x3": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848685130,
+   "updated": 1792834285130
+  },
+  "mul:2x10": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848690251,
+   "updated": 1792834290251
+  },
+  "mul:2x2": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848694536,
+   "updated": 1792834294536
+  },
+  "mul:5x10": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848697691,
+   "updated": 1792834297691
+  },
+  "mul:10x10": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848704432,
+   "updated": 1792834304432
+  },
+  "mul:5x5": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848708166,
+   "updated": 1792834308166
+  },
+  "mul:1x5": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848710651,
+   "updated": 1792834310651
+  },
+  "mul:1x10": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848714167,
+   "updated": 1792834314167
+  },
+  "mul:1x2": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848717021,
+   "updated": 1792834317021
+  },
+  "mul:2x5": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848720223,
+   "updated": 1792834320223
+  },
+  "mul:1x1": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792848723193,
+   "updated": 1792834323193
+  }
+ },
+ "sessions": [
+  {
+   "id": "9d1151a7-5f8b-4ef2-95c3-c7db195066c8",
+   "at": 1792834323995,
+   "module": "times",
+   "total": 12,
+   "correct": 12
+  }
+ ],
+ "updated": 1792834323995
 }
