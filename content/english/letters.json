@@ -1,0 +1,38 @@
+{
+  "order": "SATPINMDGOCKEURHBFLJVWXYZQ",
+  "letters": [
+    { "l": "A", "word": "apple", "emoji": "🍎", "heb": "אַ", "he": "תפוח" },
+    { "l": "B", "word": "ball", "emoji": "⚽", "heb": "בּ", "he": "כדור" },
+    { "l": "C", "word": "cat", "emoji": "🐱", "heb": "ק", "he": "חתול", "note": "לפעמים C נשמעת כמו ס, למשל ב-city" },
+    { "l": "D", "word": "dog", "emoji": "🐶", "heb": "ד", "he": "כלב" },
+    { "l": "E", "word": "egg", "emoji": "🥚", "heb": "אֶ", "he": "ביצה" },
+    { "l": "F", "word": "fish", "emoji": "🐟", "heb": "פ", "he": "דג" },
+    { "l": "G", "word": "gift", "emoji": "🎁", "heb": "ג", "he": "מתנה" },
+    { "l": "H", "word": "hat", "emoji": "🎩", "heb": "ה", "he": "כובע" },
+    { "l": "I", "word": "insect", "emoji": "🐜", "heb": "אִ", "he": "חרק" },
+    { "l": "J", "word": "juice", "emoji": "🧃", "heb": "ג׳", "he": "מיץ" },
+    { "l": "K", "word": "kite", "emoji": "🪁", "heb": "ק", "he": "עפיפון" },
+    { "l": "L", "word": "lion", "emoji": "🦁", "heb": "ל", "he": "אריה" },
+    { "l": "M", "word": "moon", "emoji": "🌙", "heb": "מ", "he": "ירח" },
+    { "l": "N", "word": "nose", "emoji": "👃", "heb": "נ", "he": "אף" },
+    { "l": "O", "word": "octopus", "emoji": "🐙", "heb": "אוֹ", "he": "תמנון" },
+    { "l": "P", "word": "pig", "emoji": "🐷", "heb": "פּ", "he": "חזיר" },
+    { "l": "Q", "word": "queen", "emoji": "👑", "heb": "קו", "he": "מלכה", "note": "Q באה כמעט תמיד עם U: qu" },
+    { "l": "R", "word": "rabbit", "emoji": "🐰", "heb": "ר", "he": "ארנב" },
+    { "l": "S", "word": "sun", "emoji": "☀️", "heb": "ס", "he": "שמש" },
+    { "l": "T", "word": "tiger", "emoji": "🐯", "heb": "ט", "he": "נמר" },
+    { "l": "U", "word": "umbrella", "emoji": "☂️", "heb": "אַ", "he": "מטריה" },
+    { "l": "V", "word": "van", "emoji": "🚐", "heb": "ו", "he": "טנדר" },
+    { "l": "W", "word": "watch", "emoji": "⌚", "heb": "וו", "he": "שעון" },
+    { "l": "X", "word": "box", "emoji": "📦", "heb": "קס", "he": "קופסה", "note": "X נשמעת קס, ובדרך כלל מופיעה בסוף המילה" },
+    { "l": "Y", "word": "yo-yo", "emoji": "🪀", "heb": "י", "he": "יו-יו" },
+    { "l": "Z", "word": "zebra", "emoji": "🦓", "heb": "ז", "he": "זברה" }
+  ],
+  "tips": {
+    "b": "b: קודם המקל ואז הבטן. כמו במילה bed 🛏️, ה-b היא הראש של המיטה",
+    "d": "d: קודם הבטן ואז המקל. כמו במילה bed 🛏️, ה-d היא הרגליים של המיטה",
+    "p": "p: המקל יורד למטה והבטן בצד ימין",
+    "q": "q: המקל יורד למטה והבטן בצד שמאל, ותמיד אחריה u"
+  },
+  "confusable": ["bdpq", "mnu", "ilj", "vwy", "ceo", "hn", "ft"]
+}

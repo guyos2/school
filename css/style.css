@@ -153,3 +153,67 @@ button.back { border: 0; background: none; font: inherit; cursor: pointer; }
   border: 3px solid var(--line); border-radius: 18px; background: var(--card);
 }
 .code-input:focus { outline: none; border-color: var(--kid); }
+
+/* ---------- English ---------- */
+.en { direction: ltr; unicode-bidi: isolate; font-family: 'Rubik', 'Segoe UI', Arial, sans-serif; }
+.section { font-size: 20px; margin: 26px 0 10px; color: var(--muted); }
+.speak { border: 0; background: var(--line); border-radius: 50%; width: 44px; height: 44px; font-size: 22px; vertical-align: middle; }
+.q-big .speak { width: 84px; height: 84px; font-size: 44px; background: var(--card); box-shadow: var(--shadow); }
+.q-big { font-size: clamp(56px, 16vw, 96px); font-weight: 800; line-height: 1.15; }
+.q-ask { font-size: 22px; font-weight: 700; margin: 6px 0 0; }
+.choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin: 18px 0; }
+.choice {
+  border: 3px solid var(--line); background: var(--card); border-radius: 20px; box-shadow: var(--shadow);
+  font-size: 40px; font-weight: 800; padding: 18px 8px; min-height: 90px; transition: transform .1s;
+}
+.choice:active { transform: scale(.96); }
+.choice.correct { border-color: var(--good); background: #d1fae5; }
+.choice.wrong { border-color: var(--bad); background: #fee2e2; }
+.choice.dim { opacity: .45; }
+.choice-emoji { font-size: 54px; }
+
+.lt-big { font-size: 110px; font-weight: 800; line-height: 1; color: var(--kid); }
+.lt-mid { font-size: 80px; font-weight: 800; color: var(--kid); }
+.lt-emoji { font-size: 84px; line-height: 1.2; }
+.lt-word { font-size: 40px; font-weight: 500; margin-top: 6px; }
+.lt-word b { color: var(--kid); font-weight: 800; }
+.lt-sound { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.lt-eq { color: var(--muted); font-size: 18px; }
+.heb-big { font-size: 80px; font-weight: 800; }
+.lt-pair { display: flex; align-items: center; gap: 20px; font-size: 110px; font-weight: 800; color: var(--kid); line-height: 1.1; }
+.lt-arrow { font-size: 40px; color: var(--muted); }
+.lt-fonts { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+.lt-fonts div { display: flex; flex-direction: column; align-items: center; }
+.lt-fonts span { font-size: 54px; }
+.lt-fonts small { color: var(--muted); }
+.trace { width: min(300px, 80vw); aspect-ratio: 1; height: auto; background: #fff; border: 3px dashed var(--line); border-radius: 20px; touch-action: none; }
+.trace-switch { display: flex; gap: 10px; margin-bottom: 10px; }
+.trace-switch .btn { font-size: 26px; padding: 4px 22px; direction: ltr; }
+.trace-clear { margin-top: 10px; }
+.help-letter .lt-big { font-size: 80px; }
+
+.letter-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.abc { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 8px; }
+.abc-tile, .word-tile {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-radius: 14px; font-weight: 800; border: 0; font-family: inherit;
+}
+.abc-tile { aspect-ratio: 1; font-size: 30px; line-height: 1; }
+.abc-tile small { font-size: 18px; font-weight: 500; }
+.word-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
+.word-tile { font-size: 24px; padding: 14px 4px; }
+.big-word { font-size: 34px; font-weight: 800; color: var(--kid); }
+
+.blend { display: flex; justify-content: center; gap: 28px; transition: gap .6s; margin: 10px 0; }
+.blend.joined { gap: 2px; }
+.tile {
+  display: flex; flex-direction: column; align-items: center; border: 3px solid var(--line); border-radius: 18px;
+  background: var(--card); padding: 6px 14px; font-family: inherit;
+}
+.tile-l { font-size: 64px; font-weight: 800; line-height: 1.1; color: var(--kid); }
+.tile-h { font-size: 24px; color: var(--muted); direction: rtl; }
+.tile.pop { animation: pop .45s; border-color: var(--kid); }
+@keyframes pop { 50% { transform: scale(1.25) translateY(-8px); } }
+.blend-result { text-align: center; }
+.blend-heb { font-size: 20px; margin-top: 6px; }
+.choice-text { font-size: 22px; font-weight: 700; }

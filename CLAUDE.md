@@ -8,6 +8,8 @@ Family learning web app (Hebrew, RTL) for four kids. See README.md for the roadm
 - `js/app.js`: hash router, home, kid page, settings. Module catalog lives in `MODULES`.
 - `js/modules/<module>.js`: one file per learning module, exporting `render(root, kid, routeArgs)`.
 - `js/viz/<topic>.js`: visualizations. Each method returns `{ html, caption }`; `vizPanel` shows tabs plus "show another way".
+- `js/quiz.js`: shared multiple-choice engine (`runQuiz`, `finishScreen`). Use it for new practice modes.
+- `js/speech.js`: English TTS (`say`, `speakBtn`). `content/english/`: letters (sound hints, tips, confusable groups) and word lists (`cvc`, `sight`). Add words from class material here.
 - `js/srs.js`: Leitner spaced repetition. `js/store.js`: local progress plus sync.
 - `content/config.json`: `apiUrl` of the sync server. Empty means single-device mode with no login.
 - `worker/`: Cloudflare Worker holding secrets. It handles login (per-kid code, parent password → signed token) and stores progress at `progress/<kid>.json` on the `progress` branch. A kid's token can only access that kid's progress.
