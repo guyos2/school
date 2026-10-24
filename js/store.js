@@ -12,8 +12,13 @@ const write = (k, v) => {
 
 // ---- server & login ----
 let apiUrl = '';
-export const setApiUrl = (url) => { apiUrl = (url || '').replace(/\/$/, ''); };
+let codes = true;
+export function setApiUrl(url, { codes: withCodes = true } = {}) {
+  apiUrl = (url || '').replace(/\/$/, '');
+  codes = withCodes;
+}
 export const isOnline = () => !!apiUrl;
+export const needsLogin = () => !!apiUrl && codes;
 export const getSession = () => read('session', null);
 export function logout() {
   try { localStorage.removeItem(LS + 'session'); } catch { /* ignore */ }
@@ -70,7 +75,7 @@ const setStatus = (s) => { status = s; listeners.forEach((fn) => fn(s)); };
 
 const timers = {};
 function scheduleSync(kid) {
-  if (!apiUrl || !getSession()) return;
+  if (!apiUrl || (codes && !getSession())) return;
   clearTimeout(timers[kid]);
   timers[kid] = setTimeout(() => syncKid(kid).catch(() => {}), 3000);
 }
@@ -79,9 +84,10 @@ const sameContent = (a, b) => JSON.stringify([a.items, a.sessions]) === JSON.str
 
 export async function syncKid(kid) {
   const session = getSession();
-  if (!apiUrl || !session) { setStatus('local'); return 'local'; }
+  if (!apiUrl || (codes && !session)) { setStatus('local'); return 'local'; }
   const url = `${apiUrl}/progress/${kid}`;
-  const headers = { 'Content-Type': 'application/json', Authorization: `Bearer ${session.token}` };
+  const headers = { 'Content-Type': 'application/json' };
+  if (codes) headers.Authorization = `Bearer ${session.token}`;
   setStatus('syncing');
   try {
     for (let attempt = 0; attempt < 3; attempt++) {
