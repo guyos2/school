@@ -1,0 +1,11 @@
+name = "school-sync"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+[vars]
+GH_REPO = "guyos2/school"
+GH_BRANCH = "progress"
+
+# Secrets (set once, never committed):
+#   npx wrangler secret put FAMILY_KEY
+#   npx wrangler secret put GH_TOKEN

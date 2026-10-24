@@ -1,0 +1,13 @@
+{
+  "name": "לומדים בבית",
+  "short_name": "לומדים",
+  "lang": "he",
+  "dir": "rtl",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f4ff",
+  "theme_color": "#5b4cdb",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
