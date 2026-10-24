@@ -19,20 +19,20 @@
    "updated": 1792834392474
   },
   "mul:2x10": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1792920757350,
-   "updated": 1792834357350
+   "due": 1793093847768,
+   "updated": 1792834647768
   },
   "mul:2x2": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1792920754361,
-   "updated": 1792834354361
+   "due": 1793093908508,
+   "updated": 1792834708508
   },
   "mul:5x10": {
    "box": 2,
@@ -59,12 +59,12 @@
    "updated": 1792834412977
   },
   "mul:1x5": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1792920772272,
-   "updated": 1792834372272
+   "due": 1793093917901,
+   "updated": 1792834717901
   },
   "mul:1x10": {
    "box": 3,
@@ -155,44 +155,76 @@
    "updated": 1792834626147
   },
   "mul:2x4": {
+   "box": 2,
+   "seen": 3,
+   "right": 3,
+   "wrong": 0,
+   "due": 1792921115148,
+   "updated": 1792834715148
+  },
+  "mul:4x4": {
+   "box": 2,
+   "seen": 2,
+   "right": 2,
+   "wrong": 0,
+   "due": 1792921132922,
+   "updated": 1792834732922
+  },
+  "mul:2x9": {
    "box": 1,
    "seen": 2,
    "right": 2,
    "wrong": 0,
-   "due": 1792849042865,
-   "updated": 1792834642865
-  },
-  "mul:4x4": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
-   "wrong": 0,
-   "due": 1792849002528,
-   "updated": 1792834602528
-  },
-  "mul:2x9": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
-   "wrong": 0,
-   "due": 1792849012533,
-   "updated": 1792834612533
+   "due": 1792849061250,
+   "updated": 1792834661250
   },
   "mul:1x9": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1792849015319,
-   "updated": 1792834615319
+   "due": 1792921050286,
+   "updated": 1792834650286
   },
   "mul:9x10": {
+   "box": 2,
+   "seen": 2,
+   "right": 2,
+   "wrong": 0,
+   "due": 1792921111480,
+   "updated": 1792834711480
+  },
+  "mul:3x9": {
    "box": 1,
    "seen": 1,
    "right": 1,
    "wrong": 0,
-   "due": 1792849018023,
-   "updated": 1792834618023
+   "due": 1792849095983,
+   "updated": 1792834695983
+  },
+  "mul:4x9": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792849105457,
+   "updated": 1792834705457
+  },
+  "mul:9x9": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792849124092,
+   "updated": 1792834724092
+  },
+  "mul:5x9": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1792849136674,
+   "updated": 1792834736674
   }
  },
  "sessions": [
@@ -223,7 +255,14 @@
    "module": "times",
    "total": 12,
    "correct": 12
+  },
+  {
+   "id": "8b621295-a72c-4276-b8da-1ee79bf2ff9c",
+   "at": 1792834737477,
+   "module": "times",
+   "total": 12,
+   "correct": 12
   }
  ],
- "updated": 1792834643671
+ "updated": 1792834737477
 }
