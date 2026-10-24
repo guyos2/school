@@ -2,57 +2,135 @@
   "order": "SATPINMDGOCKEURHBFLJVWXYZQ",
   "letters": [
     { "l": "A", "word": "apple", "emoji": "🍎", "heb": "אַ", "he": "תפוח",
-      "more": [{ "word": "ant", "emoji": "🐜", "he": "נמלה", "pos": "start" }, { "word": "cat", "emoji": "🐱", "he": "חתול", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "ant", "emoji": "🐜", "he": "נמלה" }, { "word": "airplane", "emoji": "✈️", "he": "מטוס" }, { "word": "arm", "emoji": "💪", "he": "זרוע" }, { "word": "axe", "emoji": "🪓", "he": "גרזן" }],
+        "mid": [{ "word": "cat", "emoji": "🐱", "he": "חתול" }, { "word": "map", "emoji": "🗺️", "he": "מפה" }, { "word": "hand", "emoji": "✋", "he": "יד" }, { "word": "star", "emoji": "⭐", "he": "כוכב" }]
+      } },
     { "l": "B", "word": "ball", "emoji": "⚽", "heb": "בּ", "he": "כדור",
-      "more": [{ "word": "bear", "emoji": "🐻", "he": "דובי", "pos": "start" }, { "word": "rabbit", "emoji": "🐰", "he": "ארנב", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "bear", "emoji": "🐻", "he": "דובי" }, { "word": "banana", "emoji": "🍌", "he": "בננה" }, { "word": "bird", "emoji": "🐦", "he": "ציפור" }, { "word": "bee", "emoji": "🐝", "he": "דבורה" }],
+        "mid": [{ "word": "rabbit", "emoji": "🐰", "he": "ארנב" }, { "word": "zebra", "emoji": "🦓", "he": "זברה" }, { "word": "robot", "emoji": "🤖", "he": "רובוט" }, { "word": "cube", "emoji": "🧊", "he": "קובייה" }]
+      } },
     { "l": "C", "word": "cat", "emoji": "🐱", "heb": "ק", "he": "חתול", "note": "לפעמים C נשמעת כמו ס, למשל ב-city",
-      "more": [{ "word": "cup", "emoji": "☕", "he": "כוס", "pos": "start" }, { "word": "jacket", "emoji": "🧥", "he": "מעיל", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "cup", "emoji": "☕", "he": "כוס" }, { "word": "candle", "emoji": "🕯️", "he": "נר" }, { "word": "car", "emoji": "🚗", "he": "מכונית" }, { "word": "cow", "emoji": "🐮", "he": "פרה" }],
+        "mid": [{ "word": "jacket", "emoji": "🧥", "he": "מעיל" }, { "word": "bicycle", "emoji": "🚲", "he": "אופניים" }, { "word": "pencil", "emoji": "✏️", "he": "עפרון" }, { "word": "soccer", "emoji": "⚽", "he": "כדורגל" }]
+      } },
     { "l": "D", "word": "dog", "emoji": "🐶", "heb": "ד", "he": "כלב",
-      "more": [{ "word": "duck", "emoji": "🦆", "he": "ברווז", "pos": "start" }, { "word": "candy", "emoji": "🍬", "he": "סוכריה", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "duck", "emoji": "🦆", "he": "ברווז" }, { "word": "door", "emoji": "🚪", "he": "דלת" }, { "word": "drum", "emoji": "🥁", "he": "תוף" }, { "word": "dinosaur", "emoji": "🦕", "he": "דינוזאור" }],
+        "mid": [{ "word": "candy", "emoji": "🍬", "he": "סוכריה" }, { "word": "spider", "emoji": "🕷️", "he": "עכביש" }, { "word": "panda", "emoji": "🐼", "he": "פנדה" }, { "word": "sandwich", "emoji": "🥪", "he": "כריך" }]
+      } },
     { "l": "E", "word": "egg", "emoji": "🥚", "heb": "אֶ", "he": "ביצה",
-      "more": [{ "word": "eagle", "emoji": "🦅", "he": "נשר", "pos": "start" }, { "word": "bed", "emoji": "🛏️", "he": "מיטה", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "eagle", "emoji": "🦅", "he": "נשר" }, { "word": "elephant", "emoji": "🐘", "he": "פיל" }, { "word": "envelope", "emoji": "✉️", "he": "מעטפה" }, { "word": "engine", "emoji": "🚂", "he": "קטר" }],
+        "mid": [{ "word": "bed", "emoji": "🛏️", "he": "מיטה" }, { "word": "ten", "emoji": "🔟", "he": "עשר" }, { "word": "nest", "emoji": "🪹", "he": "קן" }, { "word": "web", "emoji": "🕸️", "he": "קורי עכביש" }]
+      } },
     { "l": "F", "word": "fish", "emoji": "🐟", "heb": "פ", "he": "דג",
-      "more": [{ "word": "frog", "emoji": "🐸", "he": "צפרדע", "pos": "start" }, { "word": "giraffe", "emoji": "🦒", "he": "ג'ירפה", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "frog", "emoji": "🐸", "he": "צפרדע" }, { "word": "fork", "emoji": "🍴", "he": "מזלג" }, { "word": "flag", "emoji": "🚩", "he": "דגל" }, { "word": "fire", "emoji": "🔥", "he": "אש" }],
+        "mid": [{ "word": "giraffe", "emoji": "🦒", "he": "ג'ירפה" }, { "word": "waffle", "emoji": "🧇", "he": "וופל" }, { "word": "coffee", "emoji": "☕", "he": "קפה" }, { "word": "muffin", "emoji": "🧁", "he": "מאפין" }]
+      } },
     { "l": "G", "word": "gift", "emoji": "🎁", "heb": "ג", "he": "מתנה",
-      "more": [{ "word": "goat", "emoji": "🐐", "he": "עז", "pos": "start" }, { "word": "tiger", "emoji": "🐯", "he": "נמר", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "goat", "emoji": "🐐", "he": "עז" }, { "word": "guitar", "emoji": "🎸", "he": "גיטרה" }, { "word": "grapes", "emoji": "🍇", "he": "ענבים" }, { "word": "ghost", "emoji": "👻", "he": "רוח רפאים" }],
+        "mid": [{ "word": "tiger", "emoji": "🐯", "he": "נמר" }, { "word": "dragon", "emoji": "🐉", "he": "דרקון" }, { "word": "penguin", "emoji": "🐧", "he": "פינגווין" }, { "word": "magnet", "emoji": "🧲", "he": "מגנט" }]
+      } },
     { "l": "H", "word": "hat", "emoji": "🎩", "heb": "ה", "he": "כובע",
-      "more": [{ "word": "horse", "emoji": "🐴", "he": "סוס", "pos": "start" }, { "word": "chicken", "emoji": "🐔", "he": "תרנגולת", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "horse", "emoji": "🐴", "he": "סוס" }, { "word": "house", "emoji": "🏠", "he": "בית" }, { "word": "heart", "emoji": "❤️", "he": "לב" }, { "word": "hen", "emoji": "🐔", "he": "תרנגולת" }],
+        "mid": [{ "word": "chicken", "emoji": "🐔", "he": "תרנגולת" }, { "word": "shirt", "emoji": "👕", "he": "חולצה" }, { "word": "whale", "emoji": "🐳", "he": "לווייתן" }, { "word": "birthday", "emoji": "🎂", "he": "יום הולדת" }]
+      } },
     { "l": "I", "word": "insect", "emoji": "🐜", "heb": "אִ", "he": "חרק",
-      "more": [{ "word": "ice cream", "emoji": "🍦", "he": "גלידה", "pos": "start" }, { "word": "fish", "emoji": "🐟", "he": "דג", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "ice cream", "emoji": "🍦", "he": "גלידה" }, { "word": "iguana", "emoji": "🦎", "he": "איגואנה" }, { "word": "island", "emoji": "🏝️", "he": "אי" }, { "word": "igloo", "emoji": "🧊", "he": "איגלו" }],
+        "mid": [{ "word": "fish", "emoji": "🐟", "he": "דג" }, { "word": "bird", "emoji": "🐦", "he": "ציפור" }, { "word": "pig", "emoji": "🐷", "he": "חזיר" }, { "word": "six", "emoji": "6️⃣", "he": "שש" }]
+      } },
     { "l": "J", "word": "juice", "emoji": "🧃", "heb": "ג׳", "he": "מיץ",
-      "more": [{ "word": "jeep", "emoji": "🚙", "he": "ג'יפ", "pos": "start" }, { "word": "pajamas", "emoji": "👕", "he": "פיג'מה", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "jeep", "emoji": "🚙", "he": "ג'יפ" }, { "word": "jar", "emoji": "🫙", "he": "צנצנת" }, { "word": "jacket", "emoji": "🧥", "he": "מעיל" }, { "word": "jelly", "emoji": "🍮", "he": "ריבה" }],
+        "mid": [{ "word": "pajamas", "emoji": "👕", "he": "פיג'מה" }, { "word": "banjo", "emoji": "🎸", "he": "בנג'ו" }, { "word": "object", "emoji": "📦", "he": "חפץ" }, { "word": "enjoy", "emoji": "🙂", "he": "נהנה" }]
+      } },
     { "l": "K", "word": "kite", "emoji": "🪁", "heb": "ק", "he": "עפיפון",
-      "more": [{ "word": "koala", "emoji": "🐨", "he": "קואלה", "pos": "start" }, { "word": "monkey", "emoji": "🐒", "he": "קוף", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "koala", "emoji": "🐨", "he": "קואלה" }, { "word": "key", "emoji": "🔑", "he": "מפתח" }, { "word": "king", "emoji": "👑", "he": "מלך" }, { "word": "kangaroo", "emoji": "🦘", "he": "קנגורו" }],
+        "mid": [{ "word": "monkey", "emoji": "🐒", "he": "קוף" }, { "word": "bike", "emoji": "🚲", "he": "אופניים" }, { "word": "book", "emoji": "📖", "he": "ספר" }, { "word": "snake", "emoji": "🐍", "he": "נחש" }]
+      } },
     { "l": "L", "word": "lion", "emoji": "🦁", "heb": "ל", "he": "אריה",
-      "more": [{ "word": "leaf", "emoji": "🍃", "he": "עלה", "pos": "start" }, { "word": "balloon", "emoji": "🎈", "he": "בלון", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "leaf", "emoji": "🍃", "he": "עלה" }, { "word": "lamp", "emoji": "💡", "he": "מנורה" }, { "word": "lemon", "emoji": "🍋", "he": "לימון" }, { "word": "leg", "emoji": "🦵", "he": "רגל" }],
+        "mid": [{ "word": "balloon", "emoji": "🎈", "he": "בלון" }, { "word": "flower", "emoji": "🌸", "he": "פרח" }, { "word": "yellow", "emoji": "🟡", "he": "צהוב" }, { "word": "milk", "emoji": "🥛", "he": "חלב" }]
+      } },
     { "l": "M", "word": "moon", "emoji": "🌙", "heb": "מ", "he": "ירח",
-      "more": [{ "word": "milk", "emoji": "🥛", "he": "חלב", "pos": "start" }, { "word": "camera", "emoji": "📷", "he": "מצלמה", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "milk", "emoji": "🥛", "he": "חלב" }, { "word": "monkey", "emoji": "🐒", "he": "קוף" }, { "word": "mouse", "emoji": "🐭", "he": "עכבר" }, { "word": "mountain", "emoji": "⛰️", "he": "הר" }],
+        "mid": [{ "word": "camera", "emoji": "📷", "he": "מצלמה" }, { "word": "hammer", "emoji": "🔨", "he": "פטיש" }, { "word": "lemon", "emoji": "🍋", "he": "לימון" }, { "word": "camel", "emoji": "🐫", "he": "גמל" }]
+      } },
     { "l": "N", "word": "nose", "emoji": "👃", "heb": "נ", "he": "אף",
-      "more": [{ "word": "nest", "emoji": "🪹", "he": "קן", "pos": "start" }, { "word": "window", "emoji": "🪟", "he": "חלון", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "nest", "emoji": "🪹", "he": "קן" }, { "word": "nut", "emoji": "🥜", "he": "אגוז" }, { "word": "net", "emoji": "🥅", "he": "רשת" }, { "word": "nurse", "emoji": "🧑‍⚕️", "he": "אחות" }],
+        "mid": [{ "word": "window", "emoji": "🪟", "he": "חלון" }, { "word": "candy", "emoji": "🍬", "he": "סוכריה" }, { "word": "monkey", "emoji": "🐒", "he": "קוף" }, { "word": "orange", "emoji": "🍊", "he": "תפוז" }]
+      } },
     { "l": "O", "word": "octopus", "emoji": "🐙", "heb": "אוֹ", "he": "תמנון",
-      "more": [{ "word": "orange", "emoji": "🍊", "he": "תפוז", "pos": "start" }, { "word": "frog", "emoji": "🐸", "he": "צפרדע", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "orange", "emoji": "🍊", "he": "תפוז" }, { "word": "owl", "emoji": "🦉", "he": "ינשוף" }, { "word": "onion", "emoji": "🧅", "he": "בצל" }, { "word": "olive", "emoji": "🫒", "he": "זית" }],
+        "mid": [{ "word": "frog", "emoji": "🐸", "he": "צפרדע" }, { "word": "dog", "emoji": "🐶", "he": "כלב" }, { "word": "box", "emoji": "📦", "he": "קופסה" }, { "word": "robot", "emoji": "🤖", "he": "רובוט" }]
+      } },
     { "l": "P", "word": "pig", "emoji": "🐷", "heb": "פּ", "he": "חזיר",
-      "more": [{ "word": "panda", "emoji": "🐼", "he": "פנדה", "pos": "start" }, { "word": "apple", "emoji": "🍎", "he": "תפוח", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "panda", "emoji": "🐼", "he": "פנדה" }, { "word": "pizza", "emoji": "🍕", "he": "פיצה" }, { "word": "pencil", "emoji": "✏️", "he": "עפרון" }, { "word": "penguin", "emoji": "🐧", "he": "פינגווין" }],
+        "mid": [{ "word": "apple", "emoji": "🍎", "he": "תפוח" }, { "word": "cup", "emoji": "☕", "he": "כוס" }, { "word": "map", "emoji": "🗺️", "he": "מפה" }, { "word": "helicopter", "emoji": "🚁", "he": "מסוק" }]
+      } },
     { "l": "Q", "word": "queen", "emoji": "👑", "heb": "קו", "he": "מלכה", "note": "Q באה כמעט תמיד עם U: qu",
-      "more": [{ "word": "quiz", "emoji": "📝", "he": "מבחן", "pos": "start" }, { "word": "mosquito", "emoji": "🦟", "he": "יתוש", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "quiz", "emoji": "📝", "he": "מבחן" }, { "word": "quilt", "emoji": "🧵", "he": "שמיכה" }, { "word": "quarter", "emoji": "🪙", "he": "רבע" }, { "word": "question", "emoji": "❓", "he": "שאלה" }],
+        "mid": [{ "word": "mosquito", "emoji": "🦟", "he": "יתוש" }, { "word": "racquet", "emoji": "🎾", "he": "מחבט" }, { "word": "banquet", "emoji": "🍽️", "he": "ארוחה חגיגית" }, { "word": "liquid", "emoji": "💧", "he": "נוזל" }]
+      } },
     { "l": "R", "word": "rabbit", "emoji": "🐰", "heb": "ר", "he": "ארנב",
-      "more": [{ "word": "rose", "emoji": "🌹", "he": "שושנה", "pos": "start" }, { "word": "car", "emoji": "🚗", "he": "מכונית", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "rose", "emoji": "🌹", "he": "שושנה" }, { "word": "rain", "emoji": "🌧️", "he": "גשם" }, { "word": "rainbow", "emoji": "🌈", "he": "קשת" }, { "word": "ring", "emoji": "💍", "he": "טבעת" }],
+        "mid": [{ "word": "car", "emoji": "🚗", "he": "מכונית" }, { "word": "star", "emoji": "⭐", "he": "כוכב" }, { "word": "bird", "emoji": "🐦", "he": "ציפור" }, { "word": "girl", "emoji": "👧", "he": "ילדה" }]
+      } },
     { "l": "S", "word": "sun", "emoji": "☀️", "heb": "ס", "he": "שמש",
-      "more": [{ "word": "star", "emoji": "⭐", "he": "כוכב", "pos": "start" }, { "word": "basket", "emoji": "🧺", "he": "סל", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "star", "emoji": "⭐", "he": "כוכב" }, { "word": "snake", "emoji": "🐍", "he": "נחש" }, { "word": "spider", "emoji": "🕷️", "he": "עכביש" }, { "word": "snow", "emoji": "❄️", "he": "שלג" }],
+        "mid": [{ "word": "basket", "emoji": "🧺", "he": "סל" }, { "word": "wasp", "emoji": "🐝", "he": "צרעה" }, { "word": "castle", "emoji": "🏰", "he": "טירה" }, { "word": "glasses", "emoji": "👓", "he": "משקפיים" }]
+      } },
     { "l": "T", "word": "tiger", "emoji": "🐯", "heb": "ט", "he": "נמר",
-      "more": [{ "word": "train", "emoji": "🚂", "he": "רכבת", "pos": "start" }, { "word": "kitten", "emoji": "🐱", "he": "גור חתולים", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "train", "emoji": "🚂", "he": "רכבת" }, { "word": "turtle", "emoji": "🐢", "he": "צב" }, { "word": "tree", "emoji": "🌳", "he": "עץ" }, { "word": "teddy bear", "emoji": "🧸", "he": "דובי" }],
+        "mid": [{ "word": "kitten", "emoji": "🐱", "he": "גור חתולים" }, { "word": "star", "emoji": "⭐", "he": "כוכב" }, { "word": "button", "emoji": "🔘", "he": "כפתור" }, { "word": "guitar", "emoji": "🎸", "he": "גיטרה" }]
+      } },
     { "l": "U", "word": "umbrella", "emoji": "☂️", "heb": "אַ", "he": "מטריה",
-      "more": [{ "word": "unicorn", "emoji": "🦄", "he": "חדקרן", "pos": "start" }, { "word": "cup", "emoji": "☕", "he": "כוס", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "unicorn", "emoji": "🦄", "he": "חדקרן" }, { "word": "up", "emoji": "⬆️", "he": "למעלה" }, { "word": "UFO", "emoji": "🛸", "he": "עב\"ם" }, { "word": "uncle", "emoji": "👨", "he": "דוד" }],
+        "mid": [{ "word": "cup", "emoji": "☕", "he": "כוס" }, { "word": "sun", "emoji": "☀️", "he": "שמש" }, { "word": "bus", "emoji": "🚌", "he": "אוטובוס" }, { "word": "duck", "emoji": "🦆", "he": "ברווז" }]
+      } },
     { "l": "V", "word": "van", "emoji": "🚐", "heb": "ו", "he": "טנדר",
-      "more": [{ "word": "violin", "emoji": "🎻", "he": "כינור", "pos": "start" }, { "word": "seven", "emoji": "7️⃣", "he": "שבע", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "violin", "emoji": "🎻", "he": "כינור" }, { "word": "vase", "emoji": "🏺", "he": "אגרטל" }, { "word": "vegetables", "emoji": "🥕", "he": "ירקות" }, { "word": "vet", "emoji": "🧑‍⚕️", "he": "וטרינר" }],
+        "mid": [{ "word": "seven", "emoji": "7️⃣", "he": "שבע" }, { "word": "river", "emoji": "🏞️", "he": "נהר" }, { "word": "shovel", "emoji": "⛏️", "he": "את" }, { "word": "glove", "emoji": "🧤", "he": "כפפה" }]
+      } },
     { "l": "W", "word": "watch", "emoji": "⌚", "heb": "וו", "he": "שעון",
-      "more": [{ "word": "whale", "emoji": "🐳", "he": "לווייתן", "pos": "start" }, { "word": "flower", "emoji": "🌸", "he": "פרח", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "whale", "emoji": "🐳", "he": "לווייתן" }, { "word": "water", "emoji": "💧", "he": "מים" }, { "word": "web", "emoji": "🕸️", "he": "קורי עכביש" }, { "word": "wolf", "emoji": "🐺", "he": "זאב" }],
+        "mid": [{ "word": "flower", "emoji": "🌸", "he": "פרח" }, { "word": "tower", "emoji": "🗼", "he": "מגדל" }, { "word": "sandwich", "emoji": "🥪", "he": "כריך" }, { "word": "owl", "emoji": "🦉", "he": "ינשוף" }]
+      } },
     { "l": "X", "word": "box", "emoji": "📦", "heb": "קס", "he": "קופסה", "note": "X נשמעת קס, ובדרך כלל מופיעה בסוף המילה",
-      "more": [{ "word": "x-ray", "emoji": "🩻", "he": "צילום רנטגן", "pos": "start" }, { "word": "taxi", "emoji": "🚕", "he": "מונית", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "x-ray", "emoji": "🩻", "he": "צילום רנטגן" }, { "word": "xylophone", "emoji": "🎹", "he": "קסילופון" }],
+        "mid": [{ "word": "taxi", "emoji": "🚕", "he": "מונית" }, { "word": "box", "emoji": "📦", "he": "קופסה" }, { "word": "fox", "emoji": "🦊", "he": "שועל" }, { "word": "six", "emoji": "6️⃣", "he": "שש" }]
+      } },
     { "l": "Y", "word": "yo-yo", "emoji": "🪀", "heb": "י", "he": "יו-יו",
-      "more": [{ "word": "yarn", "emoji": "🧶", "he": "חוט צמר", "pos": "start" }, { "word": "crayon", "emoji": "🖍️", "he": "עפרון צבעוני", "pos": "mid" }] },
+      "more": {
+        "start": [{ "word": "yarn", "emoji": "🧶", "he": "חוט צמר" }, { "word": "yellow", "emoji": "🟡", "he": "צהוב" }, { "word": "yogurt", "emoji": "🥣", "he": "יוגורט" }, { "word": "yacht", "emoji": "⛵", "he": "יאכטה" }],
+        "mid": [{ "word": "crayon", "emoji": "🖍️", "he": "עפרון צבעוני" }, { "word": "eyes", "emoji": "👀", "he": "עיניים" }, { "word": "boy", "emoji": "👦", "he": "ילד" }, { "word": "keyboard", "emoji": "⌨️", "he": "מקלדת" }]
+      } },
     { "l": "Z", "word": "zebra", "emoji": "🦓", "heb": "ז", "he": "זברה",
-      "more": [{ "word": "zipper", "emoji": "🤐", "he": "רוכסן", "pos": "start" }, { "word": "pizza", "emoji": "🍕", "he": "פיצה", "pos": "mid" }] }
+      "more": {
+        "start": [{ "word": "zipper", "emoji": "🤐", "he": "רוכסן" }, { "word": "zero", "emoji": "0️⃣", "he": "אפס" }, { "word": "zucchini", "emoji": "🥒", "he": "קישוא" }, { "word": "zoo", "emoji": "🦁", "he": "גן חיות" }],
+        "mid": [{ "word": "pizza", "emoji": "🍕", "he": "פיצה" }, { "word": "puzzle", "emoji": "🧩", "he": "פאזל" }, { "word": "lizard", "emoji": "🦎", "he": "לטאה" }, { "word": "prize", "emoji": "🏆", "he": "פרס" }]
+      } }
   ],
   "tips": {
     "b": "b: קודם המקל ואז הבטן. כמו במילה bed 🛏️, ה-b היא הראש של המיטה",
