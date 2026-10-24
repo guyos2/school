@@ -2,12 +2,13 @@ import { esc, newView } from './ui.js';
 import { renderTimes } from './modules/times.js';
 import { renderEnglish } from './modules/english.js';
 import { renderGrammar } from './modules/grammar.js';
+import { renderFractions } from './modules/fractions.js';
 import { setApiUrl, isOnline, needsLogin, getSession, login, logout, syncKid, onSyncStatus } from './store.js';
 
 // Modules without render are shown as "coming soon".
 const MODULES = {
   times: { title: 'לוח הכפל', icon: '✖️', render: renderTimes },
-  fractions: { title: 'שברים', icon: '🍕' },
+  fractions: { title: 'שברים', icon: '🍕', render: renderFractions },
   numbers: { title: 'מספרים טבעיים', icon: '🔢' },
   'english-letters': { title: 'אותיות וקריאה באנגלית', icon: '🔤', render: renderEnglish },
   grammar: { title: 'דקדוק באנגלית', icon: '📘', render: renderGrammar },
