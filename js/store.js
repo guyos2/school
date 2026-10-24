@@ -1,5 +1,5 @@
 // Progress storage: always saved locally, and synced to the git repo
-// (through the family sync server) when one is configured in settings.
+// (through the family sync server) when content/config.json names one and the user is logged in.
 const LS = 'school:v1:';
 const MAX_SESSIONS = 300;
 
@@ -10,8 +10,26 @@ const write = (k, v) => {
   try { localStorage.setItem(LS + k, JSON.stringify(v)); } catch { /* storage full or blocked */ }
 };
 
-export const getSettings = () => read('settings', { apiUrl: '', familyKey: '' });
-export const saveSettings = (s) => write('settings', s);
+// ---- server & login ----
+let apiUrl = '';
+export const setApiUrl = (url) => { apiUrl = (url || '').replace(/\/$/, ''); };
+export const isOnline = () => !!apiUrl;
+export const getSession = () => read('session', null);
+export function logout() {
+  try { localStorage.removeItem(LS + 'session'); } catch { /* ignore */ }
+  window.dispatchEvent(new Event('school:logout'));
+}
+
+// Returns true on success, false on a wrong code; throws when the server is unreachable.
+export async function login(user, password) {
+  const r = await fetch(`${apiUrl}/login`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ user, password }),
+  });
+  if (r.status === 401) return false;
+  if (!r.ok) throw new Error(`login ${r.status}`);
+  write('session', await r.json());
+  return true;
+}
 
 const empty = (kid) => ({ kid, version: 1, items: {}, sessions: [], updated: 0 });
 
@@ -52,7 +70,7 @@ const setStatus = (s) => { status = s; listeners.forEach((fn) => fn(s)); };
 
 const timers = {};
 function scheduleSync(kid) {
-  if (!getSettings().apiUrl) return;
+  if (!apiUrl || !getSession()) return;
   clearTimeout(timers[kid]);
   timers[kid] = setTimeout(() => syncKid(kid).catch(() => {}), 3000);
 }
@@ -60,14 +78,15 @@ function scheduleSync(kid) {
 const sameContent = (a, b) => JSON.stringify([a.items, a.sessions]) === JSON.stringify([b.items, b.sessions]);
 
 export async function syncKid(kid) {
-  const { apiUrl, familyKey } = getSettings();
-  if (!apiUrl) { setStatus('local'); return 'local'; }
-  const url = `${apiUrl.replace(/\/$/, '')}/progress/${kid}`;
-  const headers = { 'Content-Type': 'application/json', 'X-Family-Key': familyKey };
+  const session = getSession();
+  if (!apiUrl || !session) { setStatus('local'); return 'local'; }
+  const url = `${apiUrl}/progress/${kid}`;
+  const headers = { 'Content-Type': 'application/json', Authorization: `Bearer ${session.token}` };
   setStatus('syncing');
   try {
     for (let attempt = 0; attempt < 3; attempt++) {
       const r = await fetch(url, { headers });
+      if (r.status === 401) { logout(); throw new Error('logged out'); }
       if (!r.ok) throw new Error(`GET ${r.status}`);
       const { data, sha } = await r.json();
       const local = getProgress(kid);

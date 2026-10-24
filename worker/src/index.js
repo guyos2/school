@@ -3,12 +3,16 @@
 // and stores each child's progress as progress/<kid>.json on a separate git branch,
 // so progress commits don't redeploy the site.
 //
-// Secrets/vars: FAMILY_KEY, GH_TOKEN, GH_REPO ("owner/repo"), GH_BRANCH (default "progress").
+// Secrets: USERS (JSON {"hillel":"<code>",...,"parent":"<password>"}), TOKEN_SECRET, GH_TOKEN.
+// Vars: GH_REPO ("owner/repo"), GH_BRANCH (default "progress").
+//
+// POST /login {user, password} -> {token, user}. Other calls send "Authorization: Bearer <token>".
+// A kid may only touch their own progress; "parent" may touch everyone's.
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET,PUT,OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type,X-Family-Key',
+  'Access-Control-Allow-Methods': 'GET,PUT,POST,OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type,Authorization',
 };
 
 const json = (data, status = 200) =>
@@ -21,6 +25,40 @@ const b64encode = (s) => {
 };
 const b64decode = (s) =>
   new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g, '')), (c) => c.charCodeAt(0)));
+
+// ---- login tokens: base64url(payload).HMAC-SHA256 ----
+const enc = new TextEncoder();
+const TOKEN_DAYS = 365;
+const b64url = (bytes) => btoa(String.fromCharCode(...new Uint8Array(bytes)))
+  .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+const fromB64url = (s) => atob(s.replace(/-/g, '+').replace(/_/g, '/'));
+
+async function sign(env, data) {
+  const key = await crypto.subtle.importKey('raw', enc.encode(env.TOKEN_SECRET),
+    { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  return b64url(await crypto.subtle.sign('HMAC', key, enc.encode(data)));
+}
+
+async function makeToken(env, user) {
+  const payload = b64url(enc.encode(JSON.stringify({ u: user, exp: Date.now() + TOKEN_DAYS * 864e5 })));
+  return `${payload}.${await sign(env, payload)}`;
+}
+
+async function userFromRequest(req, env) {
+  const [payload, sig] = (req.headers.get('Authorization') || '').replace(/^Bearer /, '').split('.');
+  if (!payload || !sig || sig !== await sign(env, payload)) return null;
+  const { u, exp } = JSON.parse(fromB64url(payload));
+  return exp > Date.now() ? u : null;
+}
+
+async function login(env, { user, password }) {
+  const users = JSON.parse(env.USERS || '{}');
+  if (!user || !password || users[user] !== String(password)) {
+    await new Promise((r) => setTimeout(r, 800)); // slow down guessing
+    return json({ error: 'bad login' }, 401);
+  }
+  return json({ token: await makeToken(env, user), user });
+}
 
 function gh(env, path, init = {}) {
   return fetch(`https://api.github.com/repos/${env.GH_REPO}/contents/${path}`, {
@@ -63,11 +101,15 @@ async function putProgress(env, kid, { data, sha }) {
 export default {
   async fetch(req, env) {
     if (req.method === 'OPTIONS') return new Response(null, { headers: CORS });
-    if (!env.FAMILY_KEY || req.headers.get('X-Family-Key') !== env.FAMILY_KEY) {
-      return json({ error: 'unauthorized' }, 401);
-    }
-    const m = new URL(req.url).pathname.match(/^\/progress\/([a-z]+)$/);
+    if (!env.TOKEN_SECRET) return json({ error: 'server not configured' }, 500);
+    const path = new URL(req.url).pathname;
+    if (path === '/login' && req.method === 'POST') return login(env, await req.json());
+
+    const user = await userFromRequest(req, env);
+    if (!user) return json({ error: 'unauthorized' }, 401);
+    const m = path.match(/^\/progress\/([a-z]+)$/);
     if (m) {
+      if (user !== 'parent' && user !== m[1]) return json({ error: 'forbidden' }, 403);
       if (req.method === 'GET') return getProgress(env, m[1]);
       if (req.method === 'PUT') return putProgress(env, m[1], await req.json());
     }

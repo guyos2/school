@@ -1,6 +1,6 @@
 import { esc, newView } from './ui.js';
 import { renderTimes } from './modules/times.js';
-import { getSettings, saveSettings, syncKid, onSyncStatus } from './store.js';
+import { setApiUrl, isOnline, getSession, login, logout, syncKid, onSyncStatus } from './store.js';
 
 // Modules without render are shown as "coming soon".
 const MODULES = {
@@ -13,25 +13,41 @@ const MODULES = {
   counting: { title: 'סופרים ומשחקים', icon: '🧸' },
 };
 
+const PARENT = { id: 'parent', name: 'הורה', emoji: '👨‍👩‍👧‍👦', color: '#5b4cdb', grade: 'כניסת הורים' };
+
 const app = document.getElementById('app');
 let kids = [];
 
 async function init() {
-  kids = (await (await fetch('content/kids.json')).json()).kids;
+  const [kidsFile, config] = await Promise.all([
+    fetch('content/kids.json').then((r) => r.json()),
+    fetch('content/config.json').then((r) => r.json()).catch(() => ({})),
+  ]);
+  kids = kidsFile.kids;
+  setApiUrl(config.apiUrl);
   window.addEventListener('hashchange', route);
+  window.addEventListener('school:logout', () => { location.hash = '#/'; route(); });
   const statusEl = document.getElementById('sync-status');
   const LABEL = { local: '💾 נשמר במכשיר', syncing: '🔄 מסנכרן…', synced: '☁️ מסונכרן', error: '⚠️ אין סנכרון' };
-  onSyncStatus((s) => { statusEl.textContent = getSettings().apiUrl ? LABEL[s] : LABEL.local; });
+  onSyncStatus((s) => { statusEl.textContent = isOnline() ? LABEL[s] : LABEL.local; });
   route();
+}
+
+// Without a sync server everyone sees everything (single-device mode).
+function allowedKids() {
+  if (!isOnline()) return kids;
+  const user = getSession()?.user;
+  return user === 'parent' ? kids : kids.filter((k) => k.id === user);
 }
 
 function route() {
   newView();
   window.scrollTo(0, 0);
+  if (isOnline() && !getSession()) return loginScreen();
   const parts = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
-  if (parts[0] === 'settings') return settings();
+  if (parts[0] === 'settings') return account();
   if (parts[0] === 'kid') {
-    const kid = kids.find((k) => k.id === parts[1]);
+    const kid = allowedKids().find((k) => k.id === parts[1]);
     if (kid) {
       document.documentElement.style.setProperty('--kid', kid.color);
       if (!parts[2]) return kidPage(kid);
@@ -44,15 +60,64 @@ function route() {
   home();
 }
 
+const kidCard = (k, tag = 'a') => `
+  <${tag} class="kid" ${tag === 'a' ? `href="#/kid/${k.id}"` : `data-id="${k.id}"`} style="--c:${k.color}">
+    <span class="kid-emoji">${k.emoji}</span>
+    <span class="kid-name">${esc(k.name)}</span>
+    <span class="kid-grade">${esc(k.grade)}</span>
+  </${tag}>`;
+
 function home() {
+  const list = allowedKids();
+  if (list.length === 1) { location.replace(`#/kid/${list[0].id}`); return; }
   app.innerHTML = `
     <h1 class="page-title">של מי התור ללמוד?</h1>
-    <div class="kids">${kids.map((k) => `
-      <a class="kid" href="#/kid/${k.id}" style="--c:${k.color}">
-        <span class="kid-emoji">${k.emoji}</span>
-        <span class="kid-name">${esc(k.name)}</span>
-        <span class="kid-grade">${esc(k.grade)}</span>
-      </a>`).join('')}</div>`;
+    <div class="kids">${list.map((k) => kidCard(k)).join('')}</div>`;
+}
+
+function loginScreen() {
+  app.innerHTML = `
+    <h1 class="page-title">👋 מי נכנס?</h1>
+    <p class="subtitle">לוחצים על התמונה ומקלידים את הקוד</p>
+    <div class="kids">${[...kids, PARENT].map((k) => kidCard(k, 'button')).join('')}</div>`;
+  app.querySelector('.kids').addEventListener('click', (e) => {
+    const id = e.target.closest('.kid')?.dataset.id;
+    if (id) codeScreen([...kids, PARENT].find((k) => k.id === id));
+  });
+}
+
+function codeScreen(who) {
+  const isParent = who.id === 'parent';
+  document.documentElement.style.setProperty('--kid', who.color);
+  app.innerHTML = `
+    <button class="back" id="back">→ חזרה</button>
+    <div class="login">
+      <div class="kid-emoji">${who.emoji}</div>
+      <h1 class="page-title">${esc(who.name)}</h1>
+      <form id="f">
+        <input id="pw" class="code-input" type="password" autocomplete="current-password"
+          ${isParent ? '' : 'inputmode="numeric"'} placeholder="${isParent ? 'סיסמה' : 'הקוד שלי'}" dir="ltr" autofocus>
+        <button class="btn btn-big" type="submit">כניסה</button>
+      </form>
+      <p id="msg" class="subtitle"></p>
+    </div>`;
+  app.querySelector('#back').onclick = () => { document.documentElement.style.removeProperty('--kid'); loginScreen(); };
+  app.querySelector('#f').onsubmit = async (e) => {
+    e.preventDefault();
+    const msg = app.querySelector('#msg');
+    msg.textContent = 'בודקים…';
+    try {
+      if (await login(who.id, app.querySelector('#pw').value)) {
+        location.hash = isParent ? '#/' : `#/kid/${who.id}`;
+        route();
+      } else {
+        msg.textContent = '🙈 הקוד לא נכון, נסו שוב';
+        app.querySelector('#pw').value = '';
+      }
+    } catch {
+      msg.textContent = '📡 אין חיבור לשרת. כדאי לבדוק את האינטרנט ולנסות שוב.';
+    }
+  };
 }
 
 function kidPage(kid) {
@@ -68,27 +133,34 @@ function kidPage(kid) {
     }).join('')}</div>`;
 }
 
-function settings() {
-  const s = getSettings();
+function account() {
+  if (!isOnline()) {
+    app.innerHTML = `
+      <h1 class="page-title">⚙️ חשבון</h1>
+      <div class="panel"><p>שרת הסנכרון עוד לא הוגדר, ולכן ההתקדמות נשמרת רק במכשיר הזה.</p></div>`;
+    return;
+  }
+  const user = getSession().user;
+  const who = user === 'parent' ? PARENT : kids.find((k) => k.id === user) ?? { name: user, emoji: '👤' };
   app.innerHTML = `
-    <h1 class="page-title">⚙️ הגדרות הורים</h1>
+    <h1 class="page-title">⚙️ חשבון</h1>
     <div class="panel">
-      <p>ההתקדמות נשמרת תמיד במכשיר. כדי שתישמר גם בגיט ותעבור בין מכשירים, צריך להזין את כתובת שרת הסנכרון ואת סיסמת המשפחה (פעם אחת בכל מכשיר).</p>
-      <label>כתובת שרת הסנכרון<input id="api" dir="ltr" placeholder="https://school-sync.xxx.workers.dev" value="${esc(s.apiUrl)}"></label>
-      <label>סיסמת משפחה<input id="key" dir="ltr" type="password" value="${esc(s.familyKey)}"></label>
-      <div class="row-center"><button class="btn" id="save">שמירה וסנכרון</button></div>
+      <p>מחוברים בתור <b>${who.emoji} ${esc(who.name)}</b>. ההתקדמות נשמרת בגיט ועוברת בין כל המכשירים.</p>
+      <div class="row-center">
+        <button class="btn" id="sync">🔄 סנכרון עכשיו</button>
+        <button class="btn btn-soft" id="out">יציאה מהחשבון</button>
+      </div>
       <p id="msg" class="subtitle"></p>
     </div>`;
-  app.querySelector('#save').onclick = async () => {
-    saveSettings({ apiUrl: app.querySelector('#api').value.trim(), familyKey: app.querySelector('#key').value });
+  app.querySelector('#out').onclick = logout;
+  app.querySelector('#sync').onclick = async () => {
     const msg = app.querySelector('#msg');
-    if (!getSettings().apiUrl) { msg.textContent = 'נשמר. עובדים רק על המכשיר הזה.'; return; }
     msg.textContent = 'מסנכרן…';
     try {
-      for (const k of kids) await syncKid(k.id);
-      msg.textContent = '✅ הסנכרון עובד!';
+      for (const k of allowedKids()) await syncKid(k.id);
+      msg.textContent = '✅ הכול מסונכרן';
     } catch (e) {
-      msg.textContent = `❌ הסנכרון נכשל (${e.message}). כדאי לבדוק את הכתובת ואת הסיסמה.`;
+      msg.textContent = `❌ הסנכרון נכשל (${e.message})`;
     }
   };
 }

@@ -9,7 +9,8 @@ Family learning web app (Hebrew, RTL) for four kids. See README.md for the roadm
 - `js/modules/<module>.js`: one file per learning module, exporting `render(root, kid, routeArgs)`.
 - `js/viz/<topic>.js`: visualizations. Each method returns `{ html, caption }`; `vizPanel` shows tabs plus "show another way".
 - `js/srs.js`: Leitner spaced repetition. `js/store.js`: local progress plus sync.
-- `worker/`: Cloudflare Worker holding secrets. It stores progress at `progress/<kid>.json` on the `progress` branch.
+- `content/config.json`: `apiUrl` of the sync server. Empty means single-device mode with no login.
+- `worker/`: Cloudflare Worker holding secrets. It handles login (per-kid code, parent password → signed token) and stores progress at `progress/<kid>.json` on the `progress` branch. A kid's token can only access that kid's progress.
 
 ## Conventions
 - The UI is Hebrew only. Address kids in **plural imperative / gender-neutral** forms ("נסו", "בחרו"), never gendered singular.
