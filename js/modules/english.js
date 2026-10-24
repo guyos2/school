@@ -79,7 +79,7 @@ function letterView(root, base, D, L) {
     </div>
     <div id="panel"></div>`;
   letterPanel(root.querySelector('#panel'), L, data, D.tips);
-  say(`${L}. ${data.word}`);
+  say(`${L}.|${data.word}`);
 }
 
 // Pick n distractors, preferring letters that are easy to confuse with l.
@@ -97,7 +97,7 @@ function letterHelp(L, d) {
   return `
     <div class="viz-box help-letter">
       <div class="lt-big en">${L}${L.toLowerCase()}</div>
-      <div class="lt-word en">${d.emoji} <b>${esc(d.word[0])}</b>${esc(d.word.slice(1))} ${speakBtn(`${L}. ${d.word}`)}</div>
+      <div class="lt-word en">${d.emoji} <b>${esc(d.word[0])}</b>${esc(d.word.slice(1))} ${speakBtn(`${L}.|${d.word}`)}</div>
       <p class="viz-caption">האות ${L} נשמעת כמו <b>${d.heb}</b></p>
     </div>`;
 }
