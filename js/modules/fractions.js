@@ -8,6 +8,19 @@ import { review, pickSession, MASTERED_BOX } from '../srs.js';
 const eq = (s) => `<span class="eq">${s}</span>`;
 const SESSION_SIZE = 10;
 
+// A fraction written numerator-over-denominator, the way it's taught on paper.
+const vfrac = (n, d) => `<span class="vfrac"><span class="vf-n">${n}</span><span class="vf-bar"></span><span class="vf-d">${d}</span></span>`;
+
+// A mixedLabel() string ("3/4", "1 1/3", "2") as vertical-fraction html.
+function vfracLabel(label) {
+  const sp = label.indexOf(' ');
+  const whole = sp === -1 ? null : label.slice(0, sp);
+  const frac = sp === -1 ? label : label.slice(sp + 1);
+  if (!frac.includes('/')) return label; // a plain whole number, no fraction part
+  const [n, d] = frac.split('/');
+  return whole ? `<span class="vfrac-mixed">${whole}${vfrac(n, d)}</span>` : vfrac(n, d);
+}
+
 // Every reduced proper fraction with denominator 2–10: the fixed fact list for "part of whole" and "name".
 const DENOMS = [2, 3, 4, 5, 6, 7, 8, 9, 10];
 const FRACTS = [];
@@ -179,11 +192,11 @@ function addQuestion({ n1, n2, d }) {
   if (total >= d) candidates.push(`${total}/${d}`);
   candidates.push(mixedLabel(total - 1, d), mixedLabel(total + 1, d));
   const pool = [...new Set(candidates)].slice(0, 4);
-  const opts = shuffle(pool).map((label) => ({ html: `<span class="choice-text">${eq(label)}</span>`, value: label }));
+  const opts = shuffle(pool).map((label) => ({ html: `<span class="choice-text">${vfracLabel(label)}</span>`, value: label }));
   return {
     key: `fr:add:${n1}/${d}+${n2}/${d}`, answer: correct, options: opts,
     help: () => { const { html, caption } = pick(METHODS_ADD).render(n1, n2, d); return `<div class="viz-box">${html}</div><p class="viz-caption">${caption}</p>`; },
-    prompt: `<p class="q-ask">כמה זה?</p><div class="q-big">${eq(`${n1}/${d} + ${n2}/${d}`)}</div>`,
+    prompt: `<p class="q-ask">כמה זה?</p><div class="frac-row">${vfrac(n1, d)}<span class="frac-op">+</span>${vfrac(n2, d)}</div>`,
   };
 }
 
@@ -227,7 +240,7 @@ function compareQuestion({ n1, d1, n2, d2 }) {
       const { html, caption } = pick(METHODS_COMPARE).render(n1, d1, n2, d2);
       return `<div class="viz-box">${html}</div><p class="viz-caption">${caption}<br>${eq(`${n1}/${d1} ${rel} ${n2}/${d2}`)}</p>`;
     },
-    prompt: `<p class="q-ask">מה הסימן המתאים בין השברים?</p><div class="q-big">${eq(`${n1}/${d1} ⬜ ${n2}/${d2}`)}</div>`,
+    prompt: `<p class="q-ask">מה הסימן המתאים בין השברים?</p><div class="frac-row">${vfrac(n1, d1)}<span class="frac-op">⬜</span>${vfrac(n2, d2)}</div>`,
   };
 }
 
