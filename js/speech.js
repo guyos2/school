@@ -13,21 +13,32 @@ if (canSpeak) {
   speechSynthesis.addEventListener?.('voiceschanged', pickVoice);
 }
 
-export function say(text, { rate = 0.8 } = {}) {
-  if (!canSpeak || !text) return;
-  speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
+let gen = 0;
+
+// A "|" in the text marks a pause: each part is spoken fully before the next
+// starts, so a letter name and its example word (e.g. "A.|apple") stay distinct
+// instead of running together. myGen guards against a stale chain still
+// waiting on its pause after a newer say() has taken over.
+function speakParts(parts, rate, myGen) {
+  const [first, ...rest] = parts;
+  if (first === undefined || myGen !== gen) return;
+  const u = new SpeechSynthesisUtterance(first);
   u.lang = 'en-US';
   if (voice) u.voice = voice;
   u.rate = rate;
+  if (rest.length) u.onend = () => setTimeout(() => speakParts(rest, rate, myGen), 500);
   speechSynthesis.speak(u);
 }
 
-// A letter on its own ("A") is often read as a word; a period makes engines say the letter name.
-export const sayLetter = (l) => say(`${l.toUpperCase()}.`, { rate: 0.7 });
+export function say(text, { rate = 0.7 } = {}) {
+  if (!canSpeak || !text) return;
+  speechSynthesis.cancel();
+  gen++;
+  speakParts(text.split('|').map((s) => s.trim()).filter(Boolean), rate, gen);
+}
 
-export const speakBtn = (text, label = '🔊') =>
-  canSpeak ? `<button class="speak" data-say="${text.replace(/"/g, '&quot;')}" aria-label="השמעה">${label}</button>` : '';
+export const speakBtn = (text, label = '🔊', ariaLabel = 'השמעה') =>
+  canSpeak ? `<button class="speak" data-say="${text.replace(/"/g, '&quot;')}" aria-label="${ariaLabel}">${label}</button>` : '';
 
 // One delegated listener per screen container handles every speakBtn inside it.
 export function wireSpeakButtons(container) {

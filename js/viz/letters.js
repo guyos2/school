@@ -14,7 +14,7 @@ function picture(L, data) {
     html: `
       <div class="lt-big en">${L}${L.toLowerCase()}</div>
       <div class="lt-emoji">${data.emoji}</div>
-      <div class="lt-word en"><b>${esc(word[0])}</b>${esc(word.slice(1))} ${speakBtn(`${L}. ${word}`)}</div>`,
+      <div class="lt-word en"><b>${esc(word[0])}</b>${esc(word.slice(1))} ${speakBtn(`${L}.`, '🔤', 'השמעת האות')} ${speakBtn(word, '🔊', 'השמעת המילה')}</div>`,
     caption: `${esc(data.he)} באנגלית זה ${'<span class="en">' + esc(word) + '</span>'}, והמילה מתחילה באות ${L}`,
   };
 }
@@ -78,11 +78,46 @@ function trace(L) {
   };
 }
 
+// Where the letter sits in the word is bolded, so kids can spot it at the start or in the middle.
+function highlightLetter(L, word) {
+  const i = word.toLowerCase().indexOf(L.toLowerCase());
+  if (i < 0) return esc(word);
+  return `${esc(word.slice(0, i))}<b>${esc(word.slice(i, i + 1))}</b>${esc(word.slice(i + 1))}`;
+}
+
+function moreWordRow(L, w) {
+  return `
+    <div class="lt-word en">${w.emoji} ${highlightLetter(L, w.word)} ${speakBtn(w.word)}</div>
+    <p class="viz-caption">${esc(w.he)}</p>`;
+}
+
+function moreWords(L, data) {
+  const start = data.more?.find((w) => w.pos === 'start');
+  const mid = data.more?.find((w) => w.pos === 'mid');
+  return {
+    html: `
+      <div class="lt-big en">${L}${L.toLowerCase()}</div>
+      ${start ? moreWordRow(L, start) : ''}
+      ${mid ? `
+        <button class="btn btn-soft more-toggle">⭐ אפשרות מתקדמת: גם באמצע המילה</button>
+        <div class="more-advanced" hidden>${moreWordRow(L, mid)}</div>` : ''}`,
+    caption: `האות ${L} מופיעה גם במילים אחרות, לא רק בהתחלה`,
+    mount(box) {
+      const btn = box.querySelector('.more-toggle');
+      btn?.addEventListener('click', () => {
+        box.querySelector('.more-advanced').hidden = false;
+        btn.hidden = true;
+      });
+    },
+  };
+}
+
 const LETTER_METHODS = [
   { name: 'תמונה ומילה', icon: '🖼️', render: picture },
   { name: 'איך זה נשמע', icon: '👂', render: sound },
   { name: 'גדולה וקטנה', icon: '🔠', render: cases },
   { name: 'כותבים', icon: '✏️', render: trace },
+  { name: 'מילים נוספות', icon: '➕', render: moreWords },
 ];
 
 export function letterPanel(container, L, data, tips, startIndex = 0) {
