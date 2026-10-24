@@ -37,8 +37,8 @@ export function say(text, { rate = 0.7 } = {}) {
   speakParts(text.split('|').map((s) => s.trim()).filter(Boolean), rate, gen);
 }
 
-export const speakBtn = (text, label = '🔊') =>
-  canSpeak ? `<button class="speak" data-say="${text.replace(/"/g, '&quot;')}" aria-label="השמעה">${label}</button>` : '';
+export const speakBtn = (text, label = '🔊', ariaLabel = 'השמעה') =>
+  canSpeak ? `<button class="speak" data-say="${text.replace(/"/g, '&quot;')}" aria-label="${ariaLabel}">${label}</button>` : '';
 
 // One delegated listener per screen container handles every speakBtn inside it.
 export function wireSpeakButtons(container) {

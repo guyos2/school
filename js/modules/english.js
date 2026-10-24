@@ -97,7 +97,7 @@ function letterHelp(L, d) {
   return `
     <div class="viz-box help-letter">
       <div class="lt-big en">${L}${L.toLowerCase()}</div>
-      <div class="lt-word en">${d.emoji} <b>${esc(d.word[0])}</b>${esc(d.word.slice(1))} ${speakBtn(`${L}.|${d.word}`)}</div>
+      <div class="lt-word en">${d.emoji} <b>${esc(d.word[0])}</b>${esc(d.word.slice(1))} ${speakBtn(`${L}.`, '🔤', 'השמעת האות')} ${speakBtn(d.word, '🔊', 'השמעת המילה')}</div>
       <p class="viz-caption">האות ${L} נשמעת כמו <b>${d.heb}</b></p>
     </div>`;
 }

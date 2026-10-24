@@ -14,7 +14,7 @@ function picture(L, data) {
     html: `
       <div class="lt-big en">${L}${L.toLowerCase()}</div>
       <div class="lt-emoji">${data.emoji}</div>
-      <div class="lt-word en"><b>${esc(word[0])}</b>${esc(word.slice(1))} ${speakBtn(`${L}.|${word}`)}</div>`,
+      <div class="lt-word en"><b>${esc(word[0])}</b>${esc(word.slice(1))} ${speakBtn(`${L}.`, '🔤', 'השמעת האות')} ${speakBtn(word, '🔊', 'השמעת המילה')}</div>`,
     caption: `${esc(data.he)} באנגלית זה ${'<span class="en">' + esc(word) + '</span>'}, והמילה מתחילה באות ${L}`,
   };
 }
