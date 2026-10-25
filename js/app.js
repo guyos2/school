@@ -4,6 +4,7 @@ import { renderEnglish } from './modules/english.js';
 import { renderGrammar } from './modules/grammar.js';
 import { renderFractions } from './modules/fractions.js';
 import { renderDictation } from './modules/dictation.js';
+import { renderColumn } from './modules/column.js';
 import { renderStats } from './stats.js';
 import { setApiUrl, isOnline, needsLogin, getSession, login, logout, syncKid, onSyncStatus } from './store.js';
 
@@ -11,6 +12,7 @@ import { setApiUrl, isOnline, needsLogin, getSession, login, logout, syncKid, on
 const MODULES = {
   times: { title: 'לוח הכפל', icon: '✖️', render: renderTimes },
   fractions: { title: 'שברים', icon: '🍕', render: renderFractions },
+  column: { title: 'חשבון במאונך', icon: '🧮', render: renderColumn },
   numbers: { title: 'מספרים טבעיים', icon: '🔢' },
   dictation: { title: 'הכתבה', icon: '✏️', render: renderDictation },
   'english-letters': { title: 'אותיות וקריאה באנגלית', icon: '🔤', render: renderEnglish },

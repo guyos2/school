@@ -10,8 +10,9 @@ const PART_TITLES = {
   part: 'חלק משלם', name: 'שם השבר', add: 'חיבור', compare: 'השוואה',
   'present-simple': 'הווה פשוט',
   spell: 'איות', test: 'הכתבה',
+  sub: 'חיסור', mul: 'כפל', mix: 'מעורב', class: 'מהכיתה',
 };
-const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation' };
+const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation', col: 'column' };
 
 const dayStart = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
 const weekStart = (t) => { const d = new Date(dayStart(t)); d.setDate(d.getDate() - d.getDay()); return d.getTime(); };
@@ -251,6 +252,7 @@ function itemLabel(key, grammar) {
   const [prefix, a, b, c] = key.split(':');
   if (prefix === 'mul') return ltr(a.replace('x', ' × '));
   if (prefix === 'fr') return `${a === 'n' ? 'שם השבר ' : ''}${ltr(b)}`;
+  if (prefix === 'col') return ltr(`${b} ${{ add: '+', sub: '−', mul: '×' }[a]} ${c}`);
   if (prefix === 'en') return ltr(esc(a === 'L' ? `${b} ${b.toLowerCase()}` : b));
   if (prefix === 'gr') {
     const d = grammar[a];
