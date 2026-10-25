@@ -3,20 +3,20 @@
  "version": 1,
  "items": {
   "mul:3x10": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1792920782913,
-   "updated": 1792834382913
+   "due": 1793187644401,
+   "updated": 1792928444401
   },
   "mul:1x3": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1792920792474,
-   "updated": 1792834392474
+   "due": 1793187612008,
+   "updated": 1792928412008
   },
   "mul:2x10": {
    "box": 3,
@@ -99,44 +99,44 @@
    "updated": 1792834627962
   },
   "mul:3x5": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1792920795811,
-   "updated": 1792834395811
+   "due": 1793187605142,
+   "updated": 1792928405142
   },
   "mul:2x3": {
    "box": 2,
-   "seen": 2,
-   "right": 2,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1792920819117,
-   "updated": 1792834419117
+   "due": 1793014836570,
+   "updated": 1792928436570
   },
   "mul:3x3": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1792920809774,
-   "updated": 1792834409774
+   "due": 1793187652533,
+   "updated": 1792928452533
   },
   "mul:1x4": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1792920786504,
-   "updated": 1792834386504
+   "due": 1793187649799,
+   "updated": 1792928449799
   },
   "mul:4x5": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1792921005446,
-   "updated": 1792834605446
+   "due": 1793187624356,
+   "updated": 1792928424356
   },
   "mul:4x10": {
    "box": 2,
@@ -147,12 +147,12 @@
    "updated": 1792834631699
   },
   "mul:3x4": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1792921026147,
-   "updated": 1792834626147
+   "due": 1793187616240,
+   "updated": 1792928416240
   },
   "mul:2x4": {
    "box": 2,
@@ -227,36 +227,36 @@
    "updated": 1792860493407
   },
   "mul:6x10": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1792874883283,
-   "updated": 1792860483283
+   "due": 1793014808307,
+   "updated": 1792928408307
   },
   "mul:1x6": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1792874920778,
-   "updated": 1792860520778
+   "due": 1793014846617,
+   "updated": 1792928446617
   },
   "mul:2x6": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1792874932595,
-   "updated": 1792860532595
+   "due": 1793014801145,
+   "updated": 1792928401145
   },
   "mul:5x6": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1792874940470,
-   "updated": 1792860540470
+   "due": 1793014841234,
+   "updated": 1792928441234
   },
   "fr:p:3/5": {
    "box": 1,
@@ -337,6 +337,13 @@
    "wrong": 0,
    "due": 1792875106286,
    "updated": 1792860706286
+  },
+  "mul:prog": {
+   "tier": 0,
+   "sub": 0,
+   "win": [],
+   "recent": [],
+   "updated": 1792928453335
   }
  },
  "sessions": [
@@ -397,7 +404,16 @@
    "part": "add",
    "total": 10,
    "correct": 8
+  },
+  {
+   "id": "869fccc2-c1e2-476f-a936-967461e3eca7",
+   "at": 1792928453340,
+   "mastered": 0,
+   "module": "times",
+   "total": 12,
+   "correct": 12,
+   "ms": 56134
   }
  ],
- "updated": 1792860967556
+ "updated": 1792928453340
 }
