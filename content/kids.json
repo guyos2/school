@@ -3,7 +3,7 @@
     { "id": "hillel", "name": "הלל", "grade": "כיתה ד׳", "emoji": "🦄", "color": "#ec4899",
       "modules": ["times", "english-letters", "speaking"] },
     { "id": "niri", "name": "נירי", "grade": "כיתה ה׳", "emoji": "🦋", "color": "#8b5cf6",
-      "modules": ["times", "fractions", "numbers", "english-letters", "speaking"] },
+      "modules": ["times", "fractions", "column", "numbers", "english-letters", "speaking"] },
     { "id": "itamar", "name": "איתמר", "grade": "כיתה ח׳", "emoji": "🚀", "color": "#0ea5e9",
       "modules": ["grammar", "speaking", "units"] },
     { "id": "dani", "name": "דני", "grade": "גן חובה", "emoji": "🦁", "color": "#f59e0b",
