@@ -119,9 +119,9 @@ function partPractice(root, kid, base) {
     back: base,
     questions: keys.map((k) => partQuestion(parseFrac(k))),
     onResult: (q, ok, ms) => { progress.items[q.key] = review(progress.items[q.key], ok, ms); },
-    onDone: ({ right, total }) => {
+    onDone: ({ right, total, ms }) => {
       saveProgress(progress);
-      logSession(kid.id, { module: 'fractions', part: 'part', total, correct: right });
+      logSession(kid.id, { module: 'fractions', part: 'part', total, correct: right, ms });
       const gained = mastered(getProgress(kid.id).items, PART_KEYS) - before;
       finishScreen(root, {
         right, total,
@@ -161,9 +161,9 @@ function namePractice(root, kid, base) {
     back: base,
     questions: keys.map((k) => nameQuestion(parseFrac(k))),
     onResult: (q, ok, ms) => { progress.items[q.key] = review(progress.items[q.key], ok, ms); },
-    onDone: ({ right, total }) => {
+    onDone: ({ right, total, ms }) => {
       saveProgress(progress);
-      logSession(kid.id, { module: 'fractions', part: 'name', total, correct: right });
+      logSession(kid.id, { module: 'fractions', part: 'name', total, correct: right, ms });
       const gained = mastered(getProgress(kid.id).items, NAME_KEYS) - before;
       finishScreen(root, {
         right, total,
@@ -206,8 +206,8 @@ function addPractice(root, kid, base) {
     back: base,
     questions,
     onResult: () => {},
-    onDone: ({ right, total }) => {
-      logSession(kid.id, { module: 'fractions', part: 'add', total, correct: right });
+    onDone: ({ right, total, ms }) => {
+      logSession(kid.id, { module: 'fractions', part: 'add', total, correct: right, ms });
       finishScreen(root, {
         right, total,
         again: () => addPractice(root, kid, base),
@@ -250,8 +250,8 @@ function comparePractice(root, kid, base) {
     back: base,
     questions,
     onResult: () => {},
-    onDone: ({ right, total }) => {
-      logSession(kid.id, { module: 'fractions', part: 'compare', total, correct: right });
+    onDone: ({ right, total, ms }) => {
+      logSession(kid.id, { module: 'fractions', part: 'compare', total, correct: right, ms });
       finishScreen(root, {
         right, total,
         again: () => comparePractice(root, kid, base),

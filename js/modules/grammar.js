@@ -164,9 +164,9 @@ function practice(root, kid, base, topicId, D) {
     back: `${base}/topic/${topicId}`,
     questions: session.map((k) => question(D, k)),
     onResult: (q, ok, ms) => { progress.items[q.key] = review(progress.items[q.key], ok, ms); },
-    onDone: ({ right, total }) => {
+    onDone: ({ right, total, ms }) => {
       saveProgress(progress);
-      logSession(kid.id, { module: 'grammar', part: topicId, total, correct: right });
+      logSession(kid.id, { module: 'grammar', part: topicId, total, correct: right, ms });
       const gained = mastered(getProgress(kid.id).items, keys) - before;
       finishScreen(root, {
         right, total,

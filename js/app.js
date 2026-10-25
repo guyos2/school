@@ -3,6 +3,7 @@ import { renderTimes } from './modules/times.js';
 import { renderEnglish } from './modules/english.js';
 import { renderGrammar } from './modules/grammar.js';
 import { renderFractions } from './modules/fractions.js';
+import { renderStats } from './stats.js';
 import { setApiUrl, isOnline, needsLogin, getSession, login, logout, syncKid, onSyncStatus } from './store.js';
 
 // Modules without render are shown as "coming soon".
@@ -48,12 +49,19 @@ function allowedKids() {
   return user === 'parent' ? kids : kids.filter((k) => k.id === user);
 }
 
+// With login codes only the parent sees the stats; without codes there is no way to tell, so it is open.
+const canSeeStats = () => !needsLogin() || getSession()?.user === 'parent';
+
 function route() {
   newView();
   window.scrollTo(0, 0);
   if (needsLogin() && !getSession()) return loginScreen();
   const parts = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
   if (parts[0] === 'settings') return account();
+  if (parts[0] === 'stats' && canSeeStats()) {
+    document.documentElement.style.removeProperty('--kid');
+    return renderStats(app, { kids, modules: MODULES, kidId: parts[1] });
+  }
   if (parts[0] === 'kid') {
     const kid = allowedKids().find((k) => k.id === parts[1]);
     if (kid) {
@@ -80,7 +88,8 @@ function home() {
   if (list.length === 1) { location.replace(`#/kid/${list[0].id}`); return; }
   app.innerHTML = `
     <h1 class="page-title">של מי התור ללמוד?</h1>
-    <div class="kids">${list.map((k) => kidCard(k)).join('')}</div>`;
+    <div class="kids">${list.map((k) => kidCard(k)).join('')}</div>
+    ${canSeeStats() ? '<div class="row-center"><a class="btn btn-soft" href="#/stats">📊 סטטיסטיקות להורים</a></div>' : ''}`;
 }
 
 function loginScreen() {
@@ -145,7 +154,8 @@ function account() {
   if (!isOnline()) {
     app.innerHTML = `
       <h1 class="page-title">⚙️ חשבון</h1>
-      <div class="panel"><p>שרת הסנכרון עוד לא הוגדר, ולכן ההתקדמות נשמרת רק במכשיר הזה.</p></div>`;
+      <div class="panel"><p>שרת הסנכרון עוד לא הוגדר, ולכן ההתקדמות נשמרת רק במכשיר הזה.</p>
+        <div class="row-center"><a class="btn btn-soft" href="#/stats">📊 סטטיסטיקות</a></div></div>`;
     return;
   }
   if (!needsLogin()) {
@@ -153,7 +163,7 @@ function account() {
       <h1 class="page-title">⚙️ חשבון</h1>
       <div class="panel">
         <p>ההתקדמות נשמרת בגיט ועוברת בין כל המכשירים. הכניסה כרגע בלי קוד.</p>
-        <div class="row-center"><button class="btn" id="sync">🔄 סנכרון עכשיו</button></div>
+        <div class="row-center"><button class="btn" id="sync">🔄 סנכרון עכשיו</button><a class="btn btn-soft" href="#/stats">📊 סטטיסטיקות</a></div>
         <p id="msg" class="subtitle"></p>
       </div>`;
     app.querySelector('#sync').onclick = () => syncAll(app.querySelector('#msg'));
@@ -167,6 +177,7 @@ function account() {
       <p>מחוברים בתור <b>${who.emoji} ${esc(who.name)}</b>. ההתקדמות נשמרת בגיט ועוברת בין כל המכשירים.</p>
       <div class="row-center">
         <button class="btn" id="sync">🔄 סנכרון עכשיו</button>
+        ${user === 'parent' ? '<a class="btn btn-soft" href="#/stats">📊 סטטיסטיקות</a>' : ''}
         <button class="btn btn-soft" id="out">יציאה מהחשבון</button>
       </div>
       <p id="msg" class="subtitle"></p>

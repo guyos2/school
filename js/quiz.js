@@ -10,6 +10,7 @@ export function runQuiz(outer, { back, questions, onResult, onDone }) {
   const total = queue.length;
   const missed = new Set();
   let i = 0, right = 0, started = 0, locked = false;
+  const begin = Date.now();
 
   // A fresh inner element per run, so listeners never pile up on the shared root.
   root.innerHTML = '<div class="quiz"></div>';
@@ -66,7 +67,7 @@ export function runQuiz(outer, { back, questions, onResult, onDone }) {
 
   const next = () => {
     i++;
-    if (i < queue.length) show(); else onDone({ right, total });
+    if (i < queue.length) show(); else onDone({ right, total, ms: Date.now() - begin });
   };
 
   $('#choices').addEventListener('click', (e) => {
