@@ -9,8 +9,9 @@ const PART_TITLES = {
   letters: 'אותיות', reading: 'קריאה',
   part: 'חלק משלם', name: 'שם השבר', add: 'חיבור', compare: 'השוואה',
   'present-simple': 'הווה פשוט',
+  spell: 'איות', test: 'הכתבה',
 };
-const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar' };
+const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation' };
 
 const dayStart = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
 const weekStart = (t) => { const d = new Date(dayStart(t)); d.setDate(d.getDate() - d.getDay()); return d.getTime(); };

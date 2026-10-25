@@ -1,5 +1,5 @@
 // Multiple-choice practice engine shared by modules.
-// question: { key, prompt: html, speak?: text spoken on show, options: [{ html, value }], answer,
+// question: { key, prompt: html, speak?: text spoken on show, onShow?: () => void, options: [{ html, value }], answer,
 //             help: () => html shown after a wrong answer, after?: () => void on a correct answer }
 import { pick, PRAISE, later, viewSignal } from './ui.js';
 import { say, wireSpeakButtons } from './speech.js';
@@ -34,6 +34,7 @@ export function runQuiz(outer, { back, questions, onResult, onDone }) {
       `<button class="choice" data-n="${n}">${o.html}</button>`).join('');
     $('.progress-fill').style.width = `${(i / queue.length) * 100}%`;
     if (q.speak) later(250, () => say(q.speak));
+    q.onShow?.();
   };
 
   const answer = (n) => {

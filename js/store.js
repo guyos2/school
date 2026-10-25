@@ -38,6 +38,14 @@ export async function login(user, password) {
   return true;
 }
 
+// A call to the family server with the login token when codes are on.
+export function apiFetch(path, init = {}) {
+  const headers = { 'Content-Type': 'application/json', ...init.headers };
+  const session = getSession();
+  if (codes && session) headers.Authorization = `Bearer ${session.token}`;
+  return fetch(apiUrl + path, { ...init, headers });
+}
+
 const empty = (kid) => ({ kid, version: 1, items: {}, sessions: [], updated: 0 });
 
 export function getProgress(kid) {

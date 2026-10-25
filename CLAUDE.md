@@ -10,6 +10,7 @@ Family learning web app (Hebrew, RTL) for four kids. See README.md for the roadm
 - `js/viz/<topic>.js`: visualizations. Each method returns `{ html, caption }`; `vizPanel` shows tabs plus "show another way".
 - `js/quiz.js`: shared multiple-choice engine (`runQuiz`, `finishScreen`). Use it for new practice modes.
 - `js/speech.js`: English TTS (`say`, `speakBtn`). `content/english/`: letters (sound hints, tips, confusable groups) and word lists (`cvc`, `sight`). Add words from class material here.
+- `content/dictation/`: Hebrew dictation word lists (`index.json` + one file per list: syllables as [sound with nikud, letters], traps, wrong spellings). `js/modules/dictation.js` + `js/viz/spelling.js`; `sayHe` in speech.js. Photo grading: `POST /api/dictation` (Claude reads the page, needs env `ANTHROPIC_API_KEY`; the comparison is done in code).
 - `js/stats.js`: parent stats page (`#/stats`, `#/stats/<kid>`), computed from saved sessions and items. Sessions carry `module`, `part`, `total`, `correct`, `ms` (duration) and `mastered` (items in box ≥ 4 right after the session); new modules should log the same fields. Item key prefixes map to modules in `PREFIX_MODULE`.
 - `js/srs.js`: Leitner spaced repetition. `js/store.js`: local progress plus sync.
 - `content/config.json`: `apiUrl` (`/api`). The app enables sync only when `GET /api/status` reports `configured`; otherwise it runs in single-device mode. Login codes apply only when status reports `codes` (env `LOGIN_CODES=on`); currently off, so anyone picks a kid.
