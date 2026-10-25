@@ -1,7 +1,9 @@
 // Progress storage: always saved locally, and synced to the git repo
 // (through the family sync server) when content/config.json names one and the user is logged in.
+import { MASTERED_BOX } from './srs.js';
+
 const LS = 'school:v1:';
-const MAX_SESSIONS = 300;
+const MAX_SESSIONS = 1000;
 
 const read = (k, fallback) => {
   try { return JSON.parse(localStorage.getItem(LS + k)) ?? fallback; } catch { return fallback; }
@@ -49,9 +51,11 @@ export function saveProgress(p) {
   scheduleSync(p.kid);
 }
 
+// Each session also records how many items are mastered right after it, so the parent stats can chart growth.
 export function logSession(kid, session) {
   const p = getProgress(kid);
-  p.sessions.push({ id: crypto.randomUUID?.() ?? String(Math.random()).slice(2), at: Date.now(), ...session });
+  const mastered = Object.values(p.items).filter((it) => (it.box || 0) >= MASTERED_BOX).length;
+  p.sessions.push({ id: crypto.randomUUID?.() ?? String(Math.random()).slice(2), at: Date.now(), mastered, ...session });
   saveProgress(p);
 }
 

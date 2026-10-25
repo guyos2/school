@@ -77,6 +77,7 @@ function practice(root, kid, base) {
   const firstTotal = queue.length;
   const missed = new Set();
   let i = 0, firstRight = 0, input = '', started = 0, locked = false;
+  const begin = Date.now();
 
   root.innerHTML = `
     <a class="back" href="${base}">→ חזרה</a>
@@ -128,7 +129,7 @@ function practice(root, kid, base) {
     i++;
     if (i < queue.length) return show();
     saveProgress(progress);
-    logSession(kid.id, { module: 'times', total: firstTotal, correct: firstRight });
+    logSession(kid.id, { module: 'times', total: firstTotal, correct: firstRight, ms: Date.now() - begin });
     finish();
   };
 

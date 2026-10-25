@@ -131,9 +131,9 @@ function letterPractice(root, kid, base, D) {
     back: base,
     questions: keys.map((k) => letterQuestion(D, k)),
     onResult: (q, ok, ms) => { progress.items[q.key] = review(progress.items[q.key], ok, ms); },
-    onDone: ({ right, total }) => {
+    onDone: ({ right, total, ms }) => {
       saveProgress(progress);
-      logSession(kid.id, { module: 'english-letters', part: 'letters', total, correct: right });
+      logSession(kid.id, { module: 'english-letters', part: 'letters', total, correct: right, ms });
       const gained = mastered(getProgress(kid.id).items, D.letterKeys) - before;
       finishScreen(root, {
         right, total,
@@ -244,9 +244,9 @@ function readingPractice(root, kid, base, D) {
     back: base,
     questions: keys.map((k) => readingQuestion(D, k)),
     onResult: (q, ok, ms) => { progress.items[q.key] = review(progress.items[q.key], ok, ms); },
-    onDone: ({ right, total }) => {
+    onDone: ({ right, total, ms }) => {
       saveProgress(progress);
-      logSession(kid.id, { module: 'english-letters', part: 'reading', total, correct: right });
+      logSession(kid.id, { module: 'english-letters', part: 'reading', total, correct: right, ms });
       const gained = mastered(getProgress(kid.id).items, D.readKeys) - before;
       finishScreen(root, {
         right, total,
