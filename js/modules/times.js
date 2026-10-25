@@ -1,6 +1,10 @@
 // לוח הכפל: learn with visualizations, practice with spaced repetition, progress map.
+// Once the 1–10 table is mostly known by heart, practice sessions shift toward
+// harder multiplication (single×two-digit, then two×two-digit), via a small
+// adaptive ladder (see TIER/SUB state below) instead of drilling known facts.
 import { esc, ltr, shuffle, pick, PRAISE, keypad, later } from '../ui.js';
 import { vizPanel } from '../viz/multiply.js';
+import { vizPanelBig, METHODS as BIG_METHODS } from '../viz/multiplyBig.js';
 import { getProgress, saveProgress, logSession } from '../store.js';
 import { review, pickSession, MASTERED_BOX } from '../srs.js';
 
@@ -19,15 +23,57 @@ const parseKey = (k) => k.slice(4).split('x').map(Number);
 
 const masteredCount = (items) => FACT_KEYS.filter((k) => (items[k]?.box || 0) >= MASTERED_BOX).length;
 
+// ---- difficulty ladder: tier 0 = the 1–10 table, tier 1 = single×two-digit,
+// tier 2 = two×two-digit. Each tier beyond 0 has sub-levels that widen the
+// number range. State lives in progress.items['mul:prog'] (merges like any item).
+const TIER_UNLOCK_RATIO = 0.8;
+const WIN_SIZE = 10;
+const PROMOTE_RATIO = 0.8;
+const DEMOTE_RATIO = 0.4;
+const MAX_SUB = 2;
+const SUB_RANGES = [[11, 20], [11, 50], [11, 99]];
+const TIER0_SLOTS = 3; // keep a light maintenance dose of the base table once past tier 0
+const RECENT_CAP = 40;
+
+const TIER_NAMES = ['לוח הכפל (1–10)', 'כפל חד־ספרתי בדו־ספרתי', 'כפל דו־ספרתי בדו־ספרתי'];
+const SUB_NAMES = ['(מספרים עד 20)', '(מספרים עד 50)', '(מספרים עד 99)'];
+const stageLabel = (tier, sub) => (tier === 0 ? TIER_NAMES[0] : `${TIER_NAMES[tier]} ${SUB_NAMES[sub]}`);
+
+function getTierState(items) {
+  const s = items['mul:prog'];
+  return { tier: s?.tier || 0, sub: s?.sub || 0, win: s?.win || [], recent: s?.recent || [] };
+}
+function saveTierState(progress, state) {
+  progress.items['mul:prog'] = { ...state, updated: Date.now() };
+}
+
+const randInt = (lo, hi) => lo + Math.floor(Math.random() * (hi - lo + 1));
+const bigKey = (a, b) => `big:${Math.min(a, b)}x${Math.max(a, b)}`;
+
+function genBigProblem(tier, sub, exclude) {
+  const [lo, hi] = SUB_RANGES[sub];
+  let a, b, k;
+  for (let tries = 0; tries < 40; tries++) {
+    a = tier === 1 ? randInt(2, 9) : randInt(lo, hi);
+    b = randInt(lo, hi);
+    k = bigKey(a, b);
+    if (!exclude.has(k)) break;
+  }
+  if (Math.random() < 0.5) [a, b] = [b, a];
+  return { k, a, b, big: tier };
+}
+
 export function renderTimes(root, kid, [view = 'menu', ...args]) {
   const base = `#/kid/${kid.id}/times`;
   if (view === 'learn') return learn(root, kid, base, +args[0] || 3, +args[1] || 4);
   if (view === 'practice') return practice(root, kid, base);
   if (view === 'map') return map(root, kid, base);
   const items = getProgress(kid.id).items;
+  const { tier, sub } = getTierState(items);
   root.innerHTML = `
     <h1 class="page-title">✖️ לוח הכפל</h1>
     <p class="subtitle">כבר בעל פה: ${masteredCount(items)} מתוך ${FACT_KEYS.length} תרגילים</p>
+    ${tier > 0 ? `<p class="subtitle">🚀 השלב הנוכחי: ${esc(stageLabel(tier, sub))}</p>` : ''}
     <div class="cards">
       <a class="card" href="${base}/practice"><span class="card-icon">🎯</span><span class="card-title">תרגול יומי</span><span class="card-sub">${SESSION_SIZE} תרגילים, מותאם בדיוק בשבילך</span></a>
       <a class="card" href="${base}/learn"><span class="card-icon">🔍</span><span class="card-title">ללמוד ולראות</span><span class="card-sub">רואים כל תרגיל ב-5 דרכים</span></a>
@@ -69,13 +115,32 @@ function learn(root, kid, base, a, b) {
 
 function practice(root, kid, base) {
   const progress = getProgress(kid.id);
-  const before = masteredCount(progress.items);
-  const queue = shuffle(pickSession(progress.items, FACT_KEYS, SESSION_SIZE)).map((k) => {
+  const items = progress.items;
+  const before = masteredCount(items);
+  const state = getTierState(items);
+
+  const asTierQ = (k) => {
     const [x, y] = parseKey(k);
     return Math.random() < 0.5 ? { k, a: x, b: y } : { k, a: y, b: x };
-  });
+  };
+  let queue;
+  if (state.tier === 0) {
+    queue = shuffle(pickSession(items, FACT_KEYS, SESSION_SIZE)).map(asTierQ);
+  } else {
+    const tier0Q = pickSession(items, FACT_KEYS, TIER0_SLOTS, { maxNew: 1 }).map(asTierQ);
+    const exclude = new Set(state.recent);
+    const bigQ = [];
+    for (let n = 0; n < SESSION_SIZE - tier0Q.length; n++) {
+      const p = genBigProblem(state.tier, state.sub, exclude);
+      exclude.add(p.k);
+      bigQ.push(p);
+    }
+    state.recent = [...exclude].slice(-RECENT_CAP);
+    queue = shuffle([...tier0Q, ...bigQ]);
+  }
   const firstTotal = queue.length;
   const missed = new Set();
+  const bigResults = []; // first-try correctness for this session's harder (tier ≥ 1) problems
   let i = 0, firstRight = 0, input = '', started = 0, locked = false;
   const begin = Date.now();
 
@@ -106,7 +171,8 @@ function practice(root, kid, base) {
     const ok = +input === q.a * q.b;
     const isFirst = !q.retry;
     if (isFirst) {
-      progress.items[q.k] = review(progress.items[q.k], ok, Date.now() - started);
+      if (q.big) bigResults.push(ok);
+      else progress.items[q.k] = review(progress.items[q.k], ok, Date.now() - started);
       if (ok) firstRight++;
     }
     if (ok) {
@@ -120,14 +186,41 @@ function practice(root, kid, base) {
       if (!missed.has(q.k)) { missed.add(q.k); queue.push({ ...q, retry: true }); }
       const help = $('#help');
       help.innerHTML = `<div class="help-box"><div id="hv"></div><button class="btn btn-big" id="go">הבנתי, ממשיכים ←</button></div>`;
-      vizPanel(help.querySelector('#hv'), q.a, q.b, Math.floor(Math.random() * 5));
+      if (q.big) vizPanelBig(help.querySelector('#hv'), q.a, q.b, Math.floor(Math.random() * BIG_METHODS.length));
+      else vizPanel(help.querySelector('#hv'), q.a, q.b, Math.floor(Math.random() * 5));
       help.querySelector('#go').onclick = next;
     }
+  };
+
+  let promoted = false, demoted = false;
+  const updateTierState = () => {
+    if (state.tier === 0) {
+      if (masteredCount(progress.items) / FACT_KEYS.length >= TIER_UNLOCK_RATIO) {
+        state.tier = 1; state.sub = 0; state.win = [];
+        promoted = true;
+      }
+    } else if (bigResults.length) {
+      state.win = [...state.win, ...bigResults].slice(-WIN_SIZE * 2);
+      if (state.win.length >= WIN_SIZE) {
+        const ratio = state.win.filter(Boolean).length / state.win.length;
+        if (ratio >= PROMOTE_RATIO && (state.sub < MAX_SUB || state.tier < 2)) {
+          if (state.sub < MAX_SUB) state.sub++;
+          else { state.tier++; state.sub = 0; }
+          state.win = []; promoted = true;
+        } else if (ratio <= DEMOTE_RATIO && (state.sub > 0 || state.tier > 1)) {
+          if (state.sub > 0) state.sub--;
+          else { state.tier--; state.sub = MAX_SUB; }
+          state.win = []; demoted = true;
+        }
+      }
+    }
+    saveTierState(progress, state);
   };
 
   const next = () => {
     i++;
     if (i < queue.length) return show();
+    updateTierState();
     saveProgress(progress);
     logSession(kid.id, { module: 'times', total: firstTotal, correct: firstRight, ms: Date.now() - begin });
     finish();
@@ -143,6 +236,8 @@ function practice(root, kid, base) {
         <h1>סיימתם את הסיבוב!</h1>
         <p class="subtitle">${firstRight} נכונות בניסיון הראשון מתוך ${firstTotal}</p>
         ${after > before ? `<p class="subtitle">🎉 ${after - before} תרגילים חדשים נכנסו לרשימת היודעים בעל פה!</p>` : ''}
+        ${promoted ? `<p class="subtitle">🚀 עולים לשלב הבא: ${esc(stageLabel(state.tier, state.sub))}!</p>` : ''}
+        ${demoted ? `<p class="subtitle">💡 חוזרים לרגע לתרגול קל יותר כדי לחזק את הביטחון: ${esc(stageLabel(state.tier, state.sub))}</p>` : ''}
         <div class="row-center">
           <a class="btn btn-big" href="${base}/practice" id="again">עוד סיבוב</a>
           <a class="btn btn-soft" href="${base}/map">למפה שלי 🗺️</a>
@@ -153,7 +248,7 @@ function practice(root, kid, base) {
   };
 
   keypad($('#pad'), {
-    onDigit: (d) => { if (!locked && input.length < 3) { input += d; $('#qi').textContent = input; } },
+    onDigit: (d) => { if (!locked && input.length < 5) { input += d; $('#qi').textContent = input; } },
     onBack: () => { if (!locked) { input = input.slice(0, -1); $('#qi').textContent = input; } },
     onEnter: () => { if (!locked) submit(); else if ($('#go')) next(); },
   });
