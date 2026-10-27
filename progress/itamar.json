@@ -11,12 +11,12 @@
    "updated": 1793087074022
   },
   "vo:amazing": {
-   "box": 1,
-   "seen": 2,
-   "right": 2,
+   "box": 2,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1793101455906,
-   "updated": 1793087055906
+   "due": 1793178121352,
+   "updated": 1793091721352
   },
   "vo:taste": {
    "box": 1,
@@ -59,12 +59,12 @@
    "updated": 1793087107095
   },
   "vo:including": {
-   "box": 1,
-   "seen": 2,
-   "right": 1,
+   "box": 2,
+   "seen": 3,
+   "right": 2,
    "wrong": 1,
-   "due": 1793087099690,
-   "updated": 1793087099690
+   "due": 1793178131391,
+   "updated": 1793091731391
   },
   "vo:international": {
    "box": 2,
@@ -99,12 +99,12 @@
    "updated": 1793086976120
   },
   "vo:tour": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1793087060808,
-   "updated": 1793087060808
+   "due": 1793177985830,
+   "updated": 1793091585830
   },
   "vo:row": {
    "box": 1,
@@ -116,11 +116,11 @@
   },
   "vo:blanket": {
    "box": 1,
-   "seen": 1,
-   "right": 0,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1793087570799,
-   "updated": 1793087570799
+   "due": 1793106025756,
+   "updated": 1793091625756
   },
   "vo:along": {
    "box": 1,
@@ -179,28 +179,68 @@
    "updated": 1793087669936
   },
   "vo:lamp": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1793087684518,
-   "updated": 1793087684518
+   "due": 1793178069166,
+   "updated": 1793091669166
   },
   "vo:land": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1793087715917,
-   "updated": 1793087715917
+   "due": 1793178098374,
+   "updated": 1793091698374
   },
   "vo:performance": {
+   "box": 2,
+   "seen": 2,
+   "right": 1,
+   "wrong": 1,
+   "due": 1793178104454,
+   "updated": 1793091704454
+  },
+  "vo:be-crazy-about": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793106052379,
+   "updated": 1793091652379
+  },
+  "vo:be-located-in": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793106058378,
+   "updated": 1793091658378
+  },
+  "vo:activity": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793106080349,
+   "updated": 1793091680349
+  },
+  "vo:available": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793106093332,
+   "updated": 1793091693332
+  },
+  "vo:concert": {
    "box": 1,
    "seen": 1,
    "right": 0,
    "wrong": 1,
-   "due": 1793087728067,
-   "updated": 1793087728067
+   "due": 1793091710451,
+   "updated": 1793091710451
   }
  },
  "sessions": [
@@ -236,7 +276,18 @@
    "total": 12,
    "correct": 8,
    "ms": 244058
+  },
+  {
+   "id": "3949fcf9-0ed7-423f-baf8-b5ef59e33dfc",
+   "at": 1793091749976,
+   "mastered": 0,
+   "module": "units",
+   "part": "vocab",
+   "unit": "2026-10-27-english",
+   "total": 12,
+   "correct": 11,
+   "ms": 170559
   }
  ],
- "updated": 1793087751703
+ "updated": 1793091749976
 }
