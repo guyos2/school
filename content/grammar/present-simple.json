@@ -2,36 +2,318 @@
   "title": "Present Simple – הווה פשוט",
   "rule": {
     "do": "אחרי I / You / We / They (או כל נושא ברבים) הפועל נשאר בסיסי, בלי s. בשלילה אומרים don't + פועל בסיס.",
-    "does": "אחרי He / She / It (או כל נושא יחיד בגוף שלישי) מוסיפים לפועל s / es / ies. בשלילה אומרים doesn't + פועל בסיס, בלי ה-s!"
+    "does": "אחרי He / She / It (או כל נושא יחיד בגוף שלישי) מוסיפים לפועל s / es / ies. בשלילה אומרים doesn't + פועל בסיס, בלי ה-s!",
+    "question": "שאלה: Do / Does בהתחלה, אחריהם הנושא ואז פועל בסיס בלי s (Does she play...?). במילת שאלה: Where / What / When באה לפני ה-do / does. תשובה קצרה: Yes, she does. / No, she doesn't."
   },
   "subjects": [
-    { "en": "I", "he": "אני", "person": "do" },
-    { "en": "You", "he": "אתה / את", "person": "do" },
-    { "en": "We", "he": "אנחנו", "person": "do" },
-    { "en": "They", "he": "הם / הן", "person": "do" },
-    { "en": "My friends", "he": "החברים שלי", "person": "do" },
-    { "en": "He", "he": "הוא", "person": "does" },
-    { "en": "She", "he": "היא", "person": "does" },
-    { "en": "It", "he": "זה", "person": "does" },
-    { "en": "My sister", "he": "אחותי", "person": "does" },
-    { "en": "The teacher", "he": "המורה", "person": "does" }
+    {
+      "en": "I",
+      "he": "אני",
+      "person": "do",
+      "pronoun": "I"
+    },
+    {
+      "en": "You",
+      "he": "אתה / את",
+      "person": "do",
+      "pronoun": "I"
+    },
+    {
+      "en": "We",
+      "he": "אנחנו",
+      "person": "do",
+      "pronoun": "we"
+    },
+    {
+      "en": "They",
+      "he": "הם / הן",
+      "person": "do",
+      "pronoun": "they"
+    },
+    {
+      "en": "My friends",
+      "he": "החברים שלי",
+      "person": "do",
+      "pronoun": "they"
+    },
+    {
+      "en": "He",
+      "he": "הוא",
+      "person": "does",
+      "pronoun": "he"
+    },
+    {
+      "en": "She",
+      "he": "היא",
+      "person": "does",
+      "pronoun": "she"
+    },
+    {
+      "en": "It",
+      "he": "זה",
+      "person": "does",
+      "pronoun": "it"
+    },
+    {
+      "en": "My sister",
+      "he": "אחותי",
+      "person": "does",
+      "pronoun": "she"
+    },
+    {
+      "en": "The teacher",
+      "he": "המורה",
+      "person": "does",
+      "pronoun": "he"
+    }
   ],
   "verbs": [
-    { "base": "play", "s": "plays", "he": "משחק/ת",
-      "objects": [{ "en": "football", "he": "כדורגל" }, { "en": "the guitar", "he": "בגיטרה" }] },
-    { "base": "eat", "s": "eats", "he": "אוכל/ת",
-      "objects": [{ "en": "breakfast", "he": "ארוחת בוקר" }, { "en": "vegetables", "he": "ירקות" }] },
-    { "base": "watch", "s": "watches", "he": "צופה",
-      "objects": [{ "en": "TV", "he": "טלוויזיה" }, { "en": "funny videos", "he": "סרטונים מצחיקים" }] },
-    { "base": "fix", "s": "fixes", "he": "מתקן/ת",
-      "objects": [{ "en": "bikes", "he": "אופניים" }, { "en": "computers", "he": "מחשבים" }] },
-    { "base": "go", "s": "goes", "he": "הולך/ת",
-      "objects": [{ "en": "to school", "he": "לבית הספר" }, { "en": "to the gym", "he": "לחדר כושר" }] },
-    { "base": "study", "s": "studies", "he": "לומד/ת",
-      "objects": [{ "en": "English", "he": "אנגלית" }, { "en": "for the test", "he": "למבחן" }] },
-    { "base": "do", "s": "does", "he": "עושה",
-      "objects": [{ "en": "homework", "he": "שיעורי בית" }, { "en": "the dishes", "he": "את הכלים" }] },
-    { "base": "have", "s": "has", "he": "יש ל...",
-      "objects": [{ "en": "a dog", "he": "כלב" }, { "en": "a big family", "he": "משפחה גדולה" }] }
+    {
+      "base": "play",
+      "s": "plays",
+      "he": "משחק/ת",
+      "objects": [
+        {
+          "en": "football",
+          "he": "כדורגל",
+          "wh": "What",
+          "whHe": "במה"
+        },
+        {
+          "en": "the guitar",
+          "he": "בגיטרה",
+          "wh": "What",
+          "whHe": "במה"
+        }
+      ]
+    },
+    {
+      "base": "eat",
+      "s": "eats",
+      "he": "אוכל/ת",
+      "objects": [
+        {
+          "en": "breakfast",
+          "he": "ארוחת בוקר",
+          "wh": "What",
+          "whHe": "מה"
+        },
+        {
+          "en": "vegetables",
+          "he": "ירקות",
+          "wh": "What",
+          "whHe": "מה"
+        }
+      ]
+    },
+    {
+      "base": "watch",
+      "s": "watches",
+      "he": "צופה",
+      "objects": [
+        {
+          "en": "TV",
+          "he": "טלוויזיה",
+          "wh": "What",
+          "whHe": "במה"
+        },
+        {
+          "en": "funny videos",
+          "he": "סרטונים מצחיקים",
+          "wh": "What",
+          "whHe": "במה"
+        }
+      ]
+    },
+    {
+      "base": "fix",
+      "s": "fixes",
+      "he": "מתקן/ת",
+      "objects": [
+        {
+          "en": "bikes",
+          "he": "אופניים",
+          "wh": "What",
+          "whHe": "מה"
+        },
+        {
+          "en": "computers",
+          "he": "מחשבים",
+          "wh": "What",
+          "whHe": "מה"
+        }
+      ]
+    },
+    {
+      "base": "go",
+      "s": "goes",
+      "he": "הולך/ת",
+      "objects": [
+        {
+          "en": "to school",
+          "he": "לבית הספר",
+          "wh": "Where",
+          "whHe": "לאן"
+        },
+        {
+          "en": "to the gym",
+          "he": "לחדר כושר",
+          "wh": "Where",
+          "whHe": "לאן"
+        }
+      ]
+    },
+    {
+      "base": "study",
+      "s": "studies",
+      "he": "לומד/ת",
+      "objects": [
+        {
+          "en": "English",
+          "he": "אנגלית",
+          "wh": "What",
+          "whHe": "מה"
+        },
+        {
+          "en": "math",
+          "he": "מתמטיקה",
+          "wh": "What",
+          "whHe": "מה"
+        }
+      ]
+    },
+    {
+      "base": "do",
+      "s": "does",
+      "he": "עושה",
+      "objects": [
+        {
+          "en": "homework",
+          "he": "שיעורי בית",
+          "wh": "What",
+          "whHe": "מה"
+        },
+        {
+          "en": "the dishes",
+          "he": "את הכלים",
+          "wh": "What",
+          "whHe": "מה"
+        }
+      ]
+    },
+    {
+      "base": "have",
+      "s": "has",
+      "he": "יש ל...",
+      "objects": [
+        {
+          "en": "a dog",
+          "he": "כלב",
+          "wh": "What",
+          "whHe": "מה"
+        },
+        {
+          "en": "a big family",
+          "he": "משפחה גדולה",
+          "wh": "What",
+          "whHe": "מה"
+        }
+      ]
+    },
+    {
+      "base": "visit",
+      "s": "visits",
+      "he": "מבקר/ת",
+      "objects": [
+        {
+          "en": "the castle",
+          "he": "בטירה",
+          "wh": "What",
+          "whHe": "במה"
+        },
+        {
+          "en": "museums",
+          "he": "במוזיאונים",
+          "wh": "What",
+          "whHe": "במה"
+        }
+      ]
+    },
+    {
+      "base": "celebrate",
+      "s": "celebrates",
+      "he": "חוגג/ת",
+      "objects": [
+        {
+          "en": "holidays",
+          "he": "חגים",
+          "wh": "What",
+          "whHe": "מה"
+        },
+        {
+          "en": "birthdays",
+          "he": "ימי הולדת",
+          "wh": "What",
+          "whHe": "מה"
+        }
+      ]
+    },
+    {
+      "base": "share",
+      "s": "shares",
+      "he": "משתף/ת",
+      "objects": [
+        {
+          "en": "photos",
+          "he": "תמונות",
+          "wh": "What",
+          "whHe": "מה"
+        },
+        {
+          "en": "a room",
+          "he": "חדר",
+          "wh": "What",
+          "whHe": "מה"
+        }
+      ]
+    },
+    {
+      "base": "taste",
+      "s": "tastes",
+      "he": "טועם/ת",
+      "objects": [
+        {
+          "en": "local food",
+          "he": "אוכל מקומי",
+          "wh": "What",
+          "whHe": "מה"
+        },
+        {
+          "en": "new dishes",
+          "he": "מנות חדשות",
+          "wh": "What",
+          "whHe": "מה"
+        }
+      ]
+    },
+    {
+      "base": "fly",
+      "s": "flies",
+      "he": "טס/ה",
+      "objects": [
+        {
+          "en": "to London",
+          "he": "ללונדון",
+          "wh": "Where",
+          "whHe": "לאן"
+        },
+        {
+          "en": "abroad",
+          "he": "לחו״ל",
+          "wh": "Where",
+          "whHe": "לאן"
+        }
+      ]
+    }
   ]
 }

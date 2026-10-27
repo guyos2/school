@@ -11,8 +11,10 @@ const PART_TITLES = {
   'present-simple': 'הווה פשוט',
   spell: 'איות', test: 'הכתבה',
   sub: 'חיסור', mul: 'כפל', mix: 'מעורב', class: 'מהכיתה',
+  vocab: 'אוצר מילים', grammar: 'דקדוק', unseen: 'Unseen', mock: 'מבחן דמה',
 };
-const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation', col: 'column' };
+const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation', col: 'column',
+  vo: 'units', ug: 'units', rd: 'units' };
 
 const dayStart = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
 const weekStart = (t) => { const d = new Date(dayStart(t)); d.setDate(d.getDate() - d.getDay()); return d.getTime(); };
@@ -254,9 +256,13 @@ function itemLabel(key, grammar) {
   if (prefix === 'fr') return `${a === 'n' ? 'שם השבר ' : ''}${ltr(b)}`;
   if (prefix === 'col') return ltr(`${b} ${{ add: '+', sub: '−', mul: '×' }[a]} ${c}`);
   if (prefix === 'en') return ltr(esc(a === 'L' ? `${b} ${b.toLowerCase()}` : b));
+  if (prefix === 'vo') return ltr(esc(a.replace(/-/g, ' ')));
+  if (prefix === 'ug') return `דקדוק, תרגיל ${+b + 1}`;
+  if (prefix === 'rd') return `${ltr(esc(a))}, שאלה ${+b + 1}`;
   if (prefix === 'gr') {
     const d = grammar[a];
-    return d?.subjects[b] && d?.verbs[c] ? ltr(esc(`${d.subjects[b].en} + ${d.verbs[c].base}`)) : 'משפט';
+    const q = key.endsWith(':q') ? ' ?' : '';
+    return d?.subjects[b] && d?.verbs[c] ? ltr(esc(`${d.subjects[b].en} + ${d.verbs[c].base}${q}`)) : 'משפט';
   }
   return esc(key);
 }
