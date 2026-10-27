@@ -1,32 +1,59 @@
-// Reading comprehension (Unseen): the text with the unit's words marked, and how to approach the questions.
+// Reading comprehension (Unseen): the text with tappable words, and how to approach the questions.
 import { esc } from '../ui.js';
 import { wordPattern } from './vocab.js';
 
+const TOKEN = /[A-Za-z][A-Za-z'’-]*[A-Za-z]|[A-Za-z]/g;
+
+// With tap on, every word becomes a button-like span that knows its offset inside the paragraph.
+const tokens = (text, base) => {
+  let out = '', last = 0;
+  for (const m of text.matchAll(TOKEN)) {
+    out += `${esc(text.slice(last, m.index))}<span class="rd-t" data-o="${base + m.index}">${esc(m[0])}</span>`;
+    last = m.index + m[0].length;
+  }
+  return out + esc(text.slice(last));
+};
+const plain = (text) => esc(text);
+
 // One regex for all the unit's words; the longest first, so "tour guide" wins over "tour".
-function wordMatcher(words) {
+// A matched list word is wrapped, so a tap on any of its words knows which list word it is.
+function wordMatcher(words, inner, marks) {
   const pats = words.map((w) => ({ w, re: new RegExp(`^${wordPattern(w)}$`, 'i'), src: wordPattern(w) }))
     .sort((a, b) => b.src.length - a.src.length);
   const all = new RegExp(`\\b(?:${pats.map((p) => p.src).join('|')})\\b`, 'gi');
-  return (text) => {
+  return (text, base) => {
     let out = '', last = 0;
     for (const m of text.matchAll(all)) {
       const hit = pats.find((p) => p.re.test(m[0]));
-      out += esc(text.slice(last, m.index)) + (hit ? `<button class="rd-w en" data-w="${hit.w.id}">${esc(m[0])}</button>` : esc(m[0]));
+      out += inner(text.slice(last, m.index), base + last);
+      out += hit ? `<span class="${marks ? 'rd-w' : 'rd-wd'} en" data-w="${hit.w.id}">${inner(m[0], base + m.index)}</span>` : inner(m[0], base + m.index);
       last = m.index + m[0].length;
     }
-    return out + esc(text.slice(last));
+    return out + inner(text.slice(last), base + last);
   };
 }
 
-// Paragraphs numbered as on a test page; `mark` (a quote from the text) is highlighted.
-export function textHtml(T, { words = [], mark = '' } = {}) {
-  const tag = words.length ? wordMatcher(words) : esc;
+// Paragraphs numbered as on a test page. `mark` (a quote from the text) is highlighted; `marks` colors the unit's words;
+// `tap` makes every word tappable (the test page leaves it off, so there is no help there).
+export function textHtml(T, { words = [], marks = true, tap = false, mark = '' } = {}) {
+  const inner = tap ? tokens : plain;
+  const render = words.length && (marks || tap) ? wordMatcher(words, inner, marks) : inner;
   return T.paragraphs.map((p, i) => {
     const at = mark ? p.indexOf(mark) : -1;
-    const body = at < 0 ? tag(p)
-      : `${tag(p.slice(0, at))}<mark class="rd-mark">${tag(mark)}</mark>${tag(p.slice(at + mark.length))}`;
-    return `<p class="rd-p"><span class="rd-n">${i + 1}</span>${body}</p>`;
+    const body = at < 0 ? render(p, 0)
+      : `${render(p.slice(0, at), 0)}<mark class="rd-mark">${render(mark, at)}</mark>${render(p.slice(at + mark.length), at + mark.length)}`;
+    return `<p class="rd-p" data-p="${i}"><span class="rd-n">${i + 1}</span>${body}</p>`;
   }).join('');
+}
+
+// The sentence that contains character `offset` of a paragraph, and the sentence before it.
+export function sentenceAt(par, offset) {
+  let prev = '';
+  for (const m of par.matchAll(/[^.!?]+[.!?]+["”']?\s*|[^.!?]+$/g)) {
+    if (offset < m.index + m[0].length) return { prev, start: m.index, text: m[0].trimEnd() };
+    prev = m[0].trim();
+  }
+  return { prev, start: 0, text: par };
 }
 
 // ---------- how to approach an Unseen: 4 ways to see it ----------

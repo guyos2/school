@@ -6,8 +6,8 @@ import { runQuiz, finishScreen } from '../quiz.js';
 import { say, canSpeak, speakBtn, wireSpeakButtons } from '../speech.js';
 import { getProgress, saveProgress, logSession } from '../store.js';
 import { review, pickSession, MASTERED_BOX } from '../srs.js';
-import { vocabPanel, wordHelp, spoken, gapAnswer, fillGap } from '../viz/vocab.js';
-import { textHtml, strategyPanel } from '../viz/reading.js';
+import { vocabPanel, wordHelp, spoken, gapAnswer, fillGap, highlight } from '../viz/vocab.js';
+import { textHtml, sentenceAt, strategyPanel } from '../viz/reading.js';
 import { ruleCard } from '../viz/grammar.js';
 
 const cache = {};
@@ -25,6 +25,7 @@ const allWords = (u) => (u.wordGroups || []).flatMap((g) => g.words);
 const vKey = (w) => `vo:${w.id}`;
 const gKey = (u, i) => `ug:${u.id}:${i}`;
 const rKey = (T, i) => `rd:${T.id}:${i}`;
+const uKey = (word) => `uw:${word}`; // a word the kid marked as unknown while reading
 const blank = (s) => esc(s).replace('___', '<span class="vo-blank">_____</span>');
 const dateText = (d) => (d ? new Date(d).toLocaleDateString('he-IL', { day: 'numeric', month: 'numeric', year: 'numeric' }) : '');
 
@@ -38,6 +39,8 @@ export async function renderUnits(root, kid, [unitId, view = 'home', ...args]) {
   if (view === 'word') return wordView(root, ub, u, args[0]);
   if (view === 'vocab') return vocabPractice(root, kid, ub, u, args[0] ?? 'all');
   if (view === 'grammar') return grammarPractice(root, kid, ub, u);
+  if (view === 'mine') return myWords(root, kid, ub, u);
+  if (view === 'mywords') return myWordsPractice(root, kid, ub, u);
   if (view === 'howto') return howto(root, ub);
   if (view === 'read') return args[0] ? readText(root, kid, ub, u, args[0]) : readingList(root, kid, ub, u);
   if (view === 'test') return testIntro(root, kid, ub, u);
@@ -58,6 +61,7 @@ function unitHome(root, kid, base, ub, u) {
   const wk = allWords(u).map(vKey);
   const gk = (u.grammar || []).map((_, i) => gKey(u, i));
   const rk = (u.reading || []).flatMap((T) => T.questions.map((_, i) => rKey(T, i)));
+  const marked = [...myWordList(p.items, u).map((x) => x.key), ...markedListWords(p.items, u).map(vKey)];
   const rightOnce = rk.filter((k) => p.items[k]?.right > 0).length;
   const tests = p.sessions.filter((s) => s.module === 'units' && s.part === 'mock' && s.unit === u.id);
   const card = (href, icon, title, sub) =>
@@ -69,7 +73,7 @@ function unitHome(root, kid, base, ub, u) {
     <h2 class="section">1. אוצר מילים · ${mastered(p.items, wk)} מתוך ${wk.length} בעל פה</h2>
     <div class="cards">
       ${card(`${ub}/words`, '📖', 'המילים', 'כל מילה ב-4 דרכים: תמונה, משפט, מילים קרובות, הברות ואיות')}
-      ${card(`${ub}/vocab/all`, '🎯', 'תרגול מילים', 'פירוש, השלמת משפט ואיות. מילים שטועים בהן חוזרות יותר')}
+      ${card(`${ub}/vocab/all`, '🎯', 'תרגול מילים', 'פירוש, תרגום והשלמת משפט. מילים שטועים בהן חוזרות יותר')}
     </div>
     <h2 class="section">2. דקדוק: Present Simple · ${mastered(p.items, gk)} מתוך ${gk.length} בעל פה</h2>
     <div class="cards">
@@ -81,6 +85,7 @@ function unitHome(root, kid, base, ub, u) {
     <div class="cards">
       ${card(`${ub}/howto`, '🧭', 'איך ניגשים ל-Unseen', 'השלבים, מילות שאלה, דוגמה ומלכודות')}
       ${card(`${ub}/read`, '📰', 'קטעי קריאה', `${u.reading.length} קטעים ברמת כיתה ח׳, עם שאלות`)}
+      ${card(`${ub}/mine`, '📌', 'המילים שסימנתי', marked.length ? `${marked.length} מילים · ${marked.filter((k) => box(p.items, k) >= MASTERED_BOX).length} כבר בשליטה` : 'בקריאה לוחצים על מילה שלא מכירים, והיא נשמרת כאן לתרגול')}
     </div>
     <h2 class="section">4. מבחן דמה</h2>
     <div class="cards">
@@ -136,12 +141,18 @@ function distractors(w, pool, n = 3) {
   return [...shuffle(ok.filter((x) => x.pos === w.pos)), ...shuffle(ok.filter((x) => x.pos !== w.pos))].slice(0, n);
 }
 
-const enChoice = (s) => ({ html: `<span class="en choice-text">${esc(s)}</span>`, value: s });
+// A choice with a little speaker, so a word can be heard before picking it.
+const enChoice = (s) => ({
+  html: `<span class="en choice-text">${esc(s)}</span>${canSpeak ? `<span class="speak-mini" role="button" aria-label="השמעה" data-say="${esc(s)}">🔊</span>` : ''}`,
+  value: s,
+});
+// A sentence with a gap is read with the word "blank" in its place.
+const hearGap = (sentence) => speakBtn(sentence.replace('___', '| blank |'), '🔊 להקשיב למשפט');
 
 function vocabQuestion(w, pool) {
   const key = vKey(w);
   const ds = distractors(w, pool);
-  const type = pick(['en-he', 'he-en', 'gap', 'gap', 'spell']);
+  const type = pick(['en-he', 'he-en', 'gap', 'gap']);
   if (type === 'en-he') {
     return { key, answer: w.he, speak: spoken(w.en), help: () => wordHelp(w, 'sentence'),
       prompt: `<p class="q-ask">מה הפירוש?</p><div class="vo-q en">${esc(w.en)} ${speakBtn(spoken(w.en))}</div>`,
@@ -152,14 +163,9 @@ function vocabQuestion(w, pool) {
       prompt: `<p class="q-ask">איך אומרים באנגלית?</p><div class="vo-q">${esc(w.he)}</div>`,
       options: shuffle([w, ...ds]).map((x) => enChoice(spoken(x.en))) };
   }
-  if (type === 'gap') {
-    return { key, answer: gapAnswer(w), help: () => wordHelp(w, 'sentence'), after: () => say(fillGap(w)),
-      prompt: `<p class="q-ask">איזו מילה משלימה את המשפט?</p><div class="ps-shown en">${blank(w.gap)}</div>`,
-      options: shuffle([w, ...ds]).map((x) => enChoice(gapAnswer(x))) };
-  }
-  return { key, answer: w.en, speak: spoken(w.en), help: () => wordHelp(w, 'sound'),
-    prompt: `<p class="q-ask">איך כותבים את המילה?</p><div class="vo-q">${esc(w.he)} ${speakBtn(spoken(w.en))}</div>`,
-    options: shuffle([w.en, ...w.wrong]).map(enChoice) };
+  return { key, answer: gapAnswer(w), help: () => wordHelp(w, 'sentence'), after: () => say(fillGap(w)),
+    prompt: `<p class="q-ask">איזו מילה משלימה את המשפט?</p><div class="ps-shown en">${blank(w.gap)}</div><div class="row-center">${hearGap(w.gap)}</div>`,
+    options: shuffle([w, ...ds]).map((x) => enChoice(gapAnswer(x))) };
 }
 
 function vocabPractice(root, kid, ub, u, g) {
@@ -248,7 +254,7 @@ function readingList(root, kid, ub, u) {
   root.innerHTML = `
     <a class="back" href="${ub}">→ חזרה</a>
     <h1 class="page-title">📰 קטעי קריאה</h1>
-    <p class="subtitle">קוראים את הקטע ועונים על השאלות. מילים מהרשימה מסומנות, ולחיצה עליהן מראה את הפירוש</p>
+    <p class="subtitle">קוראים את הקטע ועונים על השאלות. לחיצה על מילה שלא מכירים עוזרת להבין אותה מההקשר</p>
     <div class="cards">${u.reading.map((T) => {
       const keys = T.questions.map((_, i) => rKey(T, i));
       const seen = keys.filter((k) => items[k]);
@@ -258,21 +264,6 @@ function readingList(root, kid, ub, u) {
         <span class="card-sub">${seen.length ? `בפעם האחרונה: ${right} מתוך ${keys.length} נכונות` : `${keys.length} שאלות · עוד לא קראו`}</span></a>`;
     }).join('')}</div>
     <div class="row-center"><a class="btn btn-soft" href="${ub}/howto">🧭 איך ניגשים ל-Unseen</a></div>`;
-}
-
-// Tapping a marked word shows its meaning; the text can also be read aloud.
-function wireText(root, words) {
-  const byId = Object.fromEntries(words.map((w) => [w.id, w]));
-  wireSpeakButtons(root);
-  root.addEventListener('click', (e) => {
-    const b = e.target.closest('.rd-w');
-    if (!b) return;
-    const w = byId[b.dataset.w];
-    const bar = root.querySelector('#gloss-bar');
-    bar.innerHTML = `${w.emoji} <b class="en">${esc(w.en)}</b> = ${esc(w.he)} ${speakBtn(spoken(w.en))}`;
-    bar.hidden = false;
-  });
-  viewSignal().addEventListener('abort', () => { if (canSpeak) speechSynthesis.cancel(); });
 }
 
 const listenBtn = (T) => (canSpeak ? `<button class="btn btn-soft rd-listen" data-text="${esc(T.paragraphs.join(' | '))}">🔊 להקשיב לקטע</button>` : '');
@@ -290,22 +281,29 @@ function readText(outer, kid, ub, u, id) {
   root.innerHTML = `
     <a class="back" href="${ub}/read">→ לכל הקטעים</a>
     <h1 class="page-title en">${T.emoji} ${esc(T.title)}</h1>
+    <p class="subtitle">🤔 יש מילה שלא מכירים? לוחצים עליה, ומנסים להבין אותה מהמשפט</p>
     <div class="row-center">
       <button class="btn btn-soft" id="marks"></button>
       ${listenBtn(T)}
     </div>
     <div class="rd-text en" id="text"></div>
-    <div class="rd-gloss" id="gloss-bar" hidden></div>
+    <div class="rd-sheet" id="sheet" hidden></div>
     <div class="progress-bar"><div class="progress-fill"></div></div>
     <div class="q-card rd-card"><div id="prompt"></div><div class="q-feedback" id="fb"></div></div>
     <div class="choices rd-choices" id="choices"></div>
     <div id="help"></div>`;
   const $ = (s) => root.querySelector(s);
-  wireText(root, words);
+  wireSpeakButtons(root);
+  viewSignal().addEventListener('abort', () => { if (canSpeak) speechSynthesis.cancel(); });
   const drawText = (mark = '') => {
-    $('#text').innerHTML = textHtml(T, { words: marks ? words : [], mark });
+    $('#text').innerHTML = textHtml(T, { words, marks, tap: true, mark });
     $('#marks').textContent = marks ? '💡 להסתיר את סימון המילים' : '💡 לסמן מילים מהרשימה';
   };
+  const sheet = wordSheet(root, { u, T, words, progress });
+  root.addEventListener('click', (e) => {
+    const tok = e.target.closest('.rd-t');
+    if (tok) sheet.open(tok);
+  });
   $('#marks').onclick = () => { marks = !marks; drawText(locked ? $('.rd-mark')?.textContent : ''); };
   $('.rd-listen')?.addEventListener('click', (e) => say(e.currentTarget.dataset.text, { rate: 0.85 }));
 
@@ -363,6 +361,177 @@ const readingHelp = (q) => `
     <blockquote class="rd-quote en">“${esc(q.evidence)}”</blockquote>
   </div>
   ${q.why ? `<p class="viz-caption">${mixed(q.why)}</p>` : ''}`;
+
+// ---------- words the kid does not know ----------
+// Tap a word in a text: hear its sentence without the word, guess the meaning from the context, then see the answer.
+// The word is saved. A word from the unit's list goes back into the vocabulary practice (its `vo:` item is marked as missed);
+// any other word becomes a `uw:` item with its meaning and sentence, practiced under "המילים שלי".
+function markUnknown(progress, T, w, surface, he, ctx, guessed) {
+  const key = w ? vKey(w) : uKey(surface.toLowerCase());
+  const prev = progress.items[key];
+  const it = review(prev, false, 0);
+  it.marked = (prev?.marked || 0) + 1;
+  it.guessed = (prev?.guessed || 0) + (guessed ? 1 : 0);
+  if (!w) Object.assign(it, { w: surface.toLowerCase(), he: he ?? prev?.he, ctx, src: T.id });
+  progress.items[key] = it;
+  saveProgress(progress);
+}
+
+function wordSheet(root, { u, T, words, progress }) {
+  const el = root.querySelector('#sheet');
+  const byId = Object.fromEntries(words.map((w) => [w.id, w]));
+  const hePool = [...new Set([...words.map((w) => w.he), ...u.reading.flatMap((t) => Object.values(t.glossary || {}))])];
+  let cur = null;
+
+  const show = (html) => { el.innerHTML = html; el.hidden = false; root.classList.add('rd-sheet-open'); };
+  const close = () => {
+    el.hidden = true;
+    root.classList.remove('rd-sheet-open');
+    root.querySelectorAll('.rd-sel').forEach((x) => x.classList.remove('rd-sel'));
+    if (canSpeak) speechSynthesis.cancel();
+  };
+  const head = () => `<div class="rd-sheet-head"><b class="en">${esc(cur.surface)}</b><button class="rd-x" data-act="close" aria-label="סגירה">✕</button></div>`;
+
+  const ask = () => {
+    const { he, before, after, prev } = cur;
+    cur.opts = he ? shuffle([he, ...shuffle(hePool.filter((x) => x !== he)).slice(0, 3)]) : [];
+    show(`${head()}
+      <p class="rd-ctx en">${prev ? `<span class="rd-prev">${esc(prev)}</span> ` : ''}${esc(before)}<span class="rd-blank">_____</span>${esc(after)}</p>
+      ${canSpeak ? '<div class="row-center"><button class="btn btn-soft" data-act="hear">🔊 להקשיב למשפט בלי המילה</button></div>' : ''}
+      ${he ? `
+        <p class="rd-ask">מה לדעתכם המילה אומרת? אפשר להבין מההקשר</p>
+        <div class="rd-opts">${cur.opts.map((o, i) => `<button class="choice" data-act="pick" data-i="${i}"><span class="choice-text">${esc(o)}</span></button>`).join('')}</div>
+        <div class="row-center"><button class="btn btn-soft" data-act="idk">🤷 אין לי מושג, תראו לי</button></div>`
+        : `<p class="rd-ask">עוד אין לנו פירוש שמור למילה הזו. נסו להבין אותה מהמשפט, או שאלו מבוגר.</p>
+        <div class="row-center"><button class="btn" data-act="save">📌 לשמור במילים שלי</button></div>`}`);
+  };
+
+  const reveal = (guess) => {
+    const { he, w, surface, before, after, full } = cur;
+    const ok = guess !== null && cur.opts[guess] === he;
+    markUnknown(progress, T, w, surface, he, `${before}___${after}`, ok);
+    const note = !he ? 'שמרנו את המילה ברשימה שלי. אפשר לשאול מבוגר מה היא אומרת.'
+      : ok ? 'ניחשתם נכון מההקשר! 👏 בכל זאת שמרנו את המילה כדי לחזור עליה.'
+        : 'זו מילה חדשה, ושמרנו אותה לתרגול 📌';
+    show(`${head()}
+      ${he ? `<p class="rd-answer">${esc(he)}</p>` : ''}
+      <p class="rd-ctx en">${esc(before)}<span class="vo-hl">${esc(surface)}</span>${esc(after)} ${speakBtn(full)}</p>
+      <p class="rd-ask">${note}${w ? ' המילה הזו מהרשימה של המבחן, והיא תחזור בתרגול המילים.' : ''}</p>
+      <div class="row-center"><button class="btn btn-big" data-act="close">הבנתי ✓</button></div>`);
+  };
+
+  el.addEventListener('click', (e) => {
+    const act = e.target.closest('[data-act]');
+    if (!act) return;
+    const kind = act.dataset.act;
+    if (kind === 'close') close();
+    else if (kind === 'hear') say([cur.prev, cur.before, 'blank', cur.after].filter(Boolean).join(' | '), { rate: 0.85 });
+    else if (kind === 'pick') reveal(+act.dataset.i);
+    else if (kind === 'idk' || kind === 'save') reveal(null);
+  });
+
+  return {
+    open(tok) {
+      const wrap = tok.closest('[data-w]');
+      const w = wrap ? byId[wrap.dataset.w] : null;
+      const first = wrap ? wrap.querySelector('.rd-t') : tok;
+      const surface = wrap ? wrap.textContent : tok.textContent;
+      const sen = sentenceAt(T.paragraphs[+tok.closest('.rd-p').dataset.p], +first.dataset.o);
+      const at = +first.dataset.o - sen.start;
+      cur = {
+        w, surface, prev: sen.prev, full: sen.text,
+        before: sen.text.slice(0, at), after: sen.text.slice(at + surface.length),
+        he: w ? w.he : T.glossary?.[surface.toLowerCase()],
+      };
+      root.querySelectorAll('.rd-sel').forEach((x) => x.classList.remove('rd-sel'));
+      (wrap ?? tok).classList.add('rd-sel');
+      ask();
+    },
+  };
+}
+
+// The unit's marked words that are not on the vocabulary list.
+const myWordList = (items, u) => {
+  const texts = new Set(u.reading.map((t) => t.id));
+  return Object.entries(items).filter(([k, it]) => k.startsWith('uw:') && texts.has(it.src)).map(([key, it]) => ({ key, it }));
+};
+const markedListWords = (items, u) => allWords(u).filter((w) => items[vKey(w)]?.marked);
+const glossaryPool = (u) => [...new Map(u.reading.flatMap((t) => Object.entries(t.glossary || {}))
+  .filter(([w]) => !w.includes(' ') && !w.includes("'"))).entries()];
+
+function myWords(root, kid, ub, u) {
+  const items = getProgress(kid.id).items;
+  const mine = myWordList(items, u);
+  const list = markedListWords(items, u);
+  const dot = (k) => `<i class="mw-dot lvl-${box(items, k)}"></i>`;
+  const practicable = mine.filter((x) => x.it.he).length;
+  root.innerHTML = `
+    <a class="back" href="${ub}">→ חזרה</a>
+    <h1 class="page-title">📌 המילים שסימנתי</h1>
+    <p class="subtitle">מילים שלחצתם עליהן בזמן הקריאה כי לא הכרתם. הנקודה מראה כמה כבר יודעים</p>
+    ${!mine.length && !list.length ? '<div class="panel"><p>עוד לא סימנתם מילים. בקריאת קטע לוחצים על מילה שלא מכירים, והיא נשמרת כאן.</p><div class="row-center"><a class="btn" href="' + ub + '/read">📰 לקטעי הקריאה</a></div></div>' : ''}
+    ${mine.length ? `
+      <h2 class="section">מילים כלליות</h2>
+      <div class="mw-list">${mine.map(({ key, it }) => `
+        <div class="mw-row">${dot(key)}<div class="mw-main"><b class="en">${esc(it.w)}</b> ${speakBtn(it.w)} <span>${it.he ? esc(it.he) : '<span class="muted">עוד אין פירוש</span>'}</span>
+          ${it.ctx ? `<div class="mw-ctx en">${highlight(it.ctx.replace('___', it.w), { en: it.w })}</div>` : ''}</div></div>`).join('')}</div>
+      ${practicable ? `<div class="row-center"><a class="btn btn-big" href="${ub}/mywords">🎯 לתרגל את המילים שלי</a></div>` : ''}` : ''}
+    ${list.length ? `
+      <h2 class="section">מילים מהרשימה של המבחן</h2>
+      <p class="muted">המילים האלה חוזרות בתרגול המילים של היחידה</p>
+      <div class="mw-list">${list.map((w) => `
+        <a class="mw-row" href="${ub}/word/${w.id}">${dot(vKey(w))}<div class="mw-main"><b class="en">${esc(w.en)}</b> <span>${esc(w.he)}</span></div></a>`).join('')}</div>
+      <div class="row-center"><a class="btn btn-soft" href="${ub}/vocab/all">🎯 לתרגול המילים</a></div>` : ''}`;
+  wireSpeakButtons(root);
+}
+
+function myWordQuestion(key, it, pool) {
+  const useGap = it.ctx?.includes('___') && Math.random() < 0.5;
+  const ds = [];
+  for (const [w, he] of shuffle(pool)) {
+    if (he !== it.he && w !== it.w && !ds.some(([, h]) => h === he)) ds.push([w, he]);
+    if (ds.length === 3) break;
+  }
+  const help = () => `
+    <div class="viz-box"><div class="vo-card"><div class="vo-emoji">📌</div>
+      <div class="vo-word en">${esc(it.w)} ${speakBtn(it.w)}</div><div class="vo-he">${esc(it.he)}</div></div></div>
+    ${it.ctx ? `<div class="viz-box"><div class="vo-sentence en">${highlight(it.ctx.replace('___', it.w), { en: it.w })}</div></div>
+    <p class="viz-caption">המילה במשפט שבו פגשתם אותה</p>` : ''}`;
+  if (useGap) {
+    return { key, answer: it.w, help, after: () => say(it.ctx.replace('___', it.w)),
+      prompt: `<p class="q-ask">איזו מילה משלימה את המשפט?</p><div class="ps-shown en">${blank(it.ctx)}</div><div class="row-center">${hearGap(it.ctx)}</div>`,
+      options: shuffle([it.w, ...ds.map(([w]) => w)]).map(enChoice) };
+  }
+  return { key, answer: it.he, help, speak: it.w,
+    prompt: `<p class="q-ask">מה הפירוש?</p><div class="vo-q en">${esc(it.w)} ${speakBtn(it.w)}</div>`,
+    options: shuffle([it.he, ...ds.map(([, he]) => he)]).map((he) => ({ html: `<span class="choice-text">${esc(he)}</span>`, value: he })) };
+}
+
+function myWordsPractice(root, kid, ub, u) {
+  const progress = getProgress(kid.id);
+  const mine = myWordList(progress.items, u).filter((x) => x.it.he);
+  if (!mine.length) return myWords(root, kid, ub, u);
+  const keys = mine.map((x) => x.key);
+  const pool = glossaryPool(u);
+  const before = mastered(progress.items, keys);
+  const session = shuffle(pickSession(progress.items, keys, 10));
+  runQuiz(root, {
+    back: `${ub}/mine`,
+    questions: session.map((k) => myWordQuestion(k, progress.items[k], pool)),
+    onResult: (q, ok, ms) => { progress.items[q.key] = review(progress.items[q.key], ok, ms); },
+    onDone: ({ right, total, ms }) => {
+      saveProgress(progress);
+      logSession(kid.id, { module: 'units', part: 'mywords', unit: u.id, total, correct: right, ms });
+      const gained = mastered(getProgress(kid.id).items, keys) - before;
+      finishScreen(root, {
+        right, total,
+        extra: gained > 0 ? `<p class="subtitle">🎉 ${gained} מילים עברו לרשימה של מה שיודעים!</p>` : '',
+        again: () => myWordsPractice(root, kid, ub, u),
+        links: `<a class="btn btn-soft" href="${ub}/mine">📌 המילים שלי</a>`,
+      });
+    },
+  });
+}
 
 // ---------- mock test ----------
 // Like the teacher's test: Part A reading (40), Part B vocabulary from a word box (30), Part C grammar (30).

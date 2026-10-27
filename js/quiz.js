@@ -73,6 +73,7 @@ export function runQuiz(outer, { back, questions, onResult, onDone }) {
 
   $('#choices').addEventListener('click', (e) => {
     const b = e.target.closest('.choice');
+    if (e.target.closest('[data-say]')) return; // the little speaker inside a choice only plays the word
     if (b) answer(+b.dataset.n);
   });
   document.addEventListener('keydown', (e) => {

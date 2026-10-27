@@ -11,10 +11,10 @@ const PART_TITLES = {
   'present-simple': 'הווה פשוט',
   spell: 'איות', test: 'הכתבה',
   sub: 'חיסור', mul: 'כפל', mix: 'מעורב', class: 'מהכיתה',
-  vocab: 'אוצר מילים', grammar: 'דקדוק', unseen: 'Unseen', mock: 'מבחן דמה',
+  vocab: 'אוצר מילים', grammar: 'דקדוק', unseen: 'Unseen', mock: 'מבחן דמה', mywords: 'המילים שסימנו',
 };
 const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation', col: 'column',
-  vo: 'units', ug: 'units', rd: 'units' };
+  vo: 'units', ug: 'units', rd: 'units', uw: 'units' };
 
 const dayStart = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
 const weekStart = (t) => { const d = new Date(dayStart(t)); d.setDate(d.getDate() - d.getDay()); return d.getTime(); };
@@ -143,6 +143,8 @@ function detail(root, kid, modules) {
     <h2 class="stats-h">💪 כדאי לחזק</h2>
     <div class="panel wide" id="weak">${weakSpots(p.items, modules, {})}</div>
 
+    ${unknownWords(p.items)}
+
     <h2 class="stats-h">🕒 סיבובים אחרונים</h2>
     <div class="panel wide">${recent(s, modules)}</div>`;
 
@@ -256,6 +258,7 @@ function itemLabel(key, grammar) {
   if (prefix === 'fr') return `${a === 'n' ? 'שם השבר ' : ''}${ltr(b)}`;
   if (prefix === 'col') return ltr(`${b} ${{ add: '+', sub: '−', mul: '×' }[a]} ${c}`);
   if (prefix === 'en') return ltr(esc(a === 'L' ? `${b} ${b.toLowerCase()}` : b));
+  if (prefix === 'uw') return ltr(esc(a));
   if (prefix === 'vo') return ltr(esc(a.replace(/-/g, ' ')));
   if (prefix === 'ug') return `דקדוק, תרגיל ${+b + 1}`;
   if (prefix === 'rd') return `${ltr(esc(a))}, שאלה ${+b + 1}`;
@@ -269,7 +272,7 @@ function itemLabel(key, grammar) {
 
 function weakSpots(items, modules, grammar) {
   const weak = Object.entries(items)
-    .filter(([, it]) => it.wrong > 0 && (it.box || 0) < MASTERED_BOX)
+    .filter(([k, it]) => !k.startsWith('uw:') && it.wrong > 0 && (it.box || 0) < MASTERED_BOX)
     .sort(([, x], [, y]) => (x.box || 0) - (y.box || 0) || y.wrong / y.seen - x.wrong / x.seen)
     .slice(0, 12);
   if (!weak.length) return '<p class="muted">אין כרגע פריטים שחוזרים על עצמם בטעויות. 🎉</p>';
@@ -280,6 +283,26 @@ function weakSpots(items, modules, grammar) {
         <small>${it.wrong} טעויות מתוך ${it.seen}</small></span>`;
     }).join('')}</div>
     <p class="small muted">פריטים שהיו בהם טעויות ועוד לא בשליטה. התרגול היומי כבר מחזיר אותם יותר, ואפשר גם לעבור עליהם יחד.</p>`;
+}
+
+// Words the kid tapped as unknown while reading: general words (uw:) and words from a unit's list (vo: with marked).
+function unknownWords(items) {
+  const rows = Object.entries(items).filter(([k, it]) => (k.startsWith('uw:') || k.startsWith('vo:')) && it.marked)
+    .map(([k, it]) => ({
+      en: k.startsWith('uw:') ? it.w : k.slice(3).replace(/-/g, ' '), he: it.he, list: k.startsWith('vo:'),
+      n: it.marked, learned: (it.box || 0) >= MASTERED_BOX, updated: it.updated || 0,
+    }))
+    .sort((a, b) => a.learned - b.learned || b.updated - a.updated);
+  if (!rows.length) return '';
+  const left = rows.filter((r) => !r.learned).length;
+  return `
+    <h2 class="stats-h">📌 מילים שסימנו שלא מכירים בקריאה</h2>
+    <div class="panel wide">
+      <p class="small muted">${left ? `${left} מילים עוד לא בשליטה` : 'כל המילים כבר בשליטה 🎉'}. מילים מהרשימה של המבחן חוזרות בתרגול המילים, והשאר בתרגול "המילים שלי".</p>
+      <div class="weak-list">${rows.map((r) => `
+        <span class="weak ${r.learned ? 'weak-ok' : ''}">${ltr(esc(r.en))}
+          <small>${r.he ? `${esc(r.he)} · ` : ''}${r.list ? 'מהרשימה · ' : ''}סומנה ${r.n === 1 ? 'פעם אחת' : `${r.n} פעמים`}${r.learned ? ' · ✓ בשליטה' : ''}</small></span>`).join('')}</div>
+    </div>`;
 }
 
 function recent(sessions, modules) {
