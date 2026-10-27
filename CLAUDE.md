@@ -7,7 +7,7 @@ Family learning web app (Hebrew, RTL) for four kids. See README.md for the roadm
 - `content/kids.json`: kids and which modules each one sees.
 - `js/app.js`: hash router, home, kid page, settings. Module catalog lives in `MODULES`.
 - `js/modules/<module>.js`: one file per learning module, exporting `render(root, kid, routeArgs)`.
-- `js/viz/<topic>.js`: visualizations. Each method returns `{ html, caption }`; `vizPanel` shows tabs plus "show another way".
+- `js/viz/<topic>.js`: visualizations (`vocab.js` for words, `reading.js` for Unseen texts). Each method returns `{ html, caption }`; `vizPanel` shows tabs plus "show another way".
 - `js/quiz.js`: shared multiple-choice engine (`runQuiz`, `finishScreen`). Use it for new practice modes.
 - `js/speech.js`: English TTS (`say`, `speakBtn`). `content/english/`: letters (sound hints, tips, confusable groups) and word lists (`cvc`, `sight`). Add words from class material here.
 - `content/dictation/`: Hebrew dictation word lists (`index.json` + one file per list: syllables as [sound with nikud, letters], traps, wrong spellings). `js/modules/dictation.js` + `js/viz/spelling.js`; `sayHe` in speech.js. Photo grading: `POST /api/dictation` (Claude reads the page, needs env `ANTHROPIC_API_KEY`; the comparison is done in code).
@@ -21,11 +21,19 @@ Family learning web app (Hebrew, RTL) for four kids. See README.md for the roadm
 
 ## Conventions
 - The UI is Hebrew only. Address kids in **plural imperative / gender-neutral** forms ("נסו", "בחרו"), never gendered singular.
-- Math expressions inside Hebrew text must be wrapped LTR (`ltr()` from ui.js or the `.eq` class).
+- Math expressions inside Hebrew text must be wrapped LTR (`ltr()` from ui.js or the `.eq` class). Hebrew text with English words in it goes through `mixed()` from ui.js.
 - Every concept needs **at least 3 different visualizations**, switchable by the kid.
 - Wrong answer → show the correct answer plus a visualization; never just "wrong".
 - Register listeners on `document` with `{ signal: viewSignal() }`, and use `later()` instead of raw `setTimeout`, so nothing leaks between screens.
 - Progress items carry an `updated` timestamp; merge is per item, newest wins.
 
 ## Adding material from photos
-When the parent sends a photo of a test, worksheet or lesson: read it, identify the topic and level, then create a study unit (short explanation with visualizations, 20–40 graded exercises, a mock test in the teacher's style) under `content/units/<kid>/`. The unit format is defined when the `units` module is built (stage 6).
+When the parent sends a photo of a test, worksheet or lesson: read it, identify the topic and level, then create a study unit (short explanation with visualizations, 20–40 graded exercises, a mock test in the teacher's style) under `content/units/<kid>/` and list it in that folder's `index.json`.
+
+Unit format (`js/modules/units.js`, route `#/kid/<kid>/units/<unit id>`; see `content/units/itamar/2026-10-27-english.json`):
+- `id`, `title`, `date`, `source`, `grammarTopic` (a topic in `content/grammar/`, linked from the unit).
+- `wordGroups[]`: `{ title, words[] }`. A word: `id`, `en`, `pos` (n/v/adj/prep/phrase), `he`, `emoji`, `syl` (stressed syllable in capitals), `ex` + `exHe`, `gap` (sentence with `___`; `gapAns` when the filled text differs from `en`), `family` ([en, he] pairs), `syn`, `opp`, `tip`, `wrong` (3 misspellings), `gapNo` (ids of words that would also fit the gap or mean almost the same; never used as distractors). Item key `vo:<word id>`.
+- `grammar[]`: test-style items `{ task: verb|aux|neg|question|short|fix, q, options (correct first), person: do|does, form: aff|neg|q, why }`. Key `ug:<unit>:<i>`.
+- `reading[]`: Unseen texts `{ id, title, emoji, paragraphs[], questions[] }`; a question is `{ q, options (correct first), evidence (exact quote from the text, highlighted after a mistake), why? }`. Key `rd:<text>:<i>`.
+- The mock test is built from these: Part A one text (40), Part B 10 gap sentences from a word box (30), Part C 10 grammar items (30). Sessions log `module: 'units'` with part `vocab` / `grammar` / `unseen` / `mock` (plus `unit`, and `score` for mock).
+- Units without `wordGroups`/`reading` (like Niri's column exercises) are read by their own module, not by `units`.

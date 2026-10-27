@@ -54,3 +54,14 @@ export function keypad(container, { onDigit, onBack, onEnter }) {
     else if (e.key === 'Enter') onEnter();
   }, { signal: viewSignal() });
 }
+
+// Hebrew text with English words inside: each English run is isolated LTR, so the punctuation stays in place.
+export function mixed(s) {
+  const re = /[A-Za-z][A-Za-z'’\-/ ]*[A-Za-z]|[A-Za-z]/g;
+  let out = '', last = 0;
+  for (const m of String(s).matchAll(re)) {
+    out += `${esc(s.slice(last, m.index))}<span class="en">${esc(m[0])}</span>`;
+    last = m.index + m[0].length;
+  }
+  return out + esc(String(s).slice(last));
+}

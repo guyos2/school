@@ -2,6 +2,7 @@ import { esc, newView } from './ui.js';
 import { renderTimes } from './modules/times.js';
 import { renderEnglish } from './modules/english.js';
 import { renderGrammar } from './modules/grammar.js';
+import { renderUnits } from './modules/units.js';
 import { renderFractions } from './modules/fractions.js';
 import { renderDictation } from './modules/dictation.js';
 import { renderColumn } from './modules/column.js';
@@ -18,7 +19,7 @@ const MODULES = {
   'english-letters': { title: 'אותיות וקריאה באנגלית', icon: '🔤', render: renderEnglish },
   grammar: { title: 'דקדוק באנגלית', icon: '📘', render: renderGrammar },
   speaking: { title: 'מדברים אנגלית', icon: '🗣️' },
-  units: { title: 'חומר מהכיתה', icon: '📸' },
+  units: { title: 'חומר מהכיתה', icon: '📸', render: renderUnits },
   counting: { title: 'סופרים ומשחקים', icon: '🧸' },
 };
 
