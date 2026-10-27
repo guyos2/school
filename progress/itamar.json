@@ -1,7 +1,116 @@
 {
  "kid": "itamar",
  "version": 1,
- "items": {},
- "sessions": [],
- "updated": 0
+ "items": {
+  "vo:combine": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793101036437,
+   "updated": 1793086636437
+  },
+  "vo:amazing": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793101049316,
+   "updated": 1793086649316
+  },
+  "vo:taste": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793101054433,
+   "updated": 1793086654433
+  },
+  "vo:organizer": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793101070269,
+   "updated": 1793086670269
+  },
+  "vo:strawberry": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793101073536,
+   "updated": 1793086673536
+  },
+  "vo:celebrate": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793101085506,
+   "updated": 1793086685506
+  },
+  "vo:factory": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1793086693607,
+   "updated": 1793086693607
+  },
+  "vo:including": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793101141159,
+   "updated": 1793086741159
+  },
+  "vo:international": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793101147478,
+   "updated": 1793086747478
+  },
+  "vo:musician": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1793086755281,
+   "updated": 1793086755281
+  },
+  "vo:delicious": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793101168399,
+   "updated": 1793086768399
+  },
+  "vo:a-variety-of": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1793086793971,
+   "updated": 1793086793971
+  }
+ },
+ "sessions": [
+  {
+   "id": "4d3f86bc-1b1a-47fa-8d20-4e6263410c9d",
+   "at": 1793086812167,
+   "mastered": 0,
+   "module": "units",
+   "part": "vocab",
+   "unit": "2026-10-27-english",
+   "total": 12,
+   "correct": 9,
+   "ms": 184377
+  }
+ ],
+ "updated": 1793086812167
 }
