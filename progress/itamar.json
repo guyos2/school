@@ -105,6 +105,102 @@
    "wrong": 1,
    "due": 1793087060808,
    "updated": 1793087060808
+  },
+  "vo:row": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793101962249,
+   "updated": 1793087562249
+  },
+  "vo:blanket": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1793087570799,
+   "updated": 1793087570799
+  },
+  "vo:along": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793101982149,
+   "updated": 1793087582149
+  },
+  "vo:public": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793101988749,
+   "updated": 1793087588749
+  },
+  "vo:culture": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793102003899,
+   "updated": 1793087603899
+  },
+  "vo:airport": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793102006850,
+   "updated": 1793087606850
+  },
+  "vo:national": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793102030849,
+   "updated": 1793087630849
+  },
+  "vo:sight": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793102064832,
+   "updated": 1793087664832
+  },
+  "vo:bridge": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793102069936,
+   "updated": 1793087669936
+  },
+  "vo:lamp": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1793087684518,
+   "updated": 1793087684518
+  },
+  "vo:land": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1793087715917,
+   "updated": 1793087715917
+  },
+  "vo:performance": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1793087728067,
+   "updated": 1793087728067
   }
  },
  "sessions": [
@@ -129,7 +225,18 @@
    "total": 12,
    "correct": 10,
    "ms": 151705
+  },
+  {
+   "id": "b67c0dba-94dc-4e20-b292-2dc08e71356f",
+   "at": 1793087751703,
+   "mastered": 0,
+   "module": "units",
+   "part": "vocab",
+   "unit": "2026-10-27-english",
+   "total": 12,
+   "correct": 8,
+   "ms": 244058
   }
  ],
- "updated": 1793087117952
+ "updated": 1793087751703
 }
