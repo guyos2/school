@@ -141,7 +141,13 @@ function distractors(w, pool, n = 3) {
   return [...shuffle(ok.filter((x) => x.pos === w.pos)), ...shuffle(ok.filter((x) => x.pos !== w.pos))].slice(0, n);
 }
 
-const enChoice = (s) => ({ html: `<span class="en choice-text">${esc(s)}</span>`, value: s });
+// A choice with a little speaker, so a word can be heard before picking it.
+const enChoice = (s) => ({
+  html: `<span class="en choice-text">${esc(s)}</span>${canSpeak ? `<span class="speak-mini" role="button" aria-label="השמעה" data-say="${esc(s)}">🔊</span>` : ''}`,
+  value: s,
+});
+// A sentence with a gap is read with the word "blank" in its place.
+const hearGap = (sentence) => speakBtn(sentence.replace('___', '| blank |'), '🔊 להקשיב למשפט');
 
 function vocabQuestion(w, pool) {
   const key = vKey(w);
@@ -158,7 +164,7 @@ function vocabQuestion(w, pool) {
       options: shuffle([w, ...ds]).map((x) => enChoice(spoken(x.en))) };
   }
   return { key, answer: gapAnswer(w), help: () => wordHelp(w, 'sentence'), after: () => say(fillGap(w)),
-    prompt: `<p class="q-ask">איזו מילה משלימה את המשפט?</p><div class="ps-shown en">${blank(w.gap)}</div>`,
+    prompt: `<p class="q-ask">איזו מילה משלימה את המשפט?</p><div class="ps-shown en">${blank(w.gap)}</div><div class="row-center">${hearGap(w.gap)}</div>`,
     options: shuffle([w, ...ds]).map((x) => enChoice(gapAnswer(x))) };
 }
 
@@ -493,7 +499,7 @@ function myWordQuestion(key, it, pool) {
     <p class="viz-caption">המילה במשפט שבו פגשתם אותה</p>` : ''}`;
   if (useGap) {
     return { key, answer: it.w, help, after: () => say(it.ctx.replace('___', it.w)),
-      prompt: `<p class="q-ask">איזו מילה משלימה את המשפט?</p><div class="ps-shown en">${blank(it.ctx)}</div>`,
+      prompt: `<p class="q-ask">איזו מילה משלימה את המשפט?</p><div class="ps-shown en">${blank(it.ctx)}</div><div class="row-center">${hearGap(it.ctx)}</div>`,
       options: shuffle([it.w, ...ds.map(([w]) => w)]).map(enChoice) };
   }
   return { key, answer: it.he, help, speak: it.w,

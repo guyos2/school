@@ -501,3 +501,8 @@ button.back { border: 0; background: none; font: inherit; cursor: pointer; }
 .mt-mistake { background: var(--card); border-radius: 18px; box-shadow: var(--shadow); padding: 12px 14px; border-inline-start: 6px solid var(--bad); }
 .mt-mistake .struck { text-decoration-thickness: 2px; }
 .mt-ans { margin: 4px 0; }
+.speak-mini { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; margin-inline-start: 8px; border-radius: 50%; background: var(--bg); font-size: 16px; vertical-align: middle; }
+.choice:has(.speak-mini) { display: flex; align-items: center; justify-content: center; }
+.speak-btn-wide, .row-center .speak { width: auto; border-radius: 99px; padding: 6px 16px; font-size: 17px; }
+.speak-mini { flex: none; }
+.choice:has(.speak-mini) .choice-text { font-size: clamp(16px, 4.6vw, 22px); min-width: 0; overflow-wrap: anywhere; }
