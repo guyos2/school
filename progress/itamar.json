@@ -241,6 +241,102 @@
    "wrong": 1,
    "due": 1793091710451,
    "updated": 1793091710451
+  },
+  "vo:area": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793294493656,
+   "updated": 1793280093656
+  },
+  "vo:season": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793294533275,
+   "updated": 1793280133275
+  },
+  "vo:castle": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1793280161748,
+   "updated": 1793280161748
+  },
+  "vo:website": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793294604026,
+   "updated": 1793280204026
+  },
+  "vo:local": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1793280219242,
+   "updated": 1793280219242
+  },
+  "vo:hobby": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793294624289,
+   "updated": 1793280224289
+  },
+  "vo:theater": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793294627471,
+   "updated": 1793280227471
+  },
+  "vo:selfie": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793294630204,
+   "updated": 1793280230204
+  },
+  "vo:combination": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1793280239073,
+   "updated": 1793280239073
+  },
+  "vo:instrument": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1793280252450,
+   "updated": 1793280252450
+  },
+  "vo:fantastic": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1793280272517,
+   "updated": 1793280272517
+  },
+  "vo:in-addition-to": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793294677684,
+   "updated": 1793280277684
   }
  },
  "sessions": [
@@ -287,7 +383,18 @@
    "total": 12,
    "correct": 11,
    "ms": 170559
+  },
+  {
+   "id": "e5af095f-1ce9-45a1-804a-4b8de89c0f61",
+   "at": 1793280316951,
+   "mastered": 0,
+   "module": "units",
+   "part": "vocab",
+   "unit": "2026-10-27-english",
+   "total": 12,
+   "correct": 7,
+   "ms": 226552
   }
  ],
- "updated": 1793091749976
+ "updated": 1793280316951
 }
