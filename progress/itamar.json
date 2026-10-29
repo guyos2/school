@@ -3,20 +3,20 @@
  "version": 1,
  "items": {
   "vo:combine": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
-   "wrong": 0,
-   "due": 1793173474022,
-   "updated": 1793087074022
-  },
-  "vo:amazing": {
-   "box": 2,
+   "box": 3,
    "seen": 3,
    "right": 3,
    "wrong": 0,
-   "due": 1793178121352,
-   "updated": 1793091721352
+   "due": 1793539748574,
+   "updated": 1793280548574
+  },
+  "vo:amazing": {
+   "box": 1,
+   "seen": 4,
+   "right": 3,
+   "wrong": 1,
+   "due": 1793280517787,
+   "updated": 1793280517787
   },
   "vo:taste": {
    "box": 2,
@@ -27,84 +27,84 @@
    "updated": 1793280367536
   },
   "vo:organizer": {
-   "box": 2,
-   "seen": 2,
+   "box": 1,
+   "seen": 3,
    "right": 2,
-   "wrong": 0,
-   "due": 1793173386323,
-   "updated": 1793086986323
+   "wrong": 1,
+   "due": 1793280478934,
+   "updated": 1793280478934
   },
   "vo:strawberry": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1793173476835,
-   "updated": 1793087076835
+   "due": 1793539670883,
+   "updated": 1793280470883
   },
   "vo:celebrate": {
-   "box": 2,
-   "seen": 3,
-   "right": 3,
+   "box": 3,
+   "seen": 4,
+   "right": 4,
    "wrong": 0,
-   "due": 1793366755017,
-   "updated": 1793280355017
+   "due": 1793539707415,
+   "updated": 1793280507415
   },
   "vo:factory": {
-   "box": 2,
-   "seen": 2,
-   "right": 1,
+   "box": 3,
+   "seen": 3,
+   "right": 2,
    "wrong": 1,
-   "due": 1793173507095,
-   "updated": 1793087107095
+   "due": 1793539663399,
+   "updated": 1793280463399
   },
   "vo:including": {
-   "box": 2,
-   "seen": 3,
-   "right": 2,
+   "box": 3,
+   "seen": 4,
+   "right": 3,
    "wrong": 1,
-   "due": 1793178131391,
-   "updated": 1793091731391
+   "due": 1793539700853,
+   "updated": 1793280500853
   },
   "vo:international": {
-   "box": 2,
-   "seen": 2,
+   "box": 1,
+   "seen": 3,
    "right": 2,
-   "wrong": 0,
-   "due": 1793173372137,
-   "updated": 1793086972137
+   "wrong": 1,
+   "due": 1793280537344,
+   "updated": 1793280537344
   },
   "vo:musician": {
-   "box": 2,
-   "seen": 2,
-   "right": 1,
+   "box": 3,
+   "seen": 3,
+   "right": 2,
    "wrong": 1,
-   "due": 1793173369438,
-   "updated": 1793086969438
+   "due": 1793539693956,
+   "updated": 1793280493956
   },
   "vo:delicious": {
-   "box": 2,
-   "seen": 3,
-   "right": 3,
+   "box": 3,
+   "seen": 4,
+   "right": 4,
    "wrong": 0,
-   "due": 1793366742047,
-   "updated": 1793280342047
+   "due": 1793539751597,
+   "updated": 1793280551597
   },
   "vo:a-variety-of": {
-   "box": 2,
-   "seen": 2,
+   "box": 1,
+   "seen": 3,
    "right": 1,
-   "wrong": 1,
-   "due": 1793173376120,
-   "updated": 1793086976120
+   "wrong": 2,
+   "due": 1793280485359,
+   "updated": 1793280485359
   },
   "vo:tour": {
-   "box": 2,
-   "seen": 2,
-   "right": 1,
+   "box": 3,
+   "seen": 3,
+   "right": 2,
    "wrong": 1,
-   "due": 1793177985830,
-   "updated": 1793091585830
+   "due": 1793539728175,
+   "updated": 1793280528175
   },
   "vo:row": {
    "box": 2,
@@ -405,7 +405,18 @@
    "total": 12,
    "correct": 10,
    "ms": 72524
+  },
+  {
+   "id": "67e44673-78fe-4a13-a1ed-1ec3d8d2c66b",
+   "at": 1793280581220,
+   "mastered": 0,
+   "module": "units",
+   "part": "vocab",
+   "unit": "2026-10-27-english",
+   "total": 12,
+   "correct": 8,
+   "ms": 120542
   }
  ],
- "updated": 1793280400561
+ "updated": 1793280581220
 }
