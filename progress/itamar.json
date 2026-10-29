@@ -19,12 +19,12 @@
    "updated": 1793091721352
   },
   "vo:taste": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1793101054433,
-   "updated": 1793086654433
+   "due": 1793366767536,
+   "updated": 1793280367536
   },
   "vo:organizer": {
    "box": 2,
@@ -43,12 +43,12 @@
    "updated": 1793087076835
   },
   "vo:celebrate": {
-   "box": 1,
-   "seen": 2,
-   "right": 2,
+   "box": 2,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1793101495055,
-   "updated": 1793087095055
+   "due": 1793366755017,
+   "updated": 1793280355017
   },
   "vo:factory": {
    "box": 2,
@@ -83,12 +83,12 @@
    "updated": 1793086969438
   },
   "vo:delicious": {
-   "box": 1,
-   "seen": 2,
-   "right": 2,
+   "box": 2,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1793101403694,
-   "updated": 1793087003694
+   "due": 1793366742047,
+   "updated": 1793280342047
   },
   "vo:a-variety-of": {
    "box": 2,
@@ -107,12 +107,12 @@
    "updated": 1793091585830
   },
   "vo:row": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1793101962249,
-   "updated": 1793087562249
+   "due": 1793366730031,
+   "updated": 1793280330031
   },
   "vo:blanket": {
    "box": 1,
@@ -123,60 +123,60 @@
    "updated": 1793091625756
   },
   "vo:along": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1793101982149,
-   "updated": 1793087582149
+   "due": 1793366745183,
+   "updated": 1793280345183
   },
   "vo:public": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1793101988749,
-   "updated": 1793087588749
+   "due": 1793366737181,
+   "updated": 1793280337181
   },
   "vo:culture": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1793102003899,
-   "updated": 1793087603899
+   "due": 1793366782485,
+   "updated": 1793280382485
   },
   "vo:airport": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1793102006850,
-   "updated": 1793087606850
+   "due": 1793366778068,
+   "updated": 1793280378068
   },
   "vo:national": {
    "box": 1,
-   "seen": 1,
+   "seen": 2,
    "right": 1,
-   "wrong": 0,
-   "due": 1793102030849,
-   "updated": 1793087630849
+   "wrong": 1,
+   "due": 1793280349615,
+   "updated": 1793280349615
   },
   "vo:sight": {
    "box": 1,
-   "seen": 1,
+   "seen": 2,
    "right": 1,
-   "wrong": 0,
-   "due": 1793102064832,
-   "updated": 1793087664832
+   "wrong": 1,
+   "due": 1793280373390,
+   "updated": 1793280373390
   },
   "vo:bridge": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1793102069936,
-   "updated": 1793087669936
+   "due": 1793366764735,
+   "updated": 1793280364735
   },
   "vo:lamp": {
    "box": 2,
@@ -235,12 +235,12 @@
    "updated": 1793091693332
   },
   "vo:concert": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1793091710451,
-   "updated": 1793091710451
+   "due": 1793366790748,
+   "updated": 1793280390748
   },
   "vo:area": {
    "box": 1,
@@ -394,7 +394,18 @@
    "total": 12,
    "correct": 7,
    "ms": 226552
+  },
+  {
+   "id": "178e3e5e-5acf-4394-800e-ac7c63cd5c9a",
+   "at": 1793280400561,
+   "mastered": 0,
+   "module": "units",
+   "part": "vocab",
+   "unit": "2026-10-27-english",
+   "total": 12,
+   "correct": 10,
+   "ms": 72524
   }
  ],
- "updated": 1793280316951
+ "updated": 1793280400561
 }
