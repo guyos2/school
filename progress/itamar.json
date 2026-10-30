@@ -243,100 +243,100 @@
    "updated": 1793281193350
   },
   "vo:area": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
+   "box": 4,
+   "seen": 4,
+   "right": 4,
    "wrong": 0,
-   "due": 1793628565848,
-   "updated": 1793369365848
+   "due": 1793974247912,
+   "updated": 1793369447912
   },
   "vo:season": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
+   "box": 4,
+   "seen": 4,
+   "right": 4,
    "wrong": 0,
-   "due": 1793628562763,
-   "updated": 1793369362763
+   "due": 1793974285917,
+   "updated": 1793369485917
   },
   "vo:castle": {
-   "box": 3,
-   "seen": 3,
-   "right": 2,
+   "box": 4,
+   "seen": 4,
+   "right": 3,
    "wrong": 1,
-   "due": 1793628580650,
-   "updated": 1793369380650
+   "due": 1793974257130,
+   "updated": 1793369457130
   },
   "vo:website": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
+   "box": 4,
+   "seen": 4,
+   "right": 4,
    "wrong": 0,
-   "due": 1793628574296,
-   "updated": 1793369374296
+   "due": 1793974275449,
+   "updated": 1793369475449
   },
   "vo:local": {
-   "box": 3,
-   "seen": 3,
-   "right": 2,
+   "box": 4,
+   "seen": 4,
+   "right": 3,
    "wrong": 1,
-   "due": 1793628597486,
-   "updated": 1793369397486
+   "due": 1793974266580,
+   "updated": 1793369466580
   },
   "vo:hobby": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
+   "box": 4,
+   "seen": 4,
+   "right": 4,
    "wrong": 0,
-   "due": 1793628592416,
-   "updated": 1793369392416
+   "due": 1793974280199,
+   "updated": 1793369480199
   },
   "vo:theater": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
+   "box": 4,
+   "seen": 4,
+   "right": 4,
    "wrong": 0,
-   "due": 1793628600852,
-   "updated": 1793369400852
+   "due": 1793974283350,
+   "updated": 1793369483350
   },
   "vo:selfie": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
+   "box": 4,
+   "seen": 4,
+   "right": 4,
    "wrong": 0,
-   "due": 1793628576583,
-   "updated": 1793369376583
+   "due": 1793974263647,
+   "updated": 1793369463647
   },
   "vo:combination": {
-   "box": 3,
-   "seen": 3,
-   "right": 2,
+   "box": 4,
+   "seen": 4,
+   "right": 3,
    "wrong": 1,
-   "due": 1793628584368,
-   "updated": 1793369384368
+   "due": 1793974272882,
+   "updated": 1793369472882
   },
   "vo:instrument": {
-   "box": 2,
-   "seen": 3,
-   "right": 1,
+   "box": 3,
+   "seen": 4,
+   "right": 2,
    "wrong": 2,
-   "due": 1793455760480,
-   "updated": 1793369360480
+   "due": 1793628660930,
+   "updated": 1793369460930
   },
   "vo:fantastic": {
-   "box": 3,
-   "seen": 3,
-   "right": 2,
+   "box": 4,
+   "seen": 4,
+   "right": 3,
    "wrong": 1,
-   "due": 1793628588319,
-   "updated": 1793369388319
+   "due": 1793974269248,
+   "updated": 1793369469248
   },
   "vo:in-addition-to": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
+   "box": 4,
+   "seen": 4,
+   "right": 4,
    "wrong": 0,
-   "due": 1793628569999,
-   "updated": 1793369369999
+   "due": 1793974253879,
+   "updated": 1793369453879
   },
   "ug:2026-10-27-english:6": {
    "box": 1,
@@ -692,7 +692,18 @@
    "total": 12,
    "correct": 12,
    "ms": 44303
+  },
+  {
+   "id": "e641e500-eda3-4197-aad3-7929fe6a8c26",
+   "at": 1793369487019,
+   "mastered": 36,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-10-27-english",
+   "total": 12,
+   "correct": 12,
+   "ms": 41124
   }
  ],
- "updated": 1793369401954
+ "updated": 1793369487019
 }
