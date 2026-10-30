@@ -203,36 +203,36 @@
    "updated": 1793298409172
   },
   "vo:be-crazy-about": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
+   "box": 4,
+   "seen": 4,
+   "right": 4,
    "wrong": 0,
-   "due": 1793557499030,
-   "updated": 1793298299030
+   "due": 1793974093873,
+   "updated": 1793369293873
   },
   "vo:be-located-in": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
+   "box": 4,
+   "seen": 4,
+   "right": 4,
    "wrong": 0,
-   "due": 1793557524913,
-   "updated": 1793298324913
+   "due": 1793974076399,
+   "updated": 1793369276399
   },
   "vo:activity": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
+   "box": 4,
+   "seen": 4,
+   "right": 4,
    "wrong": 0,
-   "due": 1793557561977,
-   "updated": 1793298361977
+   "due": 1793974101440,
+   "updated": 1793369301440
   },
   "vo:available": {
-   "box": 2,
-   "seen": 3,
-   "right": 2,
+   "box": 3,
+   "seen": 4,
+   "right": 3,
    "wrong": 1,
-   "due": 1793384731400,
-   "updated": 1793298331400
+   "due": 1793628468415,
+   "updated": 1793369268415
   },
   "vo:concert": {
    "box": 3,
@@ -419,68 +419,68 @@
    "updated": 1793280752756
   },
   "vo:musical": {
-   "box": 2,
-   "seen": 2,
+   "box": 1,
+   "seen": 3,
    "right": 2,
-   "wrong": 0,
-   "due": 1793384727833,
-   "updated": 1793298327833
+   "wrong": 1,
+   "due": 1793369286384,
+   "updated": 1793369286384
   },
   "vo:event": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1793384721198,
-   "updated": 1793298321198
+   "due": 1793628464463,
+   "updated": 1793369264463
   },
   "vo:excited": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1793384694960,
-   "updated": 1793298294960
+   "due": 1793628458662,
+   "updated": 1793369258662
   },
   "vo:desert": {
-   "box": 1,
-   "seen": 2,
-   "right": 2,
+   "box": 2,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1793312754558,
-   "updated": 1793298354558
+   "due": 1793455680716,
+   "updated": 1793369280716
   },
   "vo:cultural": {
-   "box": 1,
+   "box": 2,
+   "seen": 3,
+   "right": 3,
+   "wrong": 0,
+   "due": 1793455672748,
+   "updated": 1793369272748
+  },
+  "vo:sculpture": {
+   "box": 3,
+   "seen": 3,
+   "right": 2,
+   "wrong": 1,
+   "due": 1793628498574,
+   "updated": 1793369298574
+  },
+  "vo:share": {
+   "box": 2,
+   "seen": 3,
+   "right": 2,
+   "wrong": 1,
+   "due": 1793455662245,
+   "updated": 1793369262245
+  },
+  "vo:tour-guide": {
+   "box": 2,
    "seen": 2,
    "right": 2,
    "wrong": 0,
-   "due": 1793312712133,
-   "updated": 1793298312133
-  },
-  "vo:sculpture": {
-   "box": 2,
-   "seen": 2,
-   "right": 1,
-   "wrong": 1,
-   "due": 1793384718497,
-   "updated": 1793298318497
-  },
-  "vo:share": {
-   "box": 1,
-   "seen": 2,
-   "right": 1,
-   "wrong": 1,
-   "due": 1793298334401,
-   "updated": 1793298334401
-  },
-  "vo:tour-guide": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
-   "wrong": 0,
-   "due": 1793312758775,
-   "updated": 1793298358775
+   "due": 1793455690572,
+   "updated": 1793369290572
   }
  },
  "sessions": [
@@ -659,7 +659,18 @@
    "total": 12,
    "correct": 12,
    "ms": 52805
+  },
+  {
+   "id": "adb2f0fd-b364-453a-bb5a-fc0f43e7aa3d",
+   "at": 1793369305593,
+   "mastered": 22,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-10-27-english",
+   "total": 12,
+   "correct": 11,
+   "ms": 49356
   }
  ],
- "updated": 1793369250249
+ "updated": 1793369305593
 }
