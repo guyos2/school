@@ -1,7 +1,100 @@
 {
  "kid": "itamar",
  "version": 1,
- "items": {},
- "sessions": [],
- "updated": 0
+ "items": {
+  "vo:factory": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793393874040,
+   "updated": 1793379474040
+  },
+  "vo:a-variety-of": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793393885213,
+   "updated": 1793379485213
+  },
+  "vo:including": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793393893496,
+   "updated": 1793379493496
+  },
+  "vo:organizer": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793393899854,
+   "updated": 1793379499854
+  },
+  "vo:international": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793393906204,
+   "updated": 1793379506204
+  },
+  "vo:delicious": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793393914054,
+   "updated": 1793379514054
+  },
+  "vo:amazing": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793393924929,
+   "updated": 1793379524929
+  },
+  "vo:musician": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793393937362,
+   "updated": 1793379537362
+  },
+  "vo:celebrate": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793393943358,
+   "updated": 1793379543358
+  },
+  "vo:combine": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1793379573429,
+   "updated": 1793379573429
+  }
+ },
+ "sessions": [
+  {
+   "id": "3dbcb324-5b55-49f5-858a-648e072c614f",
+   "at": 1793379585707,
+   "mastered": 0,
+   "module": "units",
+   "part": "typed",
+   "unit": "2026-10-27-english",
+   "total": 10,
+   "correct": 9,
+   "ms": 128350
+  }
+ ],
+ "updated": 1793379585707
 }
