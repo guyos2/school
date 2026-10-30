@@ -6,6 +6,7 @@ import { runQuiz, finishScreen } from '../quiz.js';
 import { say, canSpeak, speakBtn, wireSpeakButtons } from '../speech.js';
 import { getProgress, saveProgress, logSession } from '../store.js';
 import { review, pickSession, MASTERED_BOX } from '../srs.js';
+import { meaningMatch, acceptedMeanings } from '../meaning.js';
 import { vocabPanel, wordHelp, spoken, gapAnswer, fillGap, highlight } from '../viz/vocab.js';
 import { textHtml, sentenceAt, strategyPanel } from '../viz/reading.js';
 import { ruleCard } from '../viz/grammar.js';
@@ -38,6 +39,7 @@ export async function renderUnits(root, kid, [unitId, view = 'home', ...args]) {
   if (view === 'words') return wordList(root, kid, ub, u);
   if (view === 'word') return wordView(root, ub, u, args[0]);
   if (view === 'vocab') return vocabPractice(root, kid, ub, u, args[0] ?? 'all');
+  if (view === 'write') return writePractice(root, kid, ub, u, args[0] ?? 'all');
   if (view === 'meaning') return vocabPractice(root, kid, ub, u, args[0] ?? 'all', 'meaning');
   if (view === 'grammar') return grammarPractice(root, kid, ub, u);
   if (view === 'mine') return myWords(root, kid, ub, u);
@@ -74,6 +76,7 @@ function unitHome(root, kid, base, ub, u) {
     <h2 class="section">1. אוצר מילים · ${mastered(p.items, wk)} מתוך ${wk.length} בעל פה</h2>
     <div class="cards">
       ${card(`${ub}/words`, '📖', 'המילים', 'כל מילה ב-4 דרכים: תמונה, משפט, מילים קרובות, הברות ואיות')}
+      ${card(`${ub}/write/all`, '✍️', 'כותבים או אומרים את הפירוש', 'רואים מילה בלי תשובות, וכותבים או מקליטים את הפירוש בעברית')}
       ${card(`${ub}/meaning/all`, '🔤', 'מה הפירוש?', 'רואים מילה באנגלית ובוחרים את הפירוש. רק זה, בלי דברים אחרים')}
       ${card(`${ub}/vocab/all`, '🎯', 'תרגול מילים', 'פירוש, תרגום והשלמת משפט. מילים שטועים בהן חוזרות יותר')}
     </div>
@@ -109,7 +112,7 @@ function wordList(root, kid, ub, u) {
       <div class="vo-grid">${g.words.map((w) => `
         <a class="vo-tile" href="${ub}/word/${w.id}"><i class="vo-dot lvl-${box(items, vKey(w))}"></i>
           <span class="vo-tile-emoji">${w.emoji}</span><b class="en">${esc(w.en)}</b><small>${esc(w.he)}</small></a>`).join('')}</div>
-      <div class="row-center"><a class="btn btn-soft" href="${ub}/meaning/${gi}">🔤 מה הפירוש? רק המילים האלה</a><a class="btn btn-soft" href="${ub}/vocab/${gi}">🎯 תרגול מעורב</a></div>`).join('')}`;
+      <div class="row-center"><a class="btn btn-soft" href="${ub}/meaning/${gi}">🔤 מה הפירוש? רק המילים האלה</a><a class="btn btn-soft" href="${ub}/write/${gi}">✍️ כותבים פירוש</a><a class="btn btn-soft" href="${ub}/vocab/${gi}">🎯 תרגול מעורב</a></div>`).join('')}`;
 }
 
 function wordView(root, ub, u, id) {
@@ -194,6 +197,143 @@ function vocabPractice(root, kid, ub, u, g, mode = 'mixed') {
       });
     },
   });
+}
+
+// ---------- writing or saying the meaning ----------
+// The word is shown with no choices. The meaning is typed or recorded (speech recognition, where the browser has it) and checked
+// against the word's accepted meanings, so "לשלב", "לחבר" and "חיבור" all count for combine. An answer that does not match
+// shows the accepted meanings, and the kid can say that their own answer means the same thing.
+const SpeechRec = typeof window !== 'undefined' && (window.SpeechRecognition || window.webkitSpeechRecognition);
+
+function writePractice(outer, kid, ub, u, g) {
+  const progress = getProgress(kid.id);
+  const all = allWords(u);
+  const words = u.wordGroups[g]?.words ?? all;
+  const keys = words.map(vKey);
+  const byKey = Object.fromEntries(all.map((w) => [vKey(w), w]));
+  const before = mastered(progress.items, keys);
+  const queue = shuffle(pickSession(progress.items, keys, 10, { maxNew: 5 })).map((k) => ({ w: byKey[k] }));
+  const total = queue.length;
+  const begin = Date.now();
+  let i = 0, right = 0, started = 0, locked = false, rec = null, alts = [];
+
+  // A fresh inner element, so listeners never pile up on the shared root.
+  outer.innerHTML = '<div class="wr"></div>';
+  const root = outer.firstElementChild;
+  root.innerHTML = `
+    <a class="back" href="${ub}">→ חזרה</a>
+    <div class="progress-bar"><div class="progress-fill"></div></div>
+    <div class="q-card"><div id="prompt"></div><div class="q-feedback" id="fb"></div></div>
+    <div id="area"></div>
+    <div id="help"></div>`;
+  const $ = (sel) => root.querySelector(sel);
+  wireSpeakButtons(root);
+  viewSignal().addEventListener('abort', () => rec?.abort());
+
+  const record = (q, ok) => {
+    if (q.retry) return;
+    const key = vKey(q.w);
+    progress.items[key] = review(progress.items[key], ok, Date.now() - started);
+    if (ok) right++;
+  };
+  const next = () => {
+    rec?.abort();
+    i++;
+    if (i < queue.length) return show();
+    saveProgress(progress);
+    logSession(kid.id, { module: 'units', part: 'typed', unit: u.id, total, correct: right, ms: Date.now() - begin });
+    const gained = mastered(getProgress(kid.id).items, keys) - before;
+    finishScreen(outer, {
+      right, total,
+      extra: gained > 0 ? `<p class="subtitle">🎉 ${gained} מילים חדשות נכנסו לרשימה של מה שיודעים!</p>` : '',
+      again: () => writePractice(outer, kid, ub, u, g),
+      links: `<a class="btn btn-soft" href="${ub}/words">📖 המילים</a>`,
+    });
+  };
+
+  function show() {
+    const { w } = queue[i];
+    locked = false; started = Date.now(); alts = [];
+    $('.progress-fill').style.width = `${(i / queue.length) * 100}%`;
+    $('#prompt').innerHTML = `<p class="q-ask">מה הפירוש?</p>
+      <div class="vo-q en">${esc(w.en)} ${speakBtn(spoken(w.en))}</div>
+      <p class="q-sub">כותבים או אומרים את הפירוש בעברית. אפשר גם יותר מפירוש אחד</p>`;
+    $('#fb').textContent = ''; $('#fb').className = 'q-feedback';
+    $('#help').innerHTML = '';
+    $('#area').innerHTML = `
+      <form class="wr-form" id="f">
+        <input id="ans" class="wr-input" lang="he" dir="rtl" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="הפירוש בעברית">
+        <div class="row-center">
+          ${SpeechRec ? '<button type="button" class="btn btn-soft" id="mic">🎙️ להקליט</button>' : ''}
+          <button class="btn" type="submit">בדיקה ✓</button>
+          <button type="button" class="btn btn-soft" id="idk">🤷 לא יודעים</button>
+        </div>
+      </form>
+      <p class="subtitle" id="msg"></p>`;
+    $('#ans').addEventListener('input', () => { alts = []; });
+    $('#idk').onclick = () => finish(false, '');
+    $('#f').onsubmit = (e) => {
+      e.preventDefault();
+      const text = $('#ans').value.trim();
+      if (!text && !alts.length) { $('#msg').textContent = 'כותבים או מקליטים את הפירוש, ואז לוחצים על בדיקה'; return; }
+      finish(meaningMatch([text, ...alts], w), text);
+    };
+    if (SpeechRec) $('#mic').onclick = listen;
+  }
+
+  function listen() {
+    const btn = $('#mic');
+    if (rec) { rec.stop(); return; }
+    rec = new SpeechRec();
+    rec.lang = 'he-IL';
+    rec.interimResults = false;
+    rec.maxAlternatives = 5;
+    btn.textContent = '⏹️ מקשיבים… לחצו לסיום';
+    rec.onresult = (e) => {
+      alts = [...e.results[0]].map((a) => a.transcript);
+      $('#ans').value = alts[0] ?? '';
+      $('#msg').textContent = 'שמענו. אפשר לתקן בכתיבה, ואז לוחצים על בדיקה';
+    };
+    rec.onerror = (e) => {
+      $('#msg').textContent = e.error === 'not-allowed' ? 'צריך לאשר למכשיר להשתמש במיקרופון' : 'לא הצלחנו לשמוע. אפשר לנסות שוב או לכתוב';
+    };
+    rec.onend = () => { rec = null; const b = root.querySelector('#mic'); if (b) b.textContent = '🎙️ להקליט'; };
+    rec.start();
+  }
+
+  function finish(ok, text) {
+    if (locked) return;
+    locked = true;
+    rec?.abort();
+    const q = queue[i];
+    root.querySelector('#ans').disabled = true;
+    if (ok) {
+      record(q, true);
+      $('#fb').textContent = pick(PRAISE); $('#fb').className = 'q-feedback good';
+      say(spoken(q.w.en));
+      later(1100, next);
+      return;
+    }
+    $('#fb').textContent = 'הנה הפירוש 👇'; $('#fb').className = 'q-feedback bad';
+    const others = acceptedMeanings(q.w).slice(0, 6).join(' · ');
+    $('#help').innerHTML = `
+      <div class="help-box">
+        <div class="viz-box"><p class="wr-accepted">פירושים נכונים: <b>${esc(others)}</b></p></div>
+        ${wordHelp(q.w, 'sentence')}
+        ${text ? `<p class="subtitle">הפירוש שכתבתם: <b>${esc(text)}</b>. אם זה אומר בערך אותו דבר, אפשר לסמן שזה נכון.</p>` : ''}
+        <div class="row-center">
+          ${text ? '<button class="btn" id="same">✓ התשובה שלי נכונה גם כן</button>' : ''}
+          <button class="btn btn-big" id="go">הבנתי, ממשיכים ←</button>
+        </div>
+      </div>`;
+    $('#same')?.addEventListener('click', () => { record(q, true); next(); });
+    $('#go').onclick = () => {
+      record(q, false);
+      if (!q.retry) queue.push({ w: q.w, retry: true });
+      next();
+    };
+  }
+  show();
 }
 
 // ---------- grammar, test style ----------
