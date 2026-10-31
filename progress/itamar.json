@@ -339,20 +339,20 @@
    "updated": 1793429896315
   },
   "ug:2026-10-27-english:6": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1793295100540,
-   "updated": 1793280700540
+   "due": 1793516807513,
+   "updated": 1793430407513
   },
   "ug:2026-10-27-english:2": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1793280706773,
-   "updated": 1793280706773
+   "due": 1793516816746,
+   "updated": 1793430416746
   },
   "ug:2026-10-27-english:9": {
    "box": 2,
@@ -363,52 +363,52 @@
    "updated": 1793429896315
   },
   "ug:2026-10-27-english:0": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1793295118713,
-   "updated": 1793280718713
+   "due": 1793516746280,
+   "updated": 1793430346280
   },
   "ug:2026-10-27-english:7": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1793295124397,
-   "updated": 1793280724397
+   "due": 1793516755780,
+   "updated": 1793430355780
   },
   "ug:2026-10-27-english:5": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1793295129546,
-   "updated": 1793280729546
+   "due": 1793516732180,
+   "updated": 1793430332180
   },
   "ug:2026-10-27-english:3": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1793295133982,
-   "updated": 1793280733982
+   "due": 1793516794029,
+   "updated": 1793430394029
   },
   "ug:2026-10-27-english:8": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1793280740032,
-   "updated": 1793280740032
+   "due": 1793516765880,
+   "updated": 1793430365880
   },
   "ug:2026-10-27-english:4": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1793295147572,
-   "updated": 1793280747572
+   "due": 1793516802730,
+   "updated": 1793430402730
   },
   "ug:2026-10-27-english:1": {
    "box": 2,
@@ -580,19 +580,19 @@
   },
   "ug:2026-10-27-english:22": {
    "box": 1,
-   "seen": 1,
-   "right": 0,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1793429896315,
-   "updated": 1793429896315
+   "due": 1793444789696,
+   "updated": 1793430389696
   },
   "ug:2026-10-27-english:24": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1793429896315,
-   "updated": 1793429896315
+   "due": 1793516742830,
+   "updated": 1793430342830
   },
   "ug:2026-10-27-english:27": {
    "box": 1,
@@ -866,7 +866,18 @@
    "total": 28,
    "correct": 23,
    "ms": 2025939
+  },
+  {
+   "id": "1b3172d1-409a-4a0d-b73b-3124cd64e096",
+   "at": 1793430417849,
+   "mastered": 42,
+   "module": "units",
+   "part": "grammar",
+   "unit": "2026-10-27-english",
+   "total": 10,
+   "correct": 10,
+   "ms": 89149
   }
  ],
- "updated": 1793429896316
+ "updated": 1793430417849
 }
