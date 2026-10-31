@@ -109,6 +109,9 @@ export async function renderParentHome(outer) {
         ${shareBlock(familyUrl(parent.familyToken), 'לינק משפחתי ללימוד מילים באנגלית')}
         <button class="link-btn" id="newfam">החלפת הלינק המשפחתי</button>
       </div>` : ''}
+    <p class="center muted small">באפליקציה של הילדים אין קישור לאזור ההורים. כדי לחזור לכאן שמרו במועדפים את הכתובת
+      <span class="en">${esc(`${location.origin}${location.pathname}#/parent`)}</span>.
+      במכשיר שגם הילדים משתמשים בו, כדאי לצאת מהחשבון בסוף.</p>
     <div class="row-center"><button class="link-btn" id="logout">יציאה מהחשבון</button></div>`;
 
   wireShare(root);

@@ -22,7 +22,7 @@ function renderLanding(root) {
       <h1 class="page-title">מי מתרגל?</h1>
       <div class="kids">${kids.map((k) => `
         <a class="kid" href="#/k/${k.token}"><span class="kid-emoji">${esc(k.emoji)}</span><span class="kid-name">${esc(k.name)}</span></a>`).join('')}</div>
-      <div class="row-center"><a class="link-btn" href="${parent ? '#/parent' : '#/login'}">להורים</a></div>` : `
+` : `
       <section class="hero">
         <div class="big-emoji">📚</div>
         <h1>אוצר מילים וזמנים באנגלית, לפי מה שלומדים בכיתה</h1>
@@ -58,6 +58,8 @@ function route() {
   const parts = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
   const [a, b, c, d] = parts;
   document.body.dataset.area = a === 'k' ? 'kid' : 'parent';
+  // Kids never get a way into the parents' area: their logo leads back to their own home screen.
+  document.querySelector('.home-link').href = a === 'k' && b ? `#/k/${b}` : parentSession() ? '#/parent' : '#/';
   const fail = (e) => { console.error(e); app.innerHTML = '<p class="center">משהו השתבש. נסו לרענן את הדף.</p>'; };
   try {
     if (!a) {
