@@ -42,7 +42,7 @@ npm test           # בדיקות השרת והתכנון. עם TEST_DATABASE_UR
 ```
 
 ## פריסה ב-Vercel (פרויקט חדש, לא נוגעים באפליקציה המשפחתית)
-1. ב-Vercel: **Add New → Project**, ובוחרים את אותו ריפו (`guyos2/school`). ב-**Root Directory** בוחרים `vocab`. Framework: **Other**.
+1. ב-Vercel: **Add New → Project**, ובוחרים את אותו ריפו (`guyos2/school`), Framework: **Other**. כל עוד `vocab` לא נמצאת ב-`main` היא לא מופיעה ברשימה: יוצרים עם `./`, ואחר כך כותבים `vocab` ב-**Settings → Build and Deployment → Root Directory**.
 2. **Storage → Create Database → Neon (Postgres)** ומחברים לפרויקט. זה יוצר את המשתנה `DATABASE_URL`. כדאי לבחור באפשרות של ענף נפרד לכל Preview, כדי שבדיקות לא ייגעו בנתונים האמיתיים. הטבלאות נוצרות לבד בהפעלה הראשונה (`db/schema.sql`).
 3. **Settings → Environment Variables**: מוסיפים `TOKEN_SECRET` עם מחרוזת אקראית ארוכה (למשל הפלט של `openssl rand -base64 32`).
 4. כל ענף מקבל כתובת Preview משלו. ממזגים ל-`main` רק אחרי אישור.
