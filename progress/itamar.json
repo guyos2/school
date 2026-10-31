@@ -204,43 +204,43 @@
   },
   "vo:be-crazy-about": {
    "box": 5,
-   "seen": 5,
-   "right": 5,
-   "wrong": 0,
-   "due": 1794579193909,
-   "updated": 1793369593909
-  },
-  "vo:be-located-in": {
-   "box": 4,
-   "seen": 4,
-   "right": 4,
-   "wrong": 0,
-   "due": 1793974076399,
-   "updated": 1793369276399
-  },
-  "vo:activity": {
-   "box": 5,
    "seen": 6,
    "right": 6,
    "wrong": 0,
-   "due": 1794639496315,
-   "updated": 1793429896315
+   "due": 1794648462261,
+   "updated": 1793438862261
+  },
+  "vo:be-located-in": {
+   "box": 5,
+   "seen": 5,
+   "right": 5,
+   "wrong": 0,
+   "due": 1794648479464,
+   "updated": 1793438879464
+  },
+  "vo:activity": {
+   "box": 5,
+   "seen": 7,
+   "right": 7,
+   "wrong": 0,
+   "due": 1794648453642,
+   "updated": 1793438853642
   },
   "vo:available": {
+   "box": 5,
+   "seen": 6,
+   "right": 5,
+   "wrong": 1,
+   "due": 1794648439055,
+   "updated": 1793438839055
+  },
+  "vo:concert": {
    "box": 4,
    "seen": 5,
    "right": 4,
    "wrong": 1,
-   "due": 1793974356234,
-   "updated": 1793369556234
-  },
-  "vo:concert": {
-   "box": 4,
-   "seen": 4,
-   "right": 3,
-   "wrong": 1,
-   "due": 1793974375757,
-   "updated": 1793369575757
+   "due": 1794043568979,
+   "updated": 1793438768979
   },
   "vo:area": {
    "box": 4,
@@ -420,11 +420,11 @@
   },
   "vo:musical": {
    "box": 2,
-   "seen": 4,
-   "right": 3,
+   "seen": 5,
+   "right": 4,
    "wrong": 1,
-   "due": 1793455997810,
-   "updated": 1793369597810
+   "due": 1793525191133,
+   "updated": 1793438791133
   },
   "vo:event": {
    "box": 5,
@@ -435,52 +435,52 @@
    "updated": 1793429896315
   },
   "vo:excited": {
-   "box": 4,
-   "seen": 4,
-   "right": 4,
+   "box": 5,
+   "seen": 5,
+   "right": 5,
    "wrong": 0,
-   "due": 1793974383925,
-   "updated": 1793369583925
+   "due": 1794648470696,
+   "updated": 1793438870696
   },
   "vo:desert": {
-   "box": 3,
-   "seen": 4,
-   "right": 4,
+   "box": 4,
+   "seen": 5,
+   "right": 5,
    "wrong": 0,
-   "due": 1793628787990,
-   "updated": 1793369587990
+   "due": 1794043600785,
+   "updated": 1793438800785
   },
   "vo:cultural": {
-   "box": 3,
-   "seen": 4,
-   "right": 4,
+   "box": 4,
+   "seen": 5,
+   "right": 5,
    "wrong": 0,
-   "due": 1793628773090,
-   "updated": 1793369573090
+   "due": 1794043609502,
+   "updated": 1793438809502
   },
   "vo:sculpture": {
-   "box": 1,
-   "seen": 4,
-   "right": 2,
+   "box": 2,
+   "seen": 5,
+   "right": 3,
    "wrong": 2,
-   "due": 1793369565585,
-   "updated": 1793369565585
+   "due": 1793525218284,
+   "updated": 1793438818284
   },
   "vo:share": {
-   "box": 3,
-   "seen": 4,
-   "right": 3,
+   "box": 4,
+   "seen": 5,
+   "right": 4,
    "wrong": 1,
-   "due": 1793628801361,
-   "updated": 1793369601361
+   "due": 1794043536590,
+   "updated": 1793438736590
   },
   "vo:tour-guide": {
    "box": 4,
-   "seen": 4,
-   "right": 4,
+   "seen": 5,
+   "right": 5,
    "wrong": 0,
-   "due": 1794034696315,
-   "updated": 1793429896315
+   "due": 1794043630121,
+   "updated": 1793438830121
   },
   "rd:food-festival:0": {
    "box": 1,
@@ -1068,7 +1068,18 @@
    "total": 12,
    "correct": 12,
    "ms": 135371
+  },
+  {
+   "id": "266d1ac1-40de-4673-9d4f-5b535547b367",
+   "at": 1793438880566,
+   "mastered": 45,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-10-27-english",
+   "total": 12,
+   "correct": 12,
+   "ms": 153685
   }
  ],
- "updated": 1793438719324
+ "updated": 1793438880566
 }
