@@ -1,0 +1,12 @@
+{
+  "name": "vocab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "postgres": "^3.4.7"
+  }
+}

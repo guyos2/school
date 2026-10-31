@@ -2,6 +2,8 @@
 
 Family learning web app (Hebrew, RTL) for four kids. See README.md for the roadmap.
 
+`vocab/` is a separate product (vocabulary and tenses for parents to buy, grades 4–7) with its own `vocab/CLAUDE.md`, server and Vercel project. Nothing in this file applies to it, and the two apps share no code at runtime.
+
 ## Structure
 - Plain HTML + ES modules, no build step. Hosted on Vercel (production = `main`, https://school-pearl-eight.vercel.app).
 - `content/kids.json`: kids and which modules each one sees.
