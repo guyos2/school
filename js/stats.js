@@ -11,7 +11,7 @@ const PART_TITLES = {
   'present-simple': 'הווה פשוט',
   spell: 'איות', test: 'הכתבה',
   sub: 'חיסור', mul: 'כפל', mix: 'מעורב', class: 'מהכיתה',
-  vocab: 'אוצר מילים', meaning: 'פירוש מילים', typed: 'כתיבת פירוש', grammar: 'דקדוק', unseen: 'Unseen', mock: 'מבחן דמה', mywords: 'המילים שסימנו',
+  vocab: 'אוצר מילים', meaning: 'פירוש מילים', typed: 'כתיבת פירוש', grammar: 'דקדוק', unseen: 'Unseen', mock: 'מבחן דמה', gtest: 'מבחן דקדוק', mywords: 'המילים שסימנו',
 };
 const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation', col: 'column',
   vo: 'units', ug: 'units', rd: 'units', uw: 'units' };

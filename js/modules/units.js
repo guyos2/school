@@ -47,6 +47,7 @@ export async function renderUnits(root, kid, [unitId, view = 'home', ...args]) {
   if (view === 'howto') return howto(root, ub);
   if (view === 'read') return args[0] ? readText(root, kid, ub, u, args[0]) : readingList(root, kid, ub, u);
   if (view === 'test') return testIntro(root, kid, ub, u);
+  if (view === 'gtest') return testIntro(root, kid, ub, u, 'grammar');
   unitHome(root, kid, base, ub, u);
 }
 
@@ -67,6 +68,7 @@ function unitHome(root, kid, base, ub, u) {
   const marked = [...myWordList(p.items, u).map((x) => x.key), ...markedListWords(p.items, u).map(vKey)];
   const rightOnce = rk.filter((k) => p.items[k]?.right > 0).length;
   const tests = p.sessions.filter((s) => s.module === 'units' && s.part === 'mock' && s.unit === u.id);
+  const gtests = p.sessions.filter((s) => s.module === 'units' && s.part === 'gtest' && s.unit === u.id);
   const card = (href, icon, title, sub) =>
     `<a class="card" href="${href}"><span class="card-icon">${icon}</span><span class="card-title">${title}</span><span class="card-sub">${sub}</span></a>`;
   root.innerHTML = `
@@ -85,6 +87,7 @@ function unitHome(root, kid, base, ub, u) {
       ${kid.modules.includes('grammar') && u.grammarTopic
         ? card(`#/kid/${kid.id}/grammar/topic/${u.grammarTopic}`, '🔍', 'מבנה המשפט', 'חיוב, שלילה ושאלה, עם המחשות ותרגול') : ''}
       ${card(`${ub}/grammar`, '📝', 'תרגילים בסגנון המבחן', 'השלמת פועל, do / does, שלילה, שאלות ותשובות קצרות')}
+      ${card(`${ub}/gtest`, '🏁', 'מבחן דקדוק', gtests.length ? `ציון אחרון: ${gtests.at(-1).score} · ${gtests.length === 1 ? 'מבחן אחד' : `${gtests.length} מבחנים`} עד עכשיו` : '30 שאלות Present Simple בלבד, עם ציון מתוך 100')}
     </div>
     <h2 class="section">3. Unseen · ${rightOnce} מתוך ${rk.length} שאלות כבר נענו נכון</h2>
     <div class="cards">
@@ -678,6 +681,24 @@ function myWordsPractice(root, kid, ub, u) {
 // ---------- mock test ----------
 // Like the teacher's test: Part A reading (40), Part B vocabulary from a word box (30), Part C grammar (30).
 // No feedback until the end; then a grade and every mistake with the right answer and a visualization.
+// A test with grammar only: 30 questions in sections by task (complete the verb, do / does, negative, questions, short answers,
+// which sentence is correct), worth 100 points.
+const GRAMMAR_TEST = { verb: 8, aux: 5, neg: 4, question: 5, short: 4, fix: 4 };
+
+function buildGrammarTest(u) {
+  const qs = [];
+  for (const [task, n] of Object.entries(GRAMMAR_TEST)) {
+    const ids = shuffle(u.grammar.map((_, i) => i).filter((i) => u.grammar[i].task === task)).slice(0, n);
+    for (const i of ids) {
+      const it = u.grammar[i];
+      qs.push({ key: gKey(u, i), task, prompt: it.q ? blank(it.q) : '', options: shuffle(it.options), answer: it.options[0], explain: () => grammarHelp(it) });
+    }
+  }
+  return { kind: 'grammar', T: null, bank: [], parts: [
+    { title: 'Grammar Test – Present Simple', he: 'מבחן דקדוק', points: 100, intro: 'Choose the correct answer.', qs },
+  ] };
+}
+
 function buildTest(u, lastText) {
   const fresh = u.reading.filter((t) => t.id !== lastText);
   const T = pick(fresh.length ? fresh : u.reading);
@@ -689,7 +710,7 @@ function buildTest(u, lastText) {
   const gram = [];
   for (let r = 0; gram.length < 10 && r < 4; r++) for (const list of byTask) if (list[r] !== undefined && gram.length < 10) gram.push(list[r]);
   gram.sort((a, b) => Object.keys(TASKS).indexOf(u.grammar[a].task) - Object.keys(TASKS).indexOf(u.grammar[b].task) || a - b);
-  return { T, bank, parts: [
+  return { kind: 'full', T, bank, parts: [
     { title: 'Part A – Reading Comprehension', he: 'הבנת הנקרא', points: 40, intro: 'Read the text and answer the questions.',
       qs: T.questions.map((q, i) => ({ key: rKey(T, i), prompt: esc(q.q), options: shuffle(q.options), answer: q.options[0],
         explain: () => readingHelp(q).replace(' (מסומנת בצהוב למעלה)', '') })) },
@@ -705,23 +726,35 @@ function buildTest(u, lastText) {
   ] };
 }
 
-function testIntro(root, kid, ub, u) {
-  const tests = getProgress(kid.id).sessions.filter((s) => s.module === 'units' && s.part === 'mock' && s.unit === u.id);
+function testIntro(root, kid, ub, u, kind = 'full') {
+  const grammar = kind === 'grammar';
+  const part = grammar ? 'gtest' : 'mock';
+  const tests = getProgress(kid.id).sessions.filter((s) => s.module === 'units' && s.part === part && s.unit === u.id);
   root.innerHTML = `
     <a class="back" href="${ub}">→ חזרה</a>
-    <h1 class="page-title">🏁 מבחן דמה</h1>
+    <h1 class="page-title">🏁 ${grammar ? 'מבחן דקדוק' : 'מבחן דמה'}</h1>
     <div class="panel">
-      <p>המבחן בנוי כמו מבחן בכיתה, בשלושה חלקים:</p>
-      <ul class="mt-plan">
-        <li><b class="en">Part A – Reading</b> · קטע Unseen ו-8 שאלות · 40 נקודות</li>
-        <li><b class="en">Part B – Vocabulary</b> · 10 משפטים להשלים ממחסן מילים · 30 נקודות</li>
-        <li><b class="en">Part C – Grammar</b> · 10 שאלות Present Simple · 30 נקודות</li>
-      </ul>
-      <p>כמו במבחן אמיתי, אין משוב באמצע. בסוף מקבלים ציון, ורואים כל טעות עם התשובה הנכונה והסבר. כדאי להקדיש לזה כחצי שעה, בשקט, בלי לחפש בספר.</p>
+      ${grammar ? `
+        <p>מבחן שכולו Present Simple: חיוב, שלילה ושאלה. <b>30 שאלות, 100 נקודות</b>, בשישה חלקים:</p>
+        <ul class="mt-plan">
+          <li><b class="en">Complete the verb</b> · השלמת הפועל · 8 שאלות</li>
+          <li><b class="en">do / does / don't / doesn't</b> · מילת העזר · 5 שאלות</li>
+          <li><b class="en">Negative sentences</b> · שלילה · 4 שאלות</li>
+          <li><b class="en">Questions</b> · שאלות, גם עם מילות שאלה · 5 שאלות</li>
+          <li><b class="en">Short answers</b> · תשובות קצרות · 4 שאלות</li>
+          <li><b class="en">Which sentence is correct?</b> · מציאת המשפט הנכון · 4 שאלות</li>
+        </ul>` : `
+        <p>המבחן בנוי כמו מבחן בכיתה, בשלושה חלקים:</p>
+        <ul class="mt-plan">
+          <li><b class="en">Part A – Reading</b> · קטע Unseen ו-8 שאלות · 40 נקודות</li>
+          <li><b class="en">Part B – Vocabulary</b> · 10 משפטים להשלים ממחסן מילים · 30 נקודות</li>
+          <li><b class="en">Part C – Grammar</b> · 10 שאלות Present Simple · 30 נקודות</li>
+        </ul>`}
+      <p>כמו במבחן אמיתי, אין משוב באמצע. בסוף מקבלים ציון, ורואים כל טעות עם התשובה הנכונה והסבר. כדאי להקדיש לזה ${grammar ? 'כ-20 דקות' : 'כחצי שעה'}, בשקט, בלי לחפש בספר.</p>
       ${tests.length ? `<p class="muted">מבחנים קודמים: ${tests.slice(-5).map((s) => s.score).join(' · ')}</p>` : ''}
       <div class="row-center"><button class="btn btn-big" id="start">מתחילים ✍️</button></div>
     </div>`;
-  root.querySelector('#start').onclick = () => runTest(root, kid, ub, u, buildTest(u, tests.at(-1)?.text));
+  root.querySelector('#start').onclick = () => runTest(root, kid, ub, u, grammar ? buildGrammarTest(u) : buildTest(u, tests.at(-1)?.text));
 }
 
 function runTest(root, kid, ub, u, test) {
@@ -747,11 +780,11 @@ function runTest(root, kid, ub, u, test) {
         </div>`;
     }).join('');
     el.innerHTML = `
-      <div class="mt-head"><span>חלק ${pi + 1} מתוך ${parts.length}</span><span class="muted">${P.he} · ${P.points} נקודות</span></div>
+      <div class="mt-head"><span>${parts.length > 1 ? `חלק ${pi + 1} מתוך ${parts.length}` : `${P.qs.length} שאלות`}</span><span class="muted">${P.he} · ${P.points} נקודות</span></div>
       <h2 class="mt-title en">${esc(P.title)}</h2>
       <p class="mt-intro en">${esc(P.intro)}</p>
-      ${pi === 0 ? `<div class="rd-text en"><h3 class="rd-title">${esc(T.title)}</h3>${textHtml(T)}</div>` : ''}
-      ${pi === 1 ? `<div class="mt-bank en">${bank.map((w) => `<span>${esc(gapAnswer(w))}</span>`).join('')}</div>` : ''}
+      ${pi === 0 && T ? `<div class="rd-text en"><h3 class="rd-title">${esc(T.title)}</h3>${textHtml(T)}</div>` : ''}
+      ${pi === 1 && bank.length ? `<div class="mt-bank en">${bank.map((w) => `<span>${esc(gapAnswer(w))}</span>`).join('')}</div>` : ''}
       ${qHtml}
       <p class="subtitle" id="msg"></p>
       <div class="row-center">
@@ -785,7 +818,7 @@ function runTest(root, kid, ub, u, test) {
   draw();
 }
 
-function results(outer, kid, ub, u, { T, parts }, answers, ms) {
+function results(outer, kid, ub, u, { kind, T, parts }, answers, ms) {
   const progress = getProgress(kid.id);
   let total = 0, correct = 0, score = 0, n = 0;
   const rows = [], mistakes = [];
@@ -802,14 +835,14 @@ function results(outer, kid, ub, u, { T, parts }, answers, ms) {
     rows.push(`<div class="kpi"><span class="kpi-num">${pts}<small>/${P.points}</small></span><span class="kpi-label">${P.he} · ${ok} מתוך ${P.qs.length}</span></div>`);
   });
   saveProgress(progress);
-  logSession(kid.id, { module: 'units', part: 'mock', unit: u.id, text: T.id, score, total, correct, ms });
+  logSession(kid.id, { module: 'units', part: kind === 'grammar' ? 'gtest' : 'mock', unit: u.id, text: T?.id, score, total, correct, ms });
   const verdict = score >= 90 ? 'מצוין! אתם מוכנים למבחן 🏆' : score >= 75 ? 'טוב מאוד! עוברים על הטעויות, והציון יעלה עוד 💪'
     : score >= 55 ? 'בדרך הנכונה. כדאי לתרגל את החלק שבו היו הכי הרבה טעויות' : 'כדאי לחזור על המילים ועל הדקדוק ולנסות שוב. כל ניסיון מקרב 🙂';
   outer.innerHTML = '<div class="mt"></div>';
   const root = outer.firstElementChild;
   root.innerHTML = `
     <div class="finish">
-      <p class="subtitle">הציון במבחן הדמה</p>
+      <p class="subtitle">הציון ב${kind === 'grammar' ? 'מבחן הדקדוק' : 'מבחן הדמה'}</p>
       <div class="sp-grade">${score}</div>
       <h1>${verdict}</h1>
       <p class="subtitle">${correct} תשובות נכונות מתוך ${total} · ${Math.max(1, Math.round(ms / 6e4))} דקות</p>
@@ -825,10 +858,10 @@ function results(outer, kid, ub, u, { T, parts }, answers, ms) {
           ${q.explain()}
         </div>`).join('')}</div>` : '<p class="subtitle">🎉 אין אף טעות!</p>'}
     <div class="row-center">
-      <button class="btn btn-big" id="again">מבחן נוסף, עם קטע אחר</button>
+      <button class="btn btn-big" id="again">${kind === 'grammar' ? 'מבחן דקדוק נוסף' : 'מבחן נוסף, עם קטע אחר'}</button>
       <a class="btn btn-soft" href="${ub}">חזרה ליחידה</a>
     </div>`;
   wireSpeakButtons(root);
   window.scrollTo(0, 0);
-  root.querySelector('#again').onclick = () => runTest(outer, kid, ub, u, buildTest(u, T.id));
+  root.querySelector('#again').onclick = () => runTest(outer, kid, ub, u, kind === 'grammar' ? buildGrammarTest(u) : buildTest(u, T.id));
 }
