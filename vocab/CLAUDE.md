@@ -8,12 +8,12 @@ Separate from the family app in the repo root: never import from `../js`, copy w
 - Server: `api/_server.js` (all routes, documented at the top), `api/_db.js` (Postgres via `DATABASE_URL`, JSON file locally), `db/schema.sql`. `vercel.json` rewrites `/api/<path>` to `api/main.js`.
 - Parents: email + password (scrypt), signed token (`TOKEN_SECRET`). Kids never log in: each kid has a random link token (`#/k/<token>`, header `Kid <token>`) that reaches only that kid's data; the family link (`#/f/<token>`) lists the kids. Both can be replaced by the parent.
 - Words: `content/bank/grade<N>.json` (`id`, `en`, `pos`, `he`, `accept`, `emoji`, `ex`, `exHe`). Item key `w:<word id>`. Test words that are not in the bank get id `c-<slug>` (`resolveTestWords` in `js/bank.js`).
-- Learning logic is pure and tested in node: `js/srs.js` (boxes 0–7, `KNOWN_BOX` = 5, exercise by box) and `js/plan.js` (free plan, test plan, readiness, counts). Keep it that way and extend `tests/plan.test.js`.
+- Learning logic is pure and tested in node: `js/srs.js` (boxes 0–7, `KNOWN_BOX` = 5; the kid picks write or choose for each question, and choosing caps a word at `CHOICE_CAP`, so only written answers make it known) and `js/plan.js` (free plan, test plan, readiness, counts). Keep it that way and extend `tests/plan.test.js`.
 - Progress: one JSON document per kid (`items`, `sessions`), merged per item (newest `updated` wins) on the device, versioned on the server. Sessions log `module: 'vocab'`, `part: 'free' | 'test'`, `total`, `correct`, `ms`, `mastered`.
 
 ## Pedagogy rules
 - During test preparation the daily mission is only the test's words; free learning stays available but is never mixed in.
-- A word counts as known only after the meaning was written right at growing gaps; known words are not drilled again and again.
+- The kid chooses for each question between writing (or recording) and choosing from 4 options. Writing is proof; choosing counts with less certainty and never makes a word known. Known words are not drilled again and again.
 - New words in free learning depend on recent accuracy and on how many words are still shaky.
 
 ## Conventions

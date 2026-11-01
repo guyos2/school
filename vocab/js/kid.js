@@ -130,9 +130,9 @@ export async function renderKidPractice(root, token, mode) {
       words, plan, items: p.items,
       all: mode === 'test' ? [...testWords, ...bank] : bank,
       back: `#/k/${token}`,
-      onAnswer(id, ok, ms, { claim }) {
+      onAnswer(id, ok, ms, { claim, mode }) {
         const cur = getProgress(kid.id);
-        cur.items[key(id)] = review(cur.items[key(id)], ok, ms, { maxInterval, claim });
+        cur.items[key(id)] = review(cur.items[key(id)], ok, ms, { maxInterval, claim, mode });
         saveProgress(cur);
       },
       onDone({ right, total, ms, newIds }) {

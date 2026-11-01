@@ -1,14 +1,14 @@
 // One practice session. Steps:
-//  meet   — a new word: first only the English. "מכירים" turns the next step into writing or saying the meaning;
-//           "עוד לא" shows the picture, the meaning and a sentence.
-//  mc-he  — English word → choose the Hebrew meaning
-//  mc-en  — Hebrew meaning → choose the English word
-//  write  — English word → write or record the meaning; several meanings count, and the kid can mark their answer as right
+//  meet  — a new word: first only the English. "מכירים" goes straight to the question;
+//          "עוד לא" shows the picture, the meaning and a sentence first.
+//  q     — a question, English → Hebrew meaning (or, once, Hebrew → English). The kid chooses how to answer:
+//          ✍️ write (or record) the answer, which proves the word is known, or 👆 choose from 4 options,
+//          which counts with less certainty (see review() in srs.js).
 // A wrong answer shows the correct one with the word card and the sentence, and the word comes back at the end.
 import { esc, shuffle, pick, PRAISE, later, viewSignal } from './ui.js';
 import { say, speakBtn, wireSpeakButtons } from './speech.js';
 import { meaningMatch, acceptedMeanings } from './meaning.js';
-import { exerciseFor } from './srs.js';
+import { directionFor, KNOWN_BOX } from './srs.js';
 
 const SpeechRec = typeof window !== 'undefined' && (window.SpeechRecognition || window.webkitSpeechRecognition);
 
@@ -42,13 +42,13 @@ function distractors(w, all, field) {
 }
 
 // words: Map id → word. plan: [{id, isNew}]. items: current SRS items (to pick each word's exercise).
-// onAnswer(id, ok, ms, {claim}) is called once per word on its first try.
+// onAnswer(id, ok, ms, {claim, mode}) is called once per word on its first try.
 export function runPractice(outer, { words, plan, items, all, back, onAnswer, onDone }) {
   const steps = [];
   for (const { id, isNew } of plan) {
     if (!words.has(id)) continue;
     if (isNew) steps.push({ kind: 'meet', id });
-    steps.push({ kind: isNew ? 'mc-he' : exerciseFor(items[`w:${id}`]), id });
+    steps.push({ kind: 'q', id, dir: isNew ? 'en-he' : directionFor(items[`w:${id}`]) });
   }
   const total = steps.filter((s) => s.kind !== 'meet').length;
   let i = 0, right = 0, answered = 0, started = 0, locked = false;
@@ -77,7 +77,7 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
 
   const log = (step, ok, ms) => {
     if (step.retry) return;
-    onAnswer(step.id, ok, ms, { claim: !!step.claim });
+    onAnswer(step.id, ok, ms, { claim: !!step.claim, mode: step.mode });
     answered++;
     if (ok) right++;
   };
@@ -97,8 +97,7 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
     fb.className = 'q-feedback bad';
     if (!missed.has(step.id)) {
       missed.add(step.id);
-      // Next time an easier exercise: choosing, not writing.
-      steps.push({ kind: step.kind === 'write' ? 'mc-he' : step.kind, id: step.id, retry: true });
+      steps.push({ kind: 'q', id: step.id, dir: step.dir, retry: true });
     }
     $('#help').innerHTML = `
       <div class="help-box">
@@ -119,14 +118,14 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
         <div class="q-ask">מכירים את המילה?</div>
       </div>
       <div class="meet-choices">
-        <button class="btn btn-big" id="know">✍️ מכירים! נכתוב או נגיד מה הפירוש</button>
+        <button class="btn btn-big" id="know">👍 מכירים את המילה</button>
         <button class="btn btn-soft btn-big" id="show">👀 עוד לא. תראו לי</button>
       </div>`;
     later(300, () => say(w.en));
     $('#know').onclick = () => {
-      // Prove it: the next step becomes writing or saying the meaning, and a right answer skips the easy steps.
+      // Prove it in the next question: a right answer skips the first steps.
       const s = steps[i + 1];
-      if (s && s.id === step.id) Object.assign(s, { kind: 'write', claim: true });
+      if (s && s.id === step.id) s.claim = true;
       next();
     };
     $('#show').onclick = () => {
@@ -141,23 +140,37 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
     };
   }
 
-  function showChoice(step) {
+  // The question, and the kid picks how to answer it.
+  function showQuestion(step) {
     const w = words.get(step.id);
-    const toHe = step.kind === 'mc-he';
-    const field = toHe ? 'he' : 'en';
-    const options = shuffle([w, ...distractors(w, all, field)]);
+    const toHe = step.dir === 'en-he';
+    const box = items[`w:${step.id}`]?.box || 0;
     stage.innerHTML = `
       <div class="q-card">
-        <div class="q-ask">${toHe ? 'מה הפירוש?' : 'איך אומרים באנגלית?'}</div>
-        ${toHe
-          ? `<div class="vo-q en">${esc(w.en)} ${speakBtn(w.en)}</div>`
-          : `<div class="vo-q">${esc(w.he)}</div>`}
+        <div class="q-ask">${step.claim ? 'מעולה! ' : ''}${toHe ? 'מה הפירוש?' : 'איך אומרים באנגלית?'}</div>
+        ${toHe ? `<div class="vo-q en">${esc(w.en)} ${speakBtn(w.en)}</div>` : `<div class="vo-q">${esc(w.he)}</div>`}
+        <div id="answer">
+          <div class="mode-pick">
+            <button class="btn btn-big" id="m-write">✍️ ${toHe ? 'נכתוב או נגיד' : 'נכתוב באנגלית'}</button>
+            <button class="btn btn-soft btn-big" id="m-choice">👆 נבחר מ-4 אפשרויות</button>
+          </div>
+          <p class="q-sub">${box >= KNOWN_BOX - 2
+            ? 'מילה נהיית ירוקה רק כשכותבים אותה נכון'
+            : 'כשכותבים, יודעים בטוח שהמילה ידועה'}</p>
+        </div>
         <div class="q-feedback" id="fb"></div>
       </div>
-      <div class="choices words">${options.map((o, n) =>
-        `<button class="choice ${toHe ? '' : 'en'}" data-n="${n}">${esc(o[field])}</button>`).join('')}</div>
       <div id="help"></div>`;
     if (toHe) later(250, () => say(w.en));
+    $('#m-write').onclick = () => { step.mode = 'write'; started = Date.now(); (toHe ? writeHebrew : writeEnglish)(step, w); };
+    $('#m-choice').onclick = () => { step.mode = 'choice'; started = Date.now(); choose(step, w, toHe); };
+  }
+
+  function choose(step, w, toHe) {
+    const field = toHe ? 'he' : 'en';
+    const options = shuffle([w, ...distractors(w, all, field)]);
+    $('#answer').innerHTML = `<div class="choices">${options.map((o, n) =>
+      `<button class="choice ${toHe ? '' : 'en'}" data-n="${n}">${esc(o[field])}</button>`).join('')}</div>`;
     $('.choices').addEventListener('click', (e) => {
       const b = e.target.closest('.choice');
       if (!b || locked) return;
@@ -170,28 +183,53 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
     });
   }
 
+  // Hebrew meaning → the English word, checked exactly (spelling counts), ignoring case and extra spaces.
+  function writeEnglish(step, w) {
+    const canon = (x) => String(x).toLowerCase().replace(/[()]/g, '').replace(/[.!?,]+$/, '').replace(/\s+/g, ' ').trim();
+    let firstAct = 0;
+    $('#answer').innerHTML = `
+      <form id="form">
+        <input id="ans" class="text-input wide-input en" lang="en" dir="ltr" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="English">
+        <div class="row-center">
+          <button class="btn" type="submit">בדיקה ✓</button>
+          <button type="button" class="btn btn-soft" id="dunno">🤷 לא יודעים</button>
+        </div>
+      </form>
+      <p class="q-sub" id="msg"></p>`;
+    const input = $('#ans');
+    input.focus();
+    input.addEventListener('input', () => { firstAct ||= Date.now(); });
+    const check = (text) => {
+      if (locked) return;
+      locked = true;
+      input.disabled = true;
+      root.querySelectorAll('#form button').forEach((b) => { b.disabled = true; });
+      const ok = !!text && [w.en, w.en.replace(/^to /, '')].some((x) => canon(x) === canon(text.replace(/^to /i, '')));
+      finish(step, ok, (firstAct || Date.now()) - started);
+      if (!ok && text) $('#help .help-box').insertAdjacentHTML('afterbegin', `<p class="center">כתבתם: <b class="en">${esc(text)}</b></p>`);
+    };
+    $('#form').onsubmit = (e) => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (!text) { $('#msg').textContent = 'כותבים את המילה באנגלית. לא יודעים? לוחצים על "לא יודעים"'; return; }
+      check(text);
+    };
+    $('#dunno').onclick = () => check('');
+  }
+
   // Write or say the meaning. Speech recognition (where the browser has it) fills the box, and the kid can fix it.
-  function showWrite(step) {
-    const w = words.get(step.id);
+  function writeHebrew(step, w) {
     let alts = [], firstAct = 0;
-    stage.innerHTML = `
-      <div class="q-card">
-        <div class="q-ask">${step.claim ? 'מעולה! מה הפירוש?' : 'מה הפירוש בעברית?'}</div>
-        <div class="vo-q en">${esc(w.en)} ${speakBtn(w.en)}</div>
-        <p class="q-sub">כותבים${SpeechRec ? ' או מקליטים' : ''} את הפירוש, ולוחצים על בדיקה</p>
-        <form id="form">
-          <input id="ans" class="text-input wide-input" lang="he" dir="rtl" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="הפירוש בעברית">
-          <div class="row-center">
-            ${SpeechRec ? '<button type="button" class="btn btn-soft" id="mic">🎙️ להקליט</button>' : ''}
-            <button class="btn" type="submit">בדיקה ✓</button>
-            <button type="button" class="btn btn-soft" id="dunno">🤷 לא יודעים</button>
-          </div>
-        </form>
-        <p class="q-sub" id="msg"></p>
-        <div class="q-feedback" id="fb"></div>
-      </div>
-      <div id="help"></div>`;
-    later(250, () => say(w.en));
+    $('#answer').innerHTML = `
+      <form id="form">
+        <input id="ans" class="text-input wide-input" lang="he" dir="rtl" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="הפירוש בעברית">
+        <div class="row-center">
+          ${SpeechRec ? '<button type="button" class="btn btn-soft" id="mic">🎙️ להקליט</button>' : ''}
+          <button class="btn" type="submit">בדיקה ✓</button>
+          <button type="button" class="btn btn-soft" id="dunno">🤷 לא יודעים</button>
+        </div>
+      </form>
+      <p class="q-sub" id="msg">כותבים${SpeechRec ? ' או מקליטים' : ''} את הפירוש, ולוחצים על בדיקה</p>`;
     const input = $('#ans');
     if (!SpeechRec) input.focus();
     const act = () => { firstAct ||= Date.now(); };
@@ -256,8 +294,7 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
     started = Date.now();
     $('.progress-fill').style.width = `${(answered / Math.max(total, 1)) * 100}%`;
     if (step.kind === 'meet') showMeet(step);
-    else if (step.kind === 'write') showWrite(step);
-    else showChoice(step);
+    else showQuestion(step);
   }
 
   document.addEventListener('keydown', (e) => {

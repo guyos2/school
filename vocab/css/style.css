@@ -142,6 +142,7 @@ details[open] > summary { margin-bottom: 6px; }
 .choice.dim { opacity: .45; }
 .q-sub { color: var(--muted); font-size: 16px; margin: 4px 0; min-height: 1.2em; }
 .wide-input { display: block; width: 100%; max-width: 460px; margin: 10px auto 0; }
+.mode-pick { display: flex; flex-direction: column; gap: 10px; max-width: 420px; margin: 14px auto 4px; }
 .meet-choices { display: flex; flex-direction: column; gap: 12px; max-width: 460px; margin: 16px auto; }
 .text-input { flex: 1; min-width: 0; padding: 12px; font: inherit; font-size: 22px; border: 3px solid var(--line); border-radius: 14px; }
 .text-input:focus { outline: none; border-color: var(--kid); }
