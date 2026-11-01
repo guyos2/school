@@ -13,7 +13,7 @@ Separate from the family app in the repo root: never import from `../js`, copy w
 
 ## Pedagogy rules
 - During test preparation the daily mission is only the test's words; free learning stays available but is never mixed in.
-- The kid chooses for each question between writing (or recording) and choosing from 4 options. Writing is proof; choosing counts with less certainty and never makes a word known. Known words are not drilled again and again.
+- Each question offers three answers side by side: write (or record) it alone, choose from 4 options, or "show me" (on a review it counts as not known). Writing is proof; choosing counts with less certainty and never makes a word known. Known words are not drilled again and again.
 - New words in free learning depend on recent accuracy and on how many words are still shaky.
 
 ## Conventions

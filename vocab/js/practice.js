@@ -1,9 +1,6 @@
-// One practice session. Steps:
-//  meet  — a new word: first only the English. "מכירים" goes straight to the question;
-//          "עוד לא" shows the picture, the meaning and a sentence first.
-//  q     — a question, English → Hebrew meaning (or, once, Hebrew → English). The kid chooses how to answer:
-//          ✍️ write (or record) the answer, which proves the word is known, or 👆 choose from 4 options,
-//          which counts with less certainty (see review() in srs.js).
+// One practice session: one question per word, English → Hebrew meaning (or, once, Hebrew → English).
+// For each question the kid picks how to answer (see showQuestion): write it alone, choose from 4 options, or see it.
+// Writing proves the word is known, choosing counts with less certainty (see review() in srs.js).
 // A wrong answer shows the correct one with the word card and the sentence, and the word comes back at the end.
 import { esc, shuffle, pick, PRAISE, later, viewSignal } from './ui.js';
 import { say, speakBtn, wireSpeakButtons } from './speech.js';
@@ -47,10 +44,9 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
   const steps = [];
   for (const { id, isNew } of plan) {
     if (!words.has(id)) continue;
-    if (isNew) steps.push({ kind: 'meet', id });
-    steps.push({ kind: 'q', id, dir: isNew ? 'en-he' : directionFor(items[`w:${id}`]) });
+    steps.push({ kind: 'q', id, isNew, dir: isNew ? 'en-he' : directionFor(items[`w:${id}`]) });
   }
-  const total = steps.filter((s) => s.kind !== 'meet').length;
+  const total = steps.length;
   let i = 0, right = 0, answered = 0, started = 0, locked = false;
   const begin = Date.now();
   const missed = new Set();
@@ -83,7 +79,8 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
   };
 
   // deferLog: a written answer that is not on the list is logged only after the kid decides whether it was right.
-  const finish = (step, ok, ms, { deferLog = false } = {}) => {
+  // shown: the kid asked to see the word instead of answering.
+  const finish = (step, ok, ms, { deferLog = false, shown = false } = {}) => {
     if (!deferLog) log(step, ok, ms);
     const w = words.get(step.id);
     const fb = $('#fb');
@@ -93,11 +90,11 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
       later(1100, next);
       return;
     }
-    fb.textContent = 'כמעט! הנה התשובה הנכונה 👇';
-    fb.className = 'q-feedback bad';
+    fb.textContent = shown ? 'הנה המילה 👇 היא תחזור בסוף הסיבוב' : 'כמעט! הנה התשובה הנכונה 👇';
+    fb.className = shown ? 'q-feedback' : 'q-feedback bad';
     if (!missed.has(step.id)) {
       missed.add(step.id);
-      steps.push({ kind: 'q', id: step.id, dir: step.dir, retry: true });
+      steps.push({ kind: 'q', id: step.id, dir: step.dir, retry: true, shown: true });
     }
     $('#help').innerHTML = `
       <div class="help-box">
@@ -108,62 +105,60 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
     later(300, () => say(w.en));
   };
 
-  // A new word: first only the English (no picture, no meaning), so "we know it" can be checked honestly.
-  function showMeet(step) {
-    const w = words.get(step.id);
-    stage.innerHTML = `
-      <div class="q-card meet">
-        <div class="tag">מילה חדשה</div>
-        <div class="vo-q en">${esc(w.en)} ${speakBtn(w.en)}</div>
-        <div class="q-ask">מכירים את המילה?</div>
-      </div>
-      <div class="meet-choices">
-        <button class="btn btn-big" id="know">👍 מכירים את המילה</button>
-        <button class="btn btn-soft btn-big" id="show">👀 עוד לא. תראו לי</button>
-      </div>`;
-    later(300, () => say(w.en));
-    $('#know').onclick = () => {
-      // Prove it in the next question: a right answer skips the first steps.
-      const s = steps[i + 1];
-      if (s && s.id === step.id) s.claim = true;
-      next();
-    };
-    $('#show').onclick = () => {
-      stage.innerHTML = `
-        <div class="q-card meet">
-          <div class="tag">מילה חדשה</div>
-          ${wordCard(w)}
-          ${sentence(w)}
-        </div>
-        <div class="row-center"><button class="btn btn-big" id="go">הבנתי, ממשיכים ←</button></div>`;
-      $('#go').onclick = next;
-    };
-  }
-
-  // The question, and the kid picks how to answer it.
+  // A question. The kid picks one of three, side by side:
+  //   ✍️ "יודעים לבד" — write (or record) the answer: proof that the word is known
+  //   👆 "צריך לבחור" — choose from 4 options: known, with less certainty
+  //   👀 "תראו לי"    — see the word. On a new word that is simply learning it; on a review it counts as not known.
+  // A new word shows only the English first (no picture, no meaning), so answering it alone is honest.
+  // Right after "תראו לי" (or after a mistake) the third button is gone: the kid just saw the word.
   function showQuestion(step) {
     const w = words.get(step.id);
     const toHe = step.dir === 'en-he';
     const box = items[`w:${step.id}`]?.box || 0;
+    const fresh = step.isNew && !step.shown;
     stage.innerHTML = `
       <div class="q-card">
-        <div class="q-ask">${step.claim ? 'מעולה! ' : ''}${toHe ? 'מה הפירוש?' : 'איך אומרים באנגלית?'}</div>
+        ${fresh ? '<div class="tag">מילה חדשה</div>' : ''}
+        <div class="q-ask">${fresh ? 'מכירים את המילה?' : toHe ? 'מה הפירוש?' : 'איך אומרים באנגלית?'}</div>
         ${toHe ? `<div class="vo-q en">${esc(w.en)} ${speakBtn(w.en)}</div>` : `<div class="vo-q">${esc(w.he)}</div>`}
         <div id="answer">
-          <div class="mode-pick">
-            <button class="btn btn-big" id="m-write">✍️ ${toHe ? 'נכתוב או נגיד' : 'נכתוב באנגלית'}</button>
-            <button class="btn btn-soft btn-big" id="m-choice">👆 נבחר מ-4 אפשרויות</button>
+          <div class="mode-pick ${step.shown ? 'two' : ''}">
+            <button class="mode" id="m-write"><span>✍️</span>יודעים לבד<small>${toHe ? 'כותבים או אומרים' : 'כותבים באנגלית'}</small></button>
+            <button class="mode" id="m-choice"><span>👆</span>צריך לבחור<small>מתוך 4 אפשרויות</small></button>
+            ${step.shown ? '' : `<button class="mode" id="m-show"><span>👀</span>תראו לי<small>${fresh ? 'עוד לא מכירים' : 'לא זוכרים'}</small></button>`}
           </div>
           <p class="q-sub">${box >= KNOWN_BOX - 2
             ? 'מילה נהיית ירוקה רק כשכותבים אותה נכון'
-            : 'כשכותבים, יודעים בטוח שהמילה ידועה'}</p>
+            : 'כשכותבים לבד, יודעים בטוח שהמילה ידועה'}</p>
         </div>
         <div class="q-feedback" id="fb"></div>
       </div>
       <div id="help"></div>`;
     if (toHe) later(250, () => say(w.en));
-    $('#m-write').onclick = () => { step.mode = 'write'; started = Date.now(); (toHe ? writeHebrew : writeEnglish)(step, w); };
-    $('#m-choice').onclick = () => { step.mode = 'choice'; started = Date.now(); choose(step, w, toHe); };
+    // Answering a new word without seeing it first means the kid knew it from before.
+    const setMode = (mode) => { step.mode = mode; step.claim = fresh; started = Date.now(); };
+    $('#m-write').onclick = () => { setMode('write'); (toHe ? writeHebrew : writeEnglish)(step, w); };
+    $('#m-choice').onclick = () => { setMode('choice'); choose(step, w, toHe); };
+    $('#m-show')?.addEventListener('click', () => {
+      if (fresh) {
+        // A new word: learn it, then answer it (without the "show me" button this time). Not a mistake.
+        stage.innerHTML = `
+          <div class="q-card">
+            <div class="tag">מילה חדשה</div>
+            ${wordCard(w)}
+            ${sentence(w)}
+          </div>
+          <div class="row-center"><button class="btn btn-big" id="go">הבנתי, ממשיכים ←</button></div>`;
+        later(300, () => say(w.en));
+        $('#go').onclick = () => { step.shown = true; show(); };
+        return;
+      }
+      if (locked) return;
+      locked = true;
+      step.mode = 'show';
+      $('#answer').innerHTML = '';
+      finish(step, false, Date.now() - started, { shown: true });
+    });
   }
 
   function choose(step, w, toHe) {
@@ -293,8 +288,7 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
     locked = false;
     started = Date.now();
     $('.progress-fill').style.width = `${(answered / Math.max(total, 1)) * 100}%`;
-    if (step.kind === 'meet') showMeet(step);
-    else showQuestion(step);
+    showQuestion(step);
   }
 
   document.addEventListener('keydown', (e) => {

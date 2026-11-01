@@ -142,7 +142,17 @@ details[open] > summary { margin-bottom: 6px; }
 .choice.dim { opacity: .45; }
 .q-sub { color: var(--muted); font-size: 16px; margin: 4px 0; min-height: 1.2em; }
 .wide-input { display: block; width: 100%; max-width: 460px; margin: 10px auto 0; }
-.mode-pick { display: flex; flex-direction: column; gap: 10px; max-width: 420px; margin: 14px auto 4px; }
+.mode-pick { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 520px; margin: 14px auto 4px; }
+.mode-pick.two { grid-template-columns: repeat(2, 1fr); max-width: 360px; }
+.mode {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 4px;
+  border: 3px solid var(--line); border-radius: 18px; background: var(--card); color: var(--ink);
+  font-weight: 800; font-size: clamp(15px, 4.2vw, 19px); box-shadow: var(--shadow);
+}
+.mode span { font-size: 30px; line-height: 1.2; }
+.mode small { font-weight: 400; font-size: 13px; color: var(--muted); }
+.mode:active { transform: scale(.96); }
+#m-write { border-color: var(--brand); }
 .meet-choices { display: flex; flex-direction: column; gap: 12px; max-width: 460px; margin: 16px auto; }
 .text-input { flex: 1; min-width: 0; padding: 12px; font: inherit; font-size: 22px; border: 3px solid var(--line); border-radius: 14px; }
 .text-input:focus { outline: none; border-color: var(--kid); }
