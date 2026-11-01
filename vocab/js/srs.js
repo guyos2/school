@@ -28,6 +28,8 @@ export function review(item, correct, ms, { now = Date.now(), maxInterval = Infi
   if (correct) {
     it.right++;
     if (mode === 'write') it.wr = (it.wr || 0) + 1; else it.cr = (it.cr || 0) + 1;
+    // Right answers since the last mistake (for "ready for the test", see isReady).
+    if (mode === 'write') it.sw = (it.sw || 0) + 1; else it.sc = (it.sc || 0) + 1;
     if (claim) {
       // Known from before: skip the first steps, the next checks confirm it.
       it.box = Math.max(it.box, mode === 'write' ? 3 : 2);
@@ -47,9 +49,15 @@ export function review(item, correct, ms, { now = Date.now(), maxInterval = Infi
   } else {
     it.wrong++;
     it.box = it.box >= KNOWN_BOX ? 2 : 1;
+    it.sw = 0;
+    it.sc = 0;
   }
   it.mode = mode;
   it.due = correct ? now + Math.min(interval ?? INTERVALS[it.box], maxInterval) : now;
   it.updated = now;
   return it;
 }
+
+// A word is ready for the test when, since the last mistake, the kid wrote it right twice,
+// or wrote it right once and chose it right twice. Each word is judged on its own.
+export const isReady = (item) => !!item && ((item.sw || 0) >= 2 || ((item.sw || 0) >= 1 && (item.sc || 0) >= 2));

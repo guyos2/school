@@ -3,7 +3,8 @@ import { esc } from './ui.js';
 import { signup, login, logout, parentSession, parentCall, ApiError } from './api.js';
 import { GRADES, GRADE_NAME, loadBank, parseWordLines, resolveTestWords } from './bank.js';
 import { KNOWN_BOX } from './srs.js';
-import { readiness, daysUntil, streak } from './plan.js';
+import { readyIds, daysUntil, streak, key } from './plan.js';
+import { isReady } from './srs.js';
 import qrcode from './vendor/qrcode.js';
 
 const EMOJIS = ['🦊', '🐼', '🦁', '🐯', '🐸', '🐙', '🦄', '🐬', '🦉', '🐝', '🚀', '⚽'];
@@ -200,14 +201,27 @@ export async function renderParentKid(outer, id) {
     <section class="panel">
       <h2>📝 הכנה למבחן</h2>
       ${upcoming.length ? upcoming.map((t) => {
-        const ids = resolveTestWords(t, bank).map((w) => w.id);
+        const tw = resolveTestWords(t, bank);
+        const ready = readyIds(items, tw.map((w) => w.id)).length;
         const left = daysUntil(t.date);
+        // Not ready first, so the parent sees what is left.
+        const rows = tw.map((w) => ({ w, it: items[key(w.id)] }))
+          .sort((a, b) => isReady(a.it) - isReady(b.it));
         return `
           <div class="test-row">
-            <div><b>${esc(t.title)}</b><br><span class="muted">${new Date(`${t.date}T00:00:00`).toLocaleDateString('he-IL')} · ${left === 0 ? 'היום' : `עוד ${left} ימים`} · ${t.words.length} מילים</span></div>
-            <div class="test-ready">${Math.round(readiness(items, ids) * 100)}%<small>מוכנות</small></div>
+            <div><b>${esc(t.title)}</b><br><span class="muted">${new Date(`${t.date}T00:00:00`).toLocaleDateString('he-IL')} · ${left === 0 ? 'היום' : `עוד ${left} ימים`}</span></div>
+            <div class="test-ready">${ready}/${tw.length}<small>מילים מוכנות</small></div>
             <button class="link-btn" data-del="${t.id}">מחיקה</button>
-          </div>`;
+          </div>
+          <details class="test-words">
+            <summary>מה מוכן ומה עוד לא</summary>
+            <table>${rows.map(({ w, it }) => `
+              <tr><td class="en">${esc(w.en)}</td><td>${esc(w.he)}</td>
+                <td>${isReady(it) ? '✅ מוכנה' : !it ? '⚪ עוד לא תרגלו'
+                  : `🟠 כתבו נכון ${it.sw || 0} · בחרו נכון ${it.sc || 0}`}</td></tr>`).join('')}
+            </table>
+            <p class="muted small">מילה מוכנה כשמאז הטעות האחרונה כתבו אותה נכון פעמיים, או כתבו פעם אחת ובחרו נכון פעמיים.</p>
+          </details>`;
       }).join('') : '<p class="muted">אין מבחן קרוב. עד שיהיה, הילד לומד בלימוד חופשי לפי הכיתה שלו.</p>'}
       <details ${upcoming.length ? '' : 'open'}>
         <summary>מבחן חדש</summary>

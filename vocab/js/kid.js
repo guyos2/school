@@ -4,7 +4,7 @@ import { kidCall, rememberKid, forgetKid, read, write } from './api.js';
 import { getProgress, saveProgress, logSession, bindKid, sync } from './store.js';
 import { loadBank, resolveTestWords, GRADE_NAME } from './bank.js';
 import { review, KNOWN_BOX } from './srs.js';
-import { planFree, planTest, activeTest, daysUntil, testMaxInterval, readiness, wordCounts, streak, key } from './plan.js';
+import { planFree, planTest, activeTest, daysUntil, testMaxInterval, readyIds, wordCounts, streak, key } from './plan.js';
 import { runPractice, wordCard } from './practice.js';
 import { wireSpeakButtons } from './speech.js';
 
@@ -70,14 +70,14 @@ export async function renderKidHome(root, token) {
     let main;
     if (test) {
       const left = daysUntil(test.date);
-      const ready = Math.round(readiness(p.items, testWords.map((w) => w.id)) * 100);
+      const ready = readyIds(p.items, testWords.map((w) => w.id)).length;
       main = `
         <a class="mission test" href="#/k/${token}/test">
           <div class="mission-icon">📝</div>
           <div class="mission-title">מתכוננים למבחן</div>
           <div class="mission-sub">${esc(test.title)} · ${left === 0 ? 'היום!' : left === 1 ? 'מחר' : `עוד ${left} ימים`} · ${testWords.length} מילים</div>
-          <div class="meter"><div style="width:${ready}%"></div></div>
-          <div class="mission-sub">מוכנים ב-${ready}%</div>
+          <div class="meter"><div style="width:${(ready / Math.max(testWords.length, 1)) * 100}%"></div></div>
+          <div class="mission-sub">${ready} מתוך ${testWords.length} מילים מוכנות</div>
         </a>
         <a class="btn btn-soft wide" href="#/k/${token}/free">רוצים עוד? לימוד חופשי</a>`;
     } else {

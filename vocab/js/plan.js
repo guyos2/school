@@ -6,7 +6,7 @@
 //   more when the kid is doing well. Words already known well never fill a session.
 // - test: only the words of the coming test. New words are spread so that all of them are met a day or two
 //   before the test, and every word not yet solid keeps coming back until the test.
-import { KNOWN_BOX } from './srs.js';
+import { KNOWN_BOX, isReady } from './srs.js';
 
 const DAY = 864e5;
 export const key = (id) => `w:${id}`;
@@ -64,11 +64,8 @@ export function activeTest(tests, now = Date.now()) {
 export const testMaxInterval = (date, now = Date.now()) =>
   Math.max(4 * 36e5, (new Date(`${date}T00:00:00`).getTime() - now) / 2);
 
-// ids: the test's word ids. A word counts as ready once the kid chose the English word right (box 3 and up).
-export function readiness(items, ids) {
-  if (!ids.length) return 0;
-  return ids.filter((id) => (items[key(id)]?.box || 0) >= 3).length / ids.length;
-}
+// The test's words that are ready (see isReady in srs.js).
+export const readyIds = (items, ids) => ids.filter((id) => isReady(items[key(id)]));
 
 export function planTest({ items, ids, date, now = Date.now(), size = 15 }) {
   const left = Math.max(1, daysUntil(date, now));
@@ -81,10 +78,10 @@ export function planTest({ items, ids, date, now = Date.now(), size = 15 }) {
 
   const out = due.slice(0, Math.max(0, size - Math.min(perDay, fresh.length, 3))).map((id) => ({ id, isNew: false }));
   out.push(...fresh.slice(0, Math.min(perDay, size - out.length)).map((id) => ({ id, isNew: true })));
-  // Before a test every word that is not solid yet is worth another look.
+  // Before a test every word that is not ready yet is worth another look; ready words wait for their review.
   if (out.length < size) {
     const taken = new Set(out.map((x) => x.id));
-    const weak = started.filter((id) => !taken.has(id) && items[key(id)].box < KNOWN_BOX)
+    const weak = started.filter((id) => !taken.has(id) && !isReady(items[key(id)]))
       .sort((a, b) => items[key(a)].box - items[key(b)].box);
     out.push(...weak.slice(0, size - out.length).map((id) => ({ id, isNew: false })));
   }

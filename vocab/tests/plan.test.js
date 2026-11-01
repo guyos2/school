@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { review, directionFor, KNOWN_BOX, CHOICE_CAP, INTERVALS } from '../js/srs.js';
-import { planFree, planTest, newWordsAllowed, activeTest, readiness, streak, key } from '../js/plan.js';
+import { review, directionFor, isReady, KNOWN_BOX, CHOICE_CAP, INTERVALS } from '../js/srs.js';
+import { planFree, planTest, newWordsAllowed, activeTest, readyIds, streak, key } from '../js/plan.js';
 
 const DAY = 864e5;
 const NOW = new Date('2026-11-01T10:00:00').getTime();
@@ -99,7 +99,7 @@ test('active test and readiness', () => {
   const today = new Date(NOW).toISOString().slice(0, 10);
   const tests = [{ date: '2026-10-01' }, { date: '2026-12-01' }, { date: today }];
   assert.equal(activeTest(tests, NOW).date, today);
-  assert.equal(readiness({ [key('a')]: { box: 3 }, [key('b')]: { box: 1 } }, ['a', 'b']), 0.5);
+  assert.deepEqual(readyIds({ [key('a')]: { sw: 2 }, [key('b')]: { sw: 1, sc: 1 } }, ['a', 'b']), ['a']);
 });
 
 test('streak counts days in a row', () => {
@@ -107,4 +107,26 @@ test('streak counts days in a row', () => {
   assert.equal(streak(s, NOW), 3);
   assert.equal(streak([{ at: NOW - DAY }], NOW), 1);
   assert.equal(streak([{ at: NOW - 2 * DAY }], NOW), 0);
+});
+
+test('a word is ready: written right twice, or written once and chosen twice, since the last mistake', () => {
+  const answer = (it, ok, mode) => review(it, ok, 2000, { now: NOW, mode });
+  let it = answer(undefined, true, 'choice');
+  it = answer(it, true, 'choice');
+  assert.equal(isReady(it), false);
+  it = answer(it, true, 'write');
+  assert.equal(isReady(it), true);
+  it = answer(it, false, 'choice');
+  assert.equal(isReady(it), false);
+  it = answer(it, true, 'write');
+  it = answer(it, true, 'write');
+  assert.equal(isReady(it), true);
+  assert.equal(isReady(answer(answer(undefined, true, 'choice'), true, 'choice')), false);
+});
+
+test('test plan does not drill words that are already ready', () => {
+  const date = new Date(NOW + 4 * DAY).toISOString().slice(0, 10);
+  const items = { [key('r')]: { box: 2, due: NOW + DAY, sw: 2 }, [key('n')]: { box: 2, due: NOW + DAY, sw: 1 } };
+  const plan = planTest({ items, ids: ['r', 'n'], date, now: NOW });
+  assert.deepEqual(plan.map((x) => x.id), ['n']);
 });

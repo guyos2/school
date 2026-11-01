@@ -13,6 +13,7 @@ Separate from the family app in the repo root: never import from `../js`, copy w
 
 ## Pedagogy rules
 - During test preparation the daily mission is only the test's words; free learning stays available but is never mixed in.
+- Test readiness is per word (`isReady` in srs.js): since the last mistake, written right twice, or written once and chosen twice. Show counts of ready words, never a percentage; an overall score comes from the mock test.
 - Each question offers three answers side by side: write (or record) it alone, choose from 4 options, or "show me" (on a review it counts as not known). Writing is proof; choosing counts with less certainty and never makes a word known. Known words are not drilled again and again.
 - New words in free learning depend on recent accuracy and on how many words are still shaky.
 
