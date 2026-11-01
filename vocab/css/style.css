@@ -140,7 +140,9 @@ details[open] > summary { margin-bottom: 6px; }
 .choice.correct { border-color: var(--good); background: #d1fae5; }
 .choice.wrong { border-color: var(--bad); background: #fee2e2; }
 .choice.dim { opacity: .45; }
-.write-row { display: flex; gap: 8px; max-width: 460px; margin: 12px auto 0; }
+.q-sub { color: var(--muted); font-size: 16px; margin: 4px 0; min-height: 1.2em; }
+.wide-input { display: block; width: 100%; max-width: 460px; margin: 10px auto 0; }
+.meet-choices { display: flex; flex-direction: column; gap: 12px; max-width: 460px; margin: 16px auto; }
 .text-input { flex: 1; min-width: 0; padding: 12px; font: inherit; font-size: 22px; border: 3px solid var(--line); border-radius: 14px; }
 .text-input:focus { outline: none; border-color: var(--kid); }
 .help-box { margin-top: 12px; }

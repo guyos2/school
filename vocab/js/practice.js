@@ -1,13 +1,16 @@
 // One practice session. Steps:
-//  meet   — a new word: picture, word, meaning and a sentence. "כבר מכירים" turns the next step into writing the meaning.
+//  meet   — a new word: first only the English. "מכירים" turns the next step into writing or saying the meaning;
+//           "עוד לא" shows the picture, the meaning and a sentence.
 //  mc-he  — English word → choose the Hebrew meaning
 //  mc-en  — Hebrew meaning → choose the English word
-//  write  — English word → write (or say) the meaning; several meanings count, and the kid can mark their answer as right
+//  write  — English word → write or record the meaning; several meanings count, and the kid can mark their answer as right
 // A wrong answer shows the correct one with the word card and the sentence, and the word comes back at the end.
 import { esc, shuffle, pick, PRAISE, later, viewSignal } from './ui.js';
 import { say, speakBtn, wireSpeakButtons } from './speech.js';
 import { meaningMatch, acceptedMeanings } from './meaning.js';
 import { exerciseFor } from './srs.js';
+
+const SpeechRec = typeof window !== 'undefined' && (window.SpeechRecognition || window.webkitSpeechRecognition);
 
 const POS = { n: 'שם עצם', v: 'פועל', adj: 'תואר', adv: 'תואר הפועל', prep: 'מילת יחס', phrase: 'ביטוי' };
 
@@ -51,6 +54,9 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
   let i = 0, right = 0, answered = 0, started = 0, locked = false;
   const begin = Date.now();
   const missed = new Set();
+  let rec = null;
+  const stopListening = () => { rec?.abort(); rec = null; };
+  viewSignal().addEventListener('abort', stopListening);
 
   outer.innerHTML = '<div class="quiz"></div>';
   const root = outer.firstElementChild;
@@ -63,6 +69,7 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
   const stage = $('#stage');
 
   const next = () => {
+    stopListening();
     i++;
     if (i < steps.length) show();
     else onDone({ right, total, ms: Date.now() - begin, newIds: plan.filter((p) => p.isNew).map((p) => p.id) });
@@ -102,25 +109,35 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
     later(300, () => say(w.en));
   };
 
+  // A new word: first only the English (no picture, no meaning), so "we know it" can be checked honestly.
   function showMeet(step) {
     const w = words.get(step.id);
     stage.innerHTML = `
       <div class="q-card meet">
         <div class="tag">מילה חדשה</div>
-        ${wordCard(w)}
-        ${sentence(w)}
+        <div class="vo-q en">${esc(w.en)} ${speakBtn(w.en)}</div>
+        <div class="q-ask">מכירים את המילה?</div>
       </div>
-      <div class="row-center">
-        <button class="btn btn-big" id="ok">הבנתי, ממשיכים ←</button>
-        <button class="btn btn-soft" id="know">כבר מכירים את המילה</button>
+      <div class="meet-choices">
+        <button class="btn btn-big" id="know">✍️ מכירים! נכתוב או נגיד מה הפירוש</button>
+        <button class="btn btn-soft btn-big" id="show">👀 עוד לא. תראו לי</button>
       </div>`;
     later(300, () => say(w.en));
-    $('#ok').onclick = next;
     $('#know').onclick = () => {
-      // Prove it: the next step becomes writing the meaning, and a right answer skips the easy steps.
+      // Prove it: the next step becomes writing or saying the meaning, and a right answer skips the easy steps.
       const s = steps[i + 1];
       if (s && s.id === step.id) Object.assign(s, { kind: 'write', claim: true });
       next();
+    };
+    $('#show').onclick = () => {
+      stage.innerHTML = `
+        <div class="q-card meet">
+          <div class="tag">מילה חדשה</div>
+          ${wordCard(w)}
+          ${sentence(w)}
+        </div>
+        <div class="row-center"><button class="btn btn-big" id="go">הבנתי, ממשיכים ←</button></div>`;
+      $('#go').onclick = next;
     };
   }
 
@@ -153,36 +170,48 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
     });
   }
 
+  // Write or say the meaning. Speech recognition (where the browser has it) fills the box, and the kid can fix it.
   function showWrite(step) {
     const w = words.get(step.id);
+    let alts = [], firstAct = 0;
     stage.innerHTML = `
       <div class="q-card">
-        <div class="q-ask">${step.claim ? 'מכירים? כתבו מה הפירוש' : 'כתבו מה הפירוש בעברית'}</div>
+        <div class="q-ask">${step.claim ? 'מעולה! מה הפירוש?' : 'מה הפירוש בעברית?'}</div>
         <div class="vo-q en">${esc(w.en)} ${speakBtn(w.en)}</div>
-        <form class="write-row" id="form">
-          <input id="ans" class="text-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="הפירוש בעברית">
-          <button class="btn">בדיקה</button>
+        <p class="q-sub">כותבים${SpeechRec ? ' או מקליטים' : ''} את הפירוש, ולוחצים על בדיקה</p>
+        <form id="form">
+          <input id="ans" class="text-input wide-input" lang="he" dir="rtl" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="הפירוש בעברית">
+          <div class="row-center">
+            ${SpeechRec ? '<button type="button" class="btn btn-soft" id="mic">🎙️ להקליט</button>' : ''}
+            <button class="btn" type="submit">בדיקה ✓</button>
+            <button type="button" class="btn btn-soft" id="dunno">🤷 לא יודעים</button>
+          </div>
         </form>
-        <button class="link-btn" id="dunno">לא יודעים</button>
+        <p class="q-sub" id="msg"></p>
         <div class="q-feedback" id="fb"></div>
       </div>
       <div id="help"></div>`;
     later(250, () => say(w.en));
     const input = $('#ans');
-    input.focus();
+    if (!SpeechRec) input.focus();
+    const act = () => { firstAct ||= Date.now(); };
+    input.addEventListener('input', () => { act(); alts = []; });
+
     const check = (text) => {
       if (locked) return;
       locked = true;
+      stopListening();
       input.disabled = true;
-      $('#dunno').remove();
-      const ms = Date.now() - started;
-      const ok = !!text && meaningMatch([text], w);
+      root.querySelectorAll('#form button').forEach((b) => { b.disabled = true; });
+      // Time to answer = thinking time until the kid started typing or recording, not how long writing took.
+      const ms = (firstAct || Date.now()) - started;
+      const ok = !!text && meaningMatch([text, ...alts], w);
       if (ok || !text) { finish(step, ok, ms); return; }
       // Not one of the listed meanings: show them, and let the kid say their answer is right too.
       finish(step, false, ms, { deferLog: true });
       $('#help .help-box').insertAdjacentHTML('afterbegin', `
-        <p class="center">כתבתם: <b>${esc(text)}</b>. הפירושים ברשימה: <b>${acceptedMeanings(w).map(esc).join(', ')}</b></p>
-        <div class="row-center"><button class="btn btn-soft" id="mine">התשובה שלי נכונה גם כן</button></div>`);
+        <p class="center">הפירוש שלכם: <b>${esc(text)}</b>. הפירושים ברשימה: <b>${acceptedMeanings(w).map(esc).join(', ')}</b></p>
+        <div class="row-center"><button class="btn btn-soft" id="mine">✓ התשובה שלי נכונה גם כן</button></div>`);
       $('#go').onclick = () => { log(step, false, ms); next(); };
       $('#mine').onclick = () => {
         log(step, true, ms);
@@ -191,8 +220,34 @@ export function runPractice(outer, { words, plan, items, all, back, onAnswer, on
         next();
       };
     };
-    $('#form').onsubmit = (e) => { e.preventDefault(); check(input.value.trim()); };
+    $('#form').onsubmit = (e) => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (!text) { $('#msg').textContent = 'כותבים או מקליטים את הפירוש. לא יודעים? לוחצים על "לא יודעים"'; return; }
+      check(text);
+    };
     $('#dunno').onclick = () => check('');
+    $('#mic')?.addEventListener('click', () => {
+      if (rec) { rec.stop(); return; }
+      act();
+      rec = new SpeechRec();
+      rec.lang = 'he-IL';
+      rec.interimResults = false;
+      rec.maxAlternatives = 5;
+      $('#mic').textContent = '⏹️ מקשיבים… לחצו לסיום';
+      $('#msg').textContent = '';
+      rec.onresult = (e) => {
+        alts = [...e.results[0]].map((a) => a.transcript);
+        input.value = alts[0] ?? '';
+        $('#msg').textContent = 'שמענו. אפשר לתקן בכתיבה, ואז לוחצים על בדיקה';
+      };
+      rec.onerror = (e) => {
+        $('#msg').textContent = e.error === 'not-allowed'
+          ? 'צריך לאשר למכשיר להשתמש במיקרופון' : 'לא הצלחנו לשמוע. נסו שוב או כתבו';
+      };
+      rec.onend = () => { rec = null; const b = root.querySelector('#mic'); if (b) b.textContent = '🎙️ להקליט'; };
+      rec.start();
+    });
   }
 
   function show() {
