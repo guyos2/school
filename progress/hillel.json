@@ -2,6 +2,17 @@
  "kid": "hillel",
  "version": 1,
  "items": {},
- "sessions": [],
- "updated": 0
+ "sessions": [
+  {
+   "id": "8367a0a6-af24-41af-b8bc-ebf25a2f52e7",
+   "at": 1793735620221,
+   "mastered": 0,
+   "module": "numbers",
+   "part": "video",
+   "total": 0,
+   "correct": 0,
+   "ms": 176859
+  }
+ ],
+ "updated": 1793735620221
 }
