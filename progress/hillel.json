@@ -106,60 +106,60 @@
    "updated": 1793298659372
   },
   "nu:td:7": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1793725560309,
-   "updated": 1793725560309
+   "due": 1793813838489,
+   "updated": 1793727438489
   },
   "nu:td:6": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
-   "wrong": 0,
-   "due": 1793740004361,
-   "updated": 1793725604361
-  },
-  "nu:tw:7": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
-   "wrong": 0,
-   "due": 1793740100979,
-   "updated": 1793725700979
-  },
-  "nu:tw:6": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
-   "wrong": 1,
-   "due": 1793725733594,
-   "updated": 1793725733594
-  },
-  "nu:cmp": {
    "box": 2,
    "seen": 2,
    "right": 2,
    "wrong": 0,
-   "due": 1793812173764,
-   "updated": 1793725773764
+   "due": 1793813838489,
+   "updated": 1793727438489
+  },
+  "nu:tw:7": {
+   "box": 1,
+   "seen": 2,
+   "right": 1,
+   "wrong": 1,
+   "due": 1793727438489,
+   "updated": 1793727438489
+  },
+  "nu:tw:6": {
+   "box": 2,
+   "seen": 2,
+   "right": 1,
+   "wrong": 1,
+   "due": 1793813838489,
+   "updated": 1793727438489
+  },
+  "nu:cmp": {
+   "box": 4,
+   "seen": 4,
+   "right": 4,
+   "wrong": 0,
+   "due": 1794332238489,
+   "updated": 1793727438489
   },
   "nu:gap": {
    "box": 1,
+   "seen": 4,
+   "right": 3,
+   "wrong": 1,
+   "due": 1793727438489,
+   "updated": 1793727438489
+  },
+  "nu:pl:0": {
+   "box": 2,
    "seen": 2,
    "right": 2,
    "wrong": 0,
-   "due": 1793740207032,
-   "updated": 1793725807032
-  },
-  "nu:pl:0": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
-   "wrong": 0,
-   "due": 1793740238018,
-   "updated": 1793725838018
+   "due": 1793813838489,
+   "updated": 1793727438489
   },
   "nu:pl:1": {
    "box": 1,
@@ -170,68 +170,92 @@
    "updated": 1793725859099
   },
   "nu:pl:2": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
-   "wrong": 0,
-   "due": 1793740266813,
-   "updated": 1793725866813
-  },
-  "nu:pl:3": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
-   "wrong": 0,
-   "due": 1793740274380,
-   "updated": 1793725874380
-  },
-  "nu:pl:5": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
-   "wrong": 1,
-   "due": 1793725887346,
-   "updated": 1793725887346
-  },
-  "nu:dg:max": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
-   "wrong": 0,
-   "due": 1793740319096,
-   "updated": 1793725919096
-  },
-  "nu:dg:min": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
-   "wrong": 0,
-   "due": 1793740334511,
-   "updated": 1793725934511
-  },
-  "nu:own": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
-   "wrong": 1,
-   "due": 1793726080712,
-   "updated": 1793726080712
-  },
-  "nu:cp:1-0": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
-   "wrong": 0,
-   "due": 1793740535551,
-   "updated": 1793726135551
-  },
-  "nu:cp:2-0": {
    "box": 2,
    "seen": 2,
    "right": 2,
    "wrong": 0,
-   "due": 1793812590059,
-   "updated": 1793726190059
+   "due": 1793813838489,
+   "updated": 1793727438489
+  },
+  "nu:pl:3": {
+   "box": 2,
+   "seen": 2,
+   "right": 2,
+   "wrong": 0,
+   "due": 1793813838489,
+   "updated": 1793727438489
+  },
+  "nu:pl:5": {
+   "box": 2,
+   "seen": 2,
+   "right": 1,
+   "wrong": 1,
+   "due": 1793813838489,
+   "updated": 1793727438489
+  },
+  "nu:dg:max": {
+   "box": 2,
+   "seen": 2,
+   "right": 2,
+   "wrong": 0,
+   "due": 1793813838489,
+   "updated": 1793727438489
+  },
+  "nu:dg:min": {
+   "box": 2,
+   "seen": 2,
+   "right": 2,
+   "wrong": 0,
+   "due": 1793813838489,
+   "updated": 1793727438489
+  },
+  "nu:own": {
+   "box": 2,
+   "seen": 2,
+   "right": 1,
+   "wrong": 1,
+   "due": 1793813838489,
+   "updated": 1793727438489
+  },
+  "nu:cp:1-0": {
+   "box": 2,
+   "seen": 2,
+   "right": 2,
+   "wrong": 0,
+   "due": 1793813838489,
+   "updated": 1793727438489
+  },
+  "nu:cp:2-0": {
+   "box": 3,
+   "seen": 3,
+   "right": 3,
+   "wrong": 0,
+   "due": 1793986638489,
+   "updated": 1793727438489
+  },
+  "nu:pl:4": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793741838489,
+   "updated": 1793727438489
+  },
+  "nu:cp:2-1": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793741838489,
+   "updated": 1793727438489
+  },
+  "nu:cp:3-0": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1793741838489,
+   "updated": 1793727438489
   }
  },
  "sessions": [
@@ -261,7 +285,18 @@
    "total": 19,
    "correct": 15,
    "ms": 878620
+  },
+  {
+   "id": "163bebb2-5c0d-431e-ad05-af99581daa70",
+   "at": 1793727438490,
+   "mastered": 1,
+   "module": "numbers",
+   "part": "mock",
+   "score": 90,
+   "total": 20,
+   "correct": 18,
+   "ms": 1005756
   }
  ],
- "updated": 1793726405609
+ "updated": 1793727438490
 }
