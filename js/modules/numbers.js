@@ -8,6 +8,7 @@ import {
 import { getProgress, saveProgress, logSession } from '../store.js';
 import { review, MASTERED_BOX } from '../srs.js';
 import { writeHub, lesson, steps } from './numbersWrite.js';
+import { video } from './numbersVideo.js';
 
 const eq = (s) => `<span class="eq">${s}</span>`;
 const SESSION_SIZE = 8;
@@ -305,6 +306,7 @@ function genMix(items) {
 export function renderNumbers(root, kid, [view = 'menu', ...args]) {
   const base = `#/kid/${kid.id}/numbers`;
   if (view === 'learn') return learn(root, base);
+  if (view === 'video') return video(root, kid, base, { back: args[0] === 'write' ? `${base}/write` : base });
   if (view === 'write') return args[0] === 'lesson' ? lesson(root, kid, base) : args[0] === 'steps' ? steps(root, kid, base) : writeHub(root, kid, base);
   if (view === 'practice' && (TOPICS[args[0]] || args[0] === 'mix')) return practice(root, kid, base, args[0]);
   if (view === 'class') return classSheet(root, kid, base);
@@ -325,6 +327,7 @@ async function menu(root, kid, base) {
     <h1 class="page-title">🔢 מספרים טבעיים</h1>
     <p class="subtitle">מספרים גדולים עד מיליונים: קוראים, כותבים, משווים ומסדרים</p>
     <div class="cards" id="cards">
+      <a class="card" href="${base}/video"><span class="card-icon">🎬</span><span class="card-title">סרטון: הסוד של המספרים</span><span class="card-sub">ערך המקום ואיך קוראים מספרים גדולים</span></a>
       <a class="card" href="${base}/learn"><span class="card-icon">🔍</span><span class="card-title">להכיר מספרים גדולים</span><span class="card-sub">כל מספר ב-4 דרכים, והכללים</span></a>
       ${Object.entries(TOPICS).map(([id, t]) => `
         <a class="card" href="${base}/${id === 'write' ? 'write' : `practice/${id}`}"><span class="card-icon">${t.icon}</span><span class="card-title">${t.title}</span>
