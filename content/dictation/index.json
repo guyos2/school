@@ -1,5 +1,16 @@
 {
   "lists": [
-    { "id": "niri-elections", "kid": "niri", "title": "בחירות ודמוקרטיה", "icon": "🗳️" }
+    {
+      "id": "niri-elections",
+      "kid": "niri",
+      "title": "בחירות ודמוקרטיה",
+      "icon": "🗳️"
+    },
+    {
+      "id": "niri-aliyah",
+      "kid": "niri",
+      "title": "עלייה וקליטה",
+      "icon": "🧳"
+    }
   ]
 }
