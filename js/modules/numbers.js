@@ -7,6 +7,7 @@ import {
 } from '../viz/numbers.js';
 import { getProgress, saveProgress, logSession } from '../store.js';
 import { review, MASTERED_BOX } from '../srs.js';
+import { writeHub, lesson, steps } from './numbersWrite.js';
 
 const eq = (s) => `<span class="eq">${s}</span>`;
 const SESSION_SIZE = 8;
@@ -277,7 +278,7 @@ function fromItem(it, mode) {
 
 // ---------- topics ----------
 const TOPICS = {
-  write: { icon: '✍️', title: 'קוראים וכותבים', sub: 'מספרים גדולים בספרות ובמילים', prefix: ['nu:td', 'nu:tw'],
+  write: { icon: '✍️', title: 'קוראים וכותבים', sub: 'הסבר, בונים בשלבים ותרגול', prefix: ['nu:td', 'nu:tw', 'nu:st'],
     gen: () => (Math.random() < 0.5 ? toDigits(genNum(rnd(5, 7), 0.4)) : toWords(genNum(rnd(4, 7), 0.4))) },
   compare: { icon: '⚖️', title: 'גדול, קטן או שווה', sub: '<, >, = ומשלימים ספרה חסרה', prefix: ['nu:cmp', 'nu:gap'],
     gen: () => (Math.random() < 0.55 ? genCompare() : genMissing()) },
@@ -304,6 +305,7 @@ function genMix(items) {
 export function renderNumbers(root, kid, [view = 'menu', ...args]) {
   const base = `#/kid/${kid.id}/numbers`;
   if (view === 'learn') return learn(root, base);
+  if (view === 'write') return args[0] === 'lesson' ? lesson(root, kid, base) : args[0] === 'steps' ? steps(root, kid, base) : writeHub(root, kid, base);
   if (view === 'practice' && (TOPICS[args[0]] || args[0] === 'mix')) return practice(root, kid, base, args[0]);
   if (view === 'class') return classSheet(root, kid, base);
   if (view === 'mock') return testIntro(root, kid, base);
@@ -325,7 +327,7 @@ async function menu(root, kid, base) {
     <div class="cards" id="cards">
       <a class="card" href="${base}/learn"><span class="card-icon">🔍</span><span class="card-title">להכיר מספרים גדולים</span><span class="card-sub">כל מספר ב-4 דרכים, והכללים</span></a>
       ${Object.entries(TOPICS).map(([id, t]) => `
-        <a class="card" href="${base}/practice/${id}"><span class="card-icon">${t.icon}</span><span class="card-title">${t.title}</span>
+        <a class="card" href="${base}/${id === 'write' ? 'write' : `practice/${id}`}"><span class="card-icon">${t.icon}</span><span class="card-title">${t.title}</span>
           <span class="card-sub">${t.sub}<br><small>${stateOf(id)}</small></span></a>`).join('')}
       <a class="card" href="${base}/practice/mix"><span class="card-icon">🎲</span><span class="card-title">תרגול מעורב</span><span class="card-sub">יותר ממה שעוד קשה</span></a>
       <a class="card" href="${base}/mock"><span class="card-icon">🏁</span><span class="card-title">מבדק לדוגמה</span>
