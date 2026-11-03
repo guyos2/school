@@ -510,3 +510,78 @@ button.back { border: 0; background: none; font: inherit; cursor: pointer; }
 .wr-input { display: block; width: 100%; font: inherit; font-size: 22px; text-align: center; padding: 14px; margin-bottom: 12px; border: 3px solid var(--line); border-radius: 16px; background: var(--card); color: var(--ink); }
 .wr-input:focus { outline: none; border-color: var(--kid); }
 .wr-accepted { text-align: center; margin: 4px 0; }
+/* ---------- numbers: place value, big numbers ---------- */
+.nu-big { font-size: clamp(30px, 9vw, 52px); font-weight: 800; letter-spacing: 1px; margin: 8px 0; }
+.nu-words { font-size: clamp(20px, 5.5vw, 28px); font-weight: 700; text-align: center; margin: 8px 0; }
+.nu-tag { margin: 0; font-size: 14px; color: var(--muted); }
+.nu-slot, .nu-blank { display: inline-block; min-width: 1.1em; padding: 0 4px; border: 3px dashed var(--kid); border-radius: 10px; color: var(--kid); text-align: center; line-height: 1.1; }
+.nu-blank { min-width: .9em; padding: 0 2px; }
+.nu-sym { font-size: 40px; font-weight: 800; }
+.nu-typed { display: block; width: fit-content; min-width: 4em; margin: 12px auto 0; padding: 6px 18px; font-size: clamp(32px, 9vw, 48px); font-weight: 800; text-align: center; border-bottom: 5px solid var(--kid); color: var(--kid); }
+.nu-caret { color: var(--kid); animation: nu-blink 1s steps(1) infinite; }
+@keyframes nu-blink { 50% { opacity: 0; } }
+.nu-wide { grid-template-columns: 1fr; }
+.nu-wide .choice { font-size: 19px; }
+.nu-right { font-size: 21px; text-align: center; margin: 6px 0; }
+.nu-why { text-align: center; margin: 6px auto; max-width: 600px; }
+.nu-pv { border-collapse: separate; border-spacing: 3px; margin: 0 auto; direction: ltr; }
+.nu-pv th { font-size: 12px; font-weight: 700; padding: 3px 4px; direction: rtl; line-height: 1.2; }
+.nu-pv .nu-cls { background: var(--bg); border-radius: 8px; color: var(--muted); }
+.nu-pv .nu-ph { color: var(--c); max-width: 70px; }
+.nu-pv td { min-width: 38px; height: 46px; text-align: center; font-size: 26px; font-weight: 800; border-radius: 10px; background: color-mix(in srgb, var(--c) 14%, var(--card)); color: var(--ink); }
+.nu-pv td.nu-rl { background: none; font-size: 15px; color: var(--muted); direction: rtl; min-width: 0; padding-inline: 4px; white-space: nowrap; }
+.nu-pv td.nu-sep { box-shadow: inset -3px 0 0 var(--muted); }
+.nu-pv .nu-hl { outline: 3px solid var(--c); background: color-mix(in srgb, var(--c) 35%, var(--card)); }
+.nu-pv td.nu-diff { background: #fde047; color: #1f1b3a; outline: 3px solid #ca8a04; }
+.nu-pv tr.nu-sum td:not(.nu-rl) { border-top: 3px solid var(--ink); color: var(--kid); }
+.nu-exp { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px; }
+.nu-term { display: flex; flex-direction: column; align-items: center; padding: 6px 10px; border-radius: 12px; border: 3px solid var(--c); background: color-mix(in srgb, var(--c) 12%, var(--card)); }
+.nu-term b { font-size: 21px; }
+.nu-term small { direction: rtl; font-size: 13px; color: var(--muted); }
+.nu-term.nu-hl { background: color-mix(in srgb, var(--c) 35%, var(--card)); }
+.nu-term.nu-dim { opacity: .4; border-style: dashed; }
+.nu-plus { font-size: 24px; font-weight: 800; }
+.nu-vs { text-align: center; font-size: 34px; margin: 6px 0; }
+.nu-groups { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.nu-g { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 84px; padding: 6px 8px; border-radius: 16px; border: 3px solid var(--c); background: color-mix(in srgb, var(--c) 10%, var(--card)); }
+.nu-g-d { font-size: 28px; font-weight: 800; letter-spacing: 3px; }
+.nu-g-name { font-size: 14px; color: var(--c); font-weight: 700; }
+.nu-g-w { direction: rtl; font-size: 15px; max-width: 150px; font-weight: 700; text-align: center; }
+.nu-tries { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 6px; width: 100%; max-width: 560px; margin: 0 auto; }
+.nu-wrap { white-space: normal; }
+.nu-try { display: flex; justify-content: space-between; gap: 8px; padding: 4px 10px; border-radius: 10px; font-size: 16px; font-weight: 700; }
+.nu-try.ok { background: #d1fae5; color: #065f46; }
+.nu-try.no { background: var(--bg); color: var(--muted); }
+.nu-money { margin: 8px 0; }
+.nu-money-h { text-align: center; font-weight: 700; margin-bottom: 4px; }
+.nu-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.nu-ten, .nu-loose { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 4px; border-radius: 10px; max-width: 220px; justify-content: center; }
+.nu-ten { border: 2px solid var(--c, var(--kid)); background: var(--bg); position: relative; padding-bottom: 18px; }
+.nu-ten small { position: absolute; bottom: 1px; inset-inline: 0; text-align: center; font-size: 12px; font-weight: 700; }
+.nu-chip { display: inline-block; padding: 1px 5px; border-radius: 6px; background: var(--c); color: #fff; font-size: 11px; font-weight: 700; }
+.nu-lines { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 22px; }
+.nu-total { font-size: 28px; color: var(--kid); }
+.nu-alt { font-size: 24px; color: var(--muted); }
+.nu-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 10px 0; }
+.nu-card { display: flex; flex-direction: column; align-items: center; min-width: 52px; padding: 8px 6px; border-radius: 12px; border: 3px solid var(--c, var(--kid)); background: var(--card); box-shadow: var(--shadow); }
+.nu-card b { font-size: 32px; }
+.nu-card small { direction: rtl; font-size: 11px; color: var(--muted); text-align: center; max-width: 70px; line-height: 1.2; }
+.nu-built, .nu-tiles, .nu-order-pick, .nu-order-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; margin: 12px auto; max-width: 680px; }
+.nu-built { min-height: 62px; padding: 10px; border: 3px dashed var(--line); border-radius: 16px; background: var(--card); }
+.nu-tile, .nu-num { border: 2px solid var(--line); background: var(--card); border-radius: 12px; padding: 8px 14px; font-size: 20px; font-weight: 700; color: var(--ink); box-shadow: var(--shadow); }
+.nu-tile.on, .nu-num.on { border-color: var(--kid); background: color-mix(in srgb, var(--kid) 14%, var(--card)); }
+.nu-num.empty { box-shadow: none; border-style: dashed; color: var(--muted); }
+.nu-lt { font-size: 22px; font-weight: 800; color: var(--muted); }
+.nu-own { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px; margin: 10px 0; direction: ltr; }
+.nu-in { width: 9.5ch; font: inherit; font-size: 22px; font-weight: 700; text-align: center; padding: 8px; border: 3px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink); }
+.mt-q > .nu-in { display: block; margin: 8px auto 0; width: 12ch; }
+.nu-in:focus { outline: none; border-color: var(--kid); }
+.nu-part { margin: 18px 0; }
+.nu-part-h { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 21px; }
+.nu-part-h small { font-size: 14px; font-weight: 500; }
+.nu-circle { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 3px solid var(--kid); border-radius: 50%; color: var(--kid); font-weight: 800; }
+.nu-qn { margin: 0 0 4px; font-weight: 700; }
+.nu .mt-opts { grid-template-columns: 1fr; }
+.nu .mt-opt { text-align: center; }
+.nu .mt-opts.nu-sym-row { grid-template-columns: repeat(3, 1fr); }
+.nu .mt-q .nu-big { text-align: center; font-size: clamp(26px, 7vw, 40px); }

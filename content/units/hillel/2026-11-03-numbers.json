@@ -1,0 +1,28 @@
+{
+  "id": "2026-11-03-numbers",
+  "kind": "numbers",
+  "title": "משימת חזרה למבדק: מספרים גדולים",
+  "date": "2026-11-03",
+  "source": "משימת חזרה למבדק, יום שלישי 3.11.26",
+  "items": [
+    { "q": 1, "type": "toDigits", "n": 2025004, "words": "שני מיליון עשרים וחמש אלף וארבע" },
+    { "q": 1, "type": "toDigits", "n": 122011, "words": "מאה עשרים ושתיים אלף ואחת עשרה" },
+    { "q": 1, "type": "toWords", "n": 1025041 },
+    { "q": 1, "type": "toWords", "n": 500006 },
+    { "q": 2, "type": "compare", "a": 13425, "b": 24000 },
+    { "q": 2, "type": "compare", "a": 44101, "b": 44110 },
+    { "q": 2, "type": "missing", "a": "3_8000", "rel": "<", "b": "348000" },
+    { "q": 2, "type": "missing", "a": "502000", "rel": ">", "b": "50_008" },
+    { "q": 3, "type": "place", "n": 254627, "place": 0 },
+    { "q": 3, "type": "place", "n": 254627, "place": 1 },
+    { "q": 3, "type": "place", "n": 254627, "place": 2 },
+    { "q": 3, "type": "place", "n": 254627, "place": 3 },
+    { "q": 3, "type": "place", "n": 254627, "place": 5 },
+    { "q": 4, "type": "digits", "digits": [3, 2, 5, 7, 8, 9], "goal": "max" },
+    { "q": 4, "type": "digits", "digits": [3, 2, 5, 7, 8, 9], "goal": "min" },
+    { "q": 5, "type": "own6" },
+    { "q": 6, "type": "compose", "parts": [[54, 1], [2, 0]] },
+    { "q": 6, "type": "compose", "parts": [[5, 2], [42, 0]] },
+    { "q": 6, "type": "compose", "parts": [[4, 2], [25, 0]] }
+  ]
+}

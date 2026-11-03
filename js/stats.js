@@ -3,6 +3,7 @@
 import { esc, ltr, viewSignal } from './ui.js';
 import { getProgress, isOnline, syncKid } from './store.js';
 import { MASTERED_BOX } from './srs.js';
+import { PLACES } from './viz/numbers.js';
 
 const DAY = 864e5;
 const PART_TITLES = {
@@ -13,7 +14,7 @@ const PART_TITLES = {
   sub: 'חיסור', mul: 'כפל', mix: 'מעורב', class: 'מהכיתה',
   vocab: 'אוצר מילים', meaning: 'פירוש מילים', typed: 'כתיבת פירוש', grammar: 'דקדוק', unseen: 'Unseen', mock: 'מבחן דמה', gtest: 'מבחן דקדוק', mywords: 'המילים שסימנו',
 };
-const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation', col: 'column',
+const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation', col: 'column', nu: 'numbers',
   vo: 'units', ug: 'units', rd: 'units', uw: 'units' };
 
 const dayStart = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
@@ -252,12 +253,23 @@ function moduleTable(kid, sessions, items, modules, from) {
     </table></div>`;
 }
 
+// מספרים טבעיים: item keys are per skill, e.g. nu:td:7 (write a 7-digit number in digits), nu:pl:2 (the hundreds digit).
+function numbersLabel(a, b) {
+  if (a === 'td') return `כתיבה בספרות (${b} ספרות)`;
+  if (a === 'tw') return `כתיבה במילים (${b} ספרות)`;
+  if (a === 'pl') return `ספרת ה${PLACES[b]}`;
+  if (a === 'cp') return b.split('-').map((p) => (p === '0' ? 'יחידות' : PLACES[p])).join(' ו');
+  if (a === 'dg') return { max: 'המספר הגדול ביותר מספרות', min: 'המספר הקטן ביותר מספרות', min0: 'הקטן ביותר מספרות, עם 0' }[b] ?? 'בונים מספר מספרות';
+  return { cmp: 'השוואה: &lt;, &gt;, =', gap: 'השלמת ספרה חסרה', pv: 'ערך הספרה', ord: 'סידור מהקטן לגדול', own: 'כותבים 5 מספרים ומסדרים' }[a] ?? esc(a);
+}
+
 function itemLabel(key, grammar) {
   const [prefix, a, b, c] = key.split(':');
   if (prefix === 'mul') return ltr(a.replace('x', ' × '));
   if (prefix === 'fr') return `${a === 'n' ? 'שם השבר ' : ''}${ltr(b)}`;
   if (prefix === 'col') return ltr(`${b} ${{ add: '+', sub: '−', mul: '×' }[a]} ${c}`);
   if (prefix === 'en') return ltr(esc(a === 'L' ? `${b} ${b.toLowerCase()}` : b));
+  if (prefix === 'nu') return numbersLabel(a, b);
   if (prefix === 'uw') return ltr(esc(a));
   if (prefix === 'vo') return ltr(esc(a.replace(/-/g, ' ')));
   if (prefix === 'ug') return `דקדוק, תרגיל ${+b + 1}`;
