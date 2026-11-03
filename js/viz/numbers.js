@@ -10,7 +10,7 @@ const svg = (w, h, body) =>
 
 export const PLACES = ['אחדות', 'עשרות', 'מאות', 'אלפים', 'עשרות אלפים', 'מאות אלפים', 'מיליונים'];
 export const PCOLOR = ['#3b82f6', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6', '#14b8a6', '#ef4444'];
-const CLASS_NAME = ['יחידות', 'אלפים', 'מיליונים'];
+export const CLASS_NAME = ['יחידות', 'אלפים', 'מיליונים'];
 
 // 1234567 → "1,234,567"; works on digit strings with '_' too.
 export function fmt(n) {
@@ -121,20 +121,24 @@ function nExpanded({ n, hl = -1 }) {
   };
 }
 
-function nGroups({ n }) {
+// The number as boxes, one per class (millions, thousands, units); hl = the class to highlight.
+export function groupBoxes(n, { withWords = true, hl = -1 } = {}) {
   const s = String(n);
-  const { groups, text } = numberWords(n);
+  const { groups } = numberWords(n);
   const chunks = [];
-  for (let end = s.length; end > 0; end -= 3) chunks.unshift({ d: s.slice(Math.max(0, end - 3), end), cls: chunks.length });
-  chunks.forEach((c, i) => { c.cls = chunks.length - 1 - i; });
-  const box = (c) => {
-    const g = groups.find((x) => x.cls === c.cls);
-    return `<div class="nu-g" style="--c:${PCOLOR[c.cls * 3]}"><span class="nu-g-d">${c.d}</span>
-      <span class="nu-g-name">${CLASS_NAME[c.cls]}</span><span class="nu-g-w">${g ? g.text : 'כלום, לא קוראים'}</span></div>`;
+  for (let end = s.length; end > 0; end -= 3) chunks.unshift(s.slice(Math.max(0, end - 3), end));
+  const box = (d, cls) => {
+    const g = groups.find((x) => x.cls === cls);
+    return `<div class="nu-g ${cls === hl ? 'nu-g-hl' : ''}" style="--c:${PCOLOR[cls * 3]}"><span class="nu-g-d">${d}</span>
+      <span class="nu-g-name">${CLASS_NAME[cls]}</span>${withWords ? `<span class="nu-g-w">${g ? g.text : 'כלום, לא קוראים'}</span>` : ''}</div>`;
   };
+  return `<div class="nu-groups ltr">${chunks.map((d, i) => box(d, chunks.length - 1 - i)).join('<span class="nu-comma">,</span>')}</div>`;
+}
+
+function nGroups({ n }) {
   return {
-    html: `<div class="nu-groups ltr">${chunks.map(box).join('')}</div>`,
-    caption: `מחלקים לשלשות מימין, וקוראים כל שלשה עם שם המחלקה שלה:<br><b>${text}</b>`,
+    html: groupBoxes(n),
+    caption: `מחלקים לשלשות מימין, וקוראים כל שלשה עם שם המחלקה שלה:<br><b>${words(n)}</b>`,
   };
 }
 
