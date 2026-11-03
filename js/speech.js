@@ -54,6 +54,25 @@ export function sayHe(text, { rate = 0.8 } = {}) {
   speakParts(text.split('|').map((s) => s.trim()).filter(Boolean), rate, gen, 'he-IL');
 }
 
+// Speaks one Hebrew line and calls onend when it is done (not at all if a newer line took over). Returns false without a voice.
+export function speakHe(text, { rate = 0.85, onend } = {}) {
+  if (!hasHebrewVoice() || !text) return false;
+  speechSynthesis.cancel();
+  const myGen = ++gen;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'he-IL';
+  u.voice = heVoice;
+  u.rate = rate;
+  u.onend = () => { if (myGen === gen) onend?.(); };
+  speechSynthesis.speak(u);
+  return true;
+}
+
+export function stopSpeech() {
+  gen++;
+  if (canSpeak) speechSynthesis.cancel();
+}
+
 export const speakBtn = (text, label = '🔊', ariaLabel = 'השמעה') =>
   canSpeak ? `<button class="speak" data-say="${text.replace(/"/g, '&quot;')}" aria-label="${ariaLabel}">${label}</button>` : '';
 

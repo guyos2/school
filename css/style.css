@@ -607,3 +607,60 @@ button.back { border: 0; background: none; font: inherit; cursor: pointer; }
 .nu-howto { max-width: 560px; margin: 8px auto; line-height: 1.7; }
 .nu-ask { text-align: center; font-size: 20px; margin: 8px 0; }
 .struck { text-decoration: line-through; text-decoration-color: var(--bad); text-decoration-thickness: 3px; }
+/* numbers: the explainer video */
+.v-screen { position: relative; background: linear-gradient(160deg, #1f1b3a, #3b2f7a); color: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 14px 12px 16px; min-height: 440px; display: flex; flex-direction: column; overflow: hidden; }
+.v-scene-name { font-size: 14px; opacity: .7; text-align: center; }
+.v-stage { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 8px 0; }
+.v-title { margin: 0; font-size: clamp(22px, 6vw, 30px); text-align: center; }
+.v-cap { min-height: 78px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: clamp(19px, 5vw, 24px); font-weight: 700; line-height: 1.4; background: rgba(0, 0, 0, .35); border-radius: 14px; padding: 8px 12px; }
+.v-start { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: rgba(20, 16, 50, .72); border: 0; font-size: 20px; cursor: pointer; }
+.v-start[hidden] { display: none; }
+.v-bigplay { width: 96px; height: 96px; border-radius: 50%; border: 0; background: var(--kid); color: #fff; font-size: 44px; box-shadow: 0 8px 30px rgba(0, 0, 0, .35); }
+.v-bar { height: 8px; background: var(--line); border-radius: 99px; margin: 10px 0; overflow: hidden; }
+.v-fill { height: 100%; width: 0; background: var(--kid); transition: width .4s; }
+.v-controls { display: flex; justify-content: center; gap: 12px; margin: 0 auto; width: fit-content; }
+.v-btn { width: 54px; height: 54px; border-radius: 50%; border: 0; background: var(--card); box-shadow: var(--shadow); font-size: 22px; color: var(--ink); }
+.v-btn.v-main { background: var(--kid); color: #fff; width: 64px; height: 64px; font-size: 28px; }
+.v-btn:disabled { opacity: .5; }
+.v-chapters { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0; }
+.v-chap { border: 2px solid var(--line); background: var(--card); border-radius: 99px; padding: 4px 12px; font-size: 14px; color: var(--ink); }
+.v-chap.on { background: var(--kid); border-color: var(--kid); color: #fff; }
+.vpop { animation: v-pop .55s cubic-bezier(.2, 1.4, .4, 1) both; }
+@keyframes v-pop { from { opacity: 0; transform: scale(.6) translateY(10px); } to { opacity: 1; transform: none; } }
+.v-float span { animation: v-pop .55s both, v-bob 2.4s ease-in-out infinite 1s; }
+@keyframes v-bob { 50% { transform: translateY(-8px); } }
+.vh-row { display: flex; justify-content: center; gap: 6px; flex-wrap: nowrap; }
+.vh { display: flex; flex-direction: column; align-items: center; width: clamp(46px, 13vw, 70px); transition: opacity .3s, transform .3s; }
+.vh.on { transform: translateY(-6px); }
+.vh.dim { opacity: .35; }
+.vh-roof { width: 100%; height: 22px; background: var(--c); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.vh-body { width: 86%; height: clamp(50px, 14vw, 66px); display: flex; align-items: center; justify-content: center; background: color-mix(in srgb, var(--c) 25%, #fff); color: #1f1b3a; border-radius: 0 0 8px 8px; }
+.vh-body b { font-size: clamp(30px, 9vw, 44px); }
+.vh.on .vh-body { background: #fde047; box-shadow: 0 0 0 4px var(--c); }
+.vh-label { visibility: hidden; margin-top: 4px; font-size: 12px; line-height: 1.2; text-align: center; color: color-mix(in srgb, var(--c) 55%, #fff); font-weight: 700; direction: rtl; min-height: 30px; }
+.vh-val { visibility: hidden; font-size: clamp(12px, 3.4vw, 16px); font-weight: 800; background: var(--c); border-radius: 8px; padding: 1px 4px; white-space: nowrap; }
+.vh-label.show, .vh-val.show { visibility: visible; }
+.v-eq { font-size: clamp(28px, 8vw, 40px); font-weight: 800; color: #fde047; }
+.v-vs { font-size: clamp(26px, 7vw, 36px); font-weight: 800; }
+.v-vs .struck, .v-player .struck { text-decoration: line-through; text-decoration-color: var(--bad); text-decoration-thickness: 4px; opacity: .8; }
+.v-words { font-size: clamp(20px, 5.5vw, 26px); font-weight: 800; color: #fde047; text-align: center; }
+.vc-row { display: flex; align-items: center; justify-content: center; gap: 3px; }
+.vc { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 4px; min-width: 54px; border-radius: 14px; background: color-mix(in srgb, var(--c) 30%, transparent); border: 3px solid var(--c); }
+.vc b { font-size: 20px; }
+.vc small { font-size: 13px; }
+.vc-arrow { font-size: 13px; text-align: center; line-height: 1.1; font-weight: 800; color: #fde047; direction: ltr; }
+.vb { display: block; background: #fbbf24; border: 2px solid #92400e; }
+.vb1 { width: 10px; height: 10px; }
+.vb10 { width: 10px; height: 44px; background: repeating-linear-gradient(#fbbf24 0 10px, #92400e 10px 12px); }
+.vb100 { width: 44px; height: 44px; background: repeating-linear-gradient(90deg, #fbbf24 0 10px, #92400e 10px 12px), #fbbf24; background-blend-mode: multiply; }
+.vb1000 { width: 38px; height: 38px; background: #fbbf24; box-shadow: 6px -6px 0 -2px #f59e0b, 12px -12px 0 -4px #d97706; border-color: #92400e; }
+.vg-raw { display: flex; gap: 4px; font-size: clamp(38px, 11vw, 58px); font-weight: 800; }
+.vg-raw span { color: color-mix(in srgb, var(--c) 45%, #fff); display: inline-block; }
+.vg-row { display: flex; align-items: flex-start; justify-content: center; gap: 4px; }
+.vg { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 8px; border-radius: 14px; border: 3px solid var(--c); background: color-mix(in srgb, var(--c) 22%, transparent); max-width: 140px; transition: transform .3s; }
+.vg.on { background: color-mix(in srgb, var(--c) 55%, transparent); transform: translateY(-6px); }
+.vg b { font-size: clamp(30px, 9vw, 44px); letter-spacing: 3px; }
+.vg small { font-size: 14px; font-weight: 700; direction: rtl; }
+.vg-word { direction: rtl; font-size: 15px; font-weight: 700; text-align: center; color: #fde047; }
+.vg-comma { font-size: 44px; font-weight: 800; align-self: center; }
+.v-tips { font-size: clamp(19px, 5vw, 24px); font-weight: 700; line-height: 1.6; margin: 0; padding-inline-start: 1.4em; }

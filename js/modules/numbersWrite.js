@@ -38,8 +38,10 @@ export function writeHub(root, kid, base) {
   root.innerHTML = `
     <a class="back" href="${base}">→ חזרה</a>
     <h1 class="page-title">✍️ קוראים וכותבים מספרים גדולים</h1>
-    <p class="subtitle">כדאי לעבור לפי הסדר: הסבר, בונים בשלבים, ואז תרגול</p>
+    <p class="subtitle">כדאי לעבור לפי הסדר: סרטון, הסבר, בונים בשלבים, ואז תרגול</p>
     <div class="cards">
+      <a class="card" href="${base}/video/write"><span class="card-icon">🎬</span><span class="card-title">0. סרטון</span>
+        <span class="card-sub">הסוד של המספרים: לכל ספרה יש בית<br><small>${did('video') ? '✅ ראיתם' : 'כ-4 דקות'}</small></span></a>
       <a class="card" href="${base}/write/lesson"><span class="card-icon">📖</span><span class="card-title">1. ההסבר</span>
         <span class="card-sub">איך קוראים ואיך כותבים, עם שאלות קטנות בדרך<br><small>${did('lesson') ? '✅ עברתם' : 'כ-5 דקות'}</small></span></a>
       <a class="card" href="${base}/write/steps"><span class="card-icon">🪜</span><span class="card-title">2. בונים בשלבים</span>
