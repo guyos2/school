@@ -344,6 +344,142 @@
    "win": [],
    "recent": [],
    "updated": 1792928453335
+  },
+  "be:s:I ___ a student.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091086189,
+   "updated": 1794076686189
+  },
+  "be:s:They ___ friends.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091103894,
+   "updated": 1794076703894
+  },
+  "be:s:The cat ___ on the chair.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091109726,
+   "updated": 1794076709726
+  },
+  "be:s:You ___ nice.": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794076713005,
+   "updated": 1794076713005
+  },
+  "be:s:She ___ at school.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091175398,
+   "updated": 1794076775398
+  },
+  "be:f:they": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091180628,
+   "updated": 1794076780628
+  },
+  "be:f:I": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091182990,
+   "updated": 1794076782990
+  },
+  "be:f:she": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091185407,
+   "updated": 1794076785407
+  },
+  "be:f:my friends": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091188507,
+   "updated": 1794076788507
+  },
+  "be:f:Dana": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091206086,
+   "updated": 1794076806086
+  },
+  "be:f:it": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091210682,
+   "updated": 1794076810682
+  },
+  "be:s:He ___ my friend.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091231322,
+   "updated": 1794076831322
+  },
+  "be:s:I ___ ten years old.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091235259,
+   "updated": 1794076835259
+  },
+  "be:s:You ___ funny.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091251164,
+   "updated": 1794076851164
+  },
+  "be:s:The cat ___ black.": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794076858081,
+   "updated": 1794076858081
+  },
+  "be:s:We ___ in the class.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091307502,
+   "updated": 1794076907502
+  },
+  "be:s:Tom and Dana ___ happy.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091313840,
+   "updated": 1794076913840
   }
  },
  "sessions": [
@@ -413,7 +549,18 @@
    "total": 12,
    "correct": 12,
    "ms": 56134
+  },
+  {
+   "id": "058c1742-0e03-4c75-9cdc-a752843dd259",
+   "at": 1794076935727,
+   "mastered": 0,
+   "module": "be",
+   "part": "class",
+   "unit": "2026-11-07-be",
+   "total": 17,
+   "correct": 15,
+   "ms": 255335
   }
  ],
- "updated": 1792928453340
+ "updated": 1794076935727
 }
