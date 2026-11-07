@@ -57,7 +57,7 @@ export function keypad(container, { onDigit, onBack, onEnter }) {
 
 // Hebrew text with English words inside: each English run is isolated LTR, so the punctuation stays in place.
 export function mixed(s) {
-  const re = /[A-Za-z][A-Za-z'’\-/ ]*[A-Za-z]|[A-Za-z]/g;
+  const re = /[A-Za-z][A-Za-z'’\-/ ,]*[A-Za-z]|[A-Za-z]/g; // a comma between English words stays inside the run ("he, she, it")
   let out = '', last = 0;
   for (const m of String(s).matchAll(re)) {
     out += `${esc(s.slice(last, m.index))}<span class="en">${esc(m[0])}</span>`;

@@ -15,7 +15,8 @@ const EXAMPLES = { add: { op: 'add', a: 4567, b: 2385 }, sub: { op: 'sub', a: 50
 async function loadUnits(kidId) {
   try {
     const { units } = await fetch(`content/units/${kidId}/index.json`).then((r) => r.json());
-    return await Promise.all(units.map((f) => fetch(`content/units/${kidId}/${f}`).then((r) => r.json())));
+    const all = await Promise.all(units.map((f) => fetch(`content/units/${kidId}/${f}`).then((r) => r.json())));
+    return all.filter((u) => u.groups); // other kinds (e.g. "be") belong to their own module
   } catch {
     return [];
   }
