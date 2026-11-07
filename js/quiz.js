@@ -1,6 +1,7 @@
 // Multiple-choice practice engine shared by modules.
 // question: { key, prompt: html, speak?: text spoken on show, onShow?: () => void, options: [{ html, value }], answer,
-//             help: () => html shown after a wrong answer, after?: () => void on a correct answer }
+//             help: () => html shown after a wrong answer, afterHelp?: (el) => void once it is on screen (e.g. to mount a viz panel),
+//             after?: () => void on a correct answer }
 import { pick, PRAISE, later, viewSignal } from './ui.js';
 import { say, wireSpeakButtons } from './speech.js';
 
@@ -62,6 +63,7 @@ export function runQuiz(outer, { back, questions, onResult, onDone }) {
       $('#fb').className = 'q-feedback bad';
       if (!missed.has(q.key)) { missed.add(q.key); queue.push({ ...q, retry: true }); }
       $('#help').innerHTML = `<div class="help-box">${q.help()}<button class="btn btn-big" id="go">הבנתי, ממשיכים ←</button></div>`;
+      q.afterHelp?.($('#help'));
       $('#go').onclick = next;
     }
   };
