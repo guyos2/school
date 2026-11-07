@@ -434,12 +434,12 @@
    "updated": 1794076995823
   },
   "be:s:He ___ my friend.": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794163401441,
-   "updated": 1794077001441
+   "due": 1794336492362,
+   "updated": 1794077292362
   },
   "be:s:I ___ ten years old.": {
    "box": 2,
@@ -458,28 +458,76 @@
    "updated": 1794077009148
   },
   "be:s:The cat ___ black.": {
-   "box": 1,
-   "seen": 2,
-   "right": 0,
+   "box": 2,
+   "seen": 3,
+   "right": 1,
    "wrong": 2,
-   "due": 1794077016134,
-   "updated": 1794077016134
+   "due": 1794163681424,
+   "updated": 1794077281424
   },
   "be:s:We ___ in the class.": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794163431473,
-   "updated": 1794077031473
+   "due": 1794336474261,
+   "updated": 1794077274261
   },
   "be:s:Tom and Dana ___ happy.": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794163436442,
-   "updated": 1794077036442
+   "due": 1794336499285,
+   "updated": 1794077299285
+  },
+  "be:s:The apples ___ red.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091625088,
+   "updated": 1794077225088
+  },
+  "be:s:You ___ tall.": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794077230719,
+   "updated": 1794077230719
+  },
+  "be:s:We ___ at home.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091677272,
+   "updated": 1794077277272
+  },
+  "be:s:She ___ a teacher.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091684587,
+   "updated": 1794077284587
+  },
+  "be:s:I ___ happy.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091687855,
+   "updated": 1794077287855
+  },
+  "be:s:It ___ a dog.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794091708671,
+   "updated": 1794077308671
   }
  },
  "sessions": [
@@ -571,7 +619,18 @@
    "total": 17,
    "correct": 16,
    "ms": 99149
+  },
+  {
+   "id": "7d39f3f1-aa69-4099-b049-f6bfe996b1c1",
+   "at": 1794077316904,
+   "mastered": 0,
+   "module": "be",
+   "part": "fill",
+   "unit": "2026-11-07-be",
+   "total": 10,
+   "correct": 9,
+   "ms": 99818
   }
  ],
- "updated": 1794077042571
+ "updated": 1794077316904
 }
