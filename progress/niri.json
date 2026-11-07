@@ -370,12 +370,12 @@
    "updated": 1794076954699
   },
   "be:s:You ___ nice.": {
-   "box": 2,
-   "seen": 2,
-   "right": 1,
+   "box": 3,
+   "seen": 3,
+   "right": 2,
    "wrong": 1,
-   "due": 1794163361701,
-   "updated": 1794076961701
+   "due": 1794336647974,
+   "updated": 1794077447974
   },
   "be:s:She ___ at school.": {
    "box": 2,
@@ -418,12 +418,12 @@
    "updated": 1794076977049
   },
   "be:f:Dana": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794163386112,
-   "updated": 1794076986112
+   "due": 1794336653330,
+   "updated": 1794077453330
   },
   "be:f:it": {
    "box": 2,
@@ -482,52 +482,84 @@
    "updated": 1794077299285
   },
   "be:s:The apples ___ red.": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1794091625088,
-   "updated": 1794077225088
+   "due": 1794163863749,
+   "updated": 1794077463749
   },
   "be:s:You ___ tall.": {
+   "box": 1,
+   "seen": 2,
+   "right": 1,
+   "wrong": 1,
+   "due": 1794091832339,
+   "updated": 1794077432339
+  },
+  "be:s:We ___ at home.": {
+   "box": 1,
+   "seen": 2,
+   "right": 2,
+   "wrong": 0,
+   "due": 1794091760295,
+   "updated": 1794077360295
+  },
+  "be:s:She ___ a teacher.": {
+   "box": 2,
+   "seen": 2,
+   "right": 2,
+   "wrong": 0,
+   "due": 1794163858996,
+   "updated": 1794077458996
+  },
+  "be:s:I ___ happy.": {
+   "box": 2,
+   "seen": 2,
+   "right": 2,
+   "wrong": 0,
+   "due": 1794163838527,
+   "updated": 1794077438527
+  },
+  "be:s:It ___ a dog.": {
+   "box": 2,
+   "seen": 2,
+   "right": 2,
+   "wrong": 0,
+   "due": 1794163804210,
+   "updated": 1794077404210
+  },
+  "be:s:You and Tom ___ in my class.": {
    "box": 1,
    "seen": 1,
    "right": 0,
    "wrong": 1,
-   "due": 1794077230719,
-   "updated": 1794077230719
+   "due": 1794077372557,
+   "updated": 1794077372557
   },
-  "be:s:We ___ at home.": {
+  "be:s:Grandpa ___ very old.": {
    "box": 1,
    "seen": 1,
    "right": 1,
    "wrong": 0,
-   "due": 1794091677272,
-   "updated": 1794077277272
+   "due": 1794091799925,
+   "updated": 1794077399925
   },
-  "be:s:She ___ a teacher.": {
+  "be:f:we": {
    "box": 1,
    "seen": 1,
    "right": 1,
    "wrong": 0,
-   "due": 1794091684587,
-   "updated": 1794077284587
+   "due": 1794091811098,
+   "updated": 1794077411098
   },
-  "be:s:I ___ happy.": {
+  "be:s:My mother ___ at work.": {
    "box": 1,
    "seen": 1,
    "right": 1,
    "wrong": 0,
-   "due": 1794091687855,
-   "updated": 1794077287855
-  },
-  "be:s:It ___ a dog.": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
-   "wrong": 0,
-   "due": 1794091708671,
-   "updated": 1794077308671
+   "due": 1794091893278,
+   "updated": 1794077493278
   }
  },
  "sessions": [
@@ -630,7 +662,18 @@
    "total": 10,
    "correct": 9,
    "ms": 99818
+  },
+  {
+   "id": "45c95cfd-6939-4546-85e7-3bd3fafa91e3",
+   "at": 1794077549162,
+   "mastered": 0,
+   "module": "be",
+   "part": "mix",
+   "unit": "2026-11-07-be",
+   "total": 12,
+   "correct": 11,
+   "ms": 205504
   }
  ],
- "updated": 1794077316904
+ "updated": 1794077549163
 }
