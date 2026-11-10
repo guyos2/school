@@ -570,28 +570,28 @@
    "updated": 1794329623792
   },
   "be:f:Tom": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1794092150984,
-   "updated": 1794077750984
+   "due": 1794416495818,
+   "updated": 1794330095818
   },
   "be:f:you": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1794092150984,
-   "updated": 1794077750984
+   "due": 1794416477645,
+   "updated": 1794330077645
   },
   "be:f:Tom and Dana": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1794092150984,
-   "updated": 1794077750984
+   "due": 1794416481200,
+   "updated": 1794330081200
   },
   "be:s:Tom ___ funny.": {
    "box": 1,
@@ -659,11 +659,11 @@
   },
   "be:f:the children": {
    "box": 1,
-   "seen": 1,
+   "seen": 2,
    "right": 1,
-   "wrong": 0,
-   "due": 1794344023792,
-   "updated": 1794329623792
+   "wrong": 1,
+   "due": 1794330103814,
+   "updated": 1794330103814
   },
   "be:s:I ___ in the fifth grade.": {
    "box": 1,
@@ -696,6 +696,54 @@
    "wrong": 1,
    "due": 1794329623792,
    "updated": 1794329623792
+  },
+  "be:f:the flower": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794344465968,
+   "updated": 1794330065968
+  },
+  "be:f:the dog": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794344468899,
+   "updated": 1794330068899
+  },
+  "be:f:the books": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794344473635,
+   "updated": 1794330073635
+  },
+  "be:f:he": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794344484022,
+   "updated": 1794330084022
+  },
+  "be:f:my brother": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794344492945,
+   "updated": 1794330092945
+  },
+  "be:f:my mother": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794344501056,
+   "updated": 1794330101056
   }
  },
  "sessions": [
@@ -844,7 +892,18 @@
    "total": 17,
    "correct": 17,
    "ms": 82024
+  },
+  {
+   "id": "37982049-358a-4019-b334-199db839ce36",
+   "at": 1794330117117,
+   "mastered": 9,
+   "module": "be",
+   "part": "field",
+   "unit": "2026-11-07-be",
+   "total": 10,
+   "correct": 9,
+   "ms": 58471
   }
  ],
- "updated": 1794329748996
+ "updated": 1794330117117
 }
