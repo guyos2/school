@@ -370,20 +370,20 @@
    "updated": 1794076954699
   },
   "be:s:You ___ nice.": {
-   "box": 4,
-   "seen": 4,
-   "right": 3,
+   "box": 5,
+   "seen": 5,
+   "right": 4,
    "wrong": 1,
-   "due": 1794682550984,
-   "updated": 1794077750984
+   "due": 1795539223792,
+   "updated": 1794329623792
   },
   "be:s:She ___ at school.": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
+   "box": 4,
+   "seen": 4,
+   "right": 4,
    "wrong": 0,
-   "due": 1794336950984,
-   "updated": 1794077750984
+   "due": 1794934423792,
+   "updated": 1794329623792
   },
   "be:f:they": {
    "box": 2,
@@ -394,28 +394,28 @@
    "updated": 1794076968937
   },
   "be:f:I": {
+   "box": 4,
+   "seen": 4,
+   "right": 4,
+   "wrong": 0,
+   "due": 1794934423792,
+   "updated": 1794329623792
+  },
+  "be:f:she": {
    "box": 3,
    "seen": 3,
    "right": 3,
    "wrong": 0,
-   "due": 1794336950984,
-   "updated": 1794077750984
-  },
-  "be:f:she": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
-   "wrong": 0,
-   "due": 1794163374204,
-   "updated": 1794076974204
+   "due": 1794588823792,
+   "updated": 1794329623792
   },
   "be:f:my friends": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794163377049,
-   "updated": 1794076977049
+   "due": 1794588823792,
+   "updated": 1794329623792
   },
   "be:f:Dana": {
    "box": 3,
@@ -474,12 +474,12 @@
    "updated": 1794077274261
   },
   "be:s:Tom and Dana ___ happy.": {
-   "box": 3,
-   "seen": 3,
+   "box": 1,
+   "seen": 4,
    "right": 3,
-   "wrong": 0,
-   "due": 1794336499285,
-   "updated": 1794077299285
+   "wrong": 1,
+   "due": 1794329623792,
+   "updated": 1794329623792
   },
   "be:s:The apples ___ red.": {
    "box": 3,
@@ -490,12 +490,12 @@
    "updated": 1794077750984
   },
   "be:s:You ___ tall.": {
-   "box": 2,
-   "seen": 3,
-   "right": 2,
+   "box": 3,
+   "seen": 4,
+   "right": 3,
    "wrong": 1,
-   "due": 1794164150984,
-   "updated": 1794077750984
+   "due": 1794588823792,
+   "updated": 1794329623792
   },
   "be:s:We ___ at home.": {
    "box": 1,
@@ -514,12 +514,12 @@
    "updated": 1794077458996
   },
   "be:s:I ___ happy.": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794163838527,
-   "updated": 1794077438527
+   "due": 1794588823792,
+   "updated": 1794329623792
   },
   "be:s:It ___ a dog.": {
    "box": 2,
@@ -530,28 +530,28 @@
    "updated": 1794077404210
   },
   "be:s:You and Tom ___ in my class.": {
-   "box": 2,
-   "seen": 2,
-   "right": 1,
+   "box": 3,
+   "seen": 3,
+   "right": 2,
    "wrong": 1,
-   "due": 1794164150984,
-   "updated": 1794077750984
+   "due": 1794588823792,
+   "updated": 1794329623792
   },
   "be:s:Grandpa ___ very old.": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1794091799925,
-   "updated": 1794077399925
+   "due": 1794416023792,
+   "updated": 1794329623792
   },
   "be:f:we": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1794091811098,
-   "updated": 1794077411098
+   "due": 1794416023792,
+   "updated": 1794329623792
   },
   "be:s:My mother ___ at work.": {
    "box": 1,
@@ -562,12 +562,12 @@
    "updated": 1794077493278
   },
   "be:f:Grandpa": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1794092150984,
-   "updated": 1794077750984
+   "due": 1794416023792,
+   "updated": 1794329623792
   },
   "be:f:Tom": {
    "box": 1,
@@ -626,12 +626,12 @@
    "updated": 1794077750984
   },
   "be:s:The flowers ___ blue.": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1794092150984,
-   "updated": 1794077750984
+   "due": 1794416023792,
+   "updated": 1794329623792
   },
   "be:s:The children ___ in the park.": {
    "box": 1,
@@ -642,12 +642,12 @@
    "updated": 1794077750984
   },
   "be:s:I ___ sad today.": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1794092150984,
-   "updated": 1794077750984
+   "due": 1794416023792,
+   "updated": 1794329623792
   },
   "be:s:She ___ my sister.": {
    "box": 1,
@@ -656,6 +656,46 @@
    "wrong": 0,
    "due": 1794092150984,
    "updated": 1794077750984
+  },
+  "be:f:the children": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794344023792,
+   "updated": 1794329623792
+  },
+  "be:s:I ___ in the fifth grade.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794344023792,
+   "updated": 1794329623792
+  },
+  "be:s:I ___ a good student.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794344023792,
+   "updated": 1794329623792
+  },
+  "be:s:You ___ my best friend.": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794344023792,
+   "updated": 1794329623792
+  },
+  "be:s:Dana and I ___ friends.": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794329623792,
+   "updated": 1794329623792
   }
  },
  "sessions": [
@@ -781,7 +821,19 @@
    "total": 19,
    "correct": 19,
    "ms": 190199
+  },
+  {
+   "id": "65b20846-3244-4016-a436-c9417110d57b",
+   "at": 1794329623795,
+   "mastered": 3,
+   "module": "be",
+   "part": "mock",
+   "unit": "2026-11-07-be",
+   "score": 89,
+   "total": 19,
+   "correct": 17,
+   "ms": 120039
   }
  ],
- "updated": 1794077750985
+ "updated": 1794329623795
 }
