@@ -346,140 +346,140 @@
    "updated": 1792928453335
   },
   "be:s:I ___ a student.": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794163347203,
-   "updated": 1794076947203
+   "due": 1794588869420,
+   "updated": 1794329669420
   },
   "be:s:They ___ friends.": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794163350896,
-   "updated": 1794076950896
+   "due": 1794588873846,
+   "updated": 1794329673846
   },
   "be:s:The cat ___ on the chair.": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794163354699,
-   "updated": 1794076954699
+   "due": 1794588884125,
+   "updated": 1794329684125
   },
   "be:s:You ___ nice.": {
    "box": 5,
+   "seen": 6,
+   "right": 5,
+   "wrong": 1,
+   "due": 1795539287665,
+   "updated": 1794329687665
+  },
+  "be:s:She ___ at school.": {
+   "box": 5,
+   "seen": 5,
+   "right": 5,
+   "wrong": 0,
+   "due": 1795539290187,
+   "updated": 1794329690187
+  },
+  "be:f:they": {
+   "box": 3,
+   "seen": 3,
+   "right": 3,
+   "wrong": 0,
+   "due": 1794588896071,
+   "updated": 1794329696071
+  },
+  "be:f:I": {
+   "box": 5,
+   "seen": 5,
+   "right": 5,
+   "wrong": 0,
+   "due": 1795539299015,
+   "updated": 1794329699015
+  },
+  "be:f:she": {
+   "box": 4,
+   "seen": 4,
+   "right": 4,
+   "wrong": 0,
+   "due": 1794934501115,
+   "updated": 1794329701115
+  },
+  "be:f:my friends": {
+   "box": 4,
+   "seen": 4,
+   "right": 4,
+   "wrong": 0,
+   "due": 1794934504471,
+   "updated": 1794329704471
+  },
+  "be:f:Dana": {
+   "box": 4,
+   "seen": 4,
+   "right": 4,
+   "wrong": 0,
+   "due": 1794934510626,
+   "updated": 1794329710626
+  },
+  "be:f:it": {
+   "box": 4,
+   "seen": 4,
+   "right": 4,
+   "wrong": 0,
+   "due": 1794934515664,
+   "updated": 1794329715664
+  },
+  "be:s:He ___ my friend.": {
+   "box": 4,
+   "seen": 4,
+   "right": 4,
+   "wrong": 0,
+   "due": 1794934518868,
+   "updated": 1794329718868
+  },
+  "be:s:I ___ ten years old.": {
+   "box": 3,
+   "seen": 3,
+   "right": 3,
+   "wrong": 0,
+   "due": 1794588921838,
+   "updated": 1794329721838
+  },
+  "be:s:You ___ funny.": {
+   "box": 3,
+   "seen": 3,
+   "right": 3,
+   "wrong": 0,
+   "due": 1794588927890,
+   "updated": 1794329727890
+  },
+  "be:s:The cat ___ black.": {
+   "box": 3,
+   "seen": 4,
+   "right": 2,
+   "wrong": 2,
+   "due": 1794588935719,
+   "updated": 1794329735719
+  },
+  "be:s:We ___ in the class.": {
+   "box": 4,
+   "seen": 4,
+   "right": 4,
+   "wrong": 0,
+   "due": 1794934539329,
+   "updated": 1794329739329
+  },
+  "be:s:Tom and Dana ___ happy.": {
+   "box": 2,
    "seen": 5,
    "right": 4,
    "wrong": 1,
-   "due": 1795539223792,
-   "updated": 1794329623792
-  },
-  "be:s:She ___ at school.": {
-   "box": 4,
-   "seen": 4,
-   "right": 4,
-   "wrong": 0,
-   "due": 1794934423792,
-   "updated": 1794329623792
-  },
-  "be:f:they": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
-   "wrong": 0,
-   "due": 1794163368937,
-   "updated": 1794076968937
-  },
-  "be:f:I": {
-   "box": 4,
-   "seen": 4,
-   "right": 4,
-   "wrong": 0,
-   "due": 1794934423792,
-   "updated": 1794329623792
-  },
-  "be:f:she": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
-   "wrong": 0,
-   "due": 1794588823792,
-   "updated": 1794329623792
-  },
-  "be:f:my friends": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
-   "wrong": 0,
-   "due": 1794588823792,
-   "updated": 1794329623792
-  },
-  "be:f:Dana": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
-   "wrong": 0,
-   "due": 1794336653330,
-   "updated": 1794077453330
-  },
-  "be:f:it": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
-   "wrong": 0,
-   "due": 1794336950984,
-   "updated": 1794077750984
-  },
-  "be:s:He ___ my friend.": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
-   "wrong": 0,
-   "due": 1794336492362,
-   "updated": 1794077292362
-  },
-  "be:s:I ___ ten years old.": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
-   "wrong": 0,
-   "due": 1794163404634,
-   "updated": 1794077004634
-  },
-  "be:s:You ___ funny.": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
-   "wrong": 0,
-   "due": 1794163409148,
-   "updated": 1794077009148
-  },
-  "be:s:The cat ___ black.": {
-   "box": 2,
-   "seen": 3,
-   "right": 1,
-   "wrong": 2,
-   "due": 1794163681424,
-   "updated": 1794077281424
-  },
-  "be:s:We ___ in the class.": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
-   "wrong": 0,
-   "due": 1794336474261,
-   "updated": 1794077274261
-  },
-  "be:s:Tom and Dana ___ happy.": {
-   "box": 1,
-   "seen": 4,
-   "right": 3,
-   "wrong": 1,
-   "due": 1794329623792,
-   "updated": 1794329623792
+   "due": 1794416147890,
+   "updated": 1794329747890
   },
   "be:s:The apples ___ red.": {
    "box": 3,
@@ -833,7 +833,18 @@
    "total": 19,
    "correct": 17,
    "ms": 120039
+  },
+  {
+   "id": "c6954530-1562-4f4e-9e9a-81d0e5476435",
+   "at": 1794329748996,
+   "mastered": 9,
+   "module": "be",
+   "part": "class",
+   "unit": "2026-11-07-be",
+   "total": 17,
+   "correct": 17,
+   "ms": 82024
   }
  ],
- "updated": 1794329623795
+ "updated": 1794329748996
 }
