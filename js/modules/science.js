@@ -62,6 +62,7 @@ function helpFor(U, it) {
   const tableStart = { 'table-type': 0, 'table-rows': 1, 'table-cols': 2 };
   if (it.viz?.startsWith('table')) { methods = tm; start = tableStart[it.viz]; }
   else if (it.viz === 'table') { methods = tm; }
+  else if (it.viz === 'mass' || it.viz === 'scale') { methods = ATOM_METHODS; start = ATOM_METHODS.findIndex((m) => m.id === it.viz); spec = { el: U.elements.find((x) => x.z === 6) }; }
   else if (it.viz === 'charge') methods = CHARGE_METHODS;
   else if (it.viz === 'element') methods = ELEMENT_METHODS;
   else if (it.viz === 'metals') methods = [...METAL_METHODS, tm[0]];
@@ -174,7 +175,7 @@ function build(root, base, U) {
     root.querySelector('#status').innerHTML = `
       <p>🧬 <b>מספר אטומי:</b> ${st.z || 0} ← ${st.z ? `היסוד: <b>${el ? `${esc(el.he)} <span class="en">(${el.s})</span>` : 'יסוד נוסף בטבלה'}</b>` : 'בלי פרוטונים אין יסוד'}</p>
       <p>${net === 0 ? '✅ <b>אטום ניטרלי</b>: מספר הפרוטונים שווה למספר האלקטרונים, המטען הכולל 0.'
-        : `⚠️ <b>האטום לא ניטרלי</b>: ${net > 0 ? `יש ${net} פרוטונים יותר מאלקטרונים, המטען הכולל חיובי (+${net}).` : `יש ${-net} אלקטרונים יותר מפרוטונים, המטען הכולל שלילי (−${-net}).`}`}</p>
+        : `⚠️ <b>האטום לא ניטרלי</b>: ${net > 0 ? `יש ${net} פרוטונים יותר מאלקטרונים, המטען הכולל חיובי (+${net}). זה <b>יון חיובי</b>: אטום שאיבד אלקטרונים.` : `יש ${-net} אלקטרונים יותר מפרוטונים, המטען הכולל שלילי (−${-net}).`}`}</p>
       <p class="muted small">שימו לב: שינוי מספר הנויטרונים לא משנה את היסוד ולא את המטען.</p>`;
     root.querySelector('#pic').innerHTML = (() => {
       const m = ATOM_METHODS[0].render({ z: st.z, n: st.n, e: st.e, s: '', he: '' }).html;

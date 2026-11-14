@@ -61,12 +61,18 @@ export const ATOM_METHODS = [
       return { html: `<div class="sc-balance">${row('פרוטונים', '+', el.z, C.p)}${row('אלקטרונים', '−', el.z, C.e)}<div class="sc-eq">${el.z} (+) ו-${el.z} (−) ← מטען כולל <b>0</b>, אטום ניטרלי</div></div>`,
         caption: `כל פרוטון (+) מקבל אלקטרון (−). לכן באטום ניטרלי: מספר הפרוטונים = מספר האלקטרונים.` };
     } },
+  { id: 'mass', name: 'מסה וגודל', icon: '⚖️',
+    render: () => ({ html: `<table class="sc-cmp"><tr><th>החלקיק</th><th>סימול</th><th>מטען</th><th>מסה (יחסית)</th><th>גודל (יחסי)</th></tr>
+      <tr><td>אלקטרון</td><td class="en">e⁻</td><td>−1</td><td>1</td><td>1</td></tr>
+      <tr><td>פרוטון</td><td class="en">p⁺</td><td>+1</td><td>1,840</td><td>1,000</td></tr>
+      <tr><td>נויטרון</td><td class="en">n</td><td>0</td><td>1,840</td><td>1,000</td></tr></table>`,
+      caption: 'פרוטון ונויטרון כבדים בהרבה מאלקטרון. לכן מסת האטום נקבעת בעיקר לפי הפרוטונים והנויטרונים שבגרעין.' }) },
   { id: 'scale', name: 'בקנה מידה', icon: '🏟️',
-    render: () => ({ html: `<svg class="viz-svg" viewBox="0 0 300 200"><ellipse cx="150" cy="100" rx="140" ry="85" fill="#e0e7ff" stroke="#a5b4fc" stroke-width="3" stroke-dasharray="6 5"/>
-      <circle cx="150" cy="100" r="5" fill="${C.p}"/><text x="150" y="130" text-anchor="middle" font-size="14" fill="currentColor">הגרעין</text>
-      <text x="150" y="35" text-anchor="middle" font-size="14" fill="currentColor">ענן האלקטרונים (כמעט ריק)</text>
-      <circle cx="50" cy="100" r="3.5" fill="${C.e}"/><circle cx="250" cy="100" r="3.5" fill="${C.e}"/></svg>`,
-      caption: 'אם האטום היה אצטדיון, הגרעין היה גולה קטנה במרכז. כמעט כל האטום הוא ענן האלקטרונים.' }) },
+    render: () => ({ html: `<svg class="viz-svg" viewBox="0 0 300 200"><ellipse cx="150" cy="100" rx="140" ry="85" fill="#dcfce7" stroke="#86efac" stroke-width="3"/>
+      <ellipse cx="150" cy="100" rx="70" ry="38" fill="#4ade80" opacity=".5"/><text x="150" y="35" text-anchor="middle" font-size="14" fill="currentColor">האצטדיון: האטום כולו, ברובו חלל ריק</text>
+      <text x="150" y="104" text-anchor="middle" font-size="26">🐜</text><text x="150" y="132" text-anchor="middle" font-size="13" fill="currentColor">הנמלה: הגרעין</text>
+      <circle cx="30" cy="100" r="3.5" fill="${C.e}"/><circle cx="270" cy="100" r="3.5" fill="${C.e}"/></svg>`,
+      caption: 'קוטר הגרעין כ-10⁻¹⁵ מ׳ וקוטר האטום כ-10⁻¹⁰ מ׳: האטום גדול פי מאה אלף. הגרעין לאטום כנמלה באצטדיון.' }) },
 ];
 
 // ---------- charges ----------
