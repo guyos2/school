@@ -14,7 +14,7 @@ const PART_TITLES = {
   sub: 'חיסור', mul: 'כפל', mix: 'מעורב', class: 'מהכיתה',
   vocab: 'אוצר מילים', meaning: 'פירוש מילים', typed: 'כתיבת פירוש', grammar: 'דקדוק', unseen: 'Unseen', mock: 'מבחן דמה', gtest: 'מבחן דקדוק', mywords: 'המילים שסימנו',
 };
-const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation', col: 'column', nu: 'numbers', be: 'be',
+const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation', col: 'column', nu: 'numbers', be: 'be', sc: 'science',
   vo: 'units', ug: 'units', rd: 'units', uw: 'units' };
 
 const dayStart = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
@@ -273,6 +273,7 @@ function itemLabel(key, grammar) {
   if (prefix === 'nu') return numbersLabel(a, b);
   if (prefix === 'uw') return ltr(esc(a));
   if (prefix === 'be') return ltr(esc(key.slice(5).replace('___', '…')));
+  if (prefix === 'sc') return `מדעים ${ltr(esc(key.slice(3)))}`;
   if (prefix === 'vo') return ltr(esc(a.replace(/-/g, ' ')));
   if (prefix === 'ug') return `דקדוק, תרגיל ${+b + 1}`;
   if (prefix === 'rd') return `${ltr(esc(a))}, שאלה ${+b + 1}`;
