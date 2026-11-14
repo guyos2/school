@@ -8,6 +8,7 @@ import { renderDictation } from './modules/dictation.js';
 import { renderColumn } from './modules/column.js';
 import { renderNumbers } from './modules/numbers.js';
 import { renderBe } from './modules/be.js';
+import { renderScience } from './modules/science.js';
 import { renderStats } from './stats.js';
 import { setApiUrl, isOnline, needsLogin, getSession, login, logout, syncKid, onSyncStatus } from './store.js';
 
@@ -21,6 +22,7 @@ const MODULES = {
   'english-letters': { title: 'אותיות וקריאה באנגלית', icon: '🔤', render: renderEnglish },
   grammar: { title: 'דקדוק באנגלית', icon: '📘', render: renderGrammar },
   be: { title: 'am / is / are', icon: '🌾', render: renderBe },
+  science: { title: 'מדעים', icon: '🔬', render: renderScience },
   speaking: { title: 'מדברים אנגלית', icon: '🗣️' },
   units: { title: 'חומר מהכיתה', icon: '📸', render: renderUnits },
   counting: { title: 'סופרים ומשחקים', icon: '🧸' },
