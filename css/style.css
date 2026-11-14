@@ -811,3 +811,13 @@ button.back { border: 0; background: none; font: inherit; cursor: pointer; }
 .sc-pt input { width: 20px; height: 20px; vertical-align: -4px; margin-inline-end: 6px; display: inline-block; }
 .sc-open .btn { margin-top: 10px; }
 .choices:has(.sc-opt) { grid-template-columns: 1fr; }
+.sc-ref { margin: 12px 0 0; background: var(--bg); border-radius: 14px; padding: 8px 10px; }
+.sc-ref summary { cursor: pointer; font-weight: 700; font-size: 16px; color: var(--muted); }
+.sc-names { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 12px; margin-top: 8px; font-size: 14px; }
+.sc-names small { color: var(--muted); }
+.mt-q .sc-ref { margin-bottom: 8px; }
+.sc-ref .sc-table { min-width: 0; gap: 1px; }
+.sc-ref .sc-cell { height: 30px; border-radius: 4px; }
+.sc-ref .sc-cell b { font-size: 9px; }
+.sc-ref .sc-cell small { font-size: 6px; }
+.sc-ref .sc-table { grid-template-columns: repeat(18, minmax(0, 1fr)) 14px; }

@@ -5,7 +5,7 @@ import { esc, mixed, shuffle, pick, viewSignal } from '../ui.js';
 import { runQuiz, finishScreen } from '../quiz.js';
 import { getProgress, saveProgress, logSession } from '../store.js';
 import { review, pickSession, MASTERED_BOX } from '../srs.js';
-import { panel, ATOM_METHODS, CHARGE_METHODS, ELEMENT_METHODS, PARTICLE_METHODS, METAL_METHODS, tableMethods, POS, C } from '../viz/science.js';
+import { panel, ATOM_METHODS, CHARGE_METHODS, ELEMENT_METHODS, PARTICLE_METHODS, refTable, METAL_METHODS, tableMethods, POS, C } from '../viz/science.js';
 
 const cache = {};
 async function loadUnit(kidId) {
@@ -34,11 +34,11 @@ function bank(U) {
       options: [el.s, ...others(el, (e) => e.s)], why: `הסימול של ${el.he} הוא ${el.s}.` });
     items.push({ ...base, id: `nm:${el.s}`, key: `sc:nm:${el.s}`, topic: 'atom', gen: true, q: `איזה יסוד מסומל ${el.s}?`,
       options: [el.he, ...others(el, (e) => e.he)], why: `${el.s} הוא הסימול של ${el.he}.` });
-    items.push({ ...base, id: `pr:${el.s}`, key: `sc:pr:${el.s}`, topic: 'atom', gen: true, q: `מהו המספר האטומי של ${el.he} (${el.s})? כלומר, כמה פרוטונים באטום שלו?`,
+    items.push({ ...base, id: `pr:${el.s}`, key: `sc:pr:${el.s}`, topic: 'atom', gen: true, q: `לפי הטבלה: מהו המספר האטומי של ${el.he} (${el.s})? כלומר, כמה פרוטונים באטום שלו?`,
       options: numOptions(el.z), why: `המספר האטומי של ${el.he} הוא ${el.z}, ולכן בגרעין ${el.z} פרוטונים.` });
     items.push({ ...base, id: `el:${el.s}`, key: `sc:el:${el.s}`, topic: 'atom', gen: true, q: `כמה אלקטרונים יש באטום ניטרלי של ${el.he} (${el.s}), שהמספר האטומי שלו ${el.z}?`,
       options: numOptions(el.z), why: `באטום ניטרלי מספר האלקטרונים שווה למספר הפרוטונים: ${el.z}.` });
-    items.push({ ...base, id: `who:${el.s}`, key: `sc:who:${el.s}`, topic: 'atom', gen: true, q: `באטום ניטרלי יש ${el.z} אלקטרונים. איזה יסוד זה?`,
+    items.push({ ...base, id: `who:${el.s}`, key: `sc:who:${el.s}`, topic: 'atom', gen: true, q: `באטום ניטרלי יש ${el.z} אלקטרונים. לפי הטבלה, איזה יסוד זה?`,
       options: [`${el.he} (${el.s})`, ...others(el, (e) => `${e.he} (${e.s})`)], why: `${el.z} אלקטרונים באטום ניטרלי = ${el.z} פרוטונים. המספר האטומי ${el.z} הוא ${el.he}.` });
     if (el.t === 'm' || el.t === 'n') {
       items.push({ ...base, id: `ty:${el.s}`, key: `sc:ty:${el.s}`, topic: 'metals', gen: true, viz: 'table-type', hi: el.z, q: `${el.he} (${el.s}): מתכת או אל-מתכת?`,
@@ -76,11 +76,16 @@ function helpFor(U, it) {
   return { methods, spec, start };
 }
 
+// Questions that look something up in the periodic table get the table beside them (the book says "use the table").
+const REF_IDS = ['a12', 'a24', 'a25', 'a26', 'a28', 'a29', 'c8'];
+const needsRef = (it) => (it.gen && !/^(ty|rw):/.test(it.id)) || REF_IDS.includes(it.id);
+const refOf = (U, it) => (needsRef(it) ? refTable(U.symbols.split(' '), U.elements) : '');
+
 function toQuestion(U, it) {
   const options = shuffle(it.options).map((o) => ({ html: `<span class="sc-opt">${mixed(o)}</span>`, value: o }));
   return {
     key: it.key, answer: it.options[0], options,
-    prompt: `<p class="q-ask">${mixed(it.q)}</p>`,
+    prompt: `<p class="q-ask">${mixed(it.q)}</p>${refOf(U, it)}`,
     help: () => `<p class="be-right">✓ ${mixed(it.options[0])}</p><p class="be-why">${mixed(it.why)}</p><div class="sc-help-viz"></div>`,
     afterHelp: (el) => { const h = helpFor(U, it); panel(el.querySelector('.sc-help-viz'), h.methods, h.spec, h.start); },
   };
@@ -300,14 +305,14 @@ function mockIntro(root, kid, base, U) {
 function runMock(outer, kid, base, U, { mc, T }) {
   const begin = Date.now();
   const qs = [
-    ...mc.map((it) => ({ ...it, part: 1, opts: shuffle(it.options), ans: it.options[0], label: mixed(it.q) })),
+    ...mc.map((it) => ({ ...it, part: 1, opts: shuffle(it.options), ans: it.options[0], label: mixed(it.q), ref: refOf(U, it) })),
     ...T.questions.map((q, i) => ({ id: `${T.id}:${i}`, key: `sc:rd:${T.id}:${i}`, part: 2, opts: shuffle(q.options), ans: q.options[0], label: esc(q.q), evidence: q.evidence, why: '' })),
   ];
   const answers = qs.map(() => null);
   outer.innerHTML = '<div class="mt"></div>';
   const root = outer.firstElementChild;
   let confirm = false;
-  const qHtml = (q, i) => `<div class="mt-q"><p class="mt-qtext"><b>${i + 1}.</b> ${q.label}</p><div class="mt-opts">${q.opts.map((o, k) => `<button class="mt-opt" data-i="${i}" data-k="${k}">${mixed(o)}</button>`).join('')}</div></div>`;
+  const qHtml = (q, i) => `<div class="mt-q"><p class="mt-qtext"><b>${i + 1}.</b> ${q.label}</p>${q.ref || ''}<div class="mt-opts">${q.opts.map((o, k) => `<button class="mt-opt" data-i="${i}" data-k="${k}">${mixed(o)}</button>`).join('')}</div></div>`;
   root.innerHTML = `
     <a class="back" href="${base}">→ חזרה</a>
     <h1 class="page-title">🏁 מבחן לדוגמה</h1>

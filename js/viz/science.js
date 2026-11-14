@@ -193,6 +193,11 @@ function table(symbols, mode, hi) {
   const rows = mode === 'rows' ? [1, 2, 3, 4].map((r) => `<div class="sc-rn" style="grid-row:${r};grid-column:19">${r}</div>`).join('') : '';
   return `<div class="sc-tablewrap"><div class="sc-table ltr">${cells.flat().join('')}${heads}${rows}</div></div>`;
 }
+// A reference table to look things up in (symbols, atomic numbers and names), shown next to questions so nothing has to be memorized.
+export function refTable(symbols, elements) {
+  return `<details class="sc-ref" open><summary>📋 הטבלה המחזורית, אפשר להיעזר</summary>${table(symbols, 'rows', null)}
+    <div class="sc-names">${elements.map((e) => `<span><small>${e.z}</small> <b class="en">${e.s}</b> ${esc(e.he)}</span>`).join('')}</div></details>`;
+}
 export function tableMethods(symbols) {
   return [
     { id: 'type', name: 'מתכות ואל-מתכות', icon: '🎨',
