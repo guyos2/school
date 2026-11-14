@@ -5,7 +5,7 @@ import { esc, mixed, shuffle, pick, viewSignal } from '../ui.js';
 import { runQuiz, finishScreen } from '../quiz.js';
 import { getProgress, saveProgress, logSession } from '../store.js';
 import { review, pickSession, MASTERED_BOX } from '../srs.js';
-import { panel, ATOM_METHODS, CHARGE_METHODS, ELEMENT_METHODS, METAL_METHODS, tableMethods, POS, C } from '../viz/science.js';
+import { panel, ATOM_METHODS, CHARGE_METHODS, ELEMENT_METHODS, PARTICLE_METHODS, METAL_METHODS, tableMethods, POS, C } from '../viz/science.js';
 
 const cache = {};
 async function loadUnit(kidId) {
@@ -62,6 +62,7 @@ function helpFor(U, it) {
   const tableStart = { 'table-type': 0, 'table-rows': 1, 'table-cols': 2 };
   if (it.viz?.startsWith('table')) { methods = tm; start = tableStart[it.viz]; }
   else if (it.viz === 'table') { methods = tm; }
+  else if (it.viz === 'particles') { methods = PARTICLE_METHODS; start = it.start || 0; }
   else if (it.viz === 'mass' || it.viz === 'scale') { methods = ATOM_METHODS; start = ATOM_METHODS.findIndex((m) => m.id === it.viz); spec = { el: U.elements.find((x) => x.z === 6) }; }
   else if (it.viz === 'charge') methods = CHARGE_METHODS;
   else if (it.viz === 'element') methods = ELEMENT_METHODS;
@@ -125,7 +126,7 @@ function menu(root, kid, base, U) {
 // ---------- learn ----------
 function topicMethods(U, topic) {
   const tm = tableMethods(U.symbols.split(' '));
-  return { atom: ATOM_METHODS, charge: CHARGE_METHODS, element: ELEMENT_METHODS, table: tm, metals: [...METAL_METHODS, tm[0]] }[topic];
+  return { atom: ATOM_METHODS, charge: CHARGE_METHODS, particles: PARTICLE_METHODS, element: ELEMENT_METHODS, table: tm, metals: [...METAL_METHODS, tm[0]] }[topic];
 }
 function learn(root, base, U, topic, sym) {
   const T = U.topics[topic] || U.topics.atom;
@@ -277,7 +278,7 @@ function openQs(root, kid, base, U) {
 function buildTest(U) {
   const items = bank(U).filter((i) => !i.gen);
   const take = (topic, n) => shuffle(items.filter((i) => i.topic === topic)).slice(0, n);
-  const mc = shuffle([...take('atom', 4), ...take('charge', 3), ...take('element', 3), ...take('table', 3), ...take('metals', 3)]);
+  const mc = shuffle([...take('atom', 4), ...take('charge', 3), ...take('particles', 3), ...take('element', 3), ...take('table', 3), ...take('metals', 3)]);
   const T = pick(U.reading);
   return { mc, T };
 }
@@ -288,7 +289,7 @@ function mockIntro(root, kid, base, U) {
     <h1 class="page-title">🏁 מבחן לדוגמה: מבנה האטום</h1>
     <div class="panel">
       <p>המבחן האמיתי כולל שאלות רב-ברירה, קטע קריאה ושאלות פתוחות. כאן:</p>
-      <ol class="mt-plan"><li>16 שאלות רב-ברירה · 60 נקודות</li><li>קטע קריאה עם 4 שאלות · 40 נקודות</li></ol>
+      <ol class="mt-plan"><li>19 שאלות רב-ברירה · 60 נקודות</li><li>קטע קריאה עם 4 שאלות · 40 נקודות</li></ol>
       <p>את השאלות הפתוחות מתרגלים בנפרד ב״שאלות פתוחות״. אין משוב באמצע, ובסוף רואים כל טעות עם הסבר וציור.</p>
       ${tests.length ? `<p class="muted">מבחנים קודמים: ${tests.slice(-5).map((s) => s.score).join(' · ')}</p>` : ''}
       <div class="row-center"><button class="btn btn-big" id="start">מתחילים ✍️</button></div>

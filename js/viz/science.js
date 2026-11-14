@@ -143,6 +143,40 @@ export const ELEMENT_METHODS = [
       caption: 'תשעת היסודות שהמורה הזכירה: מימן, פחמן, חמצן, חנקן, ברזל, אלומיניום, נחושת, כלור, גופרית.' }) },
 ];
 
+// ---------- particles of matter ----------
+const ball = (x, y, c, r = 9) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${c}" stroke="#fff" stroke-width="1"/>`;
+const mol2 = (x, y, c, r = 8) => ball(x - r, y, c, r) + ball(x + r, y, c, r);
+const h2o = (x, y) => ball(x, y, '#ef4444', 9) + ball(x - 11, y + 9, '#e2e8f0', 6) + ball(x + 11, y + 9, '#e2e8f0', 6);
+const frame = (x, w, label, inner) => `<g transform="translate(${x} 0)"><rect width="${w}" height="110" rx="12" fill="none" stroke="#c7c3e6" stroke-width="2"/>${inner}<text x="${w / 2}" y="132" text-anchor="middle" font-size="12.5" font-weight="700" fill="currentColor">${label}</text></g>`;
+export const PARTICLE_METHODS = [
+  { id: 'am', name: 'אטומים ומולקולות', icon: '🫧',
+    render: () => ({ html: `<svg class="viz-svg" viewBox="0 0 330 145">${frame(0, 105, 'הליום: אטומים', [[25, 30], [70, 25], [55, 65], [25, 85], [80, 90]].map(([x, y]) => ball(x, y, '#fb923c')).join(''))}
+      ${frame(112, 105, 'חמצן: מולקולות', [[40, 28], [75, 60], [38, 78]].map(([x, y]) => mol2(x, y, '#b91c1c')).join(''))}
+      ${frame(224, 105, 'מים: מולקולות H₂O', [[30, 30], [70, 36], [38, 74], [78, 82]].map(([x, y]) => h2o(x, y)).join(''))}</svg>`,
+      caption: 'אטום: החלקיק הקטן ביותר. מולקולה: שני אטומים או יותר המחוברים ביניהם. חלקיקי החומר הם אטומים או מולקולות.' }) },
+  { id: 'struct', name: 'איך בנויים יסודות', icon: '🧱',
+    render: () => {
+      const grid = Array.from({ length: 16 }, (_, i) => ball(24 + (i % 4) * 22, 22 + Math.floor(i / 4) * 22, '#3b82f6', 10)).join('');
+      return { html: `<svg class="viz-svg" viewBox="0 0 330 145">${frame(0, 105, 'אטומים בודדים: He, Ne, Ar', [[25, 28], [72, 40], [45, 78], [80, 85]].map(([x, y]) => ball(x, y, '#a78bfa')).join(''))}
+        ${frame(112, 105, 'מולקולות: O₂, H₂, N₂', [[40, 28], [72, 58], [38, 82]].map(([x, y]) => mol2(x, y, '#ef4444')).join(''))}
+        ${frame(224, 105, 'מבנה ענק (סריג): C, Fe', grid)}</svg>`,
+        caption: 'כל אלה יסודות: בכל אחד האטומים מאותו סוג. אבל הם יכולים להיות בודדים, בזוגות (מולקולות) או בסריג ענק.' };
+    } },
+  { id: 'carbon', name: 'יהלום וגרפיט', icon: '💎',
+    render: () => {
+      const dia = [[0, 0], [1, 0], [2, 0], [0.5, 1], [1.5, 1], [1, 2]].map(([a, b]) => ball(30 + a * 40, 20 + b * 30, '#334155', 6)).join('') + '<path d="M30 20 L70 20 L110 20 M50 50 L90 50 M70 80 M30 20 L50 50 L70 20 L90 50 L110 20 M50 50 L70 80 L90 50" fill="none" stroke="#334155" stroke-width="2"/>';
+      const gra = [20, 55, 90].map((y) => Array.from({ length: 5 }, (_, i) => ball(20 + i * 20, y + (i % 2) * 10, '#334155', 5)).join('') + `<path d="M20 ${y} L40 ${y + 10} L60 ${y} L80 ${y + 10} L100 ${y}" fill="none" stroke="#334155" stroke-width="2"/>`).join('');
+      return { html: `<svg class="viz-svg" viewBox="0 0 330 145">${frame(0, 160, 'יהלום: סריג תלת-ממדי', dia)}${frame(170, 160, 'גרפיט: שכבות', gra)}</svg>
+        <table class="sc-cmp"><tr><th></th><th>יהלום</th><th>גרפיט</th></tr><tr><th>חשמל</th><td>לא מוליך</td><td>מוליך</td></tr><tr><th>מראה</th><td>שקוף ומבריק</td><td>אפור, רך (עיפרון)</td></tr></table>`,
+        caption: 'שניהם עשויים רק מאטומי פחמן. סידור האטומים שונה, ולכן התכונות שונות.' };
+    } },
+  { id: 'tiny', name: 'כמה קטן?', icon: '🔬',
+    render: () => ({ html: `<div class="sc-gallery"><div class="sc-gal"><span class="sc-big">🧂</span><small>גרגיר מלח או חול: כ-10¹⁸ אטומים</small></div>
+      <div class="sc-gal"><span class="sc-big">✏️</span><small>קו עיפרון: כ-3 מיליון אטומי פחמן לרוחב</small></div>
+      <div class="sc-gal"><span class="sc-big">🔭</span><small>ראו אטומים רק במיקרוסקופ אלקטרונים</small></div></div>`,
+      caption: 'האטומים זעירים: אי אפשר לראות אותם בעין או במיקרוסקופ פשוט.' }) },
+];
+
 // ---------- periodic table ----------
 function table(symbols, mode, hi) {
   const cells = Array.from({ length: 4 }, () => Array(18).fill(''));
