@@ -1033,6 +1033,102 @@
    "wrong": 0,
    "due": 1793477795064,
    "updated": 1793463395064
+  },
+  "sc:pr:Rn": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794688471789,
+   "updated": 1794674071789
+  },
+  "sc:sym:He": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794688505196,
+   "updated": 1794674105196
+  },
+  "sc:nm:F": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794688509204,
+   "updated": 1794674109204
+  },
+  "sc:e6": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794688522828,
+   "updated": 1794674122828
+  },
+  "sc:who:Pb": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794688528882,
+   "updated": 1794674128882
+  },
+  "sc:sym:K": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794688545504,
+   "updated": 1794674145504
+  },
+  "sc:e1": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794674158778,
+   "updated": 1794674158778
+  },
+  "sc:ty:P": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794674207052,
+   "updated": 1794674207052
+  },
+  "sc:pr:Be": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794688667261,
+   "updated": 1794674267261
+  },
+  "sc:who:Hg": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794688672723,
+   "updated": 1794674272723
+  },
+  "sc:rw:Ca": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794674281915,
+   "updated": 1794674281915
+  },
+  "sc:a4": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794674292002,
+   "updated": 1794674292002
   }
  },
  "sessions": [
@@ -1467,7 +1563,18 @@
    "total": 30,
    "correct": 25,
    "ms": 491680
+  },
+  {
+   "id": "fe1ac43d-c1ab-4c66-8d91-12bf2c49a492",
+   "at": 1794674318162,
+   "mastered": 42,
+   "module": "science",
+   "part": "mix",
+   "unit": "science-1",
+   "total": 12,
+   "correct": 8,
+   "ms": 260257
   }
  ],
- "updated": 1793463395065
+ "updated": 1794674318162
 }
