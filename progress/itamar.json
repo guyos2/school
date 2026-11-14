@@ -1067,12 +1067,12 @@
    "updated": 1794674122828
   },
   "sc:who:Pb": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1794688528882,
-   "updated": 1794674128882
+   "due": 1794760891439,
+   "updated": 1794674491439
   },
   "sc:sym:K": {
    "box": 1,
@@ -1083,20 +1083,20 @@
    "updated": 1794674145504
   },
   "sc:e1": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1794674158778,
-   "updated": 1794674158778
+   "due": 1794760835017,
+   "updated": 1794674435017
   },
   "sc:ty:P": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1794674207052,
-   "updated": 1794674207052
+   "due": 1794760770561,
+   "updated": 1794674370561
   },
   "sc:pr:Be": {
    "box": 1,
@@ -1107,28 +1107,76 @@
    "updated": 1794674267261
   },
   "sc:who:Hg": {
+   "box": 2,
+   "seen": 2,
+   "right": 2,
+   "wrong": 0,
+   "due": 1794760885583,
+   "updated": 1794674485583
+  },
+  "sc:rw:Ca": {
+   "box": 2,
+   "seen": 2,
+   "right": 1,
+   "wrong": 1,
+   "due": 1794760776265,
+   "updated": 1794674376265
+  },
+  "sc:a4": {
+   "box": 2,
+   "seen": 2,
+   "right": 1,
+   "wrong": 1,
+   "due": 1794760829533,
+   "updated": 1794674429533
+  },
+  "sc:pr:Na": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794674357123,
+   "updated": 1794674357123
+  },
+  "sc:sym:Ne": {
    "box": 1,
    "seen": 1,
    "right": 1,
    "wrong": 0,
-   "due": 1794688672723,
-   "updated": 1794674272723
+   "due": 1794688807439,
+   "updated": 1794674407439
   },
-  "sc:rw:Ca": {
+  "sc:who:F": {
    "box": 1,
    "seen": 1,
-   "right": 0,
-   "wrong": 1,
-   "due": 1794674281915,
-   "updated": 1794674281915
+   "right": 1,
+   "wrong": 0,
+   "due": 1794688821433,
+   "updated": 1794674421433
   },
-  "sc:a4": {
+  "sc:e12": {
    "box": 1,
    "seen": 1,
-   "right": 0,
-   "wrong": 1,
-   "due": 1794674292002,
-   "updated": 1794674292002
+   "right": 1,
+   "wrong": 0,
+   "due": 1794688847122,
+   "updated": 1794674447122
+  },
+  "sc:ty:Al": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794688880293,
+   "updated": 1794674480293
+  },
+  "sc:el:N": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794688899067,
+   "updated": 1794674499067
   }
  },
  "sessions": [
@@ -1574,7 +1622,18 @@
    "total": 12,
    "correct": 8,
    "ms": 260257
+  },
+  {
+   "id": "c51e904a-104c-4f94-8c7b-0bf24ddd9c8d",
+   "at": 1794674511357,
+   "mastered": 42,
+   "module": "science",
+   "part": "mix",
+   "unit": "science-1",
+   "total": 12,
+   "correct": 11,
+   "ms": 186769
   }
  ],
- "updated": 1794674318162
+ "updated": 1794674511357
 }
