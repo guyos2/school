@@ -1035,28 +1035,28 @@
    "updated": 1793463395064
   },
   "sc:pr:Rn": {
-   "box": 1,
-   "seen": 2,
-   "right": 2,
+   "box": 2,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794779106883,
-   "updated": 1794764706883
+   "due": 1795023240814,
+   "updated": 1794936840814
   },
   "sc:sym:He": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794851117887,
-   "updated": 1794764717887
+   "due": 1795196103413,
+   "updated": 1794936903413
   },
   "sc:nm:F": {
    "box": 1,
-   "seen": 2,
-   "right": 2,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794779011324,
-   "updated": 1794764611324
+   "due": 1794951259096,
+   "updated": 1794936859096
   },
   "sc:e6": {
    "box": 1,
@@ -1075,12 +1075,12 @@
    "updated": 1794764551978
   },
   "sc:sym:K": {
-   "box": 1,
-   "seen": 2,
-   "right": 2,
+   "box": 2,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794779189366,
-   "updated": 1794764789366
+   "due": 1795023324463,
+   "updated": 1794936924463
   },
   "sc:e1": {
    "box": 2,
@@ -1100,19 +1100,19 @@
   },
   "sc:pr:Be": {
    "box": 2,
-   "seen": 2,
-   "right": 2,
-   "wrong": 0,
-   "due": 1794851159317,
-   "updated": 1794764759317
-  },
-  "sc:who:Hg": {
-   "box": 2,
    "seen": 3,
    "right": 3,
    "wrong": 0,
-   "due": 1794851140826,
-   "updated": 1794764740826
+   "due": 1795023315480,
+   "updated": 1794936915480
+  },
+  "sc:who:Hg": {
+   "box": 3,
+   "seen": 4,
+   "right": 4,
+   "wrong": 0,
+   "due": 1795196002998,
+   "updated": 1794936802998
   },
   "sc:rw:Ca": {
    "box": 2,
@@ -1131,28 +1131,28 @@
    "updated": 1794764769397
   },
   "sc:pr:Na": {
-   "box": 1,
-   "seen": 2,
-   "right": 1,
+   "box": 2,
+   "seen": 3,
+   "right": 2,
    "wrong": 1,
-   "due": 1794778971360,
-   "updated": 1794764571360
+   "due": 1795023268964,
+   "updated": 1794936868964
   },
   "sc:sym:Ne": {
    "box": 1,
-   "seen": 2,
-   "right": 2,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794778946260,
-   "updated": 1794764546260
+   "due": 1794951225248,
+   "updated": 1794936825248
   },
   "sc:who:F": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794851151536,
-   "updated": 1794764751536
+   "due": 1795196009897,
+   "updated": 1794936809897
   },
   "sc:e12": {
    "box": 1,
@@ -1171,12 +1171,12 @@
    "updated": 1794674480293
   },
   "sc:el:N": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1794851022160,
-   "updated": 1794764622160
+   "due": 1795196129896,
+   "updated": 1794936929896
   },
   "sc:p12": {
    "box": 1,
@@ -1273,6 +1273,22 @@
    "wrong": 0,
    "due": 1794909037515,
    "updated": 1794894637515
+  },
+  "sc:who:Cu": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794951234697,
+   "updated": 1794936834697
+  },
+  "sc:a1": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794936887713,
+   "updated": 1794936887713
   }
  },
  "sessions": [
@@ -1751,7 +1767,18 @@
    "total": 12,
    "correct": 7,
    "ms": 267974
+  },
+  {
+   "id": "2e835608-34d4-499a-9948-8b9ec5e4b603",
+   "at": 1794936935135,
+   "mastered": 42,
+   "module": "science",
+   "part": "atom",
+   "unit": "science-1",
+   "total": 12,
+   "correct": 11,
+   "ms": 134463
   }
  ],
- "updated": 1794894680251
+ "updated": 1794936935135
 }
