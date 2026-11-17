@@ -48,6 +48,7 @@ export async function renderUnits(root, kid, [unitId, view = 'home', ...args]) {
   if (view === 'read') return args[0] ? readText(root, kid, ub, u, args[0]) : readingList(root, kid, ub, u);
   if (view === 'test') return testIntro(root, kid, ub, u);
   if (view === 'gtest') return testIntro(root, kid, ub, u, 'grammar');
+  if (view === 'vtest') return testIntro(root, kid, ub, u, 'vocab');
   unitHome(root, kid, base, ub, u);
 }
 
@@ -68,6 +69,7 @@ function unitHome(root, kid, base, ub, u) {
   const marked = [...myWordList(p.items, u).map((x) => x.key), ...markedListWords(p.items, u).map(vKey)];
   const rightOnce = rk.filter((k) => p.items[k]?.right > 0).length;
   const tests = p.sessions.filter((s) => s.module === 'units' && s.part === 'mock' && s.unit === u.id);
+  const vtests = p.sessions.filter((s) => s.module === 'units' && s.part === 'vtest' && s.unit === u.id);
   const gtests = p.sessions.filter((s) => s.module === 'units' && s.part === 'gtest' && s.unit === u.id);
   const card = (href, icon, title, sub) =>
     `<a class="card" href="${href}"><span class="card-icon">${icon}</span><span class="card-title">${title}</span><span class="card-sub">${sub}</span></a>`;
@@ -82,6 +84,7 @@ function unitHome(root, kid, base, ub, u) {
       ${card(`${ub}/meaning/all`, '🔤', 'מה הפירוש?', 'רואים מילה באנגלית ובוחרים את הפירוש. רק זה, בלי דברים אחרים')}
       ${card(`${ub}/vocab/all`, '🎯', 'תרגול מילים', 'פירוש, תרגום והשלמת משפט. מילים שטועים בהן חוזרות יותר')}
     </div>
+    ${u.grammar ? `
     <h2 class="section">2. דקדוק: Present Simple · ${mastered(p.items, gk)} מתוך ${gk.length} בעל פה</h2>
     <div class="cards">
       ${kid.modules.includes('grammar') && u.grammarTopic
@@ -89,17 +92,23 @@ function unitHome(root, kid, base, ub, u) {
       ${card(`${ub}/grammar`, '📝', 'תרגילים בסגנון המבחן', 'השלמת פועל, do / does, שלילה, שאלות ותשובות קצרות')}
       ${card(`${ub}/gtest`, '🏁', 'מבחן דקדוק', gtests.length ? `ציון אחרון: ${gtests.at(-1).score} · ${gtests.length === 1 ? 'מבחן אחד' : `${gtests.length} מבחנים`} עד עכשיו` : '30 שאלות Present Simple בלבד, עם ציון מתוך 100')}
     </div>
+    ` : ''}
+    ${u.reading ? `
     <h2 class="section">3. Unseen · ${rightOnce} מתוך ${rk.length} שאלות כבר נענו נכון</h2>
     <div class="cards">
       ${card(`${ub}/howto`, '🧭', 'איך ניגשים ל-Unseen', 'השלבים, מילות שאלה, דוגמה ומלכודות')}
       ${card(`${ub}/read`, '📰', 'קטעי קריאה', `${u.reading.length} קטעים ברמת כיתה ח׳, עם שאלות`)}
       ${card(`${ub}/mine`, '📌', 'המילים שסימנתי', marked.length ? `${marked.length} מילים · ${marked.filter((k) => box(p.items, k) >= MASTERED_BOX).length} כבר בשליטה` : 'בקריאה לוחצים על מילה שלא מכירים, והיא נשמרת כאן לתרגול')}
     </div>
-    <h2 class="section">4. מבחן דמה</h2>
+    ` : ''}
+    <h2 class="section">${u.grammar && u.reading ? '4. ' : '2. '}מבחן</h2>
     <div class="cards">
-      ${card(`${ub}/test`, '🏁', 'מבחן דמה', tests.length
+      ${u.grammar && u.reading ? card(`${ub}/test`, '🏁', 'מבחן דמה', tests.length
         ? `ציון אחרון: ${tests.at(-1).score} · ${tests.length === 1 ? 'מבחן אחד' : `${tests.length} מבחנים`} עד עכשיו`
-        : 'קריאה, אוצר מילים ודקדוק. ציון מתוך 100')}
+        : 'קריאה, אוצר מילים ודקדוק. ציון מתוך 100') : ''}
+      ${card(`${ub}/vtest`, '🏁', 'מבחן אוצר מילים', vtests.length
+        ? `ציון אחרון: ${vtests.at(-1).score} · ${vtests.length === 1 ? 'מבחן אחד' : `${vtests.length} מבחנים`} עד עכשיו`
+        : 'מה הפירוש, איך אומרים והשלמת משפט. ציון מתוך 100')}
     </div>`;
 }
 
@@ -146,7 +155,9 @@ function wordView(root, ub, u, id) {
 // Distractors that cannot also be right: same part of speech first, never a word marked as fitting the same gap.
 function distractors(w, pool, n = 3) {
   const ok = pool.filter((x) => x.id !== w.id && !(w.gapNo || []).includes(x.id) && !(x.gapNo || []).includes(w.id));
-  return [...shuffle(ok.filter((x) => x.pos === w.pos)), ...shuffle(ok.filter((x) => x.pos !== w.pos))].slice(0, n);
+  // A word with a `cat` (months, numbers) is tested against its own kind first, so the distractors are real alternatives.
+  const score = (x) => ((x.cat || '') === (w.cat || '') ? 2 : 0) + (x.pos === w.pos ? 1 : 0);
+  return shuffle(ok).sort((a, b) => score(b) - score(a)).slice(0, n);
 }
 
 // A choice with a little speaker, so a word can be heard before picking it.
@@ -400,7 +411,7 @@ function readingList(root, kid, ub, u) {
     <a class="back" href="${ub}">→ חזרה</a>
     <h1 class="page-title">📰 קטעי קריאה</h1>
     <p class="subtitle">קוראים את הקטע ועונים על השאלות. לחיצה על מילה שלא מכירים עוזרת להבין אותה מההקשר</p>
-    <div class="cards">${u.reading.map((T) => {
+    <div class="cards">${(u.reading || []).map((T) => {
       const keys = T.questions.map((_, i) => rKey(T, i));
       const seen = keys.filter((k) => items[k]);
       const right = keys.filter((k) => items[k]?.box > 0).length;
@@ -414,7 +425,7 @@ function readingList(root, kid, ub, u) {
 const listenBtn = (T) => (canSpeak ? `<button class="btn btn-soft rd-listen" data-text="${esc(T.paragraphs.join(' | '))}">🔊 להקשיב לקטע</button>` : '');
 
 function readText(outer, kid, ub, u, id) {
-  const T = u.reading.find((t) => t.id === id);
+  const T = (u.reading || []).find((t) => t.id === id);
   if (!T) return readingList(outer, kid, ub, u);
   const words = allWords(u);
   const progress = getProgress(kid.id);
@@ -468,7 +479,7 @@ function readText(outer, kid, ub, u, id) {
     if (qi < T.questions.length) return show();
     saveProgress(progress);
     logSession(kid.id, { module: 'units', part: 'unseen', unit: u.id, text: T.id, total: T.questions.length, correct: right, ms: Date.now() - begin });
-    const others = u.reading.filter((t) => t.id !== T.id);
+    const others = (u.reading || []).filter((t) => t.id !== T.id);
     finishScreen(root, {
       right, total: T.questions.length,
       again: () => readText(outer, kid, ub, u, id),
@@ -525,7 +536,7 @@ function markUnknown(progress, T, w, surface, he, ctx, guessed) {
 function wordSheet(root, { u, T, words, progress }) {
   const el = root.querySelector('#sheet');
   const byId = Object.fromEntries(words.map((w) => [w.id, w]));
-  const hePool = [...new Set([...words.map((w) => w.he), ...u.reading.flatMap((t) => Object.values(t.glossary || {}))])];
+  const hePool = [...new Set([...words.map((w) => w.he), ...(u.reading || []).flatMap((t) => Object.values(t.glossary || {}))])];
   let cur = null;
 
   const show = (html) => { el.innerHTML = html; el.hidden = false; root.classList.add('rd-sheet-open'); };
@@ -597,11 +608,11 @@ function wordSheet(root, { u, T, words, progress }) {
 
 // The unit's marked words that are not on the vocabulary list.
 const myWordList = (items, u) => {
-  const texts = new Set(u.reading.map((t) => t.id));
+  const texts = new Set((u.reading || []).map((t) => t.id));
   return Object.entries(items).filter(([k, it]) => k.startsWith('uw:') && texts.has(it.src)).map(([key, it]) => ({ key, it }));
 };
 const markedListWords = (items, u) => allWords(u).filter((w) => items[vKey(w)]?.marked);
-const glossaryPool = (u) => [...new Map(u.reading.flatMap((t) => Object.entries(t.glossary || {}))
+const glossaryPool = (u) => [...new Map((u.reading || []).flatMap((t) => Object.entries(t.glossary || {}))
   .filter(([w]) => !w.includes(' ') && !w.includes("'"))).entries()];
 
 function myWords(root, kid, ub, u) {
@@ -699,8 +710,27 @@ function buildGrammarTest(u) {
   ] };
 }
 
+// A vocabulary test: meanings (English → Hebrew), the English word for a Hebrew one, and gap sentences from a word box.
+function buildVocabTest(u) {
+  const words = allWords(u);
+  const pick20 = shuffle(words);
+  const a = pick20.slice(0, 20), b = pick20.slice(20, 30), c = pick20.slice(30, 40);
+  const bank = shuffle([...c, ...shuffle(words.filter((w) => !c.includes(w))).slice(0, 2)]);
+  return { kind: 'vocab', T: null, bank, parts: [
+    { title: 'Part A – What does it mean?', he: 'פירוש המילה', points: 40, intro: 'Choose the correct meaning.',
+      qs: a.map((w) => ({ key: vKey(w), prompt: `<b>${esc(w.en)}</b>`, answer: w.he,
+        options: shuffle([w, ...distractors(w, words)]).map((x) => x.he), explain: () => wordHelp(w, 'sentence') })) },
+    { title: 'Part B – How do you say it in English?', he: 'מעברית לאנגלית', points: 30, intro: 'Choose the correct English word.',
+      qs: b.map((w) => ({ key: vKey(w), prompt: esc(w.he), answer: spoken(w.en),
+        options: shuffle([w, ...distractors(w, words)]).map((x) => spoken(x.en)), explain: () => wordHelp(w, 'sentence') })) },
+    { title: 'Part C – Complete the sentences', he: 'השלמת משפטים', points: 30, intro: 'Complete the sentences with words from the box. There are two extra words.',
+      qs: c.map((w) => ({ key: vKey(w), prompt: blank(w.gap), answer: gapAnswer(w),
+        options: shuffle([w, ...distractors(w, bank)]).map(gapAnswer), explain: () => wordHelp(w, 'sentence') })) },
+  ] };
+}
+
 function buildTest(u, lastText) {
-  const fresh = u.reading.filter((t) => t.id !== lastText);
+  const fresh = (u.reading || []).filter((t) => t.id !== lastText);
   const T = pick(fresh.length ? fresh : u.reading);
   const words = allWords(u);
   const chosen = shuffle(words).slice(0, 10);
@@ -727,14 +757,20 @@ function buildTest(u, lastText) {
 }
 
 function testIntro(root, kid, ub, u, kind = 'full') {
-  const grammar = kind === 'grammar';
-  const part = grammar ? 'gtest' : 'mock';
+  const grammar = kind === 'grammar', vocab = kind === 'vocab';
+  const part = grammar ? 'gtest' : vocab ? 'vtest' : 'mock';
   const tests = getProgress(kid.id).sessions.filter((s) => s.module === 'units' && s.part === part && s.unit === u.id);
   root.innerHTML = `
     <a class="back" href="${ub}">→ חזרה</a>
-    <h1 class="page-title">🏁 ${grammar ? 'מבחן דקדוק' : 'מבחן דמה'}</h1>
+    <h1 class="page-title">🏁 ${grammar ? 'מבחן דקדוק' : vocab ? 'מבחן אוצר מילים' : 'מבחן דמה'}</h1>
     <div class="panel">
-      ${grammar ? `
+      ${vocab ? `
+        <p>מבחן על המילים של היחידה. <b>40 שאלות, 100 נקודות</b>, בשלושה חלקים:</p>
+        <ul class="mt-plan">
+          <li><b class="en">Part A – What does it mean?</b> · פירוש המילה · 20 שאלות</li>
+          <li><b class="en">Part B – How do you say it in English?</b> · מעברית לאנגלית · 10 שאלות</li>
+          <li><b class="en">Part C – Complete the sentences</b> · השלמת משפטים ממחסן מילים · 10 שאלות</li>
+        </ul>` : grammar ? `
         <p>מבחן שכולו Present Simple: חיוב, שלילה ושאלה. <b>30 שאלות, 100 נקודות</b>, בשישה חלקים:</p>
         <ul class="mt-plan">
           <li><b class="en">Complete the verb</b> · השלמת הפועל · 8 שאלות</li>
@@ -750,11 +786,11 @@ function testIntro(root, kid, ub, u, kind = 'full') {
           <li><b class="en">Part B – Vocabulary</b> · 10 משפטים להשלים ממחסן מילים · 30 נקודות</li>
           <li><b class="en">Part C – Grammar</b> · 10 שאלות Present Simple · 30 נקודות</li>
         </ul>`}
-      <p>כמו במבחן אמיתי, אין משוב באמצע. בסוף מקבלים ציון, ורואים כל טעות עם התשובה הנכונה והסבר. כדאי להקדיש לזה ${grammar ? 'כ-20 דקות' : 'כחצי שעה'}, בשקט, בלי לחפש בספר.</p>
+      <p>כמו במבחן אמיתי, אין משוב באמצע. בסוף מקבלים ציון, ורואים כל טעות עם התשובה הנכונה והסבר. כדאי להקדיש לזה ${grammar || vocab ? 'כ-20 דקות' : 'כחצי שעה'}, בשקט, בלי לחפש בספר.</p>
       ${tests.length ? `<p class="muted">מבחנים קודמים: ${tests.slice(-5).map((s) => s.score).join(' · ')}</p>` : ''}
       <div class="row-center"><button class="btn btn-big" id="start">מתחילים ✍️</button></div>
     </div>`;
-  root.querySelector('#start').onclick = () => runTest(root, kid, ub, u, grammar ? buildGrammarTest(u) : buildTest(u, tests.at(-1)?.text));
+  root.querySelector('#start').onclick = () => runTest(root, kid, ub, u, grammar ? buildGrammarTest(u) : vocab ? buildVocabTest(u) : buildTest(u, tests.at(-1)?.text));
 }
 
 function runTest(root, kid, ub, u, test) {
@@ -835,14 +871,14 @@ function results(outer, kid, ub, u, { kind, T, parts }, answers, ms) {
     rows.push(`<div class="kpi"><span class="kpi-num">${pts}<small>/${P.points}</small></span><span class="kpi-label">${P.he} · ${ok} מתוך ${P.qs.length}</span></div>`);
   });
   saveProgress(progress);
-  logSession(kid.id, { module: 'units', part: kind === 'grammar' ? 'gtest' : 'mock', unit: u.id, text: T?.id, score, total, correct, ms });
+  logSession(kid.id, { module: 'units', part: kind === 'grammar' ? 'gtest' : kind === 'vocab' ? 'vtest' : 'mock', unit: u.id, text: T?.id, score, total, correct, ms });
   const verdict = score >= 90 ? 'מצוין! אתם מוכנים למבחן 🏆' : score >= 75 ? 'טוב מאוד! עוברים על הטעויות, והציון יעלה עוד 💪'
     : score >= 55 ? 'בדרך הנכונה. כדאי לתרגל את החלק שבו היו הכי הרבה טעויות' : 'כדאי לחזור על המילים ועל הדקדוק ולנסות שוב. כל ניסיון מקרב 🙂';
   outer.innerHTML = '<div class="mt"></div>';
   const root = outer.firstElementChild;
   root.innerHTML = `
     <div class="finish">
-      <p class="subtitle">הציון ב${kind === 'grammar' ? 'מבחן הדקדוק' : 'מבחן הדמה'}</p>
+      <p class="subtitle">הציון ב${kind === 'grammar' ? 'מבחן הדקדוק' : kind === 'vocab' ? 'מבחן אוצר המילים' : 'מבחן הדמה'}</p>
       <div class="sp-grade">${score}</div>
       <h1>${verdict}</h1>
       <p class="subtitle">${correct} תשובות נכונות מתוך ${total} · ${Math.max(1, Math.round(ms / 6e4))} דקות</p>
@@ -858,10 +894,10 @@ function results(outer, kid, ub, u, { kind, T, parts }, answers, ms) {
           ${q.explain()}
         </div>`).join('')}</div>` : '<p class="subtitle">🎉 אין אף טעות!</p>'}
     <div class="row-center">
-      <button class="btn btn-big" id="again">${kind === 'grammar' ? 'מבחן דקדוק נוסף' : 'מבחן נוסף, עם קטע אחר'}</button>
+      <button class="btn btn-big" id="again">${kind === 'grammar' ? 'מבחן דקדוק נוסף' : kind === 'vocab' ? 'מבחן נוסף' : 'מבחן נוסף, עם קטע אחר'}</button>
       <a class="btn btn-soft" href="${ub}">חזרה ליחידה</a>
     </div>`;
   wireSpeakButtons(root);
   window.scrollTo(0, 0);
-  root.querySelector('#again').onclick = () => runTest(outer, kid, ub, u, kind === 'grammar' ? buildGrammarTest(u) : buildTest(u, T.id));
+  root.querySelector('#again').onclick = () => runTest(outer, kid, ub, u, kind === 'grammar' ? buildGrammarTest(u) : kind === 'vocab' ? buildVocabTest(u) : buildTest(u, T.id));
 }

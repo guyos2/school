@@ -1,0 +1,2003 @@
+{
+ "id": "2026-11-17-english-vocab",
+ "subject": "אנגלית",
+ "title": "אוצר מילים למבחן באנגלית",
+ "date": "2026-11-17",
+ "source": "דף ״אוצר מילים למבחן באנגלית״ מהכיתה: 86 מילים וביטויים",
+ "icon": "🇬🇧",
+ "wordGroups": [
+  {
+   "title": "מספרים",
+   "words": [
+    {
+     "id": "a-hundred",
+     "accept": [
+      "מאה",
+      "100"
+     ],
+     "en": "a hundred",
+     "pos": "n",
+     "he": "מאה",
+     "emoji": "💯",
+     "syl": "a HUN·dred",
+     "ex": "I have a hundred stickers.",
+     "exHe": "יש לי מאה מדבקות.",
+     "gap": "Fifty plus fifty is ___.",
+     "tip": "אפשר לומר גם one hundred. a hundred = 100.",
+     "cat": "num",
+     "family": [
+      [
+       "hundred",
+       "מאה"
+      ],
+      [
+       "hundreds",
+       "מאות"
+      ]
+     ]
+    },
+    {
+     "id": "fourteen",
+     "accept": [
+      "ארבע עשרה",
+      "14",
+      "ארבעה עשר"
+     ],
+     "en": "fourteen",
+     "pos": "n",
+     "he": "ארבע עשרה",
+     "emoji": "1️⃣4️⃣",
+     "syl": "four·TEEN",
+     "ex": "There are fourteen kids in my class.",
+     "exHe": "יש ארבעה עשר ילדים בכיתה שלי.",
+     "gap": "Seven plus seven is ___.",
+     "tip": "fourteen: אחרי four יש u, בניגוד ל-forty (40) שאין בו u. ההטעמה על teen.",
+     "cat": "num",
+     "family": [
+      [
+       "four",
+       "ארבע"
+      ],
+      [
+       "forty",
+       "ארבעים"
+      ]
+     ]
+    },
+    {
+     "id": "fifteen",
+     "accept": [
+      "חמש עשרה",
+      "15",
+      "חמישה עשר"
+     ],
+     "en": "fifteen",
+     "pos": "n",
+     "he": "חמש עשרה",
+     "emoji": "1️⃣5️⃣",
+     "syl": "fif·TEEN",
+     "ex": "My sister is fifteen years old.",
+     "exHe": "אחותי בת חמש עשרה.",
+     "gap": "Ten plus five is ___.",
+     "tip": "fifteen ≠ five: כותבים fif ולא five.",
+     "cat": "num",
+     "family": [
+      [
+       "five",
+       "חמש"
+      ],
+      [
+       "fifty",
+       "חמישים"
+      ]
+     ]
+    },
+    {
+     "id": "sixteen",
+     "accept": [
+      "שש עשרה",
+      "16",
+      "שישה עשר"
+     ],
+     "en": "sixteen",
+     "pos": "n",
+     "he": "שש עשרה",
+     "emoji": "1️⃣6️⃣",
+     "syl": "six·TEEN",
+     "ex": "You can drive a car at sixteen in some countries.",
+     "exHe": "בכמה מדינות אפשר לנהוג בגיל שש עשרה.",
+     "gap": "Eight plus eight is ___.",
+     "tip": "six + teen. הסיומת teen = ״עשרה״.",
+     "cat": "num",
+     "family": [
+      [
+       "six",
+       "שש"
+      ],
+      [
+       "sixty",
+       "שישים"
+      ]
+     ]
+    },
+    {
+     "id": "seventeen",
+     "accept": [
+      "שבע עשרה",
+      "17",
+      "שבעה עשר"
+     ],
+     "en": "seventeen",
+     "pos": "n",
+     "he": "שבע עשרה",
+     "emoji": "1️⃣7️⃣",
+     "syl": "sev·en·TEEN",
+     "ex": "Seventeen children came to the party.",
+     "exHe": "שבע עשרה ילדים הגיעו למסיבה.",
+     "gap": "Ten plus seven is ___.",
+     "tip": "seven + teen: שימו לב שה-e הסופי של seven נשאר, seventeen.",
+     "cat": "num",
+     "family": [
+      [
+       "seven",
+       "שבע"
+      ],
+      [
+       "seventy",
+       "שבעים"
+      ]
+     ]
+    },
+    {
+     "id": "eighteen",
+     "accept": [
+      "שמונה עשרה",
+      "18",
+      "שמונה עשר"
+     ],
+     "en": "eighteen",
+     "pos": "n",
+     "he": "שמונה עשרה",
+     "emoji": "1️⃣8️⃣",
+     "syl": "eigh·TEEN",
+     "ex": "Eighteen plus two is twenty.",
+     "exHe": "שמונה עשרה ועוד שתיים הם עשרים.",
+     "gap": "Nine plus nine is ___.",
+     "tip": "eighteen: כותבים eigh+teen. יש רק t אחד באמצע.",
+     "cat": "num",
+     "family": [
+      [
+       "eight",
+       "שמונה"
+      ],
+      [
+       "eighty",
+       "שמונים"
+      ]
+     ]
+    },
+    {
+     "id": "nineteen",
+     "accept": [
+      "תשע עשרה",
+      "19",
+      "תשעה עשר"
+     ],
+     "en": "nineteen",
+     "pos": "n",
+     "he": "תשע עשרה",
+     "emoji": "1️⃣9️⃣",
+     "syl": "nine·TEEN",
+     "ex": "Nineteen is one less than twenty.",
+     "exHe": "תשע עשרה זה אחד פחות מעשרים.",
+     "gap": "Ten plus nine is ___.",
+     "tip": "nine + teen. אין לשכוח את ה-e בסוף nine.",
+     "cat": "num",
+     "family": [
+      [
+       "nine",
+       "תשע"
+      ],
+      [
+       "ninety",
+       "תשעים"
+      ]
+     ]
+    },
+    {
+     "id": "forty",
+     "accept": [
+      "ארבעים",
+      "40"
+     ],
+     "en": "forty",
+     "pos": "n",
+     "he": "ארבעים",
+     "emoji": "4️⃣0️⃣",
+     "syl": "FOR·ty",
+     "ex": "My grandfather is forty years old.",
+     "exHe": "סבא שלי בן ארבעים.",
+     "gap": "Twenty plus twenty is ___.",
+     "tip": "forty (40) נכתב בלי u. four (4) ו-fourteen (14) כן עם u.",
+     "cat": "num",
+     "family": [
+      [
+       "four",
+       "ארבע"
+      ],
+      [
+       "fourteen",
+       "ארבע עשרה"
+      ]
+     ]
+    },
+    {
+     "id": "fifty",
+     "accept": [
+      "חמישים",
+      "50"
+     ],
+     "en": "fifty",
+     "pos": "n",
+     "he": "חמישים",
+     "emoji": "5️⃣0️⃣",
+     "syl": "FIF·ty",
+     "ex": "The book costs fifty shekels.",
+     "exHe": "הספר עולה חמישים שקל.",
+     "gap": "Twenty-five plus twenty-five is ___.",
+     "tip": "fifty ולא fivety: five הופך ל-fif.",
+     "cat": "num",
+     "family": [
+      [
+       "five",
+       "חמש"
+      ],
+      [
+       "fifteen",
+       "חמש עשרה"
+      ]
+     ]
+    },
+    {
+     "id": "seventy",
+     "accept": [
+      "שבעים",
+      "70"
+     ],
+     "en": "seventy",
+     "pos": "n",
+     "he": "שבעים",
+     "emoji": "7️⃣0️⃣",
+     "syl": "SEV·en·ty",
+     "ex": "Seventy minutes is one hour and ten minutes.",
+     "exHe": "שבעים דקות זה שעה ועוד עשר דקות.",
+     "gap": "Thirty plus forty is ___.",
+     "tip": "seventy = seven + ty.",
+     "cat": "num",
+     "family": [
+      [
+       "seven",
+       "שבע"
+      ],
+      [
+       "seventeen",
+       "שבע עשרה"
+      ]
+     ]
+    },
+    {
+     "id": "eighty",
+     "accept": [
+      "שמונים",
+      "80"
+     ],
+     "en": "eighty",
+     "pos": "n",
+     "he": "שמונים",
+     "emoji": "8️⃣0️⃣",
+     "syl": "EIGH·ty",
+     "ex": "My grandmother is eighty years old.",
+     "exHe": "סבתא שלי בת שמונים.",
+     "gap": "Forty plus forty is ___.",
+     "tip": "eighty: eigh+ty. יש רק t אחד: eight → eighty.",
+     "cat": "num",
+     "family": [
+      [
+       "eight",
+       "שמונה"
+      ],
+      [
+       "eighteen",
+       "שמונה עשרה"
+      ]
+     ]
+    },
+    {
+     "id": "ninety",
+     "accept": [
+      "תשעים",
+      "90"
+     ],
+     "en": "ninety",
+     "pos": "n",
+     "he": "תשעים",
+     "emoji": "9️⃣0️⃣",
+     "syl": "NINE·ty",
+     "ex": "Ninety is ten less than a hundred.",
+     "exHe": "תשעים זה עשר פחות ממאה.",
+     "gap": "Fifty plus forty is ___.",
+     "tip": "ninety: nine+ty, אבל בלי e. (nineteen כן עם e: nine+teen.)",
+     "cat": "num",
+     "family": [
+      [
+       "nine",
+       "תשע"
+      ],
+      [
+       "nineteen",
+       "תשע עשרה"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "חודשים",
+   "words": [
+    {
+     "id": "january",
+     "accept": [
+      "ינואר"
+     ],
+     "en": "January",
+     "pos": "n",
+     "he": "ינואר",
+     "emoji": "❄️",
+     "syl": "JAN·u·ar·y",
+     "ex": "It is cold in January.",
+     "exHe": "קר בינואר.",
+     "gap": "The first month of the year is ___.",
+     "tip": "חודשים באנגלית תמיד באות גדולה: January.",
+     "cat": "month"
+    },
+    {
+     "id": "february",
+     "accept": [
+      "פברואר"
+     ],
+     "en": "February",
+     "pos": "n",
+     "he": "פברואר",
+     "emoji": "💘",
+     "syl": "FEB·ru·ar·y",
+     "ex": "February is the shortest month.",
+     "exHe": "פברואר הוא החודש הקצר ביותר.",
+     "gap": "The month after January is ___.",
+     "tip": "שימו לב ל-r הראשון: Feb-ru-ary.",
+     "cat": "month"
+    },
+    {
+     "id": "march",
+     "accept": [
+      "מרץ",
+      "מארס"
+     ],
+     "en": "March",
+     "pos": "n",
+     "he": "מרץ",
+     "emoji": "🌱",
+     "syl": "MARCH",
+     "ex": "Spring begins in March.",
+     "exHe": "האביב מתחיל במרץ.",
+     "gap": "The month before April is ___.",
+     "tip": "March = מרץ. גם marching = צעדה.",
+     "cat": "month"
+    },
+    {
+     "id": "april",
+     "accept": [
+      "אפריל"
+     ],
+     "en": "April",
+     "pos": "n",
+     "he": "אפריל",
+     "emoji": "🌦️",
+     "syl": "A·pril",
+     "ex": "It rains a lot in April.",
+     "exHe": "יורד הרבה גשם באפריל.",
+     "gap": "The month after March is ___.",
+     "tip": "April נכתב עם p אחד: A-p-r-i-l.",
+     "cat": "month"
+    },
+    {
+     "id": "may",
+     "accept": [
+      "מאי"
+     ],
+     "en": "May",
+     "pos": "n",
+     "he": "מאי",
+     "emoji": "🌸",
+     "syl": "MAY",
+     "ex": "The flowers are beautiful in May.",
+     "exHe": "הפרחים יפים במאי.",
+     "gap": "The month between April and June is ___.",
+     "tip": "May באות גדולה הוא חודש. may באות קטנה = אולי / מותר.",
+     "cat": "month"
+    },
+    {
+     "id": "june",
+     "accept": [
+      "יוני"
+     ],
+     "en": "June",
+     "pos": "n",
+     "he": "יוני",
+     "emoji": "☀️",
+     "syl": "JUNE",
+     "ex": "School ends in June.",
+     "exHe": "בית הספר נגמר ביוני.",
+     "gap": "The month after May is ___.",
+     "tip": "June ו-July נשמעים דומים בעברית. June = יוני, July = יולי.",
+     "cat": "month"
+    },
+    {
+     "id": "july",
+     "accept": [
+      "יולי"
+     ],
+     "en": "July",
+     "pos": "n",
+     "he": "יולי",
+     "emoji": "🏖️",
+     "syl": "ju·LY",
+     "ex": "We go to the beach in July.",
+     "exHe": "אנחנו הולכים לים ביולי.",
+     "gap": "The month between June and August is ___.",
+     "tip": "July: ההטעמה על ההברה השנייה.",
+     "cat": "month"
+    },
+    {
+     "id": "august",
+     "accept": [
+      "אוגוסט"
+     ],
+     "en": "August",
+     "pos": "n",
+     "he": "אוגוסט",
+     "emoji": "🌞",
+     "syl": "AU·gust",
+     "ex": "August is very hot.",
+     "exHe": "אוגוסט חם מאוד.",
+     "gap": "The month before September is ___.",
+     "tip": "August: au (כמו בעברית ״או״).",
+     "cat": "month"
+    },
+    {
+     "id": "september",
+     "accept": [
+      "ספטמבר"
+     ],
+     "en": "September",
+     "pos": "n",
+     "he": "ספטמבר",
+     "emoji": "🎒",
+     "syl": "Sep·TEM·ber",
+     "ex": "School begins in September.",
+     "exHe": "בית הספר מתחיל בספטמבר.",
+     "gap": "The month after August is ___.",
+     "tip": "September: ההטעמה על tem.",
+     "cat": "month"
+    },
+    {
+     "id": "october",
+     "accept": [
+      "אוקטובר"
+     ],
+     "en": "October",
+     "pos": "n",
+     "he": "אוקטובר",
+     "emoji": "🍂",
+     "syl": "Oc·TO·ber",
+     "ex": "My birthday is in October.",
+     "exHe": "יום ההולדת שלי באוקטובר.",
+     "gap": "The month between September and November is ___.",
+     "tip": "October: ההטעמה על to.",
+     "cat": "month"
+    },
+    {
+     "id": "november",
+     "accept": [
+      "נובמבר"
+     ],
+     "en": "November",
+     "pos": "n",
+     "he": "נובמבר",
+     "emoji": "🌧️",
+     "syl": "No·VEM·ber",
+     "ex": "It starts to rain in November.",
+     "exHe": "מתחיל לרדת גשם בנובמבר.",
+     "gap": "The month before December is ___.",
+     "tip": "November: ההטעמה על vem.",
+     "cat": "month"
+    },
+    {
+     "id": "december",
+     "accept": [
+      "דצמבר"
+     ],
+     "en": "December",
+     "pos": "n",
+     "he": "דצמבר",
+     "emoji": "🕎",
+     "syl": "De·CEM·ber",
+     "ex": "December is the last month of the year.",
+     "exHe": "דצמבר הוא החודש האחרון בשנה.",
+     "gap": "The last month of the year is ___.",
+     "tip": "December: ההטעמה על cem.",
+     "cat": "month"
+    }
+   ]
+  },
+  {
+   "title": "פעלים",
+   "words": [
+    {
+     "id": "begin",
+     "accept": [
+      "להתחיל",
+      "מתחיל",
+      "התחלה"
+     ],
+     "en": "begin",
+     "pos": "v",
+     "he": "להתחיל",
+     "emoji": "▶️",
+     "syl": "be·GIN",
+     "ex": "The lesson begins at eight o'clock.",
+     "exHe": "השיעור מתחיל בשמונה.",
+     "gap": "The movie will ___ at six o'clock.",
+     "tip": "begin = start. הצורה בעבר: began.",
+     "syn": "start",
+     "opp": "end (לסיים)",
+     "family": [
+      [
+       "beginning",
+       "התחלה"
+      ],
+      [
+       "began",
+       "התחיל (עבר)"
+      ]
+     ]
+    },
+    {
+     "id": "call",
+     "accept": [
+      "להתקשר",
+      "לקרוא",
+      "להתקשר אל",
+      "לצלצל"
+     ],
+     "en": "call",
+     "pos": "v",
+     "he": "להתקשר",
+     "emoji": "📞",
+     "syl": "CALL",
+     "ex": "I call my grandma every Friday.",
+     "exHe": "אני מתקשר לסבתא כל יום שישי.",
+     "gap": "I want to ___ Grandma on the phone.",
+     "tip": "call me = התקשרו אליי. call גם = לקרוא בשם: They call him Danny.",
+     "gapNo": [
+      "help"
+     ]
+    },
+    {
+     "id": "cry",
+     "accept": [
+      "לבכות",
+      "בוכה",
+      "בכי"
+     ],
+     "en": "cry",
+     "pos": "v",
+     "he": "לבכות",
+     "emoji": "😢",
+     "syl": "CRY",
+     "ex": "Babies cry when they are hungry.",
+     "exHe": "תינוקות בוכים כשהם רעבים.",
+     "gap": "Babies ___ when they are hungry.",
+     "tip": "cry → cries (he cries), לא crys.",
+     "opp": "laugh (לצחוק)",
+     "family": [
+      [
+       "cried",
+       "בכה (עבר)"
+      ]
+     ]
+    },
+    {
+     "id": "find",
+     "accept": [
+      "למצוא",
+      "מוצא",
+      "מצא"
+     ],
+     "en": "find",
+     "pos": "v",
+     "he": "למצוא",
+     "emoji": "🔎",
+     "syl": "FIND",
+     "ex": "I cannot find my keys.",
+     "exHe": "אני לא מוצא את המפתחות.",
+     "gap": "I cannot ___ my keys. Where are they?",
+     "tip": "find (למצוא) ≠ look for (לחפש). קודם מחפשים, ואז מוצאים.",
+     "gapNo": [
+      "look-for"
+     ],
+     "family": [
+      [
+       "found",
+       "מצא (עבר)"
+      ]
+     ]
+    },
+    {
+     "id": "give",
+     "accept": [
+      "לתת",
+      "נותן",
+      "נתן"
+     ],
+     "en": "give",
+     "pos": "v",
+     "he": "לתת",
+     "emoji": "🎁",
+     "syl": "GIVE",
+     "ex": "I give my dog water every day.",
+     "exHe": "אני נותן לכלב מים כל יום.",
+     "gap": "Please ___ me a glass of water.",
+     "tip": "give אינו נגמר ב-v: g-i-v-e. give me = תנו לי.",
+     "opp": "take (לקחת)",
+     "family": [
+      [
+       "gave",
+       "נתן (עבר)"
+      ],
+      [
+       "gift",
+       "מתנה"
+      ]
+     ]
+    },
+    {
+     "id": "help",
+     "accept": [
+      "לעזור",
+      "עוזר",
+      "עזרה"
+     ],
+     "en": "help",
+     "pos": "v",
+     "he": "לעזור",
+     "emoji": "🤝",
+     "syl": "HELP",
+     "ex": "Can you help me with my homework?",
+     "exHe": "אתה יכול לעזור לי בשיעורי הבית?",
+     "gap": "Can you ___ me with my homework?",
+     "tip": "help גם שם עצם: I need help! = אני צריך עזרה!",
+     "family": [
+      [
+       "helpful",
+       "עוזר, מועיל"
+      ]
+     ]
+    },
+    {
+     "id": "learn",
+     "accept": [
+      "ללמוד",
+      "לומד",
+      "למידה"
+     ],
+     "en": "learn",
+     "pos": "v",
+     "he": "ללמוד",
+     "emoji": "📚",
+     "syl": "LEARN",
+     "ex": "We learn new words every day.",
+     "exHe": "אנחנו לומדים מילים חדשות כל יום.",
+     "gap": "Children ___ new things at school every day.",
+     "tip": "learn = לרכוש ידע. ea באמצע: l-ea-rn.",
+     "syn": "study",
+     "family": [
+      [
+       "learner",
+       "לומד"
+      ]
+     ]
+    },
+    {
+     "id": "put",
+     "accept": [
+      "לשים",
+      "שם",
+      "להניח",
+      "להשים"
+     ],
+     "en": "put",
+     "pos": "v",
+     "he": "לשים",
+     "emoji": "📥",
+     "syl": "PUT",
+     "ex": "Please put your bag on the chair.",
+     "exHe": "בבקשה שים את התיק על הכיסא.",
+     "gap": "Please ___ your books on the table.",
+     "tip": "put לא משתנה בעבר: put – put – put.",
+     "syn": "place"
+    },
+    {
+     "id": "choose",
+     "accept": [
+      "לבחור",
+      "בוחר",
+      "בחירה"
+     ],
+     "en": "choose",
+     "pos": "v",
+     "he": "לבחור",
+     "emoji": "👆",
+     "syl": "CHOOSE",
+     "ex": "You can choose red or blue.",
+     "exHe": "אתם יכולים לבחור אדום או כחול.",
+     "gap": "It is hard to ___ between pizza and pasta.",
+     "tip": "choose נכתב עם oo ונשמע choos (כמו ״צו״). בעבר: chose.",
+     "family": [
+      [
+       "choice",
+       "בחירה"
+      ],
+      [
+       "chose",
+       "בחר (עבר)"
+      ]
+     ]
+    },
+    {
+     "id": "look-for",
+     "accept": [
+      "לחפש",
+      "מחפש",
+      "לחפש את"
+     ],
+     "en": "look for",
+     "pos": "phrase",
+     "he": "לחפש",
+     "emoji": "🧐",
+     "syl": "look FOR",
+     "ex": "I look for my glasses in my room.",
+     "exHe": "אני מחפש את המשקפיים בחדר שלי.",
+     "gap": "I am going to ___ my lost cat in the garden.",
+     "tip": "look for = לחפש. look at = להסתכל על. שימו לב לצירוף.",
+     "gapNo": [
+      "find"
+     ]
+    },
+    {
+     "id": "take-care-of",
+     "accept": [
+      "לדאוג ל",
+      "לטפל ב",
+      "לשמור על",
+      "לדאוג",
+      "לטפל",
+      "לדאוג ל…"
+     ],
+     "en": "take care of",
+     "pos": "phrase",
+     "he": "לדאוג ל",
+     "emoji": "🧸",
+     "syl": "take CARE of",
+     "ex": "I take care of my little brother.",
+     "exHe": "אני דואג לאח הקטן שלי.",
+     "gap": "I ___ my little brother after school.",
+     "tip": "take care of + מי שדואגים לו: take care of the dog. Take care! = שמרו על עצמכם!",
+     "gapNo": [
+      "help"
+     ]
+    },
+    {
+     "id": "win",
+     "accept": [
+      "לנצח",
+      "מנצח",
+      "לזכות",
+      "לזכות ב"
+     ],
+     "en": "win",
+     "pos": "v",
+     "he": "לנצח",
+     "emoji": "🏆",
+     "syl": "WIN",
+     "ex": "I hope we win the game.",
+     "exHe": "אני מקווה שננצח במשחק.",
+     "gap": "I hope our team will ___ the race and get a medal.",
+     "tip": "win בעבר: won. ההפך: lose (להפסיד).",
+     "opp": "lose (להפסיד)",
+     "gapNo": [
+      "begin"
+     ],
+     "family": [
+      [
+       "winner",
+       "מנצח"
+      ],
+      [
+       "won",
+       "ניצח (עבר)"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "תארים",
+   "words": [
+    {
+     "id": "beautiful",
+     "accept": [
+      "יפה",
+      "יפהפה",
+      "נהדר"
+     ],
+     "en": "beautiful",
+     "pos": "adj",
+     "he": "יפה",
+     "emoji": "🌺",
+     "syl": "BEAU·ti·ful",
+     "ex": "What a beautiful flower!",
+     "exHe": "איזה פרח יפה!",
+     "gap": "What a ___ flower! It is red and yellow.",
+     "tip": "beau + ti + ful. ״beau״ נשמע ״ביו״.",
+     "gapNo": [
+      "nice"
+     ],
+     "syn": "pretty",
+     "family": [
+      [
+       "beauty",
+       "יופי"
+      ]
+     ]
+    },
+    {
+     "id": "best",
+     "accept": [
+      "הטוב ביותר",
+      "הכי טוב",
+      "טוב ביותר",
+      "הטובה ביותר"
+     ],
+     "en": "best",
+     "pos": "adj",
+     "he": "הטוב ביותר",
+     "emoji": "🥇",
+     "syl": "BEST",
+     "ex": "She is my best friend.",
+     "exHe": "היא החברה הכי טובה שלי.",
+     "gap": "She is my ___ friend.",
+     "tip": "good → better → best. best = הכי טוב.",
+     "gapNo": [
+      "better"
+     ],
+     "opp": "worst (הכי גרוע)",
+     "family": [
+      [
+       "good",
+       "טוב"
+      ],
+      [
+       "better",
+       "יותר טוב"
+      ]
+     ]
+    },
+    {
+     "id": "better",
+     "accept": [
+      "יותר טוב",
+      "טוב יותר",
+      "טובה יותר",
+      "יותר טובה"
+     ],
+     "en": "better",
+     "pos": "adj",
+     "he": "יותר טוב",
+     "emoji": "📈",
+     "syl": "BET·ter",
+     "ex": "Today I feel better.",
+     "exHe": "היום אני מרגיש יותר טוב.",
+     "gap": "I was sick, but today I feel ___.",
+     "tip": "better יש שני t. good → better → best.",
+     "gapNo": [
+      "best"
+     ],
+     "opp": "worse (יותר גרוע)",
+     "family": [
+      [
+       "good",
+       "טוב"
+      ],
+      [
+       "best",
+       "הכי טוב"
+      ]
+     ]
+    },
+    {
+     "id": "closed",
+     "accept": [
+      "סגור",
+      "סגורה",
+      "סגורים"
+     ],
+     "en": "closed",
+     "pos": "adj",
+     "he": "סגור",
+     "emoji": "🔒",
+     "syl": "CLOSED",
+     "ex": "The shop is closed on Saturday.",
+     "exHe": "החנות סגורה בשבת.",
+     "gap": "The shop is ___ on Saturday. We cannot go in.",
+     "tip": "ההפך: open (פתוח). closed מגיע מ-close.",
+     "opp": "open (פתוח)",
+     "family": [
+      [
+       "close",
+       "לסגור"
+      ]
+     ]
+    },
+    {
+     "id": "different",
+     "accept": [
+      "שונה",
+      "שונים",
+      "אחר",
+      "שונות",
+      "מיוחד"
+     ],
+     "en": "different",
+     "pos": "adj",
+     "he": "שונה",
+     "emoji": "🔀",
+     "syl": "DIF·fer·ent",
+     "ex": "A cat and a dog are different animals.",
+     "exHe": "חתול וכלב הם חיות שונות.",
+     "gap": "A cat and a dog are ___ animals.",
+     "tip": "different: שני f! dif-fer-ent. ההפך: the same.",
+     "opp": "the same (אותו דבר)",
+     "family": [
+      [
+       "difference",
+       "הבדל"
+      ]
+     ]
+    },
+    {
+     "id": "fast",
+     "accept": [
+      "מהר",
+      "מהיר",
+      "מהירה",
+      "במהירות"
+     ],
+     "en": "fast",
+     "pos": "adj",
+     "he": "מהר",
+     "emoji": "⚡",
+     "syl": "FAST",
+     "ex": "A cheetah runs very fast.",
+     "exHe": "ברדלס רץ מהר מאוד.",
+     "gap": "A cheetah runs very ___.",
+     "tip": "fast גם תואר (a fast car) וגם תואר פועל (run fast). ההפך: slow.",
+     "opp": "slow (לאט)",
+     "gapNo": [
+      "hard"
+     ],
+     "syn": "quick"
+    },
+    {
+     "id": "hard",
+     "accept": [
+      "קשה",
+      "קשים",
+      "קשות",
+      "מאומץ"
+     ],
+     "en": "hard",
+     "pos": "adj",
+     "he": "קשה",
+     "emoji": "💪",
+     "syl": "HARD",
+     "ex": "This test is very hard.",
+     "exHe": "המבחן הזה קשה מאוד.",
+     "gap": "This test is very ___. I do not know the answers.",
+     "tip": "hard = קשה (גם קשה כמו אבן וגם קשה כמו מבחן). ההפך: easy.",
+     "opp": "easy (קל)",
+     "gapNo": [
+      "fast"
+     ],
+     "syn": "difficult"
+    },
+    {
+     "id": "important",
+     "accept": [
+      "חשוב",
+      "חשובה",
+      "חשובים",
+      "חשובות"
+     ],
+     "en": "important",
+     "pos": "adj",
+     "he": "חשוב",
+     "emoji": "❗",
+     "syl": "im·POR·tant",
+     "ex": "It is important to drink water.",
+     "exHe": "חשוב לשתות מים.",
+     "gap": "It is ___ to drink water every day.",
+     "tip": "important: im + por + tant. ההטעמה באמצע.",
+     "gapNo": [
+      "nice",
+      "hard"
+     ],
+     "family": [
+      [
+       "importance",
+       "חשיבות"
+      ]
+     ]
+    },
+    {
+     "id": "nice",
+     "accept": [
+      "נחמד",
+      "נחמדה",
+      "נעים",
+      "נחמדים",
+      "נהדר"
+     ],
+     "en": "nice",
+     "pos": "adj",
+     "he": "נחמד",
+     "emoji": "😊",
+     "syl": "NICE",
+     "ex": "My new teacher is very nice.",
+     "exHe": "המורה החדשה שלי נחמדה מאוד.",
+     "gap": "My new teacher is very ___. She always smiles.",
+     "tip": "Nice to meet you! = נעים להכיר!",
+     "gapNo": [
+      "beautiful"
+     ],
+     "syn": "kind, friendly"
+    },
+    {
+     "id": "old",
+     "accept": [
+      "ישן",
+      "זקן",
+      "ישנה",
+      "זקנה",
+      "מבוגר",
+      "ותיק"
+     ],
+     "en": "old",
+     "pos": "adj",
+     "he": "ישן",
+     "emoji": "👴",
+     "syl": "OLD",
+     "ex": "I have an old bike.",
+     "exHe": "יש לי אופניים ישנים.",
+     "gap": "My grandfather is 80 years ___.",
+     "tip": "old: ישן (a old bike) וגם זקן. How old are you? = בן כמה אתה?",
+     "opp": "new (חדש) / young (צעיר)"
+    },
+    {
+     "id": "sick",
+     "accept": [
+      "חולה",
+      "חולים",
+      "חולות"
+     ],
+     "en": "sick",
+     "pos": "adj",
+     "he": "חולה",
+     "emoji": "🤒",
+     "syl": "SICK",
+     "ex": "I stay at home when I am sick.",
+     "exHe": "אני נשאר בבית כשאני חולה.",
+     "gap": "I have a fever, so I am ___.",
+     "tip": "sick = חולה. ההפך: healthy (בריא).",
+     "opp": "healthy (בריא)",
+     "syn": "ill"
+    },
+    {
+     "id": "first",
+     "accept": [
+      "ראשון",
+      "ראשונה",
+      "ראשונים",
+      "בראשונה"
+     ],
+     "en": "first",
+     "pos": "adj",
+     "he": "ראשון",
+     "emoji": "1️⃣",
+     "syl": "FIRST",
+     "ex": "This is my first day at school.",
+     "exHe": "זה היום הראשון שלי בבית הספר.",
+     "gap": "She ran fastest, so she was ___ in the race.",
+     "tip": "first, second, third. first = 1st. ההפך: last.",
+     "opp": "last (אחרון)",
+     "gapNo": [
+      "next"
+     ]
+    },
+    {
+     "id": "next",
+     "accept": [
+      "הבא",
+      "הבאה",
+      "הבאים",
+      "הבאות",
+      "הלאה",
+      "אחרי"
+     ],
+     "en": "next",
+     "pos": "adj",
+     "he": "הבא",
+     "emoji": "⏭️",
+     "syl": "NEXT",
+     "ex": "See you next week!",
+     "exHe": "נתראה בשבוע הבא!",
+     "gap": "Please wait. Who is ___ in the line?",
+     "tip": "next week, next year, next to (ליד). ההפך: last / previous.",
+     "gapNo": [
+      "first"
+     ]
+    }
+   ]
+  },
+  {
+   "title": "מילים קטנות וחשובות",
+   "words": [
+    {
+     "id": "a-lot-of",
+     "accept": [
+      "הרבה",
+      "המון",
+      "הרבה של",
+      "כמות גדולה",
+      "רבים"
+     ],
+     "en": "a lot of",
+     "pos": "phrase",
+     "he": "הרבה",
+     "emoji": "📦",
+     "syl": "a LOT of",
+     "ex": "We have a lot of books.",
+     "exHe": "יש לנו הרבה ספרים.",
+     "gap": "We have ___ books in our class, more than a hundred.",
+     "tip": "a lot of = הרבה (גם ספירים וגם לא ספירים: a lot of water).",
+     "gapNo": [
+      "more"
+     ],
+     "syn": "many, much"
+    },
+    {
+     "id": "also",
+     "accept": [
+      "גם",
+      "בנוסף",
+      "כמו כן",
+      "גם כן"
+     ],
+     "en": "also",
+     "pos": "adv",
+     "he": "גם",
+     "emoji": "➕",
+     "syl": "AL·so",
+     "ex": "I like pizza. I also like pasta.",
+     "exHe": "אני אוהב פיצה. אני גם אוהב פסטה.",
+     "gap": "Dan has a dog. He ___ has a cat.",
+     "tip": "also עומד לפני הפועל הרגיל: I also like. (ואחרי am/is/are: I am also.)",
+     "gapNo": [
+      "always",
+      "now",
+      "perhaps"
+     ],
+     "syn": "too"
+    },
+    {
+     "id": "always",
+     "accept": [
+      "תמיד"
+     ],
+     "en": "always",
+     "pos": "adv",
+     "he": "תמיד",
+     "emoji": "♾️",
+     "syl": "AL·ways",
+     "ex": "I always brush my teeth.",
+     "exHe": "אני תמיד מצחצח שיניים.",
+     "gap": "The sun ___ rises in the east.",
+     "tip": "always = בכל פעם. ההפך: never (אף פעם).",
+     "gapNo": [
+      "also",
+      "now"
+     ],
+     "opp": "never (אף פעם)"
+    },
+    {
+     "id": "at-night",
+     "accept": [
+      "בלילה",
+      "בלילות"
+     ],
+     "en": "at night",
+     "pos": "phrase",
+     "he": "בלילה",
+     "emoji": "🌙",
+     "syl": "at NIGHT",
+     "ex": "We see the stars at night.",
+     "exHe": "אנחנו רואים כוכבים בלילה.",
+     "gap": "We see the stars ___, when it is dark.",
+     "tip": "at night = בלילה. ההפך: during the day (ביום).",
+     "opp": "during the day (ביום)",
+     "family": [
+      [
+       "night",
+       "לילה"
+      ]
+     ]
+    },
+    {
+     "id": "because",
+     "accept": [
+      "משום ש",
+      "כי",
+      "בגלל ש",
+      "מפני ש",
+      "בגלל"
+     ],
+     "en": "because",
+     "pos": "conj",
+     "he": "משום ש",
+     "emoji": "🤔",
+     "syl": "be·CAUSE",
+     "ex": "I am happy because it is my birthday.",
+     "exHe": "אני שמח כי זה יום ההולדת שלי.",
+     "gap": "I am happy ___ it is my birthday.",
+     "tip": "because עונה על השאלה why? ואחריו משפט שלם.",
+     "gapNo": [
+      "if",
+      "but"
+     ]
+    },
+    {
+     "id": "but",
+     "accept": [
+      "אבל",
+      "אולם",
+      "אך"
+     ],
+     "en": "but",
+     "pos": "conj",
+     "he": "אבל",
+     "emoji": "↔️",
+     "syl": "BUT",
+     "ex": "I want to play, but I have homework.",
+     "exHe": "אני רוצה לשחק, אבל יש לי שיעורי בית.",
+     "gap": "I want to play, ___ I have homework.",
+     "tip": "but מחבר שני דברים הפוכים. נכתב b-u-t.",
+     "gapNo": [
+      "because"
+     ]
+    },
+    {
+     "id": "every",
+     "accept": [
+      "כל",
+      "כל אחד",
+      "בכל",
+      "מדי"
+     ],
+     "en": "every",
+     "pos": "adj",
+     "he": "כל",
+     "emoji": "🔁",
+     "syl": "EV·ery",
+     "ex": "I read every day.",
+     "exHe": "אני קורא כל יום.",
+     "gap": "I drink water ___ morning.",
+     "tip": "every + יחיד: every day, every week. (לא every days!)",
+     "gapNo": [
+      "other"
+     ],
+     "family": [
+      [
+       "everyone",
+       "כולם"
+      ]
+     ]
+    },
+    {
+     "id": "for",
+     "accept": [
+      "עבור",
+      "בשביל",
+      "ל",
+      "למען"
+     ],
+     "en": "for",
+     "pos": "prep",
+     "he": "עבור",
+     "emoji": "🎀",
+     "syl": "FOR",
+     "ex": "This gift is for you.",
+     "exHe": "המתנה הזאת בשבילך.",
+     "gap": "This gift is ___ you, Dan.",
+     "tip": "for you = בשבילך. for גם = במשך: for two hours.",
+     "gapNo": [
+      "near",
+      "like"
+     ]
+    },
+    {
+     "id": "if",
+     "accept": [
+      "אם",
+      "במקרה ש",
+      "האם"
+     ],
+     "en": "if",
+     "pos": "conj",
+     "he": "אם",
+     "emoji": "❓",
+     "syl": "IF",
+     "ex": "If it rains, we stay home.",
+     "exHe": "אם ירד גשם, נישאר בבית.",
+     "gap": "___ it rains, we stay home.",
+     "tip": "if + תנאי: אם קורה X, אז Y. נכתב if (שתי אותיות).",
+     "gapNo": [
+      "because",
+      "but"
+     ]
+    },
+    {
+     "id": "into",
+     "accept": [
+      "לתוך",
+      "אל תוך",
+      "אל"
+     ],
+     "en": "into",
+     "pos": "prep",
+     "he": "לתוך",
+     "emoji": "⤵️",
+     "syl": "IN·to",
+     "ex": "Put the books into the bag.",
+     "exHe": "שימו את הספרים לתוך התיק.",
+     "gap": "The boy jumps ___ the pool.",
+     "tip": "into = תנועה פנימה (in + to). in = בפנים.",
+     "gapNo": [
+      "near"
+     ],
+     "family": [
+      [
+       "in",
+       "בתוך"
+      ]
+     ]
+    },
+    {
+     "id": "im-sorry",
+     "accept": [
+      "מצטער",
+      "מצטערת",
+      "סליחה",
+      "אני מצטער",
+      "אני מצטערת"
+     ],
+     "en": "I'm sorry",
+     "pos": "phrase",
+     "he": "מצטער",
+     "emoji": "🙏",
+     "syl": "I'm SOR·ry",
+     "ex": "I'm sorry, I broke your cup.",
+     "exHe": "אני מצטער, שברתי את הכוס שלך.",
+     "gap": "I broke your cup. ___!",
+     "tip": "I'm sorry = I am sorry. sorry נכתב עם שני r.",
+     "syn": "excuse me / pardon"
+    },
+    {
+     "id": "like",
+     "accept": [
+      "כמו",
+      "דומה ל",
+      "בדומה ל",
+      "לאהוב",
+      "אוהב"
+     ],
+     "en": "like",
+     "pos": "prep",
+     "he": "כמו",
+     "emoji": "🙂",
+     "syl": "LIKE",
+     "ex": "He runs like the wind.",
+     "exHe": "הוא רץ כמו הרוח.",
+     "gap": "He runs ___ the wind.",
+     "tip": "like = כמו (a bird like a plane). like גם = לאהוב: I like pizza.",
+     "gapNo": [
+      "for",
+      "near"
+     ]
+    },
+    {
+     "id": "more",
+     "accept": [
+      "יותר",
+      "עוד",
+      "נוסף",
+      "עוד קצת",
+      "יותר מ"
+     ],
+     "en": "more",
+     "pos": "adv",
+     "he": "יותר",
+     "emoji": "➕",
+     "syl": "MORE",
+     "ex": "I want more water, please.",
+     "exHe": "אני רוצה עוד מים, בבקשה.",
+     "gap": "Can I have ___ cake, please? I am still hungry.",
+     "tip": "more = עוד / יותר. ההפך: less. more than = יותר מ.",
+     "gapNo": [
+      "a-lot-of"
+     ],
+     "opp": "less (פחות)"
+    },
+    {
+     "id": "near",
+     "accept": [
+      "ליד",
+      "קרוב",
+      "קרוב ל",
+      "סמוך"
+     ],
+     "en": "near",
+     "pos": "prep",
+     "he": "ליד",
+     "emoji": "📍",
+     "syl": "NEAR",
+     "ex": "My school is near my house.",
+     "exHe": "בית הספר שלי קרוב לבית שלי.",
+     "gap": "My school is ___ my house, only two minutes away.",
+     "tip": "near = קרוב. ההפך: far (רחוק).",
+     "opp": "far (רחוק)",
+     "gapNo": [
+      "into"
+     ],
+     "syn": "next to, close to"
+    },
+    {
+     "id": "now",
+     "accept": [
+      "עכשיו",
+      "כעת",
+      "עתה"
+     ],
+     "en": "now",
+     "pos": "adv",
+     "he": "עכשיו",
+     "emoji": "⏰",
+     "syl": "NOW",
+     "ex": "I am eating now.",
+     "exHe": "אני אוכל עכשיו.",
+     "gap": "Come here ___! We are late.",
+     "tip": "now = עכשיו. ההפך: later (אחר כך).",
+     "gapNo": [
+      "always",
+      "also"
+     ],
+     "opp": "later (אחר כך)"
+    },
+    {
+     "id": "other",
+     "accept": [
+      "אחר",
+      "אחרת",
+      "אחרים",
+      "שני",
+      "נוסף"
+     ],
+     "en": "other",
+     "pos": "adj",
+     "he": "אחר",
+     "emoji": "🔄",
+     "syl": "OTH·er",
+     "ex": "I have one pen. Where is the other pen?",
+     "exHe": "יש לי עט אחד. איפה העט השני?",
+     "gap": "One shoe is here. Where is the ___ shoe?",
+     "tip": "other + שם עצם: the other shoe. another = עוד אחד.",
+     "gapNo": [
+      "next",
+      "every",
+      "different"
+     ],
+     "family": [
+      [
+       "another",
+       "עוד אחד"
+      ]
+     ]
+    },
+    {
+     "id": "perhaps",
+     "accept": [
+      "אולי",
+      "יכול להיות",
+      "ייתכן"
+     ],
+     "en": "perhaps",
+     "pos": "adv",
+     "he": "אולי",
+     "emoji": "🤷",
+     "syl": "per·HAPS",
+     "ex": "Perhaps it will rain tomorrow.",
+     "exHe": "אולי ירד גשם מחר.",
+     "gap": "I do not know. ___ it will rain tomorrow.",
+     "tip": "perhaps = maybe. נשמע ״פרהפס״.",
+     "syn": "maybe"
+    }
+   ]
+  },
+  {
+   "title": "שמות עצם",
+   "words": [
+    {
+     "id": "age",
+     "accept": [
+      "גיל"
+     ],
+     "en": "age",
+     "pos": "n",
+     "he": "גיל",
+     "emoji": "🎂",
+     "syl": "AGE",
+     "ex": "What is your age?",
+     "exHe": "בן כמה אתה?",
+     "gap": "What is your ___? I am nine years old.",
+     "tip": "age = גיל. at the age of ten = בגיל עשר.",
+     "family": [
+      [
+       "aged",
+       "בגיל, מבוגר"
+      ]
+     ]
+    },
+    {
+     "id": "birthday",
+     "accept": [
+      "יום הולדת",
+      "יומולדת"
+     ],
+     "en": "birthday",
+     "pos": "n",
+     "he": "יום הולדת",
+     "emoji": "🎉",
+     "syl": "BIRTH·day",
+     "ex": "My birthday is in October.",
+     "exHe": "יום ההולדת שלי באוקטובר.",
+     "gap": "We eat cake and get presents on my ___.",
+     "tip": "birth (לידה) + day (יום). Happy birthday! = יום הולדת שמח!",
+     "family": [
+      [
+       "birth",
+       "לידה"
+      ],
+      [
+       "day",
+       "יום"
+      ]
+     ]
+    },
+    {
+     "id": "break",
+     "accept": [
+      "הפסקה",
+      "לשבור",
+      "שבירה",
+      "מנוחה"
+     ],
+     "en": "break",
+     "pos": "n",
+     "he": "הפסקה",
+     "emoji": "🔔",
+     "syl": "BREAK",
+     "ex": "We play outside during the break.",
+     "exHe": "אנחנו משחקים בחוץ בהפסקה.",
+     "gap": "We play outside during the ___ at school.",
+     "tip": "break = הפסקה, וגם: לשבור (break a cup). ea נקרא ״ei״.",
+     "family": [
+      [
+       "broke",
+       "שבר (עבר)"
+      ],
+      [
+       "lunch break",
+       "הפסקת אוכל"
+      ]
+     ]
+    },
+    {
+     "id": "flower",
+     "accept": [
+      "פרח",
+      "פרחים"
+     ],
+     "en": "flower",
+     "pos": "n",
+     "he": "פרח",
+     "emoji": "🌷",
+     "syl": "FLOW·er",
+     "ex": "I gave my mom a flower.",
+     "exHe": "נתתי לאמא פרח.",
+     "gap": "A rose is a red ___.",
+     "tip": "flower. שימו לב ל-w. הרבים: flowers.",
+     "family": [
+      [
+       "flowers",
+       "פרחים"
+      ]
+     ]
+    },
+    {
+     "id": "idea",
+     "accept": [
+      "רעיון",
+      "רעיונות"
+     ],
+     "en": "idea",
+     "pos": "n",
+     "he": "רעיון",
+     "emoji": "💡",
+     "syl": "i·DEA",
+     "ex": "I have a good idea!",
+     "exHe": "יש לי רעיון טוב!",
+     "gap": "I have a good ___! Let's bake a cake.",
+     "tip": "idea = רעיון. נשמע ״איי-דיא״."
+    },
+    {
+     "id": "kid",
+     "accept": [
+      "ילד",
+      "ילדה",
+      "ילדים",
+      "נער",
+      "ילד קטן"
+     ],
+     "en": "kid",
+     "pos": "n",
+     "he": "ילד",
+     "emoji": "🧒",
+     "syl": "KID",
+     "ex": "The kid is playing with a ball.",
+     "exHe": "הילד משחק בכדור.",
+     "gap": "That ___ is eight years old and he loves football.",
+     "tip": "kid = ילד (בשפה יומיומית). הרבים: kids.",
+     "syn": "child",
+     "family": [
+      [
+       "kids",
+       "ילדים"
+      ]
+     ]
+    },
+    {
+     "id": "money",
+     "accept": [
+      "כסף",
+      "כספים"
+     ],
+     "en": "money",
+     "pos": "n",
+     "he": "כסף",
+     "emoji": "💰",
+     "syl": "MON·ey",
+     "ex": "I need money to buy a book.",
+     "exHe": "אני צריך כסף כדי לקנות ספר.",
+     "gap": "I need ___ to buy a new book.",
+     "tip": "money = כסף. נקרא ״מאני״, לא ״מוֹני״."
+    },
+    {
+     "id": "month",
+     "accept": [
+      "חודש",
+      "חודשים"
+     ],
+     "en": "month",
+     "pos": "n",
+     "he": "חודש",
+     "emoji": "📅",
+     "syl": "MONTH",
+     "ex": "April is the fourth month of the year.",
+     "exHe": "אפריל הוא החודש הרביעי בשנה.",
+     "gap": "April is the fourth ___ of the year.",
+     "tip": "month = חודש. בשנה 12 months.",
+     "family": [
+      [
+       "monthly",
+       "חודשי"
+      ],
+      [
+       "months",
+       "חודשים"
+      ]
+     ]
+    },
+    {
+     "id": "people",
+     "accept": [
+      "אנשים",
+      "בני אדם",
+      "עם"
+     ],
+     "en": "people",
+     "pos": "n",
+     "he": "אנשים",
+     "emoji": "👥",
+     "syl": "PEO·ple",
+     "ex": "Many people live in this city.",
+     "exHe": "אנשים רבים גרים בעיר הזאת.",
+     "gap": "Many ___ live in this city.",
+     "tip": "people = רבים (אנשים). האות o וה-e: peo-ple.",
+     "family": [
+      [
+       "person",
+       "אדם"
+      ]
+     ]
+    },
+    {
+     "id": "road",
+     "accept": [
+      "דרך",
+      "כביש",
+      "רחוב",
+      "נתיב"
+     ],
+     "en": "road",
+     "pos": "n",
+     "he": "דרך",
+     "emoji": "🛣️",
+     "syl": "ROAD",
+     "ex": "The car drives on the road.",
+     "exHe": "המכונית נוסעת על הכביש.",
+     "gap": "The car drives on the ___.",
+     "tip": "road = דרך / כביש. oa נקרא ״אוֹ״ כמו boat.",
+     "syn": "street"
+    },
+    {
+     "id": "blanket",
+     "accept": [
+      "שמיכה",
+      "שמיכות"
+     ],
+     "en": "blanket",
+     "pos": "n",
+     "he": "שמיכה",
+     "emoji": "🛏️",
+     "syl": "BLAN·ket",
+     "ex": "I sleep under a warm blanket.",
+     "exHe": "אני ישן מתחת לשמיכה חמה.",
+     "gap": "It is cold, so I want a warm ___.",
+     "tip": "blanket = שמיכה. blan + ket."
+    },
+    {
+     "id": "brush",
+     "accept": [
+      "מברשת",
+      "מברשות",
+      "לצחצח"
+     ],
+     "en": "brush",
+     "pos": "n",
+     "he": "מברשת",
+     "emoji": "🪥",
+     "syl": "BRUSH",
+     "ex": "I use a brush to clean my teeth.",
+     "exHe": "אני משתמש במברשת כדי לנקות שיניים.",
+     "gap": "I use a ___ to clean my teeth.",
+     "tip": "brush = מברשת, וגם: לצחצח (brush your teeth).",
+     "family": [
+      [
+       "toothbrush",
+       "מברשת שיניים"
+      ]
+     ]
+    },
+    {
+     "id": "chess",
+     "accept": [
+      "שחמט"
+     ],
+     "en": "chess",
+     "pos": "n",
+     "he": "שחמט",
+     "emoji": "♟️",
+     "syl": "CHESS",
+     "ex": "My grandpa and I play chess.",
+     "exHe": "סבא ואני משחקים שחמט.",
+     "gap": "My grandpa and I play ___. The king is the main piece.",
+     "tip": "chess = שחמט. ch נקרא ״צ׳״."
+    },
+    {
+     "id": "hobby",
+     "accept": [
+      "תחביב",
+      "תחביבים"
+     ],
+     "en": "hobby",
+     "pos": "n",
+     "he": "תחביב",
+     "emoji": "🎨",
+     "syl": "HOB·by",
+     "ex": "Reading is my hobby.",
+     "exHe": "קריאה היא התחביב שלי.",
+     "gap": "Reading is my ___. I read every day.",
+     "tip": "hobby ברבים: hobbies (ה-y הופך ל-ies).",
+     "family": [
+      [
+       "hobbies",
+       "תחביבים"
+      ]
+     ]
+    },
+    {
+     "id": "information",
+     "accept": [
+      "מידע",
+      "ידע",
+      "מידע על",
+      "נתונים"
+     ],
+     "en": "information",
+     "pos": "n",
+     "he": "מידע",
+     "emoji": "ℹ️",
+     "syl": "in·for·MA·tion",
+     "ex": "I need more information about the trip.",
+     "exHe": "אני צריך עוד מידע על הטיול.",
+     "gap": "Please give me more ___ about the trip.",
+     "tip": "information = מידע, ואין לה רבים: לא informations.",
+     "family": [
+      [
+       "inform",
+       "ליידע"
+      ]
+     ]
+    },
+    {
+     "id": "pool",
+     "accept": [
+      "בריכה",
+      "בריכת שחייה"
+     ],
+     "en": "pool",
+     "pos": "n",
+     "he": "בריכה",
+     "emoji": "🏊",
+     "syl": "POOL",
+     "ex": "We swim in the pool in summer.",
+     "exHe": "אנחנו שוחים בבריכה בקיץ.",
+     "gap": "We swim in the ___ in summer.",
+     "tip": "pool = בריכה (oo נקרא ״אוּ״). swimming pool."
+    },
+    {
+     "id": "race",
+     "accept": [
+      "מרוץ",
+      "תחרות",
+      "מירוץ",
+      "ריצה"
+     ],
+     "en": "race",
+     "pos": "n",
+     "he": "מרוץ",
+     "emoji": "🏁",
+     "syl": "RACE",
+     "ex": "Dan won the race.",
+     "exHe": "דן ניצח במרוץ.",
+     "gap": "Dan is the fastest runner in the ___.",
+     "tip": "race = מרוץ. run a race = לרוץ במרוץ.",
+     "family": [
+      [
+       "racing",
+       "מירוצים"
+      ]
+     ]
+    },
+    {
+     "id": "secret",
+     "accept": [
+      "סוד",
+      "סודות",
+      "סודי"
+     ],
+     "en": "secret",
+     "pos": "n",
+     "he": "סוד",
+     "emoji": "🤫",
+     "syl": "SE·cret",
+     "ex": "Do not tell anyone. It is a secret!",
+     "exHe": "אל תגידו לאף אחד. זה סוד!",
+     "gap": "Do not tell anyone. It is a ___!",
+     "tip": "secret = סוד. sec + ret.",
+     "family": [
+      [
+       "secretly",
+       "בסתר"
+      ]
+     ]
+    },
+    {
+     "id": "team",
+     "accept": [
+      "צוות",
+      "קבוצה",
+      "נבחרת",
+      "קבוצת"
+     ],
+     "en": "team",
+     "pos": "n",
+     "he": "צוות",
+     "emoji": "👥",
+     "syl": "TEAM",
+     "ex": "Our football team has eleven players.",
+     "exHe": "בקבוצת הכדורגל שלנו אחד עשר שחקנים.",
+     "gap": "Our football ___ has eleven players.",
+     "tip": "team = צוות / קבוצה. ea נקרא ״אי״.",
+     "family": [
+      [
+       "teammate",
+       "חבר לקבוצה"
+      ]
+     ]
+    },
+    {
+     "id": "toy",
+     "accept": [
+      "צעצוע",
+      "צעצועים",
+      "משחק"
+     ],
+     "en": "toy",
+     "pos": "n",
+     "he": "צעצוע",
+     "emoji": "🧸",
+     "syl": "TOY",
+     "ex": "The baby plays with a little toy.",
+     "exHe": "התינוק משחק בצעצוע קטן.",
+     "gap": "The baby plays with a little ___.",
+     "tip": "toy = צעצוע. הרבים: toys (לא toies).",
+     "family": [
+      [
+       "toys",
+       "צעצועים"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -2,7 +2,7 @@
 import { esc, mixed } from '../ui.js';
 import { canSpeak, speakBtn, wireSpeakButtons } from '../speech.js';
 
-export const POS = { n: 'שם עצם', v: 'פועל', adj: 'תואר', prep: 'מילת יחס', phrase: 'ביטוי' };
+export const POS = { n: 'שם עצם', v: 'פועל', adj: 'תואר', prep: 'מילת יחס', phrase: 'ביטוי', adv: 'תואר פועל', conj: 'מילת חיבור' };
 
 // "be located (in)" is spoken and filled in as "be located in".
 export const spoken = (en) => en.replace(/[()]/g, '');
