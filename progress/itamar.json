@@ -1091,12 +1091,12 @@
    "updated": 1794937944842
   },
   "sc:ty:P": {
-   "box": 2,
-   "seen": 2,
-   "right": 1,
+   "box": 3,
+   "seen": 3,
+   "right": 2,
    "wrong": 1,
-   "due": 1794760770561,
-   "updated": 1794674370561
+   "due": 1795199332539,
+   "updated": 1794940132539
   },
   "sc:pr:Be": {
    "box": 2,
@@ -1163,12 +1163,12 @@
    "updated": 1794937929859
   },
   "sc:ty:Al": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1794688880293,
-   "updated": 1794674480293
+   "due": 1795026536505,
+   "updated": 1794940136505
   },
   "sc:el:N": {
    "box": 3,
@@ -1505,6 +1505,86 @@
    "wrong": 0,
    "due": 1794954362073,
    "updated": 1794939962073
+  },
+  "sc:ty:Ar": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794954520255,
+   "updated": 1794940120255
+  },
+  "sc:ty:He": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794954527272,
+   "updated": 1794940127272
+  },
+  "sc:ty:Rn": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794954543405,
+   "updated": 1794940143405
+  },
+  "sc:ty:Au": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794954551988,
+   "updated": 1794940151988
+  },
+  "sc:ty:Cu": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794954556438,
+   "updated": 1794940156438
+  },
+  "sc:ty:K": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794954563989,
+   "updated": 1794940163989
+  },
+  "sc:ty:Zn": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794954578606,
+   "updated": 1794940178606
+  },
+  "sc:ty:H": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794954583888,
+   "updated": 1794940183888
+  },
+  "sc:ty:Na": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794954591539,
+   "updated": 1794940191539
+  },
+  "sc:ty:C": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794954596005,
+   "updated": 1794940196005
   }
  },
  "sessions": [
@@ -2038,7 +2118,18 @@
    "total": 12,
    "correct": 11,
    "ms": 378446
+  },
+  {
+   "id": "563c0c42-b00a-4377-aca3-f70038de2764",
+   "at": 1794940197109,
+   "mastered": 42,
+   "module": "science",
+   "part": "metals",
+   "unit": "science-1",
+   "total": 12,
+   "correct": 12,
+   "ms": 83275
   }
  ],
- "updated": 1794940023575
+ "updated": 1794940197109
 }
