@@ -1059,12 +1059,12 @@
    "updated": 1794936859096
   },
   "sc:e6": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1794688522828,
-   "updated": 1794674122828
+   "due": 1795024380109,
+   "updated": 1794937980109
   },
   "sc:who:Pb": {
    "box": 3,
@@ -1083,12 +1083,12 @@
    "updated": 1794936924463
   },
   "sc:e1": {
-   "box": 2,
-   "seen": 2,
-   "right": 1,
+   "box": 3,
+   "seen": 3,
+   "right": 2,
    "wrong": 1,
-   "due": 1794760835017,
-   "updated": 1794674435017
+   "due": 1795197144842,
+   "updated": 1794937944842
   },
   "sc:ty:P": {
    "box": 2,
@@ -1155,12 +1155,12 @@
    "updated": 1794936809897
   },
   "sc:e12": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1794688847122,
-   "updated": 1794674447122
+   "due": 1795024329859,
+   "updated": 1794937929859
   },
   "sc:ty:Al": {
    "box": 1,
@@ -1385,6 +1385,78 @@
    "wrong": 0,
    "due": 1794951713778,
    "updated": 1794937313778
+  },
+  "sc:e4": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794952319959,
+   "updated": 1794937919959
+  },
+  "sc:g3": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794937935292,
+   "updated": 1794937935292
+  },
+  "sc:g2": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794937973309,
+   "updated": 1794937973309
+  },
+  "sc:e2": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794952385359,
+   "updated": 1794937985359
+  },
+  "sc:g7": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794952392042,
+   "updated": 1794937992042
+  },
+  "sc:e7": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794937998093,
+   "updated": 1794937998093
+  },
+  "sc:e8": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794952409858,
+   "updated": 1794938009858
+  },
+  "sc:e11": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794952418892,
+   "updated": 1794938018892
+  },
+  "sc:g1": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794952423325,
+   "updated": 1794938023325
   }
  },
  "sessions": [
@@ -1896,7 +1968,18 @@
    "total": 12,
    "correct": 8,
    "ms": 160575
+  },
+  {
+   "id": "fc18258e-dc97-4f96-90fa-1716ec744cba",
+   "at": 1794938041026,
+   "mastered": 42,
+   "module": "science",
+   "part": "element",
+   "unit": "science-1",
+   "total": 12,
+   "correct": 9,
+   "ms": 126756
   }
  ],
- "updated": 1794937906230
+ "updated": 1794938041026
 }
