@@ -760,6 +760,102 @@
    "wrong": 0,
    "due": 1794345285385,
    "updated": 1794330885385
+  },
+  "vo:fourteen": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993746872,
+   "updated": 1794979346872
+  },
+  "vo:eighty": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993758197,
+   "updated": 1794979358197
+  },
+  "vo:seventy": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993765686,
+   "updated": 1794979365686
+  },
+  "vo:ninety": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993774071,
+   "updated": 1794979374071
+  },
+  "vo:nineteen": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993786819,
+   "updated": 1794979386819
+  },
+  "vo:sixteen": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993789801,
+   "updated": 1794979389801
+  },
+  "vo:fifteen": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993803126,
+   "updated": 1794979403126
+  },
+  "vo:fifty": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993810321,
+   "updated": 1794979410321
+  },
+  "vo:seventeen": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993817549,
+   "updated": 1794979417549
+  },
+  "vo:forty": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993821256,
+   "updated": 1794979421256
+  },
+  "vo:a-hundred": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993823857,
+   "updated": 1794979423857
+  },
+  "vo:eighteen": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993836547,
+   "updated": 1794979436547
   }
  },
  "sessions": [
@@ -931,7 +1027,18 @@
    "total": 19,
    "correct": 18,
    "ms": 79576
+  },
+  {
+   "id": "f21269a9-5163-490e-8ead-3ae8f640498a",
+   "at": 1794979437658,
+   "mastered": 15,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-11-17-english-vocab",
+   "total": 12,
+   "correct": 12,
+   "ms": 95623
   }
  ],
- "updated": 1794330885387
+ "updated": 1794979437658
 }
