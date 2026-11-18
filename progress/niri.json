@@ -1048,6 +1048,102 @@
    "wrong": 1,
    "due": 1795066691687,
    "updated": 1794980291687
+  },
+  "vo:hard": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794994795256,
+   "updated": 1794980395256
+  },
+  "vo:closed": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794980402967,
+   "updated": 1794980402967
+  },
+  "vo:best": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794994811622,
+   "updated": 1794980411622
+  },
+  "vo:first": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794980421606,
+   "updated": 1794980421606
+  },
+  "vo:nice": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794994827101,
+   "updated": 1794980427101
+  },
+  "vo:important": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794980433727,
+   "updated": 1794980433727
+  },
+  "vo:fast": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794994839267,
+   "updated": 1794980439267
+  },
+  "vo:different": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794994842601,
+   "updated": 1794980442601
+  },
+  "vo:beautiful": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794994852784,
+   "updated": 1794980452784
+  },
+  "vo:sick": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794994857436,
+   "updated": 1794980457436
+  },
+  "vo:old": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794994860844,
+   "updated": 1794980460844
+  },
+  "vo:better": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794980467247,
+   "updated": 1794980467247
   }
  },
  "sessions": [
@@ -1296,7 +1392,18 @@
    "total": 12,
    "correct": 12,
    "ms": 78290
+  },
+  {
+   "id": "57fc1ea9-6acd-4579-a526-a367a2cd2471",
+   "at": 1794980506407,
+   "mastered": 20,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-11-17-english-vocab",
+   "total": 12,
+   "correct": 8,
+   "ms": 120147
   }
  ],
- "updated": 1794980317895
+ "updated": 1794980506407
 }
