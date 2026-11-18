@@ -856,6 +856,102 @@
    "wrong": 0,
    "due": 1794993836547,
    "updated": 1794979436547
+  },
+  "vo:july": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993851405,
+   "updated": 1794979451405
+  },
+  "vo:may": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993854403,
+   "updated": 1794979454403
+  },
+  "vo:march": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993856966,
+   "updated": 1794979456966
+  },
+  "vo:november": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993860566,
+   "updated": 1794979460566
+  },
+  "vo:january": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993865418,
+   "updated": 1794979465418
+  },
+  "vo:september": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993869200,
+   "updated": 1794979469200
+  },
+  "vo:december": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993872715,
+   "updated": 1794979472715
+  },
+  "vo:october": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993876678,
+   "updated": 1794979476678
+  },
+  "vo:april": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993879495,
+   "updated": 1794979479495
+  },
+  "vo:august": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993882561,
+   "updated": 1794979482561
+  },
+  "vo:june": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993885511,
+   "updated": 1794979485511
+  },
+  "vo:february": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993888180,
+   "updated": 1794979488180
   }
  },
  "sessions": [
@@ -1038,7 +1134,18 @@
    "total": 12,
    "correct": 12,
    "ms": 95623
+  },
+  {
+   "id": "d2f49207-d3d9-41f3-b3b0-69c8a46b132e",
+   "at": 1794979489283,
+   "mastered": 15,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-11-17-english-vocab",
+   "total": 12,
+   "correct": 12,
+   "ms": 41797
   }
  ],
- "updated": 1794979437658
+ "updated": 1794979489283
 }
