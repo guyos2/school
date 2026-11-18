@@ -952,6 +952,102 @@
    "wrong": 0,
    "due": 1794993888180,
    "updated": 1794979488180
+  },
+  "vo:call": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794993961733,
+   "updated": 1794979561733
+  },
+  "vo:look-for": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794979565649,
+   "updated": 1794979565649
+  },
+  "vo:cry": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794979576264,
+   "updated": 1794979576264
+  },
+  "vo:learn": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794994005758,
+   "updated": 1794979605758
+  },
+  "vo:put": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794994011347,
+   "updated": 1794979611347
+  },
+  "vo:choose": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794979617655,
+   "updated": 1794979617655
+  },
+  "vo:help": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794994022439,
+   "updated": 1794979622439
+  },
+  "vo:take-care-of": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794994027644,
+   "updated": 1794979627644
+  },
+  "vo:give": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794979633576,
+   "updated": 1794979633576
+  },
+  "vo:win": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794979637490,
+   "updated": 1794979637490
+  },
+  "vo:find": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1794994060327,
+   "updated": 1794979660327
+  },
+  "vo:begin": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1794979695563,
+   "updated": 1794979695563
   }
  },
  "sessions": [
@@ -1145,7 +1241,18 @@
    "total": 12,
    "correct": 12,
    "ms": 41797
+  },
+  {
+   "id": "49198faa-55e5-4cb4-9c8f-5a8be57cd6ee",
+   "at": 1794979758861,
+   "mastered": 15,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-11-17-english-vocab",
+   "total": 12,
+   "correct": 6,
+   "ms": 199431
   }
  ],
- "updated": 1794979489283
+ "updated": 1794979758861
 }
