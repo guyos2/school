@@ -1146,12 +1146,12 @@
    "updated": 1795101974825
   },
   "vo:if": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1795102099140,
-   "updated": 1795102099140
+   "due": 1795188708217,
+   "updated": 1795102308217
   },
   "vo:every": {
    "box": 1,
@@ -1162,28 +1162,28 @@
    "updated": 1795102107670
   },
   "vo:for": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1795102115974,
-   "updated": 1795102115974
+   "due": 1795188694750,
+   "updated": 1795102294750
   },
   "vo:but": {
    "box": 1,
-   "seen": 1,
+   "seen": 2,
    "right": 0,
-   "wrong": 1,
-   "due": 1795102120899,
-   "updated": 1795102120899
+   "wrong": 2,
+   "due": 1795102282838,
+   "updated": 1795102282838
   },
   "vo:into": {
    "box": 1,
-   "seen": 1,
+   "seen": 2,
    "right": 0,
-   "wrong": 1,
-   "due": 1795102127690,
-   "updated": 1795102127690
+   "wrong": 2,
+   "due": 1795102314975,
+   "updated": 1795102314975
   },
   "vo:im-sorry": {
    "box": 1,
@@ -1195,11 +1195,11 @@
   },
   "vo:a-lot-of": {
    "box": 1,
-   "seen": 1,
+   "seen": 2,
    "right": 0,
-   "wrong": 1,
-   "due": 1795102137779,
-   "updated": 1795102137779
+   "wrong": 2,
+   "due": 1795102261085,
+   "updated": 1795102261085
   },
   "vo:because": {
    "box": 1,
@@ -1210,36 +1210,60 @@
    "updated": 1795102143853
   },
   "vo:like": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1795102148969,
-   "updated": 1795102148969
+   "due": 1795188653551,
+   "updated": 1795102253551
   },
   "vo:always": {
    "box": 1,
-   "seen": 1,
+   "seen": 2,
    "right": 0,
-   "wrong": 1,
-   "due": 1795102156280,
-   "updated": 1795102156280
+   "wrong": 2,
+   "due": 1795102289031,
+   "updated": 1795102289031
   },
   "vo:at-night": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1795102162973,
-   "updated": 1795102162973
+   "due": 1795188647176,
+   "updated": 1795102247176
   },
   "vo:also": {
    "box": 1,
+   "seen": 2,
+   "right": 0,
+   "wrong": 2,
+   "due": 1795102232878,
+   "updated": 1795102232878
+  },
+  "vo:now": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795116643391,
+   "updated": 1795102243391
+  },
+  "vo:near": {
+   "box": 1,
    "seen": 1,
    "right": 0,
    "wrong": 1,
-   "due": 1795102170427,
-   "updated": 1795102170427
+   "due": 1795102275623,
+   "updated": 1795102275623
+  },
+  "vo:more": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795116702042,
+   "updated": 1795102302042
   }
  },
  "sessions": [
@@ -1532,7 +1556,18 @@
    "total": 12,
    "correct": 3,
    "ms": 133599
+  },
+  {
+   "id": "073ac605-e243-4fdf-93f1-f40af7a5a4bf",
+   "at": 1795102359104,
+   "mastered": 22,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-11-17-english-vocab",
+   "total": 12,
+   "correct": 6,
+   "ms": 129526
   }
  ],
- "updated": 1795102226670
+ "updated": 1795102359104
 }
