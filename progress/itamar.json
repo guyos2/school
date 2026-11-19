@@ -1099,12 +1099,12 @@
    "updated": 1794940132539
   },
   "sc:pr:Be": {
-   "box": 2,
-   "seen": 4,
-   "right": 4,
+   "box": 3,
+   "seen": 5,
+   "right": 5,
    "wrong": 0,
-   "due": 1795112154239,
-   "updated": 1795025754239
+   "due": 1795324133041,
+   "updated": 1795064933041
   },
   "sc:who:Hg": {
    "box": 3,
@@ -1140,11 +1140,11 @@
   },
   "sc:sym:Ne": {
    "box": 1,
-   "seen": 4,
-   "right": 4,
+   "seen": 5,
+   "right": 5,
    "wrong": 0,
-   "due": 1795040112295,
-   "updated": 1795025712295
+   "due": 1795079312863,
+   "updated": 1795064912863
   },
   "sc:who:F": {
    "box": 3,
@@ -1275,20 +1275,20 @@
    "updated": 1794937758460
   },
   "sc:who:Cu": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1795112088053,
-   "updated": 1795025688053
+   "due": 1795324118802,
+   "updated": 1795064918802
   },
   "sc:a1": {
-   "box": 1,
-   "seen": 2,
-   "right": 0,
+   "box": 2,
+   "seen": 3,
+   "right": 1,
    "wrong": 2,
-   "due": 1795025772397,
-   "updated": 1795025772397
+   "due": 1795151287276,
+   "updated": 1795064887276
   },
   "sc:c9": {
    "box": 1,
@@ -1587,20 +1587,20 @@
    "updated": 1794940196005
   },
   "sc:a13": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795040181627,
-   "updated": 1795025781627
+   "due": 1795151323677,
+   "updated": 1795064923677
   },
   "sc:who:Au": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795040187131,
-   "updated": 1795025787131
+   "due": 1795151277137,
+   "updated": 1795064877137
   },
   "sc:g6": {
    "box": 1,
@@ -1609,6 +1609,54 @@
    "wrong": 1,
    "due": 1795026086032,
    "updated": 1795026086032
+  },
+  "sc:pr:He": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795079264239,
+   "updated": 1795064864239
+  },
+  "sc:who:K": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795079270898,
+   "updated": 1795064870898
+  },
+  "sc:el:S": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795079283867,
+   "updated": 1795064883867
+  },
+  "sc:sym:Rn": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795079300291,
+   "updated": 1795064900291
+  },
+  "sc:who:Si": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795079343235,
+   "updated": 1795064943235
+  },
+  "sc:pr:Hg": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795079350815,
+   "updated": 1795064950815
   }
  },
  "sessions": [
@@ -2197,7 +2245,18 @@
    "total": 12,
    "correct": 8,
    "ms": 99543
+  },
+  {
+   "id": "fcf37d9d-57dd-4c50-9b40-e146cc82102b",
+   "at": 1795064951919,
+   "mastered": 44,
+   "module": "science",
+   "part": "atom",
+   "unit": "science-1",
+   "total": 12,
+   "correct": 12,
+   "ms": 98486
   }
  ],
- "updated": 1795026121055
+ "updated": 1795064951919
 }
