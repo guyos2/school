@@ -1264,6 +1264,102 @@
    "wrong": 0,
    "due": 1795116702042,
    "updated": 1795102302042
+  },
+  "vo:break": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795102445754,
+   "updated": 1795102445754
+  },
+  "vo:people": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795102452195,
+   "updated": 1795102452195
+  },
+  "vo:month": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795102459387,
+   "updated": 1795102459387
+  },
+  "vo:idea": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795116867410,
+   "updated": 1795102467410
+  },
+  "vo:birthday": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795116870154,
+   "updated": 1795102470154
+  },
+  "vo:blanket": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795116873443,
+   "updated": 1795102473443
+  },
+  "vo:road": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795116878426,
+   "updated": 1795102478426
+  },
+  "vo:flower": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795116882915,
+   "updated": 1795102482915
+  },
+  "vo:brush": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795116892323,
+   "updated": 1795102492323
+  },
+  "vo:money": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795116894989,
+   "updated": 1795102494989
+  },
+  "vo:age": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795116900458,
+   "updated": 1795102500458
+  },
+  "vo:kid": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795102508045,
+   "updated": 1795102508045
   }
  },
  "sessions": [
@@ -1567,7 +1663,18 @@
    "total": 12,
    "correct": 6,
    "ms": 129526
+  },
+  {
+   "id": "4f2eb911-7041-4d11-b03e-6953275716de",
+   "at": 1795102527597,
+   "mastered": 22,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-11-17-english-vocab",
+   "total": 12,
+   "correct": 8,
+   "ms": 86178
   }
  ],
- "updated": 1795102359104
+ "updated": 1795102527597
 }
