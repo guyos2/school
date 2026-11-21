@@ -13,8 +13,9 @@ const PART_TITLES = {
   spell: 'איות', test: 'הכתבה',
   sub: 'חיסור', mul: 'כפל', mix: 'מעורב', class: 'מהכיתה',
   vocab: 'אוצר מילים', meaning: 'פירוש מילים', typed: 'כתיבת פירוש', grammar: 'דקדוק', unseen: 'Unseen', mock: 'מבחן דמה', gtest: 'מבחן דקדוק', mywords: 'המילים שסימנו',
+  n: 'שם עצם', a: 'שם תואר', v: 'פעלים וזמנים', r: 'גופים מאזכרים', find: 'מוצאים בטקסט', read: 'קוראים ועונים',
 };
-const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation', col: 'column', nu: 'numbers', be: 'be', sc: 'science',
+const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation', col: 'column', nu: 'numbers', be: 'be', sc: 'science', hb: 'hebrew',
   vo: 'units', ug: 'units', rd: 'units', uw: 'units' };
 
 const dayStart = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };

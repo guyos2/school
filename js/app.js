@@ -9,6 +9,7 @@ import { renderColumn } from './modules/column.js';
 import { renderNumbers } from './modules/numbers.js';
 import { renderBe } from './modules/be.js';
 import { renderScience } from './modules/science.js';
+import { renderHebrew } from './modules/hebrew.js';
 import { renderStats } from './stats.js';
 import { setApiUrl, isOnline, needsLogin, getSession, login, logout, syncKid, onSyncStatus } from './store.js';
 
@@ -23,6 +24,7 @@ const MODULES = {
   grammar: { title: 'דקדוק באנגלית', icon: '📘', render: renderGrammar },
   be: { title: 'am / is / are', icon: '🌾', render: renderBe },
   science: { title: 'מדעים', icon: '🔬', render: renderScience },
+  hebrew: { title: 'הבנת הנקרא ולשון', icon: '📖', render: renderHebrew },
   speaking: { title: 'מדברים אנגלית', icon: '🗣️' },
   units: { title: 'חומר מהכיתה', icon: '📸', render: renderUnits },
   counting: { title: 'סופרים ומשחקים', icon: '🧸' },
