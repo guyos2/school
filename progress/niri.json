@@ -1266,100 +1266,100 @@
    "updated": 1795242784320
   },
   "vo:break": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1795102445754,
-   "updated": 1795102445754
+   "due": 1795329615496,
+   "updated": 1795243215496
   },
   "vo:people": {
    "box": 1,
-   "seen": 1,
+   "seen": 2,
    "right": 0,
-   "wrong": 1,
-   "due": 1795102452195,
-   "updated": 1795102452195
+   "wrong": 2,
+   "due": 1795243123864,
+   "updated": 1795243123864
   },
   "vo:month": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1795102459387,
-   "updated": 1795102459387
+   "due": 1795329656105,
+   "updated": 1795243256105
   },
   "vo:idea": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795116867410,
-   "updated": 1795102467410
+   "due": 1795329651295,
+   "updated": 1795243251295
   },
   "vo:birthday": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795116870154,
-   "updated": 1795102470154
+   "due": 1795329610105,
+   "updated": 1795243210105
   },
   "vo:blanket": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795116873443,
-   "updated": 1795102473443
+   "due": 1795329600628,
+   "updated": 1795243200628
   },
   "vo:road": {
    "box": 1,
-   "seen": 1,
+   "seen": 2,
    "right": 1,
-   "wrong": 0,
-   "due": 1795116878426,
-   "updated": 1795102478426
+   "wrong": 1,
+   "due": 1795243169996,
+   "updated": 1795243169996
   },
   "vo:flower": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795116882915,
-   "updated": 1795102482915
+   "due": 1795329590346,
+   "updated": 1795243190346
   },
   "vo:brush": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795116892323,
-   "updated": 1795102492323
+   "due": 1795329597356,
+   "updated": 1795243197356
   },
   "vo:money": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795116894989,
-   "updated": 1795102494989
+   "due": 1795329593517,
+   "updated": 1795243193517
   },
   "vo:age": {
    "box": 1,
-   "seen": 1,
+   "seen": 2,
    "right": 1,
-   "wrong": 0,
-   "due": 1795116900458,
-   "updated": 1795102500458
+   "wrong": 1,
+   "due": 1795243226751,
+   "updated": 1795243226751
   },
   "vo:kid": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1795102508045,
-   "updated": 1795102508045
+   "due": 1795329607018,
+   "updated": 1795243207018
   }
  },
  "sessions": [
@@ -1707,7 +1707,18 @@
    "total": 12,
    "correct": 5,
    "ms": 302118
+  },
+  {
+   "id": "66196856-d913-4f62-9a0c-9b2c57afda44",
+   "at": 1795243274301,
+   "mastered": 21,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-11-17-english-vocab",
+   "total": 12,
+   "correct": 9,
+   "ms": 153574
   }
  ],
- "updated": 1795243083622
+ "updated": 1795243274301
 }
