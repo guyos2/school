@@ -1050,36 +1050,36 @@
    "updated": 1795242504989
   },
   "vo:hard": {
-   "box": 3,
-   "seen": 4,
+   "box": 1,
+   "seen": 5,
    "right": 3,
-   "wrong": 1,
-   "due": 1795543165255,
-   "updated": 1795283965255
+   "wrong": 2,
+   "due": 1795376363141,
+   "updated": 1795376363141
   },
   "vo:closed": {
-   "box": 2,
-   "seen": 4,
-   "right": 2,
+   "box": 3,
+   "seen": 5,
+   "right": 3,
    "wrong": 2,
-   "due": 1795370333110,
-   "updated": 1795283933110
+   "due": 1795635570515,
+   "updated": 1795376370515
   },
   "vo:best": {
-   "box": 4,
-   "seen": 4,
-   "right": 4,
+   "box": 5,
+   "seen": 5,
+   "right": 5,
    "wrong": 0,
-   "due": 1795888768985,
-   "updated": 1795283968985
+   "due": 1796585924366,
+   "updated": 1795376324366
   },
   "vo:first": {
-   "box": 3,
-   "seen": 4,
+   "box": 1,
+   "seen": 5,
    "right": 2,
-   "wrong": 2,
-   "due": 1795543151715,
-   "updated": 1795283951715
+   "wrong": 3,
+   "due": 1795376329221,
+   "updated": 1795376329221
   },
   "vo:nice": {
    "box": 4,
@@ -1090,60 +1090,60 @@
    "updated": 1795283971736
   },
   "vo:important": {
-   "box": 3,
-   "seen": 4,
-   "right": 2,
+   "box": 4,
+   "seen": 5,
+   "right": 3,
    "wrong": 2,
-   "due": 1795543158736,
-   "updated": 1795283958736
+   "due": 1795981142649,
+   "updated": 1795376342649
   },
   "vo:fast": {
-   "box": 4,
-   "seen": 4,
-   "right": 4,
+   "box": 5,
+   "seen": 5,
+   "right": 5,
    "wrong": 0,
-   "due": 1795888736211,
-   "updated": 1795283936211
+   "due": 1796585978987,
+   "updated": 1795376378987
   },
   "vo:different": {
-   "box": 4,
-   "seen": 4,
-   "right": 4,
+   "box": 5,
+   "seen": 5,
+   "right": 5,
    "wrong": 0,
-   "due": 1795888727605,
-   "updated": 1795283927605
+   "due": 1796585921315,
+   "updated": 1795376321315
   },
   "vo:beautiful": {
+   "box": 5,
+   "seen": 5,
+   "right": 5,
+   "wrong": 0,
+   "due": 1796585973934,
+   "updated": 1795376373934
+  },
+  "vo:sick": {
+   "box": 4,
+   "seen": 5,
+   "right": 4,
+   "wrong": 1,
+   "due": 1795981181666,
+   "updated": 1795376381666
+  },
+  "vo:old": {
    "box": 4,
    "seen": 4,
    "right": 4,
    "wrong": 0,
-   "due": 1795888774856,
-   "updated": 1795283974856
-  },
-  "vo:sick": {
-   "box": 3,
-   "seen": 4,
-   "right": 3,
-   "wrong": 1,
-   "due": 1795543155265,
-   "updated": 1795283955265
-  },
-  "vo:old": {
-   "box": 3,
-   "seen": 3,
-   "right": 3,
-   "wrong": 0,
-   "due": 1795501854607,
-   "updated": 1795242654607
+   "due": 1795981112137,
+   "updated": 1795376312137
   },
   "vo:better": {
-   "box": 1,
-   "seen": 4,
-   "right": 0,
+   "box": 2,
+   "seen": 5,
+   "right": 1,
    "wrong": 4,
-   "due": 1795283944917,
-   "updated": 1795283944917
+   "due": 1795462739453,
+   "updated": 1795376339453
   },
   "vo:if": {
    "box": 3,
@@ -1362,12 +1362,12 @@
    "updated": 1795243207018
   },
   "vo:next": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795298322227,
-   "updated": 1795283922227
+   "due": 1795462714648,
+   "updated": 1795376314648
   },
   "vo:other": {
    "box": 1,
@@ -1815,7 +1815,18 @@
    "total": 12,
    "correct": 7,
    "ms": 133582
+  },
+  {
+   "id": "503fdbac-0bf1-41cb-8b51-6b14328a0d50",
+   "at": 1795376401609,
+   "mastered": 29,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-11-17-english-vocab",
+   "total": 12,
+   "correct": 10,
+   "ms": 97559
   }
  ],
- "updated": 1795284286912
+ "updated": 1795376401609
 }
