@@ -322,12 +322,12 @@
    "updated": 1795348305290
   },
   "hb:a:s7.2": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795362715757,
-   "updated": 1795348315757
+   "due": 1795434872441,
+   "updated": 1795348472441
   },
   "hb:a:s25.1": {
    "box": 1,
@@ -354,12 +354,12 @@
    "updated": 1795348344036
   },
   "hb:ag:2": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795362749519,
-   "updated": 1795348349519
+   "due": 1795434865609,
+   "updated": 1795348465609
   },
   "hb:a:s23.1": {
    "box": 1,
@@ -371,19 +371,67 @@
   },
   "hb:a:stream.5": {
    "box": 1,
+   "seen": 2,
+   "right": 2,
+   "wrong": 0,
+   "due": 1795362886124,
+   "updated": 1795348486124
+  },
+  "hb:a:s4.1": {
+   "box": 2,
+   "seen": 2,
+   "right": 1,
+   "wrong": 1,
+   "due": 1795434840065,
+   "updated": 1795348440065
+  },
+  "hb:a:s10.1": {
+   "box": 1,
    "seen": 1,
    "right": 1,
    "wrong": 0,
-   "due": 1795362772951,
-   "updated": 1795348372951
+   "due": 1795362827664,
+   "updated": 1795348427664
   },
-  "hb:a:s4.1": {
+  "hb:a:s31.2": {
    "box": 1,
    "seen": 1,
-   "right": 0,
-   "wrong": 1,
-   "due": 1795348401848,
-   "updated": 1795348401848
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362832330,
+   "updated": 1795348432330
+  },
+  "hb:a:s20.2": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362836213,
+   "updated": 1795348436213
+  },
+  "hb:a:s22.2": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362848477,
+   "updated": 1795348448477
+  },
+  "hb:ag:11": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362858676,
+   "updated": 1795348458676
+  },
+  "hb:a:s30.1": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362892022,
+   "updated": 1795348492022
   }
  },
  "sessions": [
@@ -467,7 +515,18 @@
    "total": 10,
    "correct": 9,
    "ms": 164217
+  },
+  {
+   "id": "ba97918a-f50a-4be9-8e20-1db978af8aa6",
+   "at": 1795348493124,
+   "mastered": 8,
+   "module": "hebrew",
+   "part": "a",
+   "unit": "2026-12-01-hebrew",
+   "total": 10,
+   "correct": 10,
+   "ms": 73332
   }
  ],
- "updated": 1795348416859
+ "updated": 1795348493124
 }
