@@ -900,3 +900,9 @@ button.back { border: 0; background: none; font: inherit; cursor: pointer; }
 .hb-qt { text-align: right; }
 .hb-test .mt-opt { text-align: right; }
 .hb-task .hb-text { background: var(--bg); border-radius: 12px; padding: 8px 10px; }
+
+/* settings: English voice choice */
+.voice-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.voice-row .voice-pick { flex: 0 1 auto; min-width: 0; overflow-wrap: anywhere; text-align: start; }
+.voice-row .speak { flex: none; }
+.voice-row .subtitle { margin: 0; flex: 1; }

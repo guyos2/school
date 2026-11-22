@@ -3,13 +3,35 @@ export const canSpeak = typeof window !== 'undefined' && 'speechSynthesis' in wi
 
 let voice = null;
 let heVoice = null;
+// The English voice chosen on the settings page. Voices differ per device, so the choice is kept on this device only.
+const VOICE_KEY = 'school:v1:enVoice';
+export function chosenVoice() {
+  try { return localStorage.getItem(VOICE_KEY) || ''; } catch { return ''; }
+}
+export function chooseVoice(name) {
+  try { name ? localStorage.setItem(VOICE_KEY, name) : localStorage.removeItem(VOICE_KEY); } catch { /* blocked storage */ }
+  pickVoice();
+}
+// English voices on this device, American first.
+export function englishVoices() {
+  if (!canSpeak) return [];
+  const rank = (v) => (/en[-_]US/i.test(v.lang) ? 0 : 1);
+  return speechSynthesis.getVoices().filter((v) => /^en[-_]/i.test(v.lang))
+    .sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name));
+}
 function pickVoice() {
   const voices = speechSynthesis.getVoices();
   heVoice = voices.find((v) => /^(he|iw)[-_]?/i.test(v.lang)) || null;
   const en = voices.filter((v) => /^en[-_]/i.test(v.lang));
-  voice = en.find((v) => /en[-_]US/i.test(v.lang) && /Samantha|Google US|Aria|Jenny|Ava|Allison/i.test(v.name))
+  const mine = chosenVoice();
+  voice = (mine && en.find((v) => v.name === mine)) || autoVoice(en);
+}
+// The voice used when none was chosen: a familiar American voice, else any American one, else any English one.
+function autoVoice(en = englishVoices()) {
+  return en.find((v) => /en[-_]US/i.test(v.lang) && /Samantha|Google US|Aria|Jenny|Ava|Allison/i.test(v.name))
     || en.find((v) => /en[-_]US/i.test(v.lang)) || en[0] || null;
 }
+export const autoVoiceName = () => (canSpeak ? autoVoice()?.name ?? '' : '');
 if (canSpeak) {
   pickVoice();
   speechSynthesis.addEventListener?.('voiceschanged', pickVoice);
@@ -26,23 +48,25 @@ export function setEnglishPace(scale = 1) { enScale = scale; }
 // starts, so a letter name and its example word (e.g. "A.|apple") stay distinct
 // instead of running together. myGen guards against a stale chain still
 // waiting on its pause after a newer say() has taken over.
-function speakParts(parts, rate, myGen, lang = 'en-US') {
+function speakParts(parts, rate, myGen, lang = 'en-US', enVoice = voice) {
   const [first, ...rest] = parts;
   if (first === undefined || myGen !== gen) return;
   const u = new SpeechSynthesisUtterance(first);
   u.lang = lang;
-  const v = lang === 'he-IL' ? heVoice : voice;
+  const v = lang === 'he-IL' ? heVoice : enVoice;
   if (v) u.voice = v;
   u.rate = rate;
-  if (rest.length) u.onend = () => setTimeout(() => speakParts(rest, rate, myGen, lang), lang === 'he-IL' ? 1200 : Math.round(500 / enScale));
+  if (rest.length) u.onend = () => setTimeout(() => speakParts(rest, rate, myGen, lang, enVoice), lang === 'he-IL' ? 1200 : Math.round(500 / enScale));
   speechSynthesis.speak(u);
 }
 
-export function say(text, { rate = 0.7 } = {}) {
+// `voiceName` reads with another English voice this once (the settings page uses it for samples).
+export function say(text, { rate = 0.7, voiceName } = {}) {
   if (!canSpeak || !text) return;
   speechSynthesis.cancel();
   gen++;
-  speakParts(text.split('|').map((s) => s.trim()).filter(Boolean), rate * enScale, gen);
+  const v = (voiceName && englishVoices().find((x) => x.name === voiceName)) || voice;
+  speakParts(text.split('|').map((s) => s.trim()).filter(Boolean), rate * enScale, gen, 'en-US', v);
 }
 
 // Many desktops have no Hebrew voice; then an adult reads the words aloud instead.
