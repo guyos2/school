@@ -11,6 +11,7 @@ import { renderBe } from './modules/be.js';
 import { renderScience } from './modules/science.js';
 import { renderHebrew } from './modules/hebrew.js';
 import { renderStats } from './stats.js';
+import { setEnglishPace } from './speech.js';
 import { setApiUrl, isOnline, needsLogin, getSession, login, logout, syncKid, onSyncStatus } from './store.js';
 
 // Modules without render are shown as "coming soon".
@@ -76,6 +77,7 @@ function route() {
   }
   if (parts[0] === 'kid') {
     const kid = allowedKids().find((k) => k.id === parts[1]);
+    setEnglishPace(kid?.enRate ?? 1);
     if (kid) {
       document.documentElement.style.setProperty('--kid', kid.color);
       if (!parts[2]) return kidPage(kid);

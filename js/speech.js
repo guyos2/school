@@ -17,6 +17,11 @@ if (canSpeak) {
 
 let gen = 0;
 
+// English is read slower for a kid who is just starting the language (kids.json `enRate`, e.g. 0.7):
+// every English rate is multiplied by it, and the pauses between parts grow to match.
+let enScale = 1;
+export function setEnglishPace(scale = 1) { enScale = scale; }
+
 // A "|" in the text marks a pause: each part is spoken fully before the next
 // starts, so a letter name and its example word (e.g. "A.|apple") stay distinct
 // instead of running together. myGen guards against a stale chain still
@@ -29,7 +34,7 @@ function speakParts(parts, rate, myGen, lang = 'en-US') {
   const v = lang === 'he-IL' ? heVoice : voice;
   if (v) u.voice = v;
   u.rate = rate;
-  if (rest.length) u.onend = () => setTimeout(() => speakParts(rest, rate, myGen, lang), lang === 'he-IL' ? 1200 : 500);
+  if (rest.length) u.onend = () => setTimeout(() => speakParts(rest, rate, myGen, lang), lang === 'he-IL' ? 1200 : Math.round(500 / enScale));
   speechSynthesis.speak(u);
 }
 
@@ -37,7 +42,7 @@ export function say(text, { rate = 0.7 } = {}) {
   if (!canSpeak || !text) return;
   speechSynthesis.cancel();
   gen++;
-  speakParts(text.split('|').map((s) => s.trim()).filter(Boolean), rate, gen);
+  speakParts(text.split('|').map((s) => s.trim()).filter(Boolean), rate * enScale, gen);
 }
 
 // Many desktops have no Hebrew voice; then an adult reads the words aloud instead.
