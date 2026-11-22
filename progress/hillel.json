@@ -306,12 +306,12 @@
    "updated": 1795284832228
   },
   "hb:a:s12.1": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795362661489,
-   "updated": 1795348261489
+   "due": 1795434913203,
+   "updated": 1795348513203
   },
   "hb:a:s30.2": {
    "box": 1,
@@ -386,12 +386,12 @@
    "updated": 1795348440065
   },
   "hb:a:s10.1": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795362827664,
-   "updated": 1795348427664
+   "due": 1795434931968,
+   "updated": 1795348531968
   },
   "hb:a:s31.2": {
    "box": 1,
@@ -410,20 +410,20 @@
    "updated": 1795348436213
   },
   "hb:a:s22.2": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795362848477,
-   "updated": 1795348448477
+   "due": 1795435001298,
+   "updated": 1795348601298
   },
   "hb:ag:11": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795362858676,
-   "updated": 1795348458676
+   "due": 1795434935601,
+   "updated": 1795348535601
   },
   "hb:a:s30.1": {
    "box": 1,
@@ -432,6 +432,54 @@
    "wrong": 0,
    "due": 1795362892022,
    "updated": 1795348492022
+  },
+  "hb:a:s28.1": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362907854,
+   "updated": 1795348507854
+  },
+  "hb:a:puppy.6": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362927602,
+   "updated": 1795348527602
+  },
+  "hb:a:library.5": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362968982,
+   "updated": 1795348568982
+  },
+  "hb:a:stream.4": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362974915,
+   "updated": 1795348574915
+  },
+  "hb:ag:9": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795348581348,
+   "updated": 1795348581348
+  },
+  "hb:ag:13": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362997365,
+   "updated": 1795348597365
   }
  },
  "sessions": [
@@ -526,7 +574,18 @@
    "total": 10,
    "correct": 10,
    "ms": 73332
+  },
+  {
+   "id": "ba4cf756-3794-407b-ac99-ea79545e3644",
+   "at": 1795348607271,
+   "mastered": 8,
+   "module": "hebrew",
+   "part": "a",
+   "unit": "2026-12-01-hebrew",
+   "total": 10,
+   "correct": 9,
+   "ms": 103992
   }
  ],
- "updated": 1795348493124
+ "updated": 1795348607271
 }
