@@ -1266,12 +1266,12 @@
    "updated": 1795376425497
   },
   "vo:break": {
-   "box": 1,
-   "seen": 3,
-   "right": 1,
+   "box": 2,
+   "seen": 4,
+   "right": 2,
    "wrong": 2,
-   "due": 1795284164637,
-   "updated": 1795284164637
+   "due": 1795462951849,
+   "updated": 1795376551849
   },
   "vo:people": {
    "box": 2,
@@ -1306,20 +1306,20 @@
    "updated": 1795284238692
   },
   "vo:blanket": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1795329600628,
-   "updated": 1795243200628
+   "due": 1795635761585,
+   "updated": 1795376561585
   },
   "vo:road": {
-   "box": 1,
-   "seen": 3,
-   "right": 1,
+   "box": 2,
+   "seen": 4,
+   "right": 2,
    "wrong": 2,
-   "due": 1795284255851,
-   "updated": 1795284255851
+   "due": 1795462937166,
+   "updated": 1795376537166
   },
   "vo:flower": {
    "box": 3,
@@ -1330,36 +1330,36 @@
    "updated": 1795284194623
   },
   "vo:brush": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1795329597356,
-   "updated": 1795243197356
+   "due": 1795635772134,
+   "updated": 1795376572134
   },
   "vo:money": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1795329593517,
-   "updated": 1795243193517
+   "due": 1795635732665,
+   "updated": 1795376532665
   },
   "vo:age": {
-   "box": 1,
-   "seen": 3,
-   "right": 1,
+   "box": 2,
+   "seen": 4,
+   "right": 2,
    "wrong": 2,
-   "due": 1795284224333,
-   "updated": 1795284224333
+   "due": 1795462929867,
+   "updated": 1795376529867
   },
   "vo:kid": {
-   "box": 2,
-   "seen": 2,
-   "right": 1,
+   "box": 3,
+   "seen": 3,
+   "right": 2,
    "wrong": 1,
-   "due": 1795329607018,
-   "updated": 1795243207018
+   "due": 1795635776351,
+   "updated": 1795376576351
   },
   "vo:next": {
    "box": 2,
@@ -1386,44 +1386,44 @@
    "updated": 1795376484115
   },
   "vo:pool": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795298590584,
-   "updated": 1795284190584
+   "due": 1795462946678,
+   "updated": 1795376546678
   },
   "vo:chess": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1795284203174,
-   "updated": 1795284203174
+   "due": 1795462926085,
+   "updated": 1795376526085
   },
   "vo:hobby": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795298613884,
-   "updated": 1795284213884
+   "due": 1795462957633,
+   "updated": 1795376557633
   },
   "vo:race": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795298635920,
-   "updated": 1795284235920
+   "due": 1795462943169,
+   "updated": 1795376543169
   },
   "vo:information": {
-   "box": 1,
-   "seen": 1,
-   "right": 0,
+   "box": 2,
+   "seen": 2,
+   "right": 1,
    "wrong": 1,
-   "due": 1795284247378,
-   "updated": 1795284247378
+   "due": 1795462968616,
+   "updated": 1795376568616
   }
  },
  "sessions": [
@@ -1837,7 +1837,18 @@
    "total": 12,
    "correct": 8,
    "ms": 101539
+  },
+  {
+   "id": "239fc226-e40f-40fe-acd2-8d86cba68136",
+   "at": 1795376577455,
+   "mastered": 29,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-11-17-english-vocab",
+   "total": 12,
+   "correct": 12,
+   "ms": 54269
   }
  ],
- "updated": 1795376514666
+ "updated": 1795376577455
 }
