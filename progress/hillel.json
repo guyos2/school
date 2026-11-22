@@ -304,6 +304,86 @@
    "wrong": 0,
    "due": 1795299232228,
    "updated": 1795284832228
+  },
+  "hb:a:s12.1": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362661489,
+   "updated": 1795348261489
+  },
+  "hb:a:s30.2": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362705290,
+   "updated": 1795348305290
+  },
+  "hb:a:s7.2": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362715757,
+   "updated": 1795348315757
+  },
+  "hb:a:s25.1": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362726921,
+   "updated": 1795348326921
+  },
+  "hb:ag:0": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362737073,
+   "updated": 1795348337073
+  },
+  "hb:a:s29.1": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362744036,
+   "updated": 1795348344036
+  },
+  "hb:ag:2": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362749519,
+   "updated": 1795348349519
+  },
+  "hb:a:s23.1": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362758189,
+   "updated": 1795348358189
+  },
+  "hb:a:stream.5": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795362772951,
+   "updated": 1795348372951
+  },
+  "hb:a:s4.1": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795348401848,
+   "updated": 1795348401848
   }
  },
  "sessions": [
@@ -376,7 +456,18 @@
    "total": 20,
    "correct": 16,
    "ms": 1397661
+  },
+  {
+   "id": "1f34d1a8-7082-40c9-b768-8381d5c14d0e",
+   "at": 1795348416859,
+   "mastered": 8,
+   "module": "hebrew",
+   "part": "a",
+   "unit": "2026-12-01-hebrew",
+   "total": 10,
+   "correct": 9,
+   "ms": 164217
   }
  ],
- "updated": 1795284871345
+ "updated": 1795348416859
 }
