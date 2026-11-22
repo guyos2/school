@@ -973,3 +973,8 @@ button.back { border: 0; background: none; font: inherit; cursor: pointer; }
 .m8-triples { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 20px; }
 .m8-triples span { padding: 4px 12px; border-radius: 10px; background: var(--bg); }
 .m8-triples span.m8-on { background: #fde047; color: #1f1b3a; outline: 3px solid #ca8a04; }
+/* settings: English voice choice */
+.voice-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.voice-row .voice-pick { flex: 0 1 auto; min-width: 0; overflow-wrap: anywhere; text-align: start; }
+.voice-row .speak { flex: none; }
+.voice-row .subtitle { margin: 0; flex: 1; }

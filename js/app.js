@@ -1,4 +1,4 @@
-import { esc, newView } from './ui.js';
+import { esc, newView, viewSignal } from './ui.js';
 import { renderTimes } from './modules/times.js';
 import { renderEnglish } from './modules/english.js';
 import { renderGrammar } from './modules/grammar.js';
@@ -12,6 +12,7 @@ import { renderScience } from './modules/science.js';
 import { renderHebrew } from './modules/hebrew.js';
 import { renderMath } from './modules/math.js';
 import { renderStats } from './stats.js';
+import { setEnglishPace, canSpeak, say, englishVoices, chosenVoice, chooseVoice, autoVoiceName } from './speech.js';
 import { setApiUrl, isOnline, needsLogin, getSession, login, logout, syncKid, onSyncStatus } from './store.js';
 
 // Modules without render are shown as "coming soon".
@@ -78,6 +79,7 @@ function route() {
   }
   if (parts[0] === 'kid') {
     const kid = allowedKids().find((k) => k.id === parts[1]);
+    setEnglishPace(kid?.enRate ?? 1);
     if (kid) {
       document.documentElement.style.setProperty('--kid', kid.color);
       if (!parts[2]) return kidPage(kid);
@@ -165,6 +167,49 @@ function kidPage(kid) {
 }
 
 function account() {
+  accountPanel();
+  voicePanel();
+}
+
+// Choosing the English reading voice. Every device has its own voices, so the choice is saved on this device.
+const SAMPLE = 'Hello! | I go to school every day. | My favorite lesson is English.';
+function voicePanel() {
+  if (!canSpeak) {
+    app.insertAdjacentHTML('beforeend', `<div class="panel"><h2 class="section">🔊 הקול שמקריא באנגלית</h2><p>במכשיר הזה אין הקראה.</p></div>`);
+    return;
+  }
+  app.insertAdjacentHTML('beforeend', `<div class="panel" id="voices"></div>`);
+  const box = app.querySelector('#voices');
+  const draw = () => {
+    const list = englishVoices();
+    const mine = chosenVoice();
+    const nice = (v) => /premium|enhanced|natural|neural|online/i.test(v.name);
+    const row = (name, label, sub, on) => `
+      <div class="voice-row${on ? ' on' : ''}">
+        <button class="btn ${on ? '' : 'btn-soft'} voice-pick" data-v="${esc(name)}">${on ? '✅ ' : ''}${label}</button>
+        <span class="subtitle en">${sub}</span>
+        <button class="speak" data-try="${esc(name)}" aria-label="לשמוע דוגמה">🔊</button>
+      </div>`;
+    box.innerHTML = `
+      <h2 class="section">🔊 הקול שמקריא באנגלית</h2>
+      <p>לוחצים על 🔊 כדי לשמוע דוגמה, ובוחרים את הקול הכי ברור. הבחירה נשמרת רק במכשיר הזה, כי לכל מכשיר יש קולות אחרים.</p>
+      ${list.length ? `
+        ${row('', 'אוטומטי', esc(autoVoiceName()), !mine)}
+        ${list.map((v) => row(v.name, `${esc(v.name)}${nice(v) ? ' ⭐' : ''}`, esc(v.lang), v.name === mine)).join('')}
+        <p class="subtitle">⭐ = קול משופר, בדרך כלל ברור וטבעי יותר. אפשר להוריד קולות כאלה בהגדרות הנגישות של המכשיר (באייפון: נגישות ← תוכן מוקרא ← קולות ← English).</p>`
+      : '<p class="subtitle">טוענים את הקולות של המכשיר…</p>'}`;
+  };
+  draw();
+  speechSynthesis.addEventListener?.('voiceschanged', draw, { signal: viewSignal() });
+  box.addEventListener('click', (e) => {
+    const pickBtn = e.target.closest('.voice-pick');
+    const tryBtn = e.target.closest('[data-try]');
+    if (pickBtn) { chooseVoice(pickBtn.dataset.v); draw(); say(SAMPLE); }
+    else if (tryBtn) say(SAMPLE, { voiceName: tryBtn.dataset.try || autoVoiceName() });
+  }, { signal: viewSignal() });
+}
+
+function accountPanel() {
   if (!isOnline()) {
     app.innerHTML = `
       <h1 class="page-title">⚙️ חשבון</h1>

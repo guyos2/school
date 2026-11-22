@@ -1,6 +1,6 @@
 {
   "kids": [
-    { "id": "hillel", "name": "הלל", "grade": "כיתה ד׳", "emoji": "🦄", "color": "#ec4899",
+    { "id": "hillel", "name": "הלל", "grade": "כיתה ד׳", "emoji": "🦄", "color": "#ec4899", "enRate": 0.7,
       "modules": ["hebrew", "times", "numbers", "english-letters", "speaking", "units"] },
     { "id": "niri", "name": "נירי", "grade": "כיתה ה׳", "emoji": "🦋", "color": "#8b5cf6",
       "modules": ["be", "times", "fractions", "dictation", "column", "numbers", "english-letters", "speaking", "units"] },
