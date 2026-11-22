@@ -10,6 +10,7 @@ import { renderNumbers } from './modules/numbers.js';
 import { renderBe } from './modules/be.js';
 import { renderScience } from './modules/science.js';
 import { renderHebrew } from './modules/hebrew.js';
+import { renderMath } from './modules/math.js';
 import { renderStats } from './stats.js';
 import { setApiUrl, isOnline, needsLogin, getSession, login, logout, syncKid, onSyncStatus } from './store.js';
 
@@ -25,6 +26,7 @@ const MODULES = {
   be: { title: 'am / is / are', icon: '🌾', render: renderBe },
   science: { title: 'מדעים', icon: '🔬', render: renderScience },
   hebrew: { title: 'הבנת הנקרא ולשון', icon: '📖', render: renderHebrew },
+  math: { title: 'מתמטיקה', icon: '📐', render: renderMath },
   speaking: { title: 'מדברים אנגלית', icon: '🗣️' },
   units: { title: 'חומר מהכיתה', icon: '📸', render: renderUnits },
   counting: { title: 'סופרים ומשחקים', icon: '🧸' },

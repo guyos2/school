@@ -900,3 +900,76 @@ button.back { border: 0; background: none; font: inherit; cursor: pointer; }
 .hb-qt { text-align: right; }
 .hb-test .mt-opt { text-align: right; }
 .hb-task .hb-text { background: var(--bg); border-radius: 12px; padding: 8px 10px; }
+
+/* ---------- math (Itamar, grade 8) ---------- */
+.m8-head { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 8px; }
+.m8-chip { display: inline-block; font-size: 14px; font-weight: 700; padding: 2px 10px; border-radius: 99px; background: var(--bg); color: var(--muted); }
+.m8-deep { background: #fef3c7; color: #92400e; }
+.m8-sheet { background: #e0f2fe; color: #075985; }
+.m8-retry { color: var(--muted); font-size: 15px; margin: 0; }
+.m8-text { font-size: 20px; font-weight: 600; line-height: 1.7; margin: 6px 0 10px; text-align: right; }
+.m8-text .eq, .m8-steps .eq, .m8-rules .eq, .m8-exparts .eq, .m8-plabel .eq { background: var(--bg); border-radius: 6px; padding: 0 5px; }
+.m8-parts { display: flex; flex-direction: column; gap: 10px; text-align: right; }
+.m8-part { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 8px 10px; border-radius: 14px; background: var(--bg); }
+.m8-part.ok { background: #d1fae5; }
+.m8-part.no { background: #fee2e2; }
+.m8-plabel { flex: 1 1 220px; font-size: 18px; }
+.m8-ans { display: inline-flex; align-items: center; gap: 6px; }
+.m8-in { display: inline-flex; align-items: center; gap: 6px; direction: ltr; flex-wrap: wrap; }
+.m8-box { width: 8.5ch; font: 700 22px Rubik, sans-serif; text-align: center; padding: 6px 8px; border: 3px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink); }
+.m8-box:focus { outline: none; border-color: var(--kid); }
+.m8-box.m8-sm { width: 5ch; }
+.m8-colon, .m8-pre { font-size: 24px; font-weight: 800; }
+.m8-unit { font-weight: 700; color: var(--muted); }
+.m8-frac { display: inline-flex; flex-direction: column; align-items: center; gap: 3px; }
+.m8-frac i { display: block; width: 100%; height: 3px; background: var(--ink); border-radius: 2px; }
+.m8-ch.on { border-color: var(--kid); background: color-mix(in srgb, var(--kid) 16%, var(--card)); font-weight: 700; }
+.m8-mark { flex-basis: 100%; font-weight: 700; font-size: 18px; }
+.m8-mark:empty { display: none; }
+.m8-part.ok .m8-mark { color: #065f46; }
+.m8-part.no .m8-mark { color: #991b1b; }
+.m8-hint { background: #fef9c3; border-radius: 14px; padding: 6px 12px; margin-top: 10px; text-align: right; }
+.m8-steps { text-align: right; font-size: 18px; line-height: 1.9; margin: 6px 0; padding-inline-start: 26px; }
+.m8-sol summary { cursor: pointer; font-weight: 700; }
+.m8-help-viz { margin-top: 12px; }
+.m8-toggle { display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 700; margin: 0 0 8px; }
+.m8-toggle input { width: 22px; height: 22px; }
+.m8-rules ul { margin: 4px 0 10px; padding-inline-start: 22px; line-height: 1.9; }
+.m8-h { font-size: 19px; margin: 6px 0; }
+.m8-h3 { font-weight: 700; margin: 10px 0 0; }
+.m8-exparts { line-height: 1.9; padding-inline-start: 22px; }
+.m8-exparts li.ok { color: #065f46; } .m8-exparts li.no { color: #991b1b; }
+.m8-mq .m8-text { text-align: right; }
+.m8-mviz { margin-top: 10px; }
+.m8-viz { overflow-x: auto; }
+.m8-t { font: 600 15px Rubik, sans-serif; fill: currentColor; direction: ltr; }
+.m8-bars { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.m8-barrow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.m8-barname { min-width: 80px; font-weight: 700; }
+.m8-boxes { display: flex; flex-wrap: wrap; gap: 3px; direction: ltr; }
+.m8-boxes i { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 34px; padding: 0 4px; border-radius: 6px; color: #fff; font-style: normal; font-weight: 700; font-size: 15px; }
+.m8-bartot { font-size: 17px; }
+.m8-table { border-collapse: separate; border-spacing: 4px; margin: 0 auto; font-size: 19px; }
+.m8-table th { font-size: 15px; color: var(--muted); padding: 2px 6px; }
+.m8-table td { min-width: 52px; text-align: center; padding: 6px 8px; border-radius: 10px; background: var(--bg); font-weight: 700; }
+.m8-table td.m8-on { background: #fde047; color: #1f1b3a; outline: 3px solid #ca8a04; }
+.m8-lines { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 21px; }
+.m8-lines small { font-size: 14px; color: var(--muted); }
+.m8-note { text-align: center; color: var(--muted); margin: 6px 0 0; }
+.m8-cross { display: flex; align-items: center; justify-content: center; gap: 14px; direction: ltr; margin-bottom: 8px; }
+.m8-fr { display: inline-flex; flex-direction: column; align-items: center; font-size: 28px; font-weight: 800; }
+.m8-fr i { display: block; width: 100%; min-width: 40px; height: 3px; background: currentColor; }
+.m8-eqs { font-size: 28px; font-weight: 800; }
+.m8-ladder { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; direction: ltr; }
+.m8-step { display: flex; flex-direction: column; align-items: center; padding: 8px 14px; border-radius: 14px; border: 3px solid var(--c); background: color-mix(in srgb, var(--c) 12%, var(--card)); }
+.m8-step b { font-size: 22px; } .m8-step small { direction: rtl; color: var(--muted); }
+.m8-arr { text-align: center; font-weight: 700; line-height: 1.1; }
+.m8-grid { display: grid; grid-template-columns: repeat(10, 22px); gap: 3px; justify-content: center; direction: ltr; }
+.m8-grid i { width: 22px; height: 22px; border-radius: 4px; background: var(--line); }
+.m8-grid i.on { background: #3b82f6; }
+.m8-trio { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; font-size: 26px; font-weight: 800; margin-bottom: 10px; }
+.m8-trio span { display: flex; flex-direction: column; align-items: center; padding: 6px 14px; border-radius: 14px; border: 3px solid var(--c); }
+.m8-trio small { font-size: 13px; color: var(--muted); font-weight: 600; }
+.m8-triples { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 20px; }
+.m8-triples span { padding: 4px 12px; border-radius: 10px; background: var(--bg); }
+.m8-triples span.m8-on { background: #fde047; color: #1f1b3a; outline: 3px solid #ca8a04; }

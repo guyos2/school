@@ -4,6 +4,7 @@ import { esc, ltr, viewSignal } from './ui.js';
 import { getProgress, isOnline, syncKid } from './store.js';
 import { MASTERED_BOX } from './srs.js';
 import { PLACES } from './viz/numbers.js';
+import { GEN as MATH_GEN } from './modules/mathGen.js';
 
 const DAY = 864e5;
 const PART_TITLES = {
@@ -13,9 +14,10 @@ const PART_TITLES = {
   spell: 'איות', test: 'הכתבה',
   sub: 'חיסור', mul: 'כפל', mix: 'מעורב', class: 'מהכיתה',
   vocab: 'אוצר מילים', meaning: 'פירוש מילים', typed: 'כתיבת פירוש', grammar: 'דקדוק', unseen: 'Unseen', mock: 'מבחן דמה', gtest: 'מבחן דקדוק', mywords: 'המילים שסימנו',
+  ratio: 'יחס ופרופורציה', scale: 'קנה מידה', circle: 'מעגל ועיגול', percent: 'אחוזים', pyth: 'פיתגורס', angles: 'זוויות מתאימות', sheet: 'דף החזרה',
   n: 'שם עצם', a: 'שם תואר', v: 'פעלים וזמנים', r: 'גופים מאזכרים', find: 'מוצאים בטקסט', read: 'קוראים ועונים',
 };
-const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation', col: 'column', nu: 'numbers', be: 'be', sc: 'science', hb: 'hebrew',
+const PREFIX_MODULE = { mul: 'times', en: 'english-letters', fr: 'fractions', gr: 'grammar', dc: 'dictation', col: 'column', nu: 'numbers', be: 'be', sc: 'science', hb: 'hebrew', m8: 'math',
   vo: 'units', ug: 'units', rd: 'units', uw: 'units' };
 
 const dayStart = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
@@ -274,6 +276,7 @@ function itemLabel(key, grammar) {
   if (prefix === 'nu') return numbersLabel(a, b);
   if (prefix === 'uw') return ltr(esc(a));
   if (prefix === 'be') return ltr(esc(key.slice(5).replace('___', '…')));
+  if (prefix === 'm8') return a === 'sheet' ? `דף החזרה, שאלה ${esc(b)}` : esc(MATH_GEN[a]?.name ?? a);
   if (prefix === 'sc') return `מדעים ${ltr(esc(key.slice(3)))}`;
   if (prefix === 'vo') return ltr(esc(a.replace(/-/g, ' ')));
   if (prefix === 'ug') return `דקדוק, תרגיל ${+b + 1}`;
