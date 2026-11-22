@@ -1,0 +1,1150 @@
+{
+ "id": "2026-11-22-english-unit-d",
+ "subject": "אנגלית",
+ "title": "מילים באנגלית · יחידה ד׳",
+ "date": "2026-11-22",
+ "source": "דף ״מילים באנגלית · יחידה ד׳״ של Teacher Inbar: 48 מילים",
+ "icon": "🇬🇧",
+ "wordGroups": [
+  {
+   "title": "בבית הספר",
+   "words": [
+    {
+     "id": "school",
+     "en": "school",
+     "pos": "n",
+     "he": "בית ספר",
+     "accept": [
+      "בית הספר",
+      "ביה\"ס",
+      "ביס"
+     ],
+     "emoji": "🏫",
+     "syl": "SCHOOL",
+     "ex": "I go to school every day.",
+     "exHe": "אני הולך/ת לבית הספר כל יום.",
+     "gap": "We learn at ___ from Sunday to Friday.",
+     "tip": "בסוף המילה יש h שקטה: s-c-h-o-o-l. שומעים רק סקוּל.",
+     "cat": "school",
+     "family": [
+      [
+       "schoolbag",
+       "ילקוט"
+      ]
+     ],
+     "gapNo": [
+      "class"
+     ]
+    },
+    {
+     "id": "class",
+     "en": "class",
+     "pos": "n",
+     "he": "כיתה",
+     "accept": [
+      "הכיתה",
+      "שיעור"
+     ],
+     "emoji": "🏫",
+     "syl": "CLASS",
+     "ex": "There are thirty kids in my class.",
+     "exHe": "יש שלושים ילדים בכיתה שלי.",
+     "gap": "There are thirty kids in my ___.",
+     "tip": "בסוף יש שתי s: c-l-a-s-s.",
+     "cat": "school",
+     "family": [
+      [
+       "classroom",
+       "חדר כיתה"
+      ],
+      [
+       "classmate",
+       "חבר/ה לכיתה"
+      ]
+     ],
+     "gapNo": [
+      "grade",
+      "school"
+     ]
+    },
+    {
+     "id": "grade",
+     "en": "grade",
+     "pos": "n",
+     "he": "שכבה (כיתה ד׳); ציון",
+     "accept": [
+      "כיתה",
+      "שכבה",
+      "ציון",
+      "שכבת לימוד"
+     ],
+     "emoji": "📚",
+     "syl": "GRADE",
+     "ex": "I am in the fourth grade.",
+     "exHe": "אני בכיתה ד׳.",
+     "gap": "I am in the fourth ___.",
+     "tip": "grade הוא גם הכיתה (fourth grade = כיתה ד׳) וגם הציון במבחן (I got a good grade).",
+     "cat": "school",
+     "gapNo": [
+      "class"
+     ]
+    },
+    {
+     "id": "lesson",
+     "en": "lesson",
+     "pos": "n",
+     "he": "שיעור",
+     "accept": [
+      "השיעור"
+     ],
+     "emoji": "📖",
+     "syl": "LES·son",
+     "ex": "The English lesson is fun.",
+     "exHe": "שיעור האנגלית כיף.",
+     "gap": "The math ___ starts at eight o'clock.",
+     "tip": "באמצע יש שתי s: l-e-s-s-o-n.",
+     "cat": "school",
+     "family": [
+      [
+       "lessons",
+       "שיעורים"
+      ]
+     ],
+     "gapNo": [
+      "class"
+     ]
+    },
+    {
+     "id": "teacher",
+     "en": "teacher",
+     "pos": "n",
+     "he": "מורה",
+     "accept": [
+      "המורה",
+      "מורָה"
+     ],
+     "emoji": "🧑‍🏫",
+     "syl": "TEACH·er",
+     "ex": "Our teacher is very nice.",
+     "exHe": "המורה שלנו נחמדה מאוד.",
+     "gap": "The ___ writes on the board.",
+     "tip": "teach = ללמד, ועם er בסוף: מי שמלמד = מורה.",
+     "cat": "people",
+     "family": [
+      [
+       "teach",
+       "ללמד"
+      ]
+     ],
+     "opp": "pupil (תלמיד)"
+    },
+    {
+     "id": "pupil",
+     "en": "pupil",
+     "pos": "n",
+     "he": "תלמיד או תלמידה",
+     "accept": [
+      "תלמיד",
+      "תלמידה",
+      "תלמידים"
+     ],
+     "emoji": "🧑‍🎓",
+     "syl": "PU·pil",
+     "ex": "Every pupil has a notebook.",
+     "exHe": "לכל תלמיד יש מחברת.",
+     "gap": "The teacher talks and every ___ listens.",
+     "tip": "pupil = תלמיד בבית ספר. אומרים גם student.",
+     "cat": "people",
+     "syn": "student",
+     "opp": "teacher (מורה)",
+     "gapNo": [
+      "friend"
+     ]
+    },
+    {
+     "id": "homework",
+     "en": "homework",
+     "pos": "n",
+     "he": "שיעורי בית",
+     "accept": [
+      "שיעורים",
+      "שיעורי הבית"
+     ],
+     "emoji": "📝",
+     "syl": "HOME·work",
+     "ex": "I do my homework after lunch.",
+     "exHe": "אני מכין/ה שיעורי בית אחרי ארוחת הצהריים.",
+     "gap": "I do my ___ after school.",
+     "tip": "מילה מחוברת: home (בית) + work (עבודה) = עבודה לבית.",
+     "cat": "school",
+     "family": [
+      [
+       "home",
+       "בית"
+      ],
+      [
+       "work",
+       "עבודה"
+      ]
+     ]
+    },
+    {
+     "id": "board",
+     "en": "board",
+     "pos": "n",
+     "he": "לוח",
+     "accept": [
+      "הלוח",
+      "לוח כיתה"
+     ],
+     "emoji": "📋",
+     "syl": "BOARD",
+     "ex": "The teacher writes on the board.",
+     "exHe": "המורה כותבת על הלוח.",
+     "gap": "The teacher writes the date on the ___.",
+     "tip": "אחרי ה-o יש a שלא שומעים: b-o-a-r-d.",
+     "cat": "school",
+     "family": [
+      [
+       "whiteboard",
+       "לוח מחיק"
+      ]
+     ],
+     "gapNo": [
+      "paper"
+     ]
+    },
+    {
+     "id": "book",
+     "en": "book",
+     "pos": "n",
+     "he": "ספר",
+     "accept": [
+      "הספר",
+      "ספרים"
+     ],
+     "emoji": "📕",
+     "syl": "BOOK",
+     "ex": "I read a book before bed.",
+     "exHe": "אני קורא/ת ספר לפני השינה.",
+     "gap": "I read a ___ about animals.",
+     "tip": "שתי o באמצע: b-o-o-k.",
+     "cat": "school",
+     "family": [
+      [
+       "books",
+       "ספרים"
+      ],
+      [
+       "notebook",
+       "מחברת"
+      ]
+     ]
+    },
+    {
+     "id": "notebook",
+     "en": "notebook",
+     "pos": "n",
+     "he": "מחברת",
+     "accept": [
+      "המחברת",
+      "פנקס"
+     ],
+     "emoji": "📓",
+     "syl": "NOTE·book",
+     "ex": "Write the words in your notebook.",
+     "exHe": "כתבו את המילים במחברת.",
+     "gap": "Please write the words in your ___.",
+     "tip": "note (פתק) + book (ספר) = ספר שכותבים בו = מחברת.",
+     "cat": "school",
+     "family": [
+      [
+       "note",
+       "פתק"
+      ],
+      [
+       "book",
+       "ספר"
+      ]
+     ],
+     "gapNo": [
+      "paper"
+     ]
+    },
+    {
+     "id": "pencil",
+     "en": "pencil",
+     "pos": "n",
+     "he": "עיפרון",
+     "accept": [
+      "עפרון",
+      "העיפרון"
+     ],
+     "emoji": "✏️",
+     "syl": "PEN·cil",
+     "ex": "I write with a pencil.",
+     "exHe": "אני כותב/ת בעיפרון.",
+     "gap": "I write with a ___ and fix it with an eraser.",
+     "tip": "pen = עט. pencil = עיפרון. שימו לב: c ולא s.",
+     "cat": "school",
+     "family": [
+      [
+       "pen",
+       "עט"
+      ],
+      [
+       "pencil case",
+       "קלמר"
+      ]
+     ]
+    },
+    {
+     "id": "eraser",
+     "en": "eraser",
+     "pos": "n",
+     "he": "מחק",
+     "accept": [
+      "המחק"
+     ],
+     "emoji": "🧽",
+     "syl": "e·RA·ser",
+     "ex": "Can I use your eraser, please?",
+     "exHe": "אפשר להשתמש במחק שלך, בבקשה?",
+     "gap": "I made a mistake. I need an ___.",
+     "tip": "erase = למחוק. eraser = מה שמוחק = מחק.",
+     "cat": "school",
+     "family": [
+      [
+       "erase",
+       "למחוק"
+      ]
+     ]
+    },
+    {
+     "id": "paper",
+     "en": "paper",
+     "pos": "n",
+     "he": "נייר",
+     "accept": [
+      "דף",
+      "הנייר",
+      "דף נייר"
+     ],
+     "emoji": "📄",
+     "syl": "PA·per",
+     "ex": "I draw on a piece of paper.",
+     "exHe": "אני מצייר/ת על דף נייר.",
+     "gap": "I draw a cat on a piece of ___.",
+     "tip": "a piece of paper = דף נייר.",
+     "cat": "school",
+     "gapNo": [
+      "board",
+      "notebook"
+     ]
+    },
+    {
+     "id": "chair",
+     "en": "chair",
+     "pos": "n",
+     "he": "כיסא",
+     "accept": [
+      "כסא",
+      "הכיסא"
+     ],
+     "emoji": "🪑",
+     "syl": "CHAIR",
+     "ex": "Please sit on the chair.",
+     "exHe": "בבקשה שבו על הכיסא.",
+     "gap": "Please sit on your ___.",
+     "tip": "ch אומרים צ׳: צ׳ייר.",
+     "cat": "school",
+     "family": [
+      [
+       "table",
+       "שולחן"
+      ]
+     ]
+    },
+    {
+     "id": "computer",
+     "en": "computer",
+     "pos": "n",
+     "he": "מחשב",
+     "accept": [
+      "המחשב"
+     ],
+     "emoji": "💻",
+     "syl": "com·PU·ter",
+     "ex": "We play games on the computer.",
+     "exHe": "אנחנו משחקים במשחקים במחשב.",
+     "gap": "My brother plays games on the ___.",
+     "tip": "ההטעמה באמצע: com-PU-ter.",
+     "cat": "school"
+    }
+   ]
+  },
+  {
+   "title": "מקצועות",
+   "words": [
+    {
+     "id": "english",
+     "en": "English",
+     "pos": "n",
+     "he": "אנגלית",
+     "accept": [
+      "שפה אנגלית"
+     ],
+     "emoji": "🔤",
+     "syl": "ENG·lish",
+     "ex": "We learn English at school.",
+     "exHe": "אנחנו לומדים אנגלית בבית הספר.",
+     "gap": "I can say ten words in ___.",
+     "tip": "באנגלית שמות של שפות מתחילים באות גדולה: English, Hebrew.",
+     "cat": "subject",
+     "family": [
+      [
+       "Hebrew",
+       "עברית"
+      ]
+     ]
+    },
+    {
+     "id": "math",
+     "en": "math",
+     "pos": "n",
+     "he": "חשבון, מתמטיקה",
+     "accept": [
+      "חשבון",
+      "מתמטיקה"
+     ],
+     "emoji": "🔢",
+     "syl": "MATH",
+     "ex": "Two plus two is four. I like math.",
+     "exHe": "שתיים ועוד שתיים זה ארבע. אני אוהב/ת חשבון.",
+     "gap": "Two plus three is five. I like ___.",
+     "tip": "th אומרים עם הלשון בין השיניים: מת׳.",
+     "cat": "subject"
+    },
+    {
+     "id": "art",
+     "en": "art",
+     "pos": "n",
+     "he": "אמנות",
+     "accept": [
+      "אומנות",
+      "ציור"
+     ],
+     "emoji": "🎨",
+     "syl": "ART",
+     "ex": "In art class we draw and paint.",
+     "exHe": "בשיעור אמנות אנחנו מציירים וצובעים.",
+     "gap": "In ___ class we draw pictures.",
+     "tip": "artist = אמן או אמנית.",
+     "cat": "subject",
+     "family": [
+      [
+       "artist",
+       "אמן"
+      ]
+     ]
+    },
+    {
+     "id": "music",
+     "en": "music",
+     "pos": "n",
+     "he": "מוזיקה",
+     "accept": [
+      "מוסיקה",
+      "מוזיקה",
+      "שירים"
+     ],
+     "emoji": "🎵",
+     "syl": "MU·sic",
+     "ex": "I listen to music.",
+     "exHe": "אני מקשיב/ה למוזיקה.",
+     "gap": "I listen to ___ on the radio.",
+     "tip": "בסוף c ולא k: m-u-s-i-c.",
+     "cat": "subject",
+     "family": [
+      [
+       "musician",
+       "מוזיקאי"
+      ]
+     ]
+    },
+    {
+     "id": "sports",
+     "en": "sports",
+     "pos": "n",
+     "he": "ספורט",
+     "accept": [
+      "ספורט"
+     ],
+     "emoji": "⚽",
+     "syl": "SPORTS",
+     "ex": "My brother likes sports.",
+     "exHe": "אחי אוהב ספורט.",
+     "gap": "I like ___ like football and basketball.",
+     "tip": "בעברית ספורט, ובאנגלית אומרים לרוב sports, עם s בסוף.",
+     "cat": "subject",
+     "family": [
+      [
+       "sport",
+       "ענף ספורט"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "אנשים ומשפחה",
+   "words": [
+    {
+     "id": "family",
+     "en": "family",
+     "pos": "n",
+     "he": "משפחה",
+     "accept": [
+      "המשפחה"
+     ],
+     "emoji": "👨‍👩‍👧",
+     "syl": "FAM·i·ly",
+     "ex": "I love my family.",
+     "exHe": "אני אוהב/ת את המשפחה שלי.",
+     "gap": "My mom, my dad and my sister are my ___.",
+     "tip": "family = כל המשפחה: mom, dad, brother, sister.",
+     "cat": "people"
+    },
+    {
+     "id": "brother",
+     "en": "brother",
+     "pos": "n",
+     "he": "אח",
+     "accept": [
+      "אחי",
+      "האח"
+     ],
+     "emoji": "👦",
+     "syl": "BROTH·er",
+     "ex": "My brother is ten.",
+     "exHe": "אחי בן עשר.",
+     "gap": "My ___ is a boy. He is ten.",
+     "tip": "brother = אח (בן). sister = אחות (בת).",
+     "cat": "people",
+     "opp": "sister (אחות)",
+     "gapNo": [
+      "friend"
+     ]
+    },
+    {
+     "id": "sister",
+     "en": "sister",
+     "pos": "n",
+     "he": "אחות",
+     "accept": [
+      "אחותי",
+      "האחות"
+     ],
+     "emoji": "👧",
+     "syl": "SIS·ter",
+     "ex": "My sister is six.",
+     "exHe": "אחותי בת שש.",
+     "gap": "My ___ is a girl. She is six.",
+     "tip": "sister = אחות (בת). brother = אח (בן).",
+     "cat": "people",
+     "opp": "brother (אח)",
+     "gapNo": [
+      "friend"
+     ]
+    },
+    {
+     "id": "friend",
+     "en": "friend",
+     "pos": "n",
+     "he": "חבר או חברה",
+     "accept": [
+      "חבר",
+      "חברה",
+      "חברים"
+     ],
+     "emoji": "🧑‍🤝‍🧑",
+     "syl": "FRIEND",
+     "ex": "Noa is my best friend.",
+     "exHe": "נועה החברה הכי טובה שלי.",
+     "gap": "Dana is my best ___.",
+     "tip": "כותבים ie אבל אומרים פְרֶנד: f-r-i-e-n-d.",
+     "cat": "people",
+     "family": [
+      [
+       "friends",
+       "חברים"
+      ],
+      [
+       "friendly",
+       "חברותי"
+      ]
+     ],
+     "gapNo": [
+      "sister",
+      "brother",
+      "pupil"
+     ]
+    },
+    {
+     "id": "me",
+     "en": "me",
+     "pos": "pron",
+     "he": "אותי, לי",
+     "accept": [
+      "אותי",
+      "לי",
+      "אני"
+     ],
+     "emoji": "🙋",
+     "syl": "ME",
+     "ex": "Give it to me, please.",
+     "exHe": "תנו את זה לי, בבקשה.",
+     "gap": "Can you help ___, please?",
+     "tip": "I = אני (בתחילת המשפט). me = אותי או לי (אחרי פועל).",
+     "cat": "people"
+    }
+   ]
+  },
+  {
+   "title": "בבית ומסביב",
+   "words": [
+    {
+     "id": "house",
+     "en": "house",
+     "pos": "n",
+     "he": "בית",
+     "accept": [
+      "הבית",
+      "בית"
+     ],
+     "emoji": "🏠",
+     "syl": "HOUSE",
+     "ex": "My house is big.",
+     "exHe": "הבית שלי גדול.",
+     "gap": "I live in a big ___ with a garden.",
+     "tip": "house = הבניין שגרים בו. home = הבית שלי (המקום שלי).",
+     "cat": "place",
+     "syn": "home"
+    },
+    {
+     "id": "address",
+     "en": "address",
+     "pos": "n",
+     "he": "כתובת",
+     "accept": [
+      "הכתובת"
+     ],
+     "emoji": "📮",
+     "syl": "ad·DRESS",
+     "ex": "What is your address?",
+     "exHe": "מה הכתובת שלך?",
+     "gap": "My ___ is 5 Rose Street.",
+     "tip": "יש שתי d ושתי s: a-dd-re-ss.",
+     "cat": "place"
+    },
+    {
+     "id": "phone-number",
+     "en": "phone number",
+     "pos": "n",
+     "he": "מספר טלפון",
+     "accept": [
+      "מספר הטלפון",
+      "טלפון",
+      "מספר"
+     ],
+     "emoji": "☎️",
+     "syl": "PHONE num·ber",
+     "ex": "What is your phone number?",
+     "exHe": "מה מספר הטלפון שלך?",
+     "gap": "Call me! My ___ is 052-1234567.",
+     "tip": "phone (טלפון) נכתב עם ph שאומרים כמו f.",
+     "cat": "place",
+     "family": [
+      [
+       "phone",
+       "טלפון"
+      ],
+      [
+       "number",
+       "מספר"
+      ]
+     ]
+    },
+    {
+     "id": "town",
+     "en": "town",
+     "pos": "n",
+     "he": "עיירה, עיר",
+     "accept": [
+      "עיר",
+      "עיירה",
+      "העיר"
+     ],
+     "emoji": "🏘️",
+     "syl": "TOWN",
+     "ex": "I live in a small town.",
+     "exHe": "אני גר/ה בעיירה קטנה.",
+     "gap": "I live in a small ___ near the sea.",
+     "tip": "town = עיר קטנה. city = עיר גדולה.",
+     "cat": "place",
+     "family": [
+      [
+       "city",
+       "עיר גדולה"
+      ]
+     ]
+    },
+    {
+     "id": "day",
+     "en": "day",
+     "pos": "n",
+     "he": "יום",
+     "accept": [
+      "היום",
+      "יום"
+     ],
+     "emoji": "☀️",
+     "syl": "DAY",
+     "ex": "Have a nice day!",
+     "exHe": "שיהיה יום נעים!",
+     "gap": "Today is Sunday. It is the first ___ of the week.",
+     "tip": "Sunday, Monday... כל ימי השבוע נגמרים ב-day.",
+     "cat": "time",
+     "family": [
+      [
+       "days",
+       "ימים"
+      ],
+      [
+       "today",
+       "היום"
+      ],
+      [
+       "birthday",
+       "יום הולדת"
+      ]
+     ]
+    },
+    {
+     "id": "week",
+     "en": "week",
+     "pos": "n",
+     "he": "שבוע",
+     "accept": [
+      "השבוע"
+     ],
+     "emoji": "📅",
+     "syl": "WEEK",
+     "ex": "There are seven days in a week.",
+     "exHe": "יש שבעה ימים בשבוע.",
+     "gap": "There are seven days in a ___.",
+     "tip": "weekend = סוף שבוע. שתי e באמצע.",
+     "cat": "time",
+     "family": [
+      [
+       "weekend",
+       "סוף שבוע"
+      ]
+     ]
+    },
+    {
+     "id": "food",
+     "en": "food",
+     "pos": "n",
+     "he": "אוכל",
+     "accept": [
+      "האוכל",
+      "מזון"
+     ],
+     "emoji": "🍎",
+     "syl": "FOOD",
+     "ex": "Pizza is my favorite food.",
+     "exHe": "פיצה היא האוכל האהוב עליי.",
+     "gap": "Pizza is my favorite ___.",
+     "tip": "שתי o באמצע ואומרים פוּד.",
+     "cat": "food",
+     "gapNo": [
+      "lunch"
+     ]
+    },
+    {
+     "id": "lunch",
+     "en": "lunch",
+     "pos": "n",
+     "he": "ארוחת צהריים",
+     "accept": [
+      "צהריים",
+      "ארוחת הצהריים"
+     ],
+     "emoji": "🥪",
+     "syl": "LUNCH",
+     "ex": "We eat lunch at one o'clock.",
+     "exHe": "אנחנו אוכלים ארוחת צהריים באחת.",
+     "gap": "We eat ___ at one o'clock in the afternoon.",
+     "tip": "breakfast = ארוחת בוקר, lunch = צהריים, dinner = ערב.",
+     "cat": "food",
+     "family": [
+      [
+       "breakfast",
+       "ארוחת בוקר"
+      ],
+      [
+       "dinner",
+       "ארוחת ערב"
+      ]
+     ],
+     "gapNo": [
+      "food"
+     ]
+    },
+    {
+     "id": "bird",
+     "en": "bird",
+     "pos": "n",
+     "he": "ציפור",
+     "accept": [
+      "הציפור",
+      "ציפורים"
+     ],
+     "emoji": "🐦",
+     "syl": "BIRD",
+     "ex": "The bird is in the tree.",
+     "exHe": "הציפור על העץ.",
+     "gap": "A ___ can fly in the sky.",
+     "tip": "bird can fly = ציפור יכולה לעוף.",
+     "cat": "animal",
+     "family": [
+      [
+       "birds",
+       "ציפורים"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "פעלים",
+   "words": [
+    {
+     "id": "learn",
+     "en": "learn",
+     "pos": "v",
+     "he": "ללמוד",
+     "accept": [
+      "לומד",
+      "לומדת",
+      "לומדים",
+      "למד"
+     ],
+     "emoji": "🧠",
+     "syl": "LEARN",
+     "ex": "We learn English at school.",
+     "exHe": "אנחנו לומדים אנגלית בבית הספר.",
+     "gap": "At school we ___ new things every day.",
+     "tip": "learn = ללמוד (התלמיד). teach = ללמד (המורה).",
+     "cat": "verb",
+     "opp": "teach (ללמד)"
+    },
+    {
+     "id": "write",
+     "en": "write",
+     "pos": "v",
+     "he": "לכתוב",
+     "accept": [
+      "כותב",
+      "כותבת",
+      "כותבים",
+      "כתוב"
+     ],
+     "emoji": "✍️",
+     "syl": "WRITE",
+     "ex": "I write my name.",
+     "exHe": "אני כותב/ת את השם שלי.",
+     "gap": "___ your name on the paper, please.",
+     "tip": "יש w שקטה בהתחלה: w-r-i-t-e. אומרים רַייט.",
+     "cat": "verb",
+     "family": [
+      [
+       "writer",
+       "סופר"
+      ]
+     ],
+     "opp": "read (לקרוא)",
+     "gapAns": "Write"
+    },
+    {
+     "id": "talk",
+     "en": "talk",
+     "pos": "v",
+     "he": "לדבר",
+     "accept": [
+      "מדבר",
+      "מדברת",
+      "מדברים",
+      "שיחה"
+     ],
+     "emoji": "💬",
+     "syl": "TALK",
+     "ex": "I talk to my friend on the phone.",
+     "exHe": "אני מדבר/ת עם החבר שלי בטלפון.",
+     "gap": "I like to ___ with my friends at break.",
+     "tip": "יש l שקטה: t-a-l-k. אומרים טוֹק.",
+     "cat": "verb",
+     "syn": "speak"
+    },
+    {
+     "id": "see",
+     "en": "see",
+     "pos": "v",
+     "he": "לראות",
+     "accept": [
+      "רואה",
+      "רואים",
+      "ראה"
+     ],
+     "emoji": "👀",
+     "syl": "SEE",
+     "ex": "I can see a bird.",
+     "exHe": "אני רואה ציפור.",
+     "gap": "Look! I can ___ a bird in the tree.",
+     "tip": "שתי e: s-e-e. sea (ים) נשמע אותו דבר אבל נכתב אחרת.",
+     "cat": "verb",
+     "family": [
+      [
+       "see you",
+       "להתראות"
+      ]
+     ]
+    },
+    {
+     "id": "meet",
+     "en": "meet",
+     "pos": "v",
+     "he": "לפגוש",
+     "accept": [
+      "פוגש",
+      "פוגשת",
+      "נפגש",
+      "להיפגש",
+      "לפגוש"
+     ],
+     "emoji": "🤝",
+     "syl": "MEET",
+     "ex": "Nice to meet you!",
+     "exHe": "נעים להכיר!",
+     "gap": "Nice to ___ you!",
+     "tip": "Nice to meet you = נעים להכיר. meat (בשר) נשמע אותו דבר.",
+     "cat": "verb"
+    },
+    {
+     "id": "want",
+     "en": "want",
+     "pos": "v",
+     "he": "לרצות",
+     "accept": [
+      "רוצה",
+      "רוצים",
+      "רצה"
+     ],
+     "emoji": "💭",
+     "syl": "WANT",
+     "ex": "I want an ice cream.",
+     "exHe": "אני רוצה גלידה.",
+     "gap": "I am hungry. I ___ a sandwich.",
+     "tip": "I want = אני רוצה. he wants = הוא רוצה (עם s).",
+     "cat": "verb",
+     "gapNo": [
+      "need"
+     ]
+    },
+    {
+     "id": "need",
+     "en": "need",
+     "pos": "v",
+     "he": "צריך, צריכה; להזדקק",
+     "accept": [
+      "צריך",
+      "צריכה",
+      "צריכים",
+      "להזדקק",
+      "לצטרך"
+     ],
+     "emoji": "🙋",
+     "syl": "NEED",
+     "ex": "I need a pencil.",
+     "exHe": "אני צריך/ה עיפרון.",
+     "gap": "My pencil is broken. I ___ a new one.",
+     "tip": "I need = אני צריך/ה. שתי e באמצע.",
+     "cat": "verb",
+     "gapNo": [
+      "want"
+     ]
+    },
+    {
+     "id": "fly",
+     "en": "fly",
+     "pos": "v",
+     "he": "לעוף",
+     "accept": [
+      "עף",
+      "עפה",
+      "לטוס",
+      "טס"
+     ],
+     "emoji": "🕊️",
+     "syl": "FLY",
+     "ex": "Birds can fly.",
+     "exHe": "ציפורים יכולות לעוף.",
+     "gap": "Birds can ___ in the sky.",
+     "tip": "fly = לעוף, וגם לטוס במטוס. a fly = זבוב.",
+     "cat": "verb"
+    }
+   ]
+  },
+  {
+   "title": "מילים שמתארות ומילות נימוס",
+   "words": [
+    {
+     "id": "happy",
+     "en": "happy",
+     "pos": "adj",
+     "he": "שמח או שמחה",
+     "accept": [
+      "שמח",
+      "שמחה",
+      "מאושר",
+      "שמחים"
+     ],
+     "emoji": "😊",
+     "syl": "HAP·py",
+     "ex": "I am happy today.",
+     "exHe": "אני שמח/ה היום.",
+     "gap": "It is my birthday. I am very ___!",
+     "tip": "Happy birthday = יום הולדת שמח. שתי p באמצע.",
+     "cat": "adj",
+     "opp": "sad (עצוב)",
+     "gapNo": [
+      "nice"
+     ]
+    },
+    {
+     "id": "nice",
+     "en": "nice",
+     "pos": "adj",
+     "he": "נחמד או נחמדה",
+     "accept": [
+      "נחמד",
+      "נחמדה",
+      "יפה",
+      "נעים"
+     ],
+     "emoji": "🙂",
+     "syl": "NICE",
+     "ex": "My teacher is very nice.",
+     "exHe": "המורה שלי נחמדה מאוד.",
+     "gap": "Have a ___ day!",
+     "tip": "Nice to meet you = נעים להכיר. ה-e בסוף לא נשמעת.",
+     "cat": "adj",
+     "opp": "mean (רע, לא נחמד)",
+     "gapNo": [
+      "happy"
+     ]
+    },
+    {
+     "id": "new",
+     "en": "new",
+     "pos": "adj",
+     "he": "חדש או חדשה",
+     "accept": [
+      "חדש",
+      "חדשה",
+      "חדשים"
+     ],
+     "emoji": "✨",
+     "syl": "NEW",
+     "ex": "I have a new bag.",
+     "exHe": "יש לי תיק חדש.",
+     "gap": "I have a ___ bag for the first day of school.",
+     "tip": "new = חדש. old = ישן. אומרים נְיוּ.",
+     "cat": "adj",
+     "opp": "old (ישן)",
+     "gapNo": [
+      "favorite"
+     ]
+    },
+    {
+     "id": "favorite",
+     "en": "favorite",
+     "pos": "adj",
+     "he": "אהוב ביותר, מועדף",
+     "accept": [
+      "אהוב",
+      "אהובה",
+      "האהוב",
+      "מועדף",
+      "מועדפת",
+      "הכי אהוב",
+      "אהוב עליי"
+     ],
+     "emoji": "❤️",
+     "syl": "FA·vo·rite",
+     "ex": "Blue is my favorite color.",
+     "exHe": "כחול הוא הצבע האהוב עליי.",
+     "gap": "Blue is my ___ color.",
+     "tip": "my favorite food = האוכל שהכי אהוב עליי. ההטעמה בהתחלה: FA-vo-rite.",
+     "cat": "adj",
+     "gapNo": [
+      "new"
+     ]
+    },
+    {
+     "id": "please",
+     "en": "please",
+     "pos": "phrase",
+     "he": "בבקשה",
+     "accept": [
+      "בבקשה",
+      "בבקשה."
+     ],
+     "emoji": "🙏",
+     "syl": "PLEASE",
+     "ex": "Can I have water, please?",
+     "exHe": "אפשר מים, בבקשה?",
+     "gap": "Can I have some water, ___?",
+     "tip": "please כשמבקשים משהו. thanks כשמקבלים.",
+     "cat": "polite",
+     "gapNo": [
+      "thanks"
+     ]
+    },
+    {
+     "id": "thanks",
+     "en": "thanks",
+     "pos": "phrase",
+     "he": "תודה",
+     "accept": [
+      "תודה רבה",
+      "תודה"
+     ],
+     "emoji": "🌷",
+     "syl": "THANKS",
+     "ex": "Thanks for the gift!",
+     "exHe": "תודה על המתנה!",
+     "gap": "___ for the nice gift!",
+     "tip": "thanks = thank you = תודה. th בהתחלה, עם הלשון בין השיניים.",
+     "cat": "polite",
+     "syn": "thank you",
+     "gapNo": [
+      "please"
+     ],
+     "gapAns": "Thanks"
+    }
+   ]
+  }
+ ]
+}
