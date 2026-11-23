@@ -1833,6 +1833,102 @@
    "wrong": 1,
    "due": 1795065869363,
    "updated": 1795065869363
+  },
+  "m8:r-change": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795470518654,
+   "updated": 1795456118654
+  },
+  "m8:r-alg": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795470518654,
+   "updated": 1795456118654
+  },
+  "m8:s-find": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795470518654,
+   "updated": 1795456118654
+  },
+  "m8:s-two": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795470518654,
+   "updated": 1795456118654
+  },
+  "m8:c-r": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795470518654,
+   "updated": 1795456118654
+  },
+  "m8:c-back": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795470518654,
+   "updated": 1795456118654
+  },
+  "m8:p-what": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795470518654,
+   "updated": 1795456118654
+  },
+  "m8:p-whole": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795470518654,
+   "updated": 1795456118654
+  },
+  "m8:y-rect": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795456118654,
+   "updated": 1795456118654
+  },
+  "m8:y-iso": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795456118654,
+   "updated": 1795456118654
+  },
+  "m8:a-basic": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795470518654,
+   "updated": 1795456118654
+  },
+  "m8:a-adjcorr": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795470518654,
+   "updated": 1795456118654
   }
  },
  "sessions": [
@@ -2477,7 +2573,19 @@
    "total": 23,
    "correct": 15,
    "ms": 361768
+  },
+  {
+   "id": "b5927340-cf8e-4728-8522-6818d5f3a48b",
+   "at": 1795456118657,
+   "mastered": 47,
+   "module": "math",
+   "part": "mock",
+   "unit": "2026-11-24-math",
+   "score": 87,
+   "total": 12,
+   "correct": 10,
+   "ms": 1931956
   }
  ],
- "updated": 1795065869363
+ "updated": 1795456118657
 }
