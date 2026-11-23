@@ -688,6 +688,86 @@
    "wrong": 0,
    "due": 1795457315211,
    "updated": 1795442915211
+  },
+  "hb:q:puppy:3": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795458882011,
+   "updated": 1795444482011
+  },
+  "hb:q:puppy:4": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795458882012,
+   "updated": 1795444482012
+  },
+  "hb:q:puppy:1": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795458882012,
+   "updated": 1795444482012
+  },
+  "hb:q:puppy:0": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795458882012,
+   "updated": 1795444482012
+  },
+  "hb:q:puppy:2": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795458882012,
+   "updated": 1795444482012
+  },
+  "hb:ag:12": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795458882012,
+   "updated": 1795444482012
+  },
+  "hb:ag:1": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795458882012,
+   "updated": 1795444482012
+  },
+  "hb:tf:0": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795458882012,
+   "updated": 1795444482012
+  },
+  "hb:tf:12": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795458882012,
+   "updated": 1795444482012
+  },
+  "hb:rp:s6:6": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795458882012,
+   "updated": 1795444482012
   }
  },
  "sessions": [
@@ -870,7 +950,20 @@
    "total": 10,
    "correct": 9,
    "ms": 89756
+  },
+  {
+   "id": "508ab6ac-331b-4993-a403-69606a6d571d",
+   "at": 1795444482013,
+   "mastered": 8,
+   "module": "hebrew",
+   "part": "mock",
+   "unit": "2026-12-01-hebrew",
+   "text": "puppy",
+   "score": 100,
+   "total": 15,
+   "correct": 15,
+   "ms": 730686
   }
  ],
- "updated": 1795442942092
+ "updated": 1795444482013
 }
