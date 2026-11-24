@@ -824,6 +824,10 @@
   "sm:chair": {
    "mark": "no",
    "updated": 1795545901069
+  },
+  "sm:computer": {
+   "mark": "know",
+   "updated": 1795545915665
   }
  },
  "sessions": [
@@ -1021,5 +1025,5 @@
    "ms": 730686
   }
  ],
- "updated": 1795545901069
+ "updated": 1795545915665
 }
