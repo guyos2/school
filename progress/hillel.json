@@ -948,6 +948,10 @@
   "sm:new": {
    "mark": "no",
    "updated": 1795546287753
+  },
+  "sm:favorite": {
+   "mark": "no",
+   "updated": 1795546309719
   }
  },
  "sessions": [
@@ -1145,5 +1149,5 @@
    "ms": 730686
   }
  ],
- "updated": 1795546287753
+ "updated": 1795546309719
 }
