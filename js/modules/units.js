@@ -49,8 +49,8 @@ function groupWords(u, g, items) {
   }
   return u.wordGroups[g]?.words ?? allWords(u);
 }
-const selfButtons = (cur = '') => `<div class="sm-bar">${Object.entries(SELF).map(([k, v]) =>
-  `<button class="btn sm-btn sm-${k}${cur === k ? ' on' : ''}" data-mark="${k}">${v.icon} ${v.label}</button>`).join('')}</div>`;
+const selfButtons = (cur = '', small = false) => `<div class="sm-bar${small ? ' sm-small' : ''}">${Object.entries(SELF).map(([k, v]) =>
+  `<button class="btn sm-btn sm-${k}${cur === k ? ' on' : ''}" data-mark="${k}" title="${v.label}" aria-label="${v.label}">${v.icon}${small ? '' : ` ${v.label}`}</button>`).join('')}</div>`;
 const blank = (s) => esc(s).replace('___', '<span class="vo-blank">_____</span>');
 const dateText = (d) => (d ? new Date(d).toLocaleDateString('he-IL', { day: 'numeric', month: 'numeric', year: 'numeric' }) : '');
 
@@ -62,7 +62,7 @@ export async function renderUnits(root, kid, [unitId, view = 'home', ...args]) {
   const ub = `${base}/${u.id}`;
   if (view === 'words') return wordList(root, kid, ub, u, args[0]);
   if (view === 'word') return wordView(root, kid, ub, u, args[0]);
-  if (view === 'sort') return sortWords(root, kid, ub, u, args[0]);
+  if (view === 'hard') return wordView(root, kid, ub, u, args[0], 'hard');
   if (view === 'vocab') return vocabPractice(root, kid, ub, u, args[0] ?? 'all');
   if (view === 'write') return writePractice(root, kid, ub, u, args[0] ?? 'all');
   if (view === 'meaning') return vocabPractice(root, kid, ub, u, args[0] ?? 'all', 'meaning');
@@ -104,8 +104,8 @@ function unitHome(root, kid, base, ub, u) {
     <p class="subtitle">${esc(u.source)}</p>
     <h2 class="section">1. אוצר מילים · ${mastered(p.items, wk)} מתוך ${wk.length} בעל פה</h2>
     <div class="cards">
-      ${card(`${ub}/words`, '📖', 'המילים', 'כל מילה ב-4 דרכים: תמונה, משפט, מילים קרובות, הברות ואיות')}
-      ${card(`${ub}/sort`, '✋', 'מה כבר יודעים?', selfSummary(p.items, u))}
+      ${card(`${ub}/words`, '📖', 'המילים', `כל מילה ב-4 דרכים, ומסמנים ליד כל מילה כמה יודעים אותה · ${selfSummary(p.items, u)}`)}
+      ${hardWords(p.items, u).length ? card(`${ub}/hard`, '🔁', 'חזרה על המילים הקשות', `${hardWords(p.items, u).length} מילים שסימנתם 🤔 קצת או 😟 עוד לא`) : ''}
       ${card(`${ub}/write/all`, '✍️', 'כותבים או אומרים את הפירוש', 'רואים מילה בלי תשובות, וכותבים או מקליטים את הפירוש בעברית')}
       ${card(`${ub}/meaning/all`, '🔤', 'מה הפירוש?', 'רואים מילה באנגלית ובוחרים את הפירוש. רק זה, בלי דברים אחרים')}
       ${card(`${ub}/vocab/all`, '🎯', 'תרגול מילים', 'פירוש, תרגום והשלמת משפט. מילים שטועים בהן חוזרות יותר')}
@@ -139,11 +139,13 @@ function unitHome(root, kid, base, ub, u) {
 }
 
 // ---------- words ----------
+const hardWords = (items, u) => allWords(u).filter((w) => ['some', 'no'].includes(selfMark(items, w)));
+
 function selfSummary(items, u) {
   const ws = allWords(u);
   const n = (m) => ws.filter((w) => selfMark(items, w) === m).length;
   const none = ws.filter((w) => !selfMark(items, w)).length;
-  if (none === ws.length) return 'עוברים על המילים ומסמנים: 😊 יודעים · 🤔 קצת · 😟 עוד לא';
+  if (none === ws.length) return 'עוד לא סימנתם מילים';
   return `😊 ${n('know')} · 🤔 ${n('some')} · 😟 ${n('no')}${none ? ` · עוד ${none} בלי סימון` : ''}`;
 }
 
@@ -152,84 +154,57 @@ const FILTERS = { all: 'הכול', know: '😊 יודעים', some: '🤔 קצת
 function wordList(root, kid, ub, u, filter = 'all') {
   const items = getProgress(kid.id).items;
   const show = (w) => filter === 'all' || (filter === 'none' ? !selfMark(items, w) : selfMark(items, w) === filter);
-  const toPractice = allWords(u).filter((w) => ['some', 'no'].includes(selfMark(items, w))).length;
   const groups = u.wordGroups.map((g, gi) => ({ g, gi, words: g.words.filter(show) })).filter((x) => x.words.length);
+  const byId = Object.fromEntries(allWords(u).map((w) => [w.id, w]));
   root.innerHTML = `
     <a class="back" href="${ub}">→ חזרה</a>
     <h1 class="page-title">📖 המילים</h1>
-    <p class="subtitle">לוחצים על מילה כדי לראות אותה ב-4 דרכים ולסמן כמה יודעים אותה. הנקודה הצבעונית מראה כמה הצלחתם בתרגול</p>
+    <p class="subtitle">ליד כל מילה מסמנים כמה יודעים אותה: 😊 יודעים · 🤔 קצת · 😟 עוד לא. המילים הקשות נכנסות לחזרה. לוחצים על המילה כדי לראות אותה ב-4 דרכים</p>
     <div class="row-center sm-filters">${Object.entries(FILTERS).map(([k, t]) =>
       `<a class="sm-chip${k === filter ? ' on' : ''}" href="${ub}/words/${k}">${t}</a>`).join('')}</div>
-    <div class="row-center">
-      <a class="btn" href="${ub}/sort">✋ לסמן מילים</a>
-      ${toPractice ? `<a class="btn btn-soft" href="${ub}/vocab/self">🎯 לתרגל את מה שעוד לא יודעים (${toPractice})</a>` : ''}
-    </div>
+    <div id="hard" class="row-center"></div>
     ${groups.length ? '' : '<p class="subtitle">אין מילים עם הסימון הזה.</p>'}
     ${groups.map(({ g, gi, words }) => `
       <h2 class="section">${esc(g.title)}</h2>
       <div class="vo-grid">${words.map((w) => `
-        <a class="vo-tile" href="${ub}/word/${w.id}"><i class="vo-dot lvl-${box(items, vKey(w))}"></i>
-          ${selfMark(items, w) ? `<span class="sm-badge" title="${SELF[selfMark(items, w)].label}">${SELF[selfMark(items, w)].icon}</span>` : ''}
-          <span class="vo-tile-emoji">${w.emoji}</span><b class="en">${esc(w.en)}</b><small>${esc(w.he)}</small></a>`).join('')}</div>
+        <div class="vo-tile sm-tile sm-is-${selfMark(items, w) || 'none'}" data-id="${w.id}">
+          <a class="sm-open" href="${ub}/word/${w.id}"><i class="vo-dot lvl-${box(items, vKey(w))}"></i>
+            <span class="vo-tile-emoji">${w.emoji}</span><b class="en">${esc(w.en)}</b><small>${esc(w.he)}</small></a>
+          ${selfButtons(selfMark(items, w), true)}
+        </div>`).join('')}</div>
       ${filter === 'all' ? `<div class="row-center"><a class="btn btn-soft" href="${ub}/meaning/${gi}">🔤 מה הפירוש? רק המילים האלה</a><a class="btn btn-soft" href="${ub}/write/${gi}">✍️ כותבים פירוש</a><a class="btn btn-soft" href="${ub}/vocab/${gi}">🎯 תרגול מעורב</a></div>` : ''}`).join('')}`;
+  const drawHard = () => {
+    const n = hardWords(getProgress(kid.id).items, u).length;
+    root.querySelector('#hard').innerHTML = n ? `
+      <a class="btn" href="${ub}/hard">🔁 חזרה על המילים הקשות (${n})</a>
+      <a class="btn btn-soft" href="${ub}/vocab/self">🎯 תרגול רק שלהן</a>
+      <a class="btn btn-soft" href="${ub}/write/self">✍️ כותבים את הפירוש שלהן</a>` : '';
+  };
+  drawHard();
+  root.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-mark]');
+    const tile = b?.closest('.sm-tile');
+    if (!tile) return;
+    const w = byId[tile.dataset.id];
+    // Tapping the mark that is already on clears it.
+    const mark = selfMark(getProgress(kid.id).items, w) === b.dataset.mark ? '' : b.dataset.mark;
+    setSelfMark(kid.id, w, mark);
+    tile.className = `vo-tile sm-tile sm-is-${mark || 'none'}`;
+    tile.querySelectorAll('[data-mark]').forEach((x) => x.classList.toggle('on', x.dataset.mark === mark));
+    drawHard();
+  }, { signal: viewSignal() });
 }
 
-// Going over the words one by one: see (and hear) the English word, mark how well you know it, then see the meaning.
-// Words without a mark come first; "again" goes over every word.
-function sortWords(root, kid, ub, u, mode) {
-  const items = getProgress(kid.id).items;
-  const all = allWords(u);
-  const unmarked = all.filter((w) => !selfMark(items, w));
-  const queue = mode === 'all' || !unmarked.length ? all : unmarked;
-  let i = 0;
-  const show = () => {
-    if (i >= queue.length) return done();
-    const w = queue[i];
-    root.innerHTML = `
-      <a class="back" href="${ub}">→ חזרה</a>
-      <div class="progress-bar"><div class="progress-fill" style="width:${(100 * i) / queue.length}%"></div></div>
-      <div class="q-card sm-card">
-        <p class="q-ask">כמה אתם יודעים את המילה?</p>
-        <div class="vo-q en">${esc(w.en)} ${speakBtn(spoken(w.en))}</div>
-        ${selfButtons(selfMark(getProgress(kid.id).items, w))}
-        <div id="reveal" class="sm-reveal"></div>
-      </div>
-      <p class="subtitle muted">${i + 1} / ${queue.length}</p>`;
-    wireSpeakButtons(root);
-    say(spoken(w.en));
-    root.querySelector('.sm-bar').addEventListener('click', (e) => {
-      const b = e.target.closest('[data-mark]');
-      if (!b) return;
-      setSelfMark(kid.id, w, b.dataset.mark);
-      root.querySelectorAll('.sm-btn').forEach((x) => { x.disabled = true; x.classList.toggle('on', x === b); });
-      root.querySelector('#reveal').innerHTML = `
-        <div class="sm-meaning"><span class="vo-tile-emoji">${w.emoji}</span> <b>${esc(w.he)}</b></div>
-        <p class="vo-sentence en">${esc(w.ex)}</p>
-        <button class="btn btn-big" id="next">${i + 1 < queue.length ? 'הבאה ←' : 'סיום'}</button>`;
-      root.querySelector('#next').onclick = () => { i++; show(); };
-    });
-  };
-  const done = () => {
-    const its = getProgress(kid.id).items;
-    const toPractice = allWords(u).filter((w) => ['some', 'no'].includes(selfMark(its, w))).length;
-    root.innerHTML = `
-      <a class="back" href="${ub}">→ חזרה</a>
-      <h1 class="page-title">✋ סימנתם את כל המילים!</h1>
-      <p class="subtitle">${selfSummary(its, u)}</p>
-      <div class="row-center">
-        ${toPractice ? `<a class="btn btn-big" href="${ub}/vocab/self">🎯 לתרגל את מה שעוד לא יודעים (${toPractice})</a>` : ''}
-        <a class="btn btn-soft" href="${ub}/words">📖 לראות את הרשימה</a>
-        <a class="btn btn-soft" href="${ub}/sort/all">🔁 לסמן הכול מחדש</a>
-      </div>`;
-  };
-  show();
-}
-
-function wordView(root, kid, ub, u, id) {
-  const words = allWords(u);
+// The word cards; with list 'hard', only the words marked "a little" or "not yet" (fixed when the review starts,
+// so a word marked "know" along the way stays until the end).
+function wordView(root, kid, ub, u, id, list) {
+  const hard = list === 'hard' ? hardWords(getProgress(kid.id).items, u) : null;
+  if (hard && !hard.length) return wordList(root, kid, ub, u);
+  const words = hard || allWords(u);
   let i = Math.max(0, words.findIndex((w) => w.id === id));
   root.innerHTML = `
     <a class="back" href="${ub}/words">→ לכל המילים</a>
+    ${hard ? '<h1 class="page-title">🔁 חזרה על המילים הקשות</h1><p class="subtitle">אחרי שלמדתם מילה, אפשר לסמן אותה 😊 והיא יוצאת מהחזרה</p>' : ''}
     <div class="letter-nav">
       <button class="btn btn-soft" data-d="-1">→ הקודמת</button>
       <span class="muted" id="count"></span>
@@ -255,7 +230,7 @@ function wordView(root, kid, ub, u, id) {
     panel.set(words[i]);
     count();
     say(spoken(words[i].en));
-    history.replaceState(null, '', `${ub}/word/${words[i].id}`);
+    history.replaceState(null, '', `${ub}/${hard ? 'hard' : 'word'}/${words[i].id}`);
   });
 }
 

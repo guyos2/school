@@ -993,3 +993,11 @@ button.back { border: 0; background: none; font: inherit; cursor: pointer; }
 .sm-chip.on { background: var(--kid); border-color: var(--kid); color: #fff; }
 .sm-reveal:empty { display: none; }
 .sm-meaning { font-size: 26px; margin: 12px 0 4px; }
+.sm-tile { padding-bottom: 8px; }
+.sm-open { display: flex; flex-direction: column; align-items: center; gap: 2px; color: inherit; text-decoration: none; width: 100%; }
+.sm-small { margin: 6px 0 0; gap: 4px; width: 100%; }
+.sm-small .sm-btn { padding: 4px 0; font-size: 20px; border-width: 2px; border-radius: 12px; }
+.sm-small .sm-btn:not(.on) { filter: grayscale(.7); opacity: .6; }
+.sm-tile.sm-is-know { background: #ecfdf5; }
+.sm-tile.sm-is-some { background: #fffbeb; }
+.sm-tile.sm-is-no { background: #fef2f2; }
