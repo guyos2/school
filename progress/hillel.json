@@ -880,6 +880,10 @@
   "sm:phone-number": {
    "mark": "some",
    "updated": 1795546056623
+  },
+  "sm:town": {
+   "mark": "no",
+   "updated": 1795546070059
   }
  },
  "sessions": [
@@ -1077,5 +1081,5 @@
    "ms": 730686
   }
  ],
- "updated": 1795546056623
+ "updated": 1795546070059
 }
