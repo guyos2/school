@@ -864,6 +864,10 @@
   "sm:friend": {
    "mark": "some",
    "updated": 1795545994127
+  },
+  "sm:me": {
+   "mark": "know",
+   "updated": 1795546001693
   }
  },
  "sessions": [
@@ -1061,5 +1065,5 @@
    "ms": 730686
   }
  ],
- "updated": 1795545994127
+ "updated": 1795546001693
 }
