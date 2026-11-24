@@ -1,7 +1,12 @@
 {
  "kid": "hillel",
  "version": 1,
- "items": {},
+ "items": {
+  "sm:school": {
+   "mark": "know",
+   "updated": 1795545624702
+  }
+ },
  "sessions": [
   {
    "id": "8367a0a6-af24-41af-b8bc-ebf25a2f52e7",
@@ -14,5 +19,5 @@
    "ms": 176859
   }
  ],
- "updated": 1793735620221
+ "updated": 1795545624702
 }
