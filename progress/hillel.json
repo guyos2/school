@@ -812,6 +812,10 @@
   "sm:pencil": {
    "mark": "know",
    "updated": 1795545857783
+  },
+  "sm:eraser": {
+   "mark": "know",
+   "updated": 1795545863445
   }
  },
  "sessions": [
@@ -1009,5 +1013,5 @@
    "ms": 730686
   }
  ],
- "updated": 1795545857783
+ "updated": 1795545863445
 }
