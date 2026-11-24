@@ -27,6 +27,30 @@ const vKey = (w) => `vo:${w.id}`;
 const gKey = (u, i) => `ug:${u.id}:${i}`;
 const rKey = (T, i) => `rd:${T.id}:${i}`;
 const uKey = (word) => `uw:${word}`; // a word the kid marked as unknown while reading
+// How well the kid feels they know a word, marked by the kid: sm:<word id> = { mark: know|some|no, updated }.
+// Kept apart from the vo: practice item so marking a word does not count as practicing it.
+const sKey = (w) => `sm:${w.id}`;
+const SELF = {
+  know: { icon: '😊', label: 'יודעים' },
+  some: { icon: '🤔', label: 'קצת' },
+  no: { icon: '😟', label: 'עוד לא' },
+};
+const selfMark = (items, w) => items[sKey(w)]?.mark || '';
+function setSelfMark(kidId, w, mark) {
+  const p = getProgress(kidId);
+  p.items[sKey(w)] = { mark, updated: Date.now() };
+  saveProgress(p);
+}
+// Words to practice for a group index, or for 'self': the words marked "a little" or "not yet".
+function groupWords(u, g, items) {
+  if (g === 'self') {
+    const ws = allWords(u).filter((w) => ['some', 'no'].includes(selfMark(items, w)));
+    return ws.length ? ws : allWords(u);
+  }
+  return u.wordGroups[g]?.words ?? allWords(u);
+}
+const selfButtons = (cur = '') => `<div class="sm-bar">${Object.entries(SELF).map(([k, v]) =>
+  `<button class="btn sm-btn sm-${k}${cur === k ? ' on' : ''}" data-mark="${k}">${v.icon} ${v.label}</button>`).join('')}</div>`;
 const blank = (s) => esc(s).replace('___', '<span class="vo-blank">_____</span>');
 const dateText = (d) => (d ? new Date(d).toLocaleDateString('he-IL', { day: 'numeric', month: 'numeric', year: 'numeric' }) : '');
 
@@ -36,8 +60,9 @@ export async function renderUnits(root, kid, [unitId, view = 'home', ...args]) {
   const u = units.find((x) => x.id === unitId);
   if (!u) return list(root, base, units);
   const ub = `${base}/${u.id}`;
-  if (view === 'words') return wordList(root, kid, ub, u);
-  if (view === 'word') return wordView(root, ub, u, args[0]);
+  if (view === 'words') return wordList(root, kid, ub, u, args[0]);
+  if (view === 'word') return wordView(root, kid, ub, u, args[0]);
+  if (view === 'sort') return sortWords(root, kid, ub, u, args[0]);
   if (view === 'vocab') return vocabPractice(root, kid, ub, u, args[0] ?? 'all');
   if (view === 'write') return writePractice(root, kid, ub, u, args[0] ?? 'all');
   if (view === 'meaning') return vocabPractice(root, kid, ub, u, args[0] ?? 'all', 'meaning');
@@ -80,6 +105,7 @@ function unitHome(root, kid, base, ub, u) {
     <h2 class="section">1. אוצר מילים · ${mastered(p.items, wk)} מתוך ${wk.length} בעל פה</h2>
     <div class="cards">
       ${card(`${ub}/words`, '📖', 'המילים', 'כל מילה ב-4 דרכים: תמונה, משפט, מילים קרובות, הברות ואיות')}
+      ${card(`${ub}/sort`, '✋', 'מה כבר יודעים?', selfSummary(p.items, u))}
       ${card(`${ub}/write/all`, '✍️', 'כותבים או אומרים את הפירוש', 'רואים מילה בלי תשובות, וכותבים או מקליטים את הפירוש בעברית')}
       ${card(`${ub}/meaning/all`, '🔤', 'מה הפירוש?', 'רואים מילה באנגלית ובוחרים את הפירוש. רק זה, בלי דברים אחרים')}
       ${card(`${ub}/vocab/all`, '🎯', 'תרגול מילים', 'פירוש, תרגום והשלמת משפט. מילים שטועים בהן חוזרות יותר')}
@@ -113,21 +139,93 @@ function unitHome(root, kid, base, ub, u) {
 }
 
 // ---------- words ----------
-function wordList(root, kid, ub, u) {
+function selfSummary(items, u) {
+  const ws = allWords(u);
+  const n = (m) => ws.filter((w) => selfMark(items, w) === m).length;
+  const none = ws.filter((w) => !selfMark(items, w)).length;
+  if (none === ws.length) return 'עוברים על המילים ומסמנים: 😊 יודעים · 🤔 קצת · 😟 עוד לא';
+  return `😊 ${n('know')} · 🤔 ${n('some')} · 😟 ${n('no')}${none ? ` · עוד ${none} בלי סימון` : ''}`;
+}
+
+const FILTERS = { all: 'הכול', know: '😊 יודעים', some: '🤔 קצת', no: '😟 עוד לא', none: 'בלי סימון' };
+
+function wordList(root, kid, ub, u, filter = 'all') {
   const items = getProgress(kid.id).items;
+  const show = (w) => filter === 'all' || (filter === 'none' ? !selfMark(items, w) : selfMark(items, w) === filter);
+  const toPractice = allWords(u).filter((w) => ['some', 'no'].includes(selfMark(items, w))).length;
+  const groups = u.wordGroups.map((g, gi) => ({ g, gi, words: g.words.filter(show) })).filter((x) => x.words.length);
   root.innerHTML = `
     <a class="back" href="${ub}">→ חזרה</a>
     <h1 class="page-title">📖 המילים</h1>
-    <p class="subtitle">לוחצים על מילה כדי לראות אותה ב-4 דרכים. הנקודה הצבעונית מראה כמה כבר יודעים</p>
-    ${u.wordGroups.map((g, gi) => `
+    <p class="subtitle">לוחצים על מילה כדי לראות אותה ב-4 דרכים ולסמן כמה יודעים אותה. הנקודה הצבעונית מראה כמה הצלחתם בתרגול</p>
+    <div class="row-center sm-filters">${Object.entries(FILTERS).map(([k, t]) =>
+      `<a class="sm-chip${k === filter ? ' on' : ''}" href="${ub}/words/${k}">${t}</a>`).join('')}</div>
+    <div class="row-center">
+      <a class="btn" href="${ub}/sort">✋ לסמן מילים</a>
+      ${toPractice ? `<a class="btn btn-soft" href="${ub}/vocab/self">🎯 לתרגל את מה שעוד לא יודעים (${toPractice})</a>` : ''}
+    </div>
+    ${groups.length ? '' : '<p class="subtitle">אין מילים עם הסימון הזה.</p>'}
+    ${groups.map(({ g, gi, words }) => `
       <h2 class="section">${esc(g.title)}</h2>
-      <div class="vo-grid">${g.words.map((w) => `
+      <div class="vo-grid">${words.map((w) => `
         <a class="vo-tile" href="${ub}/word/${w.id}"><i class="vo-dot lvl-${box(items, vKey(w))}"></i>
+          ${selfMark(items, w) ? `<span class="sm-badge" title="${SELF[selfMark(items, w)].label}">${SELF[selfMark(items, w)].icon}</span>` : ''}
           <span class="vo-tile-emoji">${w.emoji}</span><b class="en">${esc(w.en)}</b><small>${esc(w.he)}</small></a>`).join('')}</div>
-      <div class="row-center"><a class="btn btn-soft" href="${ub}/meaning/${gi}">🔤 מה הפירוש? רק המילים האלה</a><a class="btn btn-soft" href="${ub}/write/${gi}">✍️ כותבים פירוש</a><a class="btn btn-soft" href="${ub}/vocab/${gi}">🎯 תרגול מעורב</a></div>`).join('')}`;
+      ${filter === 'all' ? `<div class="row-center"><a class="btn btn-soft" href="${ub}/meaning/${gi}">🔤 מה הפירוש? רק המילים האלה</a><a class="btn btn-soft" href="${ub}/write/${gi}">✍️ כותבים פירוש</a><a class="btn btn-soft" href="${ub}/vocab/${gi}">🎯 תרגול מעורב</a></div>` : ''}`).join('')}`;
 }
 
-function wordView(root, ub, u, id) {
+// Going over the words one by one: see (and hear) the English word, mark how well you know it, then see the meaning.
+// Words without a mark come first; "again" goes over every word.
+function sortWords(root, kid, ub, u, mode) {
+  const items = getProgress(kid.id).items;
+  const all = allWords(u);
+  const unmarked = all.filter((w) => !selfMark(items, w));
+  const queue = mode === 'all' || !unmarked.length ? all : unmarked;
+  let i = 0;
+  const show = () => {
+    if (i >= queue.length) return done();
+    const w = queue[i];
+    root.innerHTML = `
+      <a class="back" href="${ub}">→ חזרה</a>
+      <div class="progress-bar"><div class="progress-fill" style="width:${(100 * i) / queue.length}%"></div></div>
+      <div class="q-card sm-card">
+        <p class="q-ask">כמה אתם יודעים את המילה?</p>
+        <div class="vo-q en">${esc(w.en)} ${speakBtn(spoken(w.en))}</div>
+        ${selfButtons(selfMark(getProgress(kid.id).items, w))}
+        <div id="reveal" class="sm-reveal"></div>
+      </div>
+      <p class="subtitle muted">${i + 1} / ${queue.length}</p>`;
+    wireSpeakButtons(root);
+    say(spoken(w.en));
+    root.querySelector('.sm-bar').addEventListener('click', (e) => {
+      const b = e.target.closest('[data-mark]');
+      if (!b) return;
+      setSelfMark(kid.id, w, b.dataset.mark);
+      root.querySelectorAll('.sm-btn').forEach((x) => { x.disabled = true; x.classList.toggle('on', x === b); });
+      root.querySelector('#reveal').innerHTML = `
+        <div class="sm-meaning"><span class="vo-tile-emoji">${w.emoji}</span> <b>${esc(w.he)}</b></div>
+        <p class="vo-sentence en">${esc(w.ex)}</p>
+        <button class="btn btn-big" id="next">${i + 1 < queue.length ? 'הבאה ←' : 'סיום'}</button>`;
+      root.querySelector('#next').onclick = () => { i++; show(); };
+    });
+  };
+  const done = () => {
+    const its = getProgress(kid.id).items;
+    const toPractice = allWords(u).filter((w) => ['some', 'no'].includes(selfMark(its, w))).length;
+    root.innerHTML = `
+      <a class="back" href="${ub}">→ חזרה</a>
+      <h1 class="page-title">✋ סימנתם את כל המילים!</h1>
+      <p class="subtitle">${selfSummary(its, u)}</p>
+      <div class="row-center">
+        ${toPractice ? `<a class="btn btn-big" href="${ub}/vocab/self">🎯 לתרגל את מה שעוד לא יודעים (${toPractice})</a>` : ''}
+        <a class="btn btn-soft" href="${ub}/words">📖 לראות את הרשימה</a>
+        <a class="btn btn-soft" href="${ub}/sort/all">🔁 לסמן הכול מחדש</a>
+      </div>`;
+  };
+  show();
+}
+
+function wordView(root, kid, ub, u, id) {
   const words = allWords(u);
   let i = Math.max(0, words.findIndex((w) => w.id === id));
   root.innerHTML = `
@@ -137,9 +235,18 @@ function wordView(root, ub, u, id) {
       <span class="muted" id="count"></span>
       <button class="btn btn-soft" data-d="1">הבאה ←</button>
     </div>
-    <div id="viz"></div>`;
+    <div id="viz"></div>
+    <p class="subtitle sm-ask">כמה אתם יודעים את המילה?</p>
+    <div id="self"></div>`;
   const panel = vocabPanel(root.querySelector('#viz'), words[i]);
-  const count = () => { root.querySelector('#count').textContent = `${i + 1} / ${words.length}`; };
+  const drawSelf = () => { root.querySelector('#self').innerHTML = selfButtons(selfMark(getProgress(kid.id).items, words[i])); };
+  root.querySelector('#self').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-mark]');
+    if (!b) return;
+    setSelfMark(kid.id, words[i], b.dataset.mark);
+    drawSelf();
+  });
+  const count = () => { root.querySelector('#count').textContent = `${i + 1} / ${words.length}`; drawSelf(); };
   count();
   root.querySelector('.letter-nav').addEventListener('click', (e) => {
     const d = +e.target.closest('[data-d]')?.dataset.d;
@@ -190,11 +297,12 @@ function vocabQuestion(w, pool, mode) {
 function vocabPractice(root, kid, ub, u, g, mode = 'mixed') {
   const progress = getProgress(kid.id);
   const all = allWords(u);
-  const words = u.wordGroups[g]?.words ?? all;
+  const words = groupWords(u, g, progress.items);
   const keys = words.map(vKey);
   const byKey = Object.fromEntries(all.map((w) => [vKey(w), w]));
   const before = mastered(progress.items, keys);
-  const session = shuffle(pickSession(progress.items, keys, 12, { maxNew: 5 }));
+  // Words the kid marked as not known yet may all be new, so they are all let in.
+  const session = shuffle(pickSession(progress.items, keys, 12, { maxNew: g === 'self' ? 12 : 5 }));
   runQuiz(root, {
     back: ub,
     questions: session.map((k) => vocabQuestion(byKey[k], all, mode)),
@@ -222,11 +330,11 @@ const SpeechRec = typeof window !== 'undefined' && (window.SpeechRecognition || 
 function writePractice(outer, kid, ub, u, g) {
   const progress = getProgress(kid.id);
   const all = allWords(u);
-  const words = u.wordGroups[g]?.words ?? all;
+  const words = groupWords(u, g, progress.items);
   const keys = words.map(vKey);
   const byKey = Object.fromEntries(all.map((w) => [vKey(w), w]));
   const before = mastered(progress.items, keys);
-  const queue = shuffle(pickSession(progress.items, keys, 10, { maxNew: 5 })).map((k) => ({ w: byKey[k] }));
+  const queue = shuffle(pickSession(progress.items, keys, 10, { maxNew: g === 'self' ? 10 : 5 })).map((k) => ({ w: byKey[k] }));
   const total = queue.length;
   const begin = Date.now();
   let i = 0, right = 0, started = 0, locked = false, rec = null, alts = [];
