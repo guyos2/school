@@ -792,6 +792,10 @@
   "sm:pupil": {
    "mark": "know",
    "updated": 1795545787937
+  },
+  "sm:homework": {
+   "mark": "no",
+   "updated": 1795545826066
   }
  },
  "sessions": [
@@ -989,5 +993,5 @@
    "ms": 730686
   }
  ],
- "updated": 1795545787937
+ "updated": 1795545826066
 }
