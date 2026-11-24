@@ -788,6 +788,10 @@
   "sm:teacher": {
    "mark": "know",
    "updated": 1795545777938
+  },
+  "sm:pupil": {
+   "mark": "know",
+   "updated": 1795545787937
   }
  },
  "sessions": [
@@ -985,5 +989,5 @@
    "ms": 730686
   }
  ],
- "updated": 1795545777938
+ "updated": 1795545787937
 }
