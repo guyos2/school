@@ -780,6 +780,10 @@
   "sm:grade": {
    "mark": "no",
    "updated": 1795545759054
+  },
+  "sm:lesson": {
+   "mark": "know",
+   "updated": 1795545765854
   }
  },
  "sessions": [
@@ -977,5 +981,5 @@
    "ms": 730686
   }
  ],
- "updated": 1795545759054
+ "updated": 1795545765854
 }
