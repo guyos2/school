@@ -808,6 +808,10 @@
   "sm:notebook": {
    "mark": "know",
    "updated": 1795545852203
+  },
+  "sm:pencil": {
+   "mark": "know",
+   "updated": 1795545857783
   }
  },
  "sessions": [
@@ -1005,5 +1009,5 @@
    "ms": 730686
   }
  ],
- "updated": 1795545852203
+ "updated": 1795545857783
 }
