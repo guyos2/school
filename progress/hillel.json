@@ -738,12 +738,12 @@
    "updated": 1795444482012
   },
   "hb:ag:1": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795458882012,
-   "updated": 1795444482012
+   "due": 1795716701999,
+   "updated": 1795630301999
   },
   "hb:tf:0": {
    "box": 1,
@@ -960,6 +960,78 @@
   "sm:thanks": {
    "mark": "know",
    "updated": 1795546324943
+  },
+  "hb:q:bees:5": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795644701999,
+   "updated": 1795630301999
+  },
+  "hb:q:bees:0": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795644701999,
+   "updated": 1795630301999
+  },
+  "hb:q:bees:4": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795644701999,
+   "updated": 1795630301999
+  },
+  "hb:q:bees:3": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795644701999,
+   "updated": 1795630301999
+  },
+  "hb:q:bees:6": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795644701999,
+   "updated": 1795630301999
+  },
+  "hb:ag:14": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795644701999,
+   "updated": 1795630301999
+  },
+  "hb:tf:4": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795644701999,
+   "updated": 1795630301999
+  },
+  "hb:tf:14": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795644701999,
+   "updated": 1795630301999
+  },
+  "hb:rp:s14:7": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795644701999,
+   "updated": 1795630301999
   }
  },
  "sessions": [
@@ -1155,7 +1227,20 @@
    "total": 15,
    "correct": 15,
    "ms": 730686
+  },
+  {
+   "id": "4e55804d-184a-40e3-b4d3-9c6b2677457e",
+   "at": 1795630302000,
+   "mastered": 8,
+   "module": "hebrew",
+   "part": "mock",
+   "unit": "2026-12-01-hebrew",
+   "text": "bees",
+   "score": 100,
+   "total": 15,
+   "correct": 15,
+   "ms": 728860
   }
  ],
- "updated": 1795546324943
+ "updated": 1795630302000
 }
