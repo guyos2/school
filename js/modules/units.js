@@ -65,6 +65,7 @@ export async function renderUnits(root, kid, [unitId, view = 'home', ...args]) {
   if (view === 'hard') return wordView(root, kid, ub, u, args[0], 'hard');
   if (view === 'vocab') return vocabPractice(root, kid, ub, u, args[0] ?? 'all');
   if (view === 'write') return writePractice(root, kid, ub, u, args[0] ?? 'all');
+  if (view === 'gap') return args[0] ? vocabPractice(root, kid, ub, u, args[0], 'gap') : gapTopics(root, kid, ub, u);
   if (view === 'meaning') return vocabPractice(root, kid, ub, u, args[0] ?? 'all', 'meaning');
   if (view === 'grammar') return grammarPractice(root, kid, ub, u);
   if (view === 'mine') return myWords(root, kid, ub, u);
@@ -108,6 +109,7 @@ function unitHome(root, kid, base, ub, u) {
       ${hardWords(p.items, u).length ? card(`${ub}/hard`, '🔁', 'חזרה על המילים הקשות', `${hardWords(p.items, u).length} מילים שסימנתם 🤔 קצת או 😟 עוד לא`) : ''}
       ${card(`${ub}/write/all`, '✍️', 'כותבים או אומרים את הפירוש', 'רואים מילה בלי תשובות, וכותבים או מקליטים את הפירוש בעברית')}
       ${card(`${ub}/meaning/all`, '🔤', 'מה הפירוש?', 'רואים מילה באנגלית ובוחרים את הפירוש. רק זה, בלי דברים אחרים')}
+      ${card(`${ub}/gap`, '🧩', 'השלמת משפטים', 'בוחרים נושא, ואז משלימים משפטים עם מילה חסרה, כמו בחלק ג׳ של המבחן')}
       ${card(`${ub}/vocab/all`, '🎯', 'תרגול מילים', 'פירוש, תרגום והשלמת משפט. מילים שטועים בהן חוזרות יותר')}
     </div>
     ${u.grammar ? `
@@ -172,7 +174,7 @@ function wordList(root, kid, ub, u, filter = 'all') {
             <span class="vo-tile-emoji">${w.emoji}</span><b class="en">${esc(w.en)}</b><small>${esc(w.he)}</small></a>
           ${selfButtons(selfMark(items, w), true)}
         </div>`).join('')}</div>
-      ${filter === 'all' ? `<div class="row-center"><a class="btn btn-soft" href="${ub}/meaning/${gi}">🔤 מה הפירוש? רק המילים האלה</a><a class="btn btn-soft" href="${ub}/write/${gi}">✍️ כותבים פירוש</a><a class="btn btn-soft" href="${ub}/vocab/${gi}">🎯 תרגול מעורב</a></div>` : ''}`).join('')}`;
+      ${filter === 'all' ? `<div class="row-center"><a class="btn btn-soft" href="${ub}/meaning/${gi}">🔤 מה הפירוש? רק המילים האלה</a><a class="btn btn-soft" href="${ub}/gap/${gi}">🧩 משלימים משפטים</a><a class="btn btn-soft" href="${ub}/write/${gi}">✍️ כותבים פירוש</a><a class="btn btn-soft" href="${ub}/vocab/${gi}">🎯 תרגול מעורב</a></div>` : ''}`).join('')}`;
   const drawHard = () => {
     const n = hardWords(getProgress(kid.id).items, u).length;
     root.querySelector('#hard').innerHTML = n ? `
@@ -253,7 +255,7 @@ const hearGap = (sentence) => speakBtn(sentence.replace('___', '| blank |'), '�
 function vocabQuestion(w, pool, mode) {
   const key = vKey(w);
   const ds = distractors(w, pool);
-  const type = mode === 'meaning' ? 'en-he' : pick(['en-he', 'he-en', 'gap', 'gap']);
+  const type = mode === 'meaning' ? 'en-he' : mode === 'gap' ? 'gap' : pick(['en-he', 'he-en', 'gap', 'gap']);
   if (type === 'en-he') {
     return { key, answer: w.he, speak: spoken(w.en), help: () => wordHelp(w, 'sentence'),
       prompt: `<p class="q-ask">מה הפירוש?</p><div class="vo-q en">${esc(w.en)} ${speakBtn(spoken(w.en))}</div>`,
@@ -267,6 +269,19 @@ function vocabQuestion(w, pool, mode) {
   return { key, answer: gapAnswer(w), help: () => wordHelp(w, 'sentence'), after: () => say(fillGap(w)),
     prompt: `<p class="q-ask">איזו מילה משלימה את המשפט?</p><div class="ps-shown en">${blank(w.gap)}</div><div class="row-center">${hearGap(w.gap)}</div>`,
     options: shuffle([w, ...ds]).map((x) => enChoice(gapAnswer(x))) };
+}
+
+// Pick the topic (word group) for sentence completion, or all of them.
+function gapTopics(root, kid, ub, u) {
+  const items = getProgress(kid.id).items;
+  const tile = (href, title, words) => `<a class="card" href="${href}"><span class="card-icon">🧩</span><span class="card-title">${esc(title)}</span>
+    <span class="card-sub">${words.length} משפטים · ${mastered(items, words.map(vKey))} בעל פה</span></a>`;
+  root.innerHTML = `
+    <a class="back" href="${ub}">→ חזרה</a>
+    <h1 class="page-title">🧩 השלמת משפטים</h1>
+    <p class="subtitle">על איזה נושא רוצים לתרגל?</p>
+    <div class="cards">${tile(`${ub}/gap/all`, 'מעורב: כל הנושאים', allWords(u))}
+      ${u.wordGroups.map((g, gi) => tile(`${ub}/gap/${gi}`, g.title, g.words)).join('')}</div>`;
 }
 
 function vocabPractice(root, kid, ub, u, g, mode = 'mixed') {
@@ -284,7 +299,7 @@ function vocabPractice(root, kid, ub, u, g, mode = 'mixed') {
     onResult: (q, ok, ms) => { progress.items[q.key] = review(progress.items[q.key], ok, ms); },
     onDone: ({ right, total, ms }) => {
       saveProgress(progress);
-      logSession(kid.id, { module: 'units', part: mode === 'meaning' ? 'meaning' : 'vocab', unit: u.id, total, correct: right, ms });
+      logSession(kid.id, { module: 'units', part: mode === 'meaning' || mode === 'gap' ? mode : 'vocab', unit: u.id, total, correct: right, ms });
       const gained = mastered(getProgress(kid.id).items, keys) - before;
       finishScreen(root, {
         right, total,
