@@ -22,7 +22,7 @@
      "syl": "a HUN·dred",
      "ex": "I have a hundred stickers.",
      "exHe": "יש לי מאה מדבקות.",
-     "gap": "Fifty plus fifty is ___.",
+     "gap": "My grandfather is almost ___ (100) years old!",
      "tip": "אפשר לומר גם one hundred. a hundred = 100.",
      "cat": "num",
      "family": [
@@ -50,7 +50,7 @@
      "syl": "four·TEEN",
      "ex": "There are fourteen kids in my class.",
      "exHe": "יש ארבעה עשר ילדים בכיתה שלי.",
-     "gap": "Seven plus seven is ___.",
+     "gap": "There are ___ (14) kids in my class, seven boys and seven girls.",
      "tip": "fourteen: אחרי four יש u, בניגוד ל-forty (40) שאין בו u. ההטעמה על teen.",
      "cat": "num",
      "family": [
@@ -78,7 +78,7 @@
      "syl": "fif·TEEN",
      "ex": "My sister is fifteen years old.",
      "exHe": "אחותי בת חמש עשרה.",
-     "gap": "Ten plus five is ___.",
+     "gap": "My sister is ___ (15) years old and she goes to high school.",
      "tip": "fifteen ≠ five: כותבים fif ולא five.",
      "cat": "num",
      "family": [
@@ -106,7 +106,7 @@
      "syl": "six·TEEN",
      "ex": "You can drive a car at sixteen in some countries.",
      "exHe": "בכמה מדינות אפשר לנהוג בגיל שש עשרה.",
-     "gap": "Eight plus eight is ___.",
+     "gap": "You can drive a car at ___ (16) in some countries.",
      "tip": "six + teen. הסיומת teen = ״עשרה״.",
      "cat": "num",
      "family": [
@@ -134,7 +134,7 @@
      "syl": "sev·en·TEEN",
      "ex": "Seventeen children came to the party.",
      "exHe": "שבע עשרה ילדים הגיעו למסיבה.",
-     "gap": "Ten plus seven is ___.",
+     "gap": "Only ___ (17) children came to the party because it rained.",
      "tip": "seven + teen: שימו לב שה-e הסופי של seven נשאר, seventeen.",
      "cat": "num",
      "family": [
@@ -162,7 +162,7 @@
      "syl": "eigh·TEEN",
      "ex": "Eighteen plus two is twenty.",
      "exHe": "שמונה עשרה ועוד שתיים הם עשרים.",
-     "gap": "Nine plus nine is ___.",
+     "gap": "My brother turns ___ (18) next week, and we will have a big party.",
      "tip": "eighteen: כותבים eigh+teen. יש רק t אחד באמצע.",
      "cat": "num",
      "family": [
@@ -190,7 +190,7 @@
      "syl": "nine·TEEN",
      "ex": "Nineteen is one less than twenty.",
      "exHe": "תשע עשרה זה אחד פחות מעשרים.",
-     "gap": "Ten plus nine is ___.",
+     "gap": "The bus has ___ (19) seats, one less than twenty.",
      "tip": "nine + teen. אין לשכוח את ה-e בסוף nine.",
      "cat": "num",
      "family": [
@@ -217,7 +217,7 @@
      "syl": "FOR·ty",
      "ex": "My grandfather is forty years old.",
      "exHe": "סבא שלי בן ארבעים.",
-     "gap": "Twenty plus twenty is ___.",
+     "gap": "My dad is ___ (40) years old and he loves to run.",
      "tip": "forty (40) נכתב בלי u. four (4) ו-fourteen (14) כן עם u.",
      "cat": "num",
      "family": [
@@ -244,7 +244,7 @@
      "syl": "FIF·ty",
      "ex": "The book costs fifty shekels.",
      "exHe": "הספר עולה חמישים שקל.",
-     "gap": "Twenty-five plus twenty-five is ___.",
+     "gap": "The book costs ___ (50) shekels, and I have the money.",
      "tip": "fifty ולא fivety: five הופך ל-fif.",
      "cat": "num",
      "family": [
@@ -271,7 +271,7 @@
      "syl": "SEV·en·ty",
      "ex": "Seventy minutes is one hour and ten minutes.",
      "exHe": "שבעים דקות זה שעה ועוד עשר דקות.",
-     "gap": "Thirty plus forty is ___.",
+     "gap": "A movie of ___ (70) minutes is one hour and ten minutes long.",
      "tip": "seventy = seven + ty.",
      "cat": "num",
      "family": [
@@ -298,7 +298,7 @@
      "syl": "EIGH·ty",
      "ex": "My grandmother is eighty years old.",
      "exHe": "סבתא שלי בת שמונים.",
-     "gap": "Forty plus forty is ___.",
+     "gap": "My great-grandmother is ___ (80) years old.",
      "tip": "eighty: eigh+ty. יש רק t אחד: eight → eighty.",
      "cat": "num",
      "family": [
@@ -325,7 +325,7 @@
      "syl": "NINE·ty",
      "ex": "Ninety is ten less than a hundred.",
      "exHe": "תשעים זה עשר פחות ממאה.",
-     "gap": "Fifty plus forty is ___.",
+     "gap": "Our class got ___ (90) points out of a hundred.",
      "tip": "ninety: nine+ty, אבל בלי e. (nineteen כן עם e: nine+teen.)",
      "cat": "num",
      "family": [
@@ -356,7 +356,7 @@
      "syl": "JAN·u·ar·y",
      "ex": "It is cold in January.",
      "exHe": "קר בינואר.",
-     "gap": "The first month of the year is ___.",
+     "gap": "It is very cold in ___, the first month of the year, so we wear coats.",
      "tip": "חודשים באנגלית תמיד באות גדולה: January.",
      "cat": "month"
     },
@@ -372,7 +372,7 @@
      "syl": "FEB·ru·ar·y",
      "ex": "February is the shortest month.",
      "exHe": "פברואר הוא החודש הקצר ביותר.",
-     "gap": "The month after January is ___.",
+     "gap": "Valentine's Day is in ___, the second month of the year.",
      "tip": "שימו לב ל-r הראשון: Feb-ru-ary.",
      "cat": "month"
     },
@@ -389,7 +389,7 @@
      "syl": "MARCH",
      "ex": "Spring begins in March.",
      "exHe": "האביב מתחיל במרץ.",
-     "gap": "The month before April is ___.",
+     "gap": "Spring begins in ___, the third month of the year.",
      "tip": "March = מרץ. גם marching = צעדה.",
      "cat": "month"
     },
@@ -405,7 +405,7 @@
      "syl": "A·pril",
      "ex": "It rains a lot in April.",
      "exHe": "יורד הרבה גשם באפריל.",
-     "gap": "The month after March is ___.",
+     "gap": "It rains a lot in ___, the fourth month of the year.",
      "tip": "April נכתב עם p אחד: A-p-r-i-l.",
      "cat": "month"
     },
@@ -421,7 +421,7 @@
      "syl": "MAY",
      "ex": "The flowers are beautiful in May.",
      "exHe": "הפרחים יפים במאי.",
-     "gap": "The month between April and June is ___.",
+     "gap": "The flowers are beautiful in ___, the fifth month of the year.",
      "tip": "May באות גדולה הוא חודש. may באות קטנה = אולי / מותר.",
      "cat": "month"
     },
@@ -437,7 +437,7 @@
      "syl": "JUNE",
      "ex": "School ends in June.",
      "exHe": "בית הספר נגמר ביוני.",
-     "gap": "The month after May is ___.",
+     "gap": "School ends in ___, the sixth month of the year.",
      "tip": "June ו-July נשמעים דומים בעברית. June = יוני, July = יולי.",
      "cat": "month"
     },
@@ -453,7 +453,7 @@
      "syl": "ju·LY",
      "ex": "We go to the beach in July.",
      "exHe": "אנחנו הולכים לים ביולי.",
-     "gap": "The month between June and August is ___.",
+     "gap": "We go to the beach in ___, the seventh month of the year.",
      "tip": "July: ההטעמה על ההברה השנייה.",
      "cat": "month"
     },
@@ -469,7 +469,7 @@
      "syl": "AU·gust",
      "ex": "August is very hot.",
      "exHe": "אוגוסט חם מאוד.",
-     "gap": "The month before September is ___.",
+     "gap": "It is very hot in ___, the eighth month of the year.",
      "tip": "August: au (כמו בעברית ״או״).",
      "cat": "month"
     },
@@ -485,7 +485,7 @@
      "syl": "Sep·TEM·ber",
      "ex": "School begins in September.",
      "exHe": "בית הספר מתחיל בספטמבר.",
-     "gap": "The month after August is ___.",
+     "gap": "School begins in ___, the ninth month of the year.",
      "tip": "September: ההטעמה על tem.",
      "cat": "month"
     },
@@ -501,7 +501,7 @@
      "syl": "Oc·TO·ber",
      "ex": "My birthday is in October.",
      "exHe": "יום ההולדת שלי באוקטובר.",
-     "gap": "The month between September and November is ___.",
+     "gap": "My birthday is in ___, the tenth month of the year.",
      "tip": "October: ההטעמה על to.",
      "cat": "month"
     },
@@ -517,7 +517,7 @@
      "syl": "No·VEM·ber",
      "ex": "It starts to rain in November.",
      "exHe": "מתחיל לרדת גשם בנובמבר.",
-     "gap": "The month before December is ___.",
+     "gap": "It starts to rain in ___, the eleventh month of the year.",
      "tip": "November: ההטעמה על vem.",
      "cat": "month"
     },
@@ -533,7 +533,7 @@
      "syl": "De·CEM·ber",
      "ex": "December is the last month of the year.",
      "exHe": "דצמבר הוא החודש האחרון בשנה.",
-     "gap": "The last month of the year is ___.",
+     "gap": "We light candles in ___, the twelfth month of the year.",
      "tip": "December: ההטעמה על cem.",
      "cat": "month"
     }
@@ -556,7 +556,7 @@
      "syl": "be·GIN",
      "ex": "The lesson begins at eight o'clock.",
      "exHe": "השיעור מתחיל בשמונה.",
-     "gap": "The movie will ___ at six o'clock.",
+     "gap": "The movie will ___ at six o'clock, so hurry up.",
      "tip": "begin = start. הצורה בעבר: began.",
      "syn": "start",
      "opp": "end (לסיים)",
@@ -586,7 +586,7 @@
      "syl": "CALL",
      "ex": "I call my grandma every Friday.",
      "exHe": "אני מתקשר לסבתא כל יום שישי.",
-     "gap": "I want to ___ Grandma on the phone.",
+     "gap": "I want to ___ Grandma on the phone tonight.",
      "tip": "call me = התקשרו אליי. call גם = לקרוא בשם: They call him Danny.",
      "gapNo": [
       "help"
@@ -606,7 +606,7 @@
      "syl": "CRY",
      "ex": "Babies cry when they are hungry.",
      "exHe": "תינוקות בוכים כשהם רעבים.",
-     "gap": "Babies ___ when they are hungry.",
+     "gap": "When I am very sad, I sometimes ___.",
      "tip": "cry → cries (he cries), לא crys.",
      "opp": "laugh (לצחוק)",
      "family": [
@@ -630,7 +630,7 @@
      "syl": "FIND",
      "ex": "I cannot find my keys.",
      "exHe": "אני לא מוצא את המפתחות.",
-     "gap": "I cannot ___ my keys. Where are they?",
+     "gap": "I cannot ___ my keys anywhere in the house.",
      "tip": "find (למצוא) ≠ look for (לחפש). קודם מחפשים, ואז מוצאים.",
      "gapNo": [
       "look-for"
@@ -656,7 +656,7 @@
      "syl": "GIVE",
      "ex": "I give my dog water every day.",
      "exHe": "אני נותן לכלב מים כל יום.",
-     "gap": "Please ___ me a glass of water.",
+     "gap": "Please ___ me a glass of water, I am thirsty.",
      "tip": "give אינו נגמר ב-v: g-i-v-e. give me = תנו לי.",
      "opp": "take (לקחת)",
      "family": [
@@ -684,7 +684,7 @@
      "syl": "HELP",
      "ex": "Can you help me with my homework?",
      "exHe": "אתה יכול לעזור לי בשיעורי הבית?",
-     "gap": "Can you ___ me with my homework?",
+     "gap": "Can you ___ me with my homework, please?",
      "tip": "help גם שם עצם: I need help! = אני צריך עזרה!",
      "family": [
       [
@@ -732,7 +732,7 @@
      "syl": "PUT",
      "ex": "Please put your bag on the chair.",
      "exHe": "בבקשה שים את התיק על הכיסא.",
-     "gap": "Please ___ your books on the table.",
+     "gap": "Please ___ your books on the table before dinner.",
      "tip": "put לא משתנה בעבר: put – put – put.",
      "syn": "place"
     },
@@ -821,7 +821,7 @@
      "syl": "WIN",
      "ex": "I hope we win the game.",
      "exHe": "אני מקווה שננצח במשחק.",
-     "gap": "I hope our team will ___ the race and get a medal.",
+     "gap": "We play hard because we want to ___.",
      "tip": "win בעבר: won. ההפך: lose (להפסיד).",
      "opp": "lose (להפסיד)",
      "gapNo": [
@@ -857,7 +857,7 @@
      "syl": "BEAU·ti·ful",
      "ex": "What a beautiful flower!",
      "exHe": "איזה פרח יפה!",
-     "gap": "What a ___ flower! It is red and yellow.",
+     "gap": "She wears a ___ red dress to the party.",
      "tip": "beau + ti + ful. ״beau״ נשמע ״ביו״.",
      "gapNo": [
       "nice"
@@ -885,7 +885,7 @@
      "syl": "BEST",
      "ex": "She is my best friend.",
      "exHe": "היא החברה הכי טובה שלי.",
-     "gap": "She is my ___ friend.",
+     "gap": "She is my ___ friend, and we play every day.",
      "tip": "good → better → best. best = הכי טוב.",
      "gapNo": [
       "better"
@@ -948,7 +948,7 @@
      "syl": "CLOSED",
      "ex": "The shop is closed on Saturday.",
      "exHe": "החנות סגורה בשבת.",
-     "gap": "The shop is ___ on Saturday. We cannot go in.",
+     "gap": "The shop is ___ on Saturday, so we cannot go in.",
      "tip": "ההפך: open (פתוח). closed מגיע מ-close.",
      "opp": "open (פתוח)",
      "family": [
@@ -1022,7 +1022,7 @@
      "syl": "HARD",
      "ex": "This test is very hard.",
      "exHe": "המבחן הזה קשה מאוד.",
-     "gap": "This test is very ___. I do not know the answers.",
+     "gap": "This test is very ___, and I do not know the answers.",
      "tip": "hard = קשה (גם קשה כמו אבן וגם קשה כמו מבחן). ההפך: easy.",
      "opp": "easy (קל)",
      "gapNo": [
@@ -1074,7 +1074,7 @@
      "syl": "NICE",
      "ex": "My new teacher is very nice.",
      "exHe": "המורה החדשה שלי נחמדה מאוד.",
-     "gap": "My new teacher is very ___. She always smiles.",
+     "gap": "My new teacher is very ___ and she always smiles.",
      "tip": "Nice to meet you! = נעים להכיר!",
      "gapNo": [
       "beautiful"
@@ -1116,7 +1116,7 @@
      "syl": "SICK",
      "ex": "I stay at home when I am sick.",
      "exHe": "אני נשאר בבית כשאני חולה.",
-     "gap": "I have a fever, so I am ___.",
+     "gap": "I have a fever, so I stay home because I am ___.",
      "tip": "sick = חולה. ההפך: healthy (בריא).",
      "opp": "healthy (בריא)",
      "syn": "ill"
@@ -1209,7 +1209,7 @@
      "syl": "AL·so",
      "ex": "I like pizza. I also like pasta.",
      "exHe": "אני אוהב פיצה. אני גם אוהב פסטה.",
-     "gap": "Dan has a dog. He ___ has a cat.",
+     "gap": "Dan has a dog. He ___ has a cat and a bird.",
      "tip": "also עומד לפני הפועל הרגיל: I also like. (ואחרי am/is/are: I am also.)",
      "gapNo": [
       "always",
@@ -1277,7 +1277,7 @@
      "syl": "be·CAUSE",
      "ex": "I am happy because it is my birthday.",
      "exHe": "אני שמח כי זה יום ההולדת שלי.",
-     "gap": "I am happy ___ it is my birthday.",
+     "gap": "I am happy ___ it is my birthday today.",
      "tip": "because עונה על השאלה why? ואחריו משפט שלם.",
      "gapNo": [
       "if",
@@ -1319,7 +1319,7 @@
      "syl": "EV·ery",
      "ex": "I read every day.",
      "exHe": "אני קורא כל יום.",
-     "gap": "I drink water ___ morning.",
+     "gap": "I drink water ___ morning before school.",
      "tip": "every + יחיד: every day, every week. (לא every days!)",
      "gapNo": [
       "other"
@@ -1346,7 +1346,7 @@
      "syl": "FOR",
      "ex": "This gift is for you.",
      "exHe": "המתנה הזאת בשבילך.",
-     "gap": "This gift is ___ you, Dan.",
+     "gap": "This gift is ___ you, Dan, from all of us.",
      "tip": "for you = בשבילך. for גם = במשך: for two hours.",
      "gapNo": [
       "near",
@@ -1367,7 +1367,7 @@
      "syl": "IF",
      "ex": "If it rains, we stay home.",
      "exHe": "אם ירד גשם, נישאר בבית.",
-     "gap": "___ it rains, we stay home.",
+     "gap": "We stay home ___ it rains, and we play games.",
      "tip": "if + תנאי: אם קורה X, אז Y. נכתב if (שתי אותיות).",
      "gapNo": [
       "because",
@@ -1388,7 +1388,7 @@
      "syl": "IN·to",
      "ex": "Put the books into the bag.",
      "exHe": "שימו את הספרים לתוך התיק.",
-     "gap": "The boy jumps ___ the pool.",
+     "gap": "The boy jumps ___ the pool with a big splash.",
      "tip": "into = תנועה פנימה (in + to). in = בפנים.",
      "gapNo": [
       "near"
@@ -1436,7 +1436,7 @@
      "syl": "LIKE",
      "ex": "He runs like the wind.",
      "exHe": "הוא רץ כמו הרוח.",
-     "gap": "He runs ___ the wind.",
+     "gap": "He runs ___ the wind in every race.",
      "tip": "like = כמו (a bird like a plane). like גם = לאהוב: I like pizza.",
      "gapNo": [
       "for",
@@ -1555,7 +1555,7 @@
      "syl": "per·HAPS",
      "ex": "Perhaps it will rain tomorrow.",
      "exHe": "אולי ירד גשם מחר.",
-     "gap": "I do not know. ___ it will rain tomorrow.",
+     "gap": "I am not sure, but ___ it will rain tomorrow.",
      "tip": "perhaps = maybe. נשמע ״פרהפס״.",
      "syn": "maybe"
     }
@@ -1598,7 +1598,7 @@
      "syl": "BIRTH·day",
      "ex": "My birthday is in October.",
      "exHe": "יום ההולדת שלי באוקטובר.",
-     "gap": "We eat cake and get presents on my ___.",
+     "gap": "We eat cake and get presents on my ___ every year.",
      "tip": "birth (לידה) + day (יום). Happy birthday! = יום הולדת שמח!",
      "family": [
       [
@@ -1652,7 +1652,7 @@
      "syl": "FLOW·er",
      "ex": "I gave my mom a flower.",
      "exHe": "נתתי לאמא פרח.",
-     "gap": "A rose is a red ___.",
+     "gap": "A rose is a red ___ that smells nice.",
      "tip": "flower. שימו לב ל-w. הרבים: flowers.",
      "family": [
       [
@@ -1674,7 +1674,7 @@
      "syl": "i·DEA",
      "ex": "I have a good idea!",
      "exHe": "יש לי רעיון טוב!",
-     "gap": "I have a good ___! Let's bake a cake.",
+     "gap": "I have a good ___, so let's bake a cake.",
      "tip": "idea = רעיון. נשמע ״איי-דיא״."
     },
     {
@@ -1838,7 +1838,7 @@
      "syl": "CHESS",
      "ex": "My grandpa and I play chess.",
      "exHe": "סבא ואני משחקים שחמט.",
-     "gap": "My grandpa and I play ___. The king is the main piece.",
+     "gap": "My grandpa and I play ___ every Friday.",
      "tip": "chess = שחמט. ch נקרא ״צ׳״."
     },
     {
@@ -1854,7 +1854,7 @@
      "syl": "HOB·by",
      "ex": "Reading is my hobby.",
      "exHe": "קריאה היא התחביב שלי.",
-     "gap": "Reading is my ___. I read every day.",
+     "gap": "Reading is my ___, and I read every day.",
      "tip": "hobby ברבים: hobbies (ה-y הופך ל-ies).",
      "family": [
       [
