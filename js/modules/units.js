@@ -40,6 +40,7 @@ export async function renderUnits(root, kid, [unitId, view = 'home', ...args]) {
   if (view === 'word') return wordView(root, ub, u, args[0]);
   if (view === 'vocab') return vocabPractice(root, kid, ub, u, args[0] ?? 'all');
   if (view === 'write') return writePractice(root, kid, ub, u, args[0] ?? 'all');
+  if (view === 'gap') return vocabPractice(root, kid, ub, u, args[0] ?? 'all', 'gap');
   if (view === 'meaning') return vocabPractice(root, kid, ub, u, args[0] ?? 'all', 'meaning');
   if (view === 'grammar') return grammarPractice(root, kid, ub, u);
   if (view === 'mine') return myWords(root, kid, ub, u);
@@ -82,6 +83,7 @@ function unitHome(root, kid, base, ub, u) {
       ${card(`${ub}/words`, '📖', 'המילים', 'כל מילה ב-4 דרכים: תמונה, משפט, מילים קרובות, הברות ואיות')}
       ${card(`${ub}/write/all`, '✍️', 'כותבים או אומרים את הפירוש', 'רואים מילה בלי תשובות, וכותבים או מקליטים את הפירוש בעברית')}
       ${card(`${ub}/meaning/all`, '🔤', 'מה הפירוש?', 'רואים מילה באנגלית ובוחרים את הפירוש. רק זה, בלי דברים אחרים')}
+      ${card(`${ub}/gap/all`, '🧩', 'השלמת משפטים', 'משפט עם מקום ריק, ובוחרים את המילה שמתאימה. רק זה, כמו בחלק ג׳ של המבחן')}
       ${card(`${ub}/vocab/all`, '🎯', 'תרגול מילים', 'פירוש, תרגום והשלמת משפט. מילים שטועים בהן חוזרות יותר')}
     </div>
     ${u.grammar ? `
@@ -124,7 +126,7 @@ function wordList(root, kid, ub, u) {
       <div class="vo-grid">${g.words.map((w) => `
         <a class="vo-tile" href="${ub}/word/${w.id}"><i class="vo-dot lvl-${box(items, vKey(w))}"></i>
           <span class="vo-tile-emoji">${w.emoji}</span><b class="en">${esc(w.en)}</b><small>${esc(w.he)}</small></a>`).join('')}</div>
-      <div class="row-center"><a class="btn btn-soft" href="${ub}/meaning/${gi}">🔤 מה הפירוש? רק המילים האלה</a><a class="btn btn-soft" href="${ub}/write/${gi}">✍️ כותבים פירוש</a><a class="btn btn-soft" href="${ub}/vocab/${gi}">🎯 תרגול מעורב</a></div>`).join('')}`;
+      <div class="row-center"><a class="btn btn-soft" href="${ub}/meaning/${gi}">🔤 מה הפירוש? רק המילים האלה</a><a class="btn btn-soft" href="${ub}/gap/${gi}">🧩 משלימים משפטים</a><a class="btn btn-soft" href="${ub}/write/${gi}">✍️ כותבים פירוש</a><a class="btn btn-soft" href="${ub}/vocab/${gi}">🎯 תרגול מעורב</a></div>`).join('')}`;
 }
 
 function wordView(root, ub, u, id) {
@@ -171,7 +173,7 @@ const hearGap = (sentence) => speakBtn(sentence.replace('___', '| blank |'), '�
 function vocabQuestion(w, pool, mode) {
   const key = vKey(w);
   const ds = distractors(w, pool);
-  const type = mode === 'meaning' ? 'en-he' : pick(['en-he', 'he-en', 'gap', 'gap']);
+  const type = mode === 'meaning' ? 'en-he' : mode === 'gap' ? 'gap' : pick(['en-he', 'he-en', 'gap', 'gap']);
   if (type === 'en-he') {
     return { key, answer: w.he, speak: spoken(w.en), help: () => wordHelp(w, 'sentence'),
       prompt: `<p class="q-ask">מה הפירוש?</p><div class="vo-q en">${esc(w.en)} ${speakBtn(spoken(w.en))}</div>`,
@@ -201,7 +203,7 @@ function vocabPractice(root, kid, ub, u, g, mode = 'mixed') {
     onResult: (q, ok, ms) => { progress.items[q.key] = review(progress.items[q.key], ok, ms); },
     onDone: ({ right, total, ms }) => {
       saveProgress(progress);
-      logSession(kid.id, { module: 'units', part: mode === 'meaning' ? 'meaning' : 'vocab', unit: u.id, total, correct: right, ms });
+      logSession(kid.id, { module: 'units', part: mode === 'meaning' || mode === 'gap' ? mode : 'vocab', unit: u.id, total, correct: right, ms });
       const gained = mastered(getProgress(kid.id).items, keys) - before;
       finishScreen(root, {
         right, total,
