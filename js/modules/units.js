@@ -198,8 +198,8 @@ function gapTopics(root, kid, ub, u) {
     <a class="back" href="${ub}">→ חזרה</a>
     <h1 class="page-title">🧩 השלמת משפטים</h1>
     <p class="subtitle">על איזה נושא רוצים לתרגל?</p>
-    <div class="cards">${u.wordGroups.map((g, gi) => tile(`${ub}/gap/${gi}`, g.title, g.words)).join('')}
-      ${tile(`${ub}/gap/all`, 'הכול ביחד', allWords(u))}</div>`;
+    <div class="cards">${tile(`${ub}/gap/all`, 'מעורב: כל הנושאים', allWords(u))}
+      ${u.wordGroups.map((g, gi) => tile(`${ub}/gap/${gi}`, g.title, g.words)).join('')}</div>`;
 }
 
 function vocabPractice(root, kid, ub, u, g, mode = 'mixed') {
