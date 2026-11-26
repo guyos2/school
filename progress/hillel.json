@@ -1032,6 +1032,102 @@
    "wrong": 0,
    "due": 1795644701999,
    "updated": 1795630301999
+  },
+  "vo:grade": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795711483898,
+   "updated": 1795697083898
+  },
+  "vo:chair": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795711525647,
+   "updated": 1795697125647
+  },
+  "vo:address": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795711586417,
+   "updated": 1795697186417
+  },
+  "vo:art": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795711670979,
+   "updated": 1795697270979
+  },
+  "vo:friend": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795711699174,
+   "updated": 1795697299174
+  },
+  "vo:homework": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795711799135,
+   "updated": 1795697399135
+  },
+  "vo:math": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795711828514,
+   "updated": 1795697428514
+  },
+  "vo:house": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795711906994,
+   "updated": 1795697506994
+  },
+  "vo:phone-number": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795711914161,
+   "updated": 1795697514161
+  },
+  "vo:board": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795711929732,
+   "updated": 1795697529732
+  },
+  "vo:brother": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795711991844,
+   "updated": 1795697591844
+  },
+  "vo:paper": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795712053902,
+   "updated": 1795697653902
   }
  },
  "sessions": [
@@ -1240,7 +1336,18 @@
    "total": 15,
    "correct": 15,
    "ms": 728860
+  },
+  {
+   "id": "2bcac3e3-203c-4636-8dbd-d5d00d844306",
+   "at": 1795697655006,
+   "mastered": 8,
+   "module": "units",
+   "part": "vocab",
+   "unit": "2026-11-22-english-unit-d",
+   "total": 12,
+   "correct": 12,
+   "ms": 576675
   }
  ],
- "updated": 1795630302000
+ "updated": 1795697655006
 }
