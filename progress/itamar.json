@@ -163,12 +163,12 @@
    "updated": 1793462726700
   },
   "vo:sight": {
-   "box": 3,
-   "seen": 10,
-   "right": 7,
+   "box": 4,
+   "seen": 11,
+   "right": 8,
    "wrong": 3,
-   "due": 1793721901195,
-   "updated": 1793462701195
+   "due": 1796451501039,
+   "updated": 1795846701039
   },
   "vo:bridge": {
    "box": 5,
@@ -1929,6 +1929,94 @@
    "wrong": 0,
    "due": 1795470518654,
    "updated": 1795456118654
+  },
+  "vo:although": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861105664,
+   "updated": 1795846705664
+  },
+  "vo:sand": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861108284,
+   "updated": 1795846708284
+  },
+  "vo:be-unable-to": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795846715407,
+   "updated": 1795846715407
+  },
+  "vo:definitely": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861122532,
+   "updated": 1795846722532
+  },
+  "vo:at-all": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795846725501,
+   "updated": 1795846725501
+  },
+  "vo:disappear": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795846730414,
+   "updated": 1795846730414
+  },
+  "vo:really": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861136969,
+   "updated": 1795846736969
+  },
+  "vo:kilometer": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861139473,
+   "updated": 1795846739473
+  },
+  "vo:however": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861145879,
+   "updated": 1795846745879
+  },
+  "vo:sense": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861149946,
+   "updated": 1795846749946
+  },
+  "vo:invent": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795846754780,
+   "updated": 1795846754780
   }
  },
  "sessions": [
@@ -2585,7 +2673,18 @@
    "total": 12,
    "correct": 10,
    "ms": 1931956
+  },
+  {
+   "id": "e0750e69-50a8-4d29-b2d7-0a6be0264589",
+   "at": 1795846774807,
+   "mastered": 48,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-11-28-get-ready-1",
+   "total": 12,
+   "correct": 8,
+   "ms": 78559
   }
  ],
- "updated": 1795456118657
+ "updated": 1795846774807
 }
