@@ -1931,12 +1931,12 @@
    "updated": 1795456118654
   },
   "vo:although": {
-   "box": 1,
-   "seen": 2,
-   "right": 1,
+   "box": 2,
+   "seen": 3,
+   "right": 2,
    "wrong": 1,
-   "due": 1795846820746,
-   "updated": 1795846820746
+   "due": 1795933322386,
+   "updated": 1795846922386
   },
   "vo:sand": {
    "box": 2,
@@ -1947,92 +1947,92 @@
    "updated": 1795846862502
   },
   "vo:be-unable-to": {
-   "box": 2,
-   "seen": 2,
+   "box": 1,
+   "seen": 3,
    "right": 1,
-   "wrong": 1,
-   "due": 1795933243604,
-   "updated": 1795846843604
+   "wrong": 2,
+   "due": 1795846937489,
+   "updated": 1795846937489
   },
   "vo:definitely": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1795933252920,
-   "updated": 1795846852920
+   "due": 1796106118283,
+   "updated": 1795846918283
   },
   "vo:at-all": {
-   "box": 2,
-   "seen": 2,
+   "box": 1,
+   "seen": 3,
    "right": 1,
-   "wrong": 1,
-   "due": 1795933226626,
-   "updated": 1795846826626
+   "wrong": 2,
+   "due": 1795846947161,
+   "updated": 1795846947161
   },
   "vo:disappear": {
-   "box": 2,
-   "seen": 2,
-   "right": 1,
+   "box": 3,
+   "seen": 3,
+   "right": 2,
    "wrong": 1,
-   "due": 1795933265219,
-   "updated": 1795846865219
+   "due": 1796106142002,
+   "updated": 1795846942002
   },
   "vo:really": {
-   "box": 2,
-   "seen": 2,
-   "right": 2,
+   "box": 3,
+   "seen": 3,
+   "right": 3,
    "wrong": 0,
-   "due": 1795933272251,
-   "updated": 1795846872251
+   "due": 1796106156972,
+   "updated": 1795846956972
   },
   "vo:kilometer": {
+   "box": 3,
+   "seen": 3,
+   "right": 3,
+   "wrong": 0,
+   "due": 1796106104633,
+   "updated": 1795846904633
+  },
+  "vo:however": {
+   "box": 2,
+   "seen": 3,
+   "right": 2,
+   "wrong": 1,
+   "due": 1795933312229,
+   "updated": 1795846912229
+  },
+  "vo:sense": {
    "box": 2,
    "seen": 2,
    "right": 2,
    "wrong": 0,
-   "due": 1795933230110,
-   "updated": 1795846830110
-  },
-  "vo:however": {
-   "box": 1,
-   "seen": 2,
-   "right": 1,
-   "wrong": 1,
-   "due": 1795846858777,
-   "updated": 1795846858777
-  },
-  "vo:sense": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
-   "wrong": 0,
-   "due": 1795861149946,
-   "updated": 1795846749946
+   "due": 1795933330376,
+   "updated": 1795846930376
   },
   "vo:invent": {
-   "box": 2,
-   "seen": 2,
-   "right": 1,
+   "box": 3,
+   "seen": 3,
+   "right": 2,
    "wrong": 1,
-   "due": 1795933237316,
-   "updated": 1795846837316
+   "due": 1796106127074,
+   "updated": 1795846927074
   },
   "vo:smell": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795861215337,
-   "updated": 1795846815337
+   "due": 1795933351762,
+   "updated": 1795846951762
   },
   "vo:swimmer": {
-   "box": 1,
-   "seen": 1,
-   "right": 1,
+   "box": 2,
+   "seen": 2,
+   "right": 2,
    "wrong": 0,
-   "due": 1795861267938,
-   "updated": 1795846867938
+   "due": 1795933333112,
+   "updated": 1795846933112
   }
  },
  "sessions": [
@@ -2711,7 +2711,18 @@
    "total": 12,
    "correct": 10,
    "ms": 86191
+  },
+  {
+   "id": "230141bb-c25e-47ba-af55-6dbde17b9b54",
+   "at": 1795846967283,
+   "mastered": 48,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-11-28-get-ready-1",
+   "total": 12,
+   "correct": 10,
+   "ms": 64312
   }
  ],
- "updated": 1795846899884
+ "updated": 1795846967283
 }
