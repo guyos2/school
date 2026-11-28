@@ -163,12 +163,12 @@
    "updated": 1793462726700
   },
   "vo:sight": {
-   "box": 4,
-   "seen": 11,
-   "right": 8,
+   "box": 5,
+   "seen": 12,
+   "right": 9,
    "wrong": 3,
-   "due": 1796451501039,
-   "updated": 1795846701039
+   "due": 1797056623422,
+   "updated": 1795847023422
   },
   "vo:bridge": {
    "box": 5,
@@ -2033,6 +2033,94 @@
    "wrong": 0,
    "due": 1795933333112,
    "updated": 1795846933112
+  },
+  "vo:hearing": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861388035,
+   "updated": 1795846988035
+  },
+  "vo:improve": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861391186,
+   "updated": 1795846991186
+  },
+  "vo:forward": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795846999621,
+   "updated": 1795846999621
+  },
+  "vo:the-same": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861403547,
+   "updated": 1795847003547
+  },
+  "vo:touch": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861406502,
+   "updated": 1795847006502
+  },
+  "vo:be-wrong": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861411386,
+   "updated": 1795847011386
+  },
+  "vo:earth": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861413671,
+   "updated": 1795847013671
+  },
+  "vo:rarely": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795847016608,
+   "updated": 1795847016608
+  },
+  "vo:false": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861426373,
+   "updated": 1795847026373
+  },
+  "vo:surprised": {
+   "box": 1,
+   "seen": 1,
+   "right": 1,
+   "wrong": 0,
+   "due": 1795861431257,
+   "updated": 1795847031257
+  },
+  "vo:main": {
+   "box": 1,
+   "seen": 1,
+   "right": 0,
+   "wrong": 1,
+   "due": 1795847038075,
+   "updated": 1795847038075
   }
  },
  "sessions": [
@@ -2722,7 +2810,18 @@
    "total": 12,
    "correct": 10,
    "ms": 64312
+  },
+  {
+   "id": "67d16a6f-8abc-4c8e-9a27-2c90ee4f3cf4",
+   "at": 1795847054111,
+   "mastered": 48,
+   "module": "units",
+   "part": "meaning",
+   "unit": "2026-11-28-get-ready-1",
+   "total": 12,
+   "correct": 9,
+   "ms": 68922
   }
  ],
- "updated": 1795846967283
+ "updated": 1795847054111
 }
