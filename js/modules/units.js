@@ -136,7 +136,7 @@ function unitHome(root, kid, base, ub, u) {
         : 'קריאה, אוצר מילים ודקדוק. ציון מתוך 100') : ''}
       ${card(`${ub}/vtest`, '🏁', 'מבחן אוצר מילים', vtests.length
         ? `ציון אחרון: ${vtests.at(-1).score} · ${vtests.length === 1 ? 'מבחן אחד' : `${vtests.length} מבחנים`} עד עכשיו`
-        : 'מה הפירוש, איך אומרים והשלמת משפט. ציון מתוך 100')}
+        : `${vocabSplit(allWords(u).length).reduce((x, y) => x + y)} שאלות: מה הפירוש, איך אומרים והשלמת משפט. ציון מתוך 100`)}
     </div>`;
 }
 
@@ -809,10 +809,14 @@ function buildGrammarTest(u) {
 }
 
 // A vocabulary test: meanings (English → Hebrew), the English word for a Hebrew one, and gap sentences from a word box.
+// 40 questions (20 / 10 / 10); a unit with fewer words tests each word once, about half of them in Part A.
+const vocabSplit = (n) => { const m = Math.min(n, 40), a = Math.round(m / 2), b = Math.floor((m - a) / 2); return [a, b, m - a - b]; };
+
 function buildVocabTest(u) {
   const words = allWords(u);
-  const pick20 = shuffle(words);
-  const a = pick20.slice(0, 20), b = pick20.slice(20, 30), c = pick20.slice(30, 40);
+  const [na, nb] = vocabSplit(words.length);
+  const order = shuffle(words);
+  const a = order.slice(0, na), b = order.slice(na, na + nb), c = order.slice(na + nb, 40);
   const bank = shuffle([...c, ...shuffle(words.filter((w) => !c.includes(w))).slice(0, 2)]);
   return { kind: 'vocab', T: null, bank, parts: [
     { title: 'Part A – What does it mean?', he: 'פירוש המילה', points: 40, intro: 'Choose the correct meaning.',
@@ -822,7 +826,7 @@ function buildVocabTest(u) {
       qs: b.map((w) => ({ key: vKey(w), prompt: esc(w.he), answer: spoken(w.en),
         options: shuffle([w, ...distractors(w, words)]).map((x) => spoken(x.en)), explain: () => wordHelp(w, 'sentence') })) },
     { title: 'Part C – Complete the sentences', he: 'השלמת משפטים', points: 30, intro: 'Complete the sentences with words from the box. There are two extra words.',
-      qs: c.map((w) => ({ key: vKey(w), prompt: blank(w.gap), answer: gapAnswer(w),
+      bank: true, qs: c.map((w) => ({ key: vKey(w), prompt: blank(w.gap), answer: gapAnswer(w),
         options: shuffle([w, ...distractors(w, bank)]).map(gapAnswer), explain: () => wordHelp(w, 'sentence') })) },
   ] };
 }
@@ -843,7 +847,7 @@ function buildTest(u, lastText) {
       qs: T.questions.map((q, i) => ({ key: rKey(T, i), prompt: esc(q.q), options: shuffle(q.options), answer: q.options[0],
         explain: () => readingHelp(q).replace(' (מסומנת בצהוב למעלה)', '') })) },
     { title: 'Part B – Vocabulary', he: 'אוצר מילים', points: 30, intro: 'Complete the sentences with words from the box. There are two extra words.',
-      qs: chosen.map((w) => ({ key: vKey(w), prompt: blank(w.gap), answer: gapAnswer(w),
+      bank: true, qs: chosen.map((w) => ({ key: vKey(w), prompt: blank(w.gap), answer: gapAnswer(w),
         options: shuffle([w, ...distractors(w, bank)]).map(gapAnswer), explain: () => wordHelp(w, 'sentence') })) },
     { title: 'Part C – Grammar', he: 'דקדוק', points: 30, intro: 'Present Simple',
       qs: gram.map((i) => {
@@ -858,16 +862,17 @@ function testIntro(root, kid, ub, u, kind = 'full') {
   const grammar = kind === 'grammar', vocab = kind === 'vocab';
   const part = grammar ? 'gtest' : vocab ? 'vtest' : 'mock';
   const tests = getProgress(kid.id).sessions.filter((s) => s.module === 'units' && s.part === part && s.unit === u.id);
+  const vn = vocabSplit(allWords(u).length);
   root.innerHTML = `
     <a class="back" href="${ub}">→ חזרה</a>
     <h1 class="page-title">🏁 ${grammar ? 'מבחן דקדוק' : vocab ? 'מבחן אוצר מילים' : 'מבחן דמה'}</h1>
     <div class="panel">
       ${vocab ? `
-        <p>מבחן על המילים של היחידה. <b>40 שאלות, 100 נקודות</b>, בשלושה חלקים:</p>
+        <p>מבחן על המילים של היחידה. <b>${vn.reduce((x, y) => x + y)} שאלות, 100 נקודות</b>, בשלושה חלקים:</p>
         <ul class="mt-plan">
-          <li><b class="en">Part A – What does it mean?</b> · פירוש המילה · 20 שאלות</li>
-          <li><b class="en">Part B – How do you say it in English?</b> · מעברית לאנגלית · 10 שאלות</li>
-          <li><b class="en">Part C – Complete the sentences</b> · השלמת משפטים ממחסן מילים · 10 שאלות</li>
+          <li><b class="en">Part A – What does it mean?</b> · פירוש המילה · ${vn[0]} שאלות</li>
+          <li><b class="en">Part B – How do you say it in English?</b> · מעברית לאנגלית · ${vn[1]} שאלות</li>
+          <li><b class="en">Part C – Complete the sentences</b> · השלמת משפטים ממחסן מילים · ${vn[2]} שאלות</li>
         </ul>` : grammar ? `
         <p>מבחן שכולו Present Simple: חיוב, שלילה ושאלה. <b>30 שאלות, 100 נקודות</b>, בשישה חלקים:</p>
         <ul class="mt-plan">
@@ -918,7 +923,7 @@ function runTest(root, kid, ub, u, test) {
       <h2 class="mt-title en">${esc(P.title)}</h2>
       <p class="mt-intro en">${esc(P.intro)}</p>
       ${pi === 0 && T ? `<div class="rd-text en"><h3 class="rd-title">${esc(T.title)}</h3>${textHtml(T)}</div>` : ''}
-      ${pi === 1 && bank.length ? `<div class="mt-bank en">${bank.map((w) => `<span>${esc(gapAnswer(w))}</span>`).join('')}</div>` : ''}
+      ${P.bank && bank.length ? `<div class="mt-bank en">${bank.map((w) => `<span>${esc(gapAnswer(w))}</span>`).join('')}</div>` : ''}
       ${qHtml}
       <p class="subtitle" id="msg"></p>
       <div class="row-center">

@@ -1,0 +1,701 @@
+{
+ "id": "2026-11-28-get-ready-1",
+ "subject": "english",
+ "icon": "👃",
+ "title": "אנגלית: Get Ready 1 · מבחן אוצר מילים",
+ "date": "2026-11-28",
+ "source": "רשימות New Words 1 ו-New Words 2 מ-Get Ready 1 בספר (צילומים מ-28.11.26): 25 מילים, רובן על החושים",
+ "wordGroups": [
+  {
+   "title": "Get Ready 1 · New Words 1",
+   "words": [
+    {
+     "id": "although",
+     "en": "although",
+     "pos": "conj",
+     "he": "למרות ש, אף על פי ש",
+     "accept": [
+      "למרות ש",
+      "למרות",
+      "אף על פי ש",
+      "אף על פי",
+      "אף ש",
+      "על אף",
+      "אעפ\"י"
+     ],
+     "emoji": "🤷",
+     "syl": "al·THOUGH",
+     "ex": "Although it was late, we watched one more episode.",
+     "exHe": "למרות שהיה מאוחר, צפינו בעוד פרק.",
+     "gap": "___ it was very cold, we went swimming in the sea.",
+     "family": [
+      [
+       "though",
+       "למרות ש (קצר יותר)"
+      ]
+     ],
+     "syn": "even though",
+     "tip": "although מחבר שני חלקים במשפט אחד: Although it rained, we played. ב-however מתחילים משפט חדש. ה-gh לא נשמעת: ol-DHO."
+    },
+    {
+     "id": "at-all",
+     "en": "at all",
+     "pos": "phrase",
+     "he": "בכלל (במשפט שלילה)",
+     "accept": [
+      "בכלל",
+      "כלל",
+      "בכלל לא",
+      "כלל לא",
+      "בשום אופן"
+     ],
+     "emoji": "🚫",
+     "syl": "at ALL",
+     "ex": "I don't like horror movies at all.",
+     "exHe": "אני לא אוהב סרטי אימה בכלל.",
+     "gap": "I'm not tired ___, so I can stay up and finish the game.",
+     "tip": "at all בא בסוף משפט שלילה או שאלה: not at all = בכלל לא. Do you know him at all?"
+    },
+    {
+     "id": "be-unable-to",
+     "en": "be unable to",
+     "pos": "phrase",
+     "he": "לא להיות מסוגל ל..., לא יכול",
+     "accept": [
+      "לא מסוגל",
+      "לא מסוגל ל",
+      "לא יכול",
+      "לא יכול ל",
+      "לא מצליח",
+      "אינו מסוגל",
+      "להיות לא מסוגל",
+      "לא יכולים"
+     ],
+     "emoji": "🙅",
+     "syl": "be un·A·ble to",
+     "ex": "Fish are unable to live out of the water.",
+     "exHe": "דגים לא מסוגלים לחיות מחוץ למים.",
+     "gap": "With a broken leg, Dan will ___ play in Saturday's game.",
+     "family": [
+      [
+       "able",
+       "מסוגל"
+      ],
+      [
+       "ability",
+       "יכולת"
+      ]
+     ],
+     "syn": "can't",
+     "opp": "be able to (להיות מסוגל)",
+     "tip": "un = לא. be משתנה לפי הגוף: I am unable to, she is unable to, they were unable to. אחרי to בא פועל רגיל."
+    },
+    {
+     "id": "definitely",
+     "en": "definitely",
+     "pos": "adv",
+     "he": "בהחלט, בוודאות",
+     "accept": [
+      "בהחלט",
+      "בוודאי",
+      "בוודאות",
+      "בטוח",
+      "ללא ספק",
+      "בלי ספק",
+      "בטח",
+      "ודאי"
+     ],
+     "emoji": "💯",
+     "syl": "DEF·i·nite·ly",
+     "ex": "I will definitely come to your party!",
+     "exHe": "אני בהחלט אבוא למסיבה שלך!",
+     "gap": "This is ___ the best pizza in town. Nobody makes a better one!",
+     "family": [
+      [
+       "definite",
+       "ודאי, מוחלט"
+      ]
+     ],
+     "syn": "certainly, for sure",
+     "tip": "שימו לב לאיות: defin-I-te-ly, עם i ולא a.",
+     "gapNo": [
+      "really"
+     ]
+    },
+    {
+     "id": "disappear",
+     "en": "disappear",
+     "pos": "v",
+     "he": "להיעלם",
+     "accept": [
+      "להיעלם",
+      "נעלם",
+      "נעלמת",
+      "נעלמים",
+      "היעלמות",
+      "להעלם"
+     ],
+     "emoji": "🫥",
+     "syl": "dis·ap·PEAR",
+     "ex": "My socks always disappear in the washing machine!",
+     "exHe": "הגרביים שלי תמיד נעלמים במכונת הכביסה!",
+     "gap": "Every evening the sun seems to ___ into the sea.",
+     "family": [
+      [
+       "appear",
+       "להופיע"
+      ],
+      [
+       "disappearance",
+       "היעלמות"
+      ]
+     ],
+     "opp": "appear (להופיע)",
+     "tip": "dis = ההפך. appear (להופיע) ← disappear (להיעלם). s אחת ו-pp כפולה."
+    },
+    {
+     "id": "however",
+     "en": "however",
+     "pos": "adv",
+     "he": "אולם, עם זאת",
+     "accept": [
+      "אולם",
+      "עם זאת",
+      "אבל",
+      "אך",
+      "למרות זאת",
+      "בכל זאת",
+      "ברם"
+     ],
+     "emoji": "↩️",
+     "syl": "how·EV·er",
+     "ex": "The test was hard. However, most of the class passed it.",
+     "exHe": "המבחן היה קשה. עם זאת, רוב הכיתה עבר אותו.",
+     "gap": "I wanted to go to the beach. My parents, ___, wanted to stay home.",
+     "syn": "but",
+     "tip": "however מתחיל משפט חדש ובא אחריו פסיק: ... . However, ... . לעומת although, שמחבר בתוך אותו משפט."
+    },
+    {
+     "id": "invent",
+     "en": "invent",
+     "pos": "v",
+     "he": "להמציא",
+     "accept": [
+      "להמציא",
+      "ממציא",
+      "ממציאה",
+      "המצאה",
+      "המציא"
+     ],
+     "emoji": "💡",
+     "syl": "in·VENT",
+     "ex": "Who invented the computer?",
+     "exHe": "מי המציא את המחשב?",
+     "gap": "Nobody had phones before Bell ___ the telephone in 1876.",
+     "family": [
+      [
+       "inventor",
+       "ממציא"
+      ],
+      [
+       "invention",
+       "המצאה"
+      ]
+     ],
+     "gapAns": "invented",
+     "tip": "invent (פועל) ← inventor (הממציא) ← invention (ההמצאה)."
+    },
+    {
+     "id": "kilometer",
+     "en": "kilometer",
+     "pos": "n",
+     "he": "קילומטר",
+     "accept": [
+      "קילומטר",
+      "קילומטרים",
+      "קמ",
+      "ק\"מ"
+     ],
+     "emoji": "📏",
+     "syl": "ki·LOM·e·ter",
+     "ex": "I run five kilometers every morning.",
+     "exHe": "אני רץ חמישה קילומטרים כל בוקר.",
+     "gap": "The school is one ___ from my house, so I walk there in ten minutes.",
+     "family": [
+      [
+       "meter",
+       "מטר"
+      ],
+      [
+       "km",
+       "קיצור של kilometer"
+      ]
+     ],
+     "tip": "kilo = אלף. kilometer = 1,000 מטר. בבריטית כותבים kilometre."
+    },
+    {
+     "id": "really",
+     "en": "really",
+     "pos": "adv",
+     "he": "באמת, ממש",
+     "accept": [
+      "באמת",
+      "ממש",
+      "מאוד",
+      "מאד",
+      "בֶּאמת",
+      "באמת?"
+     ],
+     "emoji": "😮",
+     "syl": "RE·al·ly",
+     "ex": "This movie is really funny.",
+     "exHe": "הסרט הזה ממש מצחיק.",
+     "gap": "Thanks for the gift. I ___ like it!",
+     "family": [
+      [
+       "real",
+       "אמיתי"
+      ],
+      [
+       "reality",
+       "מציאות"
+      ]
+     ],
+     "syn": "very; truly",
+     "tip": "Really? בשאלה = באמת? בתוך משפט = ממש: really good. שתי l: rea-LL-y.",
+     "gapNo": [
+      "definitely"
+     ]
+    },
+    {
+     "id": "sand",
+     "en": "sand",
+     "pos": "n",
+     "he": "חול",
+     "accept": [
+      "חול",
+      "חולות"
+     ],
+     "emoji": "🏖️",
+     "syl": "SAND",
+     "ex": "The sand on the beach is very hot in summer.",
+     "exHe": "החול בחוף חם מאוד בקיץ.",
+     "gap": "The kids built a castle out of ___ on the beach.",
+     "family": [
+      [
+       "sandy",
+       "חולי"
+      ],
+      [
+       "sandcastle",
+       "ארמון חול"
+      ]
+     ],
+     "tip": "sand + y = sandy (חולי): a sandy beach."
+    },
+    {
+     "id": "sense",
+     "en": "sense",
+     "pos": "n",
+     "he": "חוש",
+     "accept": [
+      "חוש",
+      "חושים",
+      "תחושה",
+      "היגיון",
+      "הגיון",
+      "משמעות"
+     ],
+     "emoji": "🖐️",
+     "syl": "SENSE",
+     "ex": "People have five senses: sight, hearing, smell, taste and touch.",
+     "exHe": "לבני אדם יש חמישה חושים: ראייה, שמיעה, ריח, טעם ומגע.",
+     "gap": "Dogs have a very good ___ of smell.",
+     "family": [
+      [
+       "sensitive",
+       "רגיש"
+      ],
+      [
+       "make sense",
+       "הגיוני"
+      ]
+     ],
+     "tip": "a sense of smell = חוש ריח. It makes sense = זה הגיוני."
+    },
+    {
+     "id": "smell",
+     "en": "smell",
+     "pos": "n",
+     "he": "ריח; להריח",
+     "accept": [
+      "ריח",
+      "להריח",
+      "מריח",
+      "מריחה",
+      "ריחות",
+      "הריח"
+     ],
+     "emoji": "👃",
+     "syl": "SMELL",
+     "ex": "I love the smell of rain. The flowers smell great!",
+     "exHe": "אני אוהב את הריח של גשם. הפרחים מריחים נהדר!",
+     "gap": "Mmm! What is that great ___ coming from the kitchen?",
+     "family": [
+      [
+       "smelly",
+       "מסריח"
+      ]
+     ],
+     "tip": "smell היא גם שם עצם (a smell = ריח) וגם פועל (to smell = להריח). It smells good = יש לזה ריח טוב."
+    },
+    {
+     "id": "swimmer",
+     "en": "swimmer",
+     "pos": "n",
+     "he": "שחיין",
+     "accept": [
+      "שחיין",
+      "שחיינית",
+      "שחיינים",
+      "שוחה"
+     ],
+     "emoji": "🏊",
+     "syl": "SWIM·mer",
+     "ex": "My sister is a fast swimmer.",
+     "exHe": "אחותי שחיינית מהירה.",
+     "gap": "Michael Phelps is a famous ___. He won many gold medals in the pool.",
+     "family": [
+      [
+       "swim",
+       "לשחות"
+      ],
+      [
+       "swimming pool",
+       "בריכה"
+      ]
+     ],
+     "tip": "swim + er = swimmer. ה-m מוכפלת, כמו run ← runner."
+    }
+   ]
+  },
+  {
+   "title": "Get Ready 1 · New Words 2",
+   "words": [
+    {
+     "id": "be-wrong",
+     "en": "be wrong",
+     "pos": "phrase",
+     "he": "לטעות, לא לצדוק",
+     "accept": [
+      "לטעות",
+      "טועה",
+      "טועים",
+      "טעות",
+      "לא צודק",
+      "לא לצדוק",
+      "להיות טועה"
+     ],
+     "emoji": "❌",
+     "syl": "be WRONG",
+     "ex": "Sorry, I was wrong. You are right!",
+     "exHe": "סליחה, טעיתי. אתה צודק!",
+     "gap": "I think the answer is 12, but I might ___. Let's check.",
+     "family": [
+      [
+       "wrong",
+       "לא נכון, שגוי"
+      ]
+     ],
+     "opp": "be right (לצדוק)",
+     "tip": "בעברית ״לטעות״ זה פועל אחד, באנגלית be + wrong: I am wrong, she was wrong."
+    },
+    {
+     "id": "earth",
+     "en": "Earth",
+     "pos": "n",
+     "he": "כדור הארץ",
+     "accept": [
+      "כדור הארץ",
+      "הארץ",
+      "כדור-הארץ",
+      "ארץ",
+      "העולם"
+     ],
+     "emoji": "🌍",
+     "syl": "EARTH",
+     "ex": "The Earth goes around the Sun.",
+     "exHe": "כדור הארץ מסתובב סביב השמש.",
+     "gap": "The Moon goes around the ___ once a month.",
+     "tip": "Earth באות גדולה = כדור הארץ. earth באות קטנה = אדמה."
+    },
+    {
+     "id": "false",
+     "en": "false",
+     "pos": "adj",
+     "he": "לא נכון, שקרי",
+     "accept": [
+      "לא נכון",
+      "לא נכונה",
+      "שגוי",
+      "שקרי",
+      "שקר",
+      "לא אמיתי",
+      "מזויף",
+      "כוזב"
+     ],
+     "emoji": "👎",
+     "syl": "FALSE",
+     "ex": "Read the sentences and write T (true) or F (false).",
+     "exHe": "קראו את המשפטים וכתבו T (נכון) או F (לא נכון).",
+     "gap": "Is this sentence true or ___? Circle the right answer.",
+     "opp": "true (נכון)",
+     "tip": "true or false = נכון או לא נכון, כמו בשאלות במבחן."
+    },
+    {
+     "id": "forward",
+     "en": "forward",
+     "pos": "adv",
+     "he": "קדימה",
+     "accept": [
+      "קדימה",
+      "לפנים",
+      "הלאה",
+      "קדימה!"
+     ],
+     "emoji": "⏩",
+     "syl": "FOR·ward",
+     "ex": "The car moved forward slowly.",
+     "exHe": "המכונית נסעה קדימה לאט.",
+     "gap": "Take two steps ___ and then turn left.",
+     "family": [
+      [
+       "look forward to",
+       "לצפות בקוצר רוח ל"
+      ]
+     ],
+     "opp": "back, backward (אחורה)",
+     "tip": "I look forward to the trip = אני מחכה בקוצר רוח לטיול."
+    },
+    {
+     "id": "hearing",
+     "en": "hearing",
+     "pos": "n",
+     "he": "שמיעה",
+     "accept": [
+      "שמיעה",
+      "חוש השמיעה",
+      "השמיעה"
+     ],
+     "emoji": "👂",
+     "syl": "HEAR·ing",
+     "ex": "My grandpa's hearing is not very good, so we speak loudly.",
+     "exHe": "השמיעה של סבא שלי לא כל כך טובה, אז אנחנו מדברים בקול.",
+     "gap": "Owls hunt at night with their excellent ___. They can hear a mouse moving under the snow.",
+     "family": [
+      [
+       "hear",
+       "לשמוע"
+      ],
+      [
+       "heard",
+       "שמע"
+      ]
+     ],
+     "tip": "hear (לשמוע) + ing = hearing (חוש השמיעה). כמו see ← sight."
+    },
+    {
+     "id": "improve",
+     "en": "improve",
+     "pos": "v",
+     "he": "לשפר, להשתפר",
+     "accept": [
+      "לשפר",
+      "להשתפר",
+      "משפר",
+      "משתפר",
+      "שיפור",
+      "שיפר"
+     ],
+     "emoji": "📈",
+     "syl": "im·PROVE",
+     "ex": "I practice every day to improve my English.",
+     "exHe": "אני מתאמן כל יום כדי לשפר את האנגלית שלי.",
+     "gap": "Reading English books every day will ___ your English.",
+     "family": [
+      [
+       "improvement",
+       "שיפור"
+      ],
+      [
+       "improved",
+       "השתפר, משופר"
+      ]
+     ],
+     "tip": "improve (פועל) ← improvement (שיפור). ה-e בסוף לא נשמעת."
+    },
+    {
+     "id": "main",
+     "en": "main",
+     "pos": "adj",
+     "he": "עיקרי, ראשי",
+     "accept": [
+      "עיקרי",
+      "ראשי",
+      "מרכזי",
+      "העיקרי",
+      "הראשי",
+      "עיקרית",
+      "ראשית"
+     ],
+     "emoji": "⭐",
+     "syl": "MAIN",
+     "ex": "The main road goes through the center of the city.",
+     "exHe": "הכביש הראשי עובר במרכז העיר.",
+     "gap": "The ___ idea of the text is in the first paragraph.",
+     "family": [
+      [
+       "mainly",
+       "בעיקר"
+      ]
+     ],
+     "tip": "the main idea = הרעיון המרכזי. שאלה שחוזרת הרבה ב-Unseen!"
+    },
+    {
+     "id": "rarely",
+     "en": "rarely",
+     "pos": "adv",
+     "he": "לעיתים רחוקות",
+     "accept": [
+      "לעיתים רחוקות",
+      "לעתים רחוקות",
+      "לעיתים נדירות",
+      "לעתים נדירות",
+      "כמעט אף פעם",
+      "כמעט לא",
+      "נדיר",
+      "רק לפעמים"
+     ],
+     "emoji": "🦄",
+     "syl": "RARE·ly",
+     "ex": "My dad rarely watches TV. He prefers books.",
+     "exHe": "אבא שלי רק לעיתים רחוקות צופה בטלוויזיה. הוא מעדיף ספרים.",
+     "gap": "It ___ snows in Tel Aviv, so the children were very excited when it did.",
+     "family": [
+      [
+       "rare",
+       "נדיר"
+      ]
+     ],
+     "syn": "almost never, seldom",
+     "opp": "often (לעיתים קרובות)",
+     "tip": "rare (נדיר) + ly = rarely. בא לפני הפועל, כמו always, often, never: She rarely eats meat."
+    },
+    {
+     "id": "sight",
+     "en": "sight",
+     "pos": "n",
+     "he": "ראייה; מראה",
+     "accept": [
+      "ראייה",
+      "ראיה",
+      "חוש הראייה",
+      "מראה",
+      "נוף",
+      "הראייה"
+     ],
+     "emoji": "👁️",
+     "syl": "SIGHT",
+     "ex": "Cats have very good sight in the dark.",
+     "exHe": "לחתולים יש ראייה טובה מאוד בחושך.",
+     "gap": "Eagles have amazing ___. They can see a small rabbit from far away.",
+     "family": [
+      [
+       "see",
+       "לראות"
+      ],
+      [
+       "sightseeing",
+       "סיור באתרים"
+      ]
+     ],
+     "tip": "see (לראות) ← sight (ראייה). ה-gh לא נשמעת, כמו light, night."
+    },
+    {
+     "id": "surprised",
+     "en": "surprised",
+     "pos": "adj",
+     "he": "מופתע",
+     "accept": [
+      "מופתע",
+      "מופתעת",
+      "מופתעים",
+      "הופתע",
+      "נדהם",
+      "מופתעות"
+     ],
+     "emoji": "😲",
+     "syl": "sur·PRISED",
+     "ex": "I was surprised to see snow in April.",
+     "exHe": "הופתעתי לראות שלג באפריל.",
+     "gap": "We were very ___ when our teacher came to class with a dog!",
+     "family": [
+      [
+       "surprise",
+       "הפתעה; להפתיע"
+      ],
+      [
+       "surprising",
+       "מפתיע"
+      ]
+     ],
+     "tip": "surprised = מי שמופתע (I am surprised). surprising = משהו שמפתיע (surprising news)."
+    },
+    {
+     "id": "the-same",
+     "en": "the same",
+     "pos": "phrase",
+     "he": "אותו דבר, זהה",
+     "accept": [
+      "אותו",
+      "אותו דבר",
+      "זהה",
+      "אותה",
+      "אותו הדבר",
+      "אותם",
+      "אותן",
+      "זהים"
+     ],
+     "emoji": "👯",
+     "syl": "the SAME",
+     "ex": "We have the same birthday!",
+     "exHe": "יש לנו אותו יום הולדת!",
+     "gap": "My brother and I go to ___ school, so we walk there together.",
+     "opp": "different (שונה)",
+     "tip": "תמיד עם the: the same color. the same as = אותו דבר כמו."
+    },
+    {
+     "id": "touch",
+     "en": "touch",
+     "pos": "v",
+     "he": "לגעת; מגע",
+     "accept": [
+      "לגעת",
+      "מגע",
+      "נוגע",
+      "נגיעה",
+      "חוש המגע",
+      "למשש",
+      "נגע"
+     ],
+     "emoji": "👆",
+     "syl": "TOUCH",
+     "ex": "Don't touch the oven, it's hot! Babies learn a lot by touch.",
+     "exHe": "אל תיגעו בתנור, הוא חם! תינוקות לומדים הרבה דרך מגע.",
+     "gap": "Please don't ___ the paintings in the museum.",
+     "tip": "touch היא גם פועל (לגעת) וגם שם עצם (מגע, חוש המגע). touch screen = מסך מגע."
+    }
+   ]
+  }
+ ]
+}
